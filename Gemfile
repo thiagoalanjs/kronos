@@ -13,7 +13,6 @@ gem 'image_processing', '~> 1.12', '>= 1.12.1'
 
 group :production do
   gem 'pg'
-  gem 'rails_12factor', '~> 0.0.3'
 end
 
 group :development, :test do
