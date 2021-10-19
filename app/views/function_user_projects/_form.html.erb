@@ -1,0 +1,31 @@
+<%= form_for(@function_user_project, html: {class: 'ui form'}) do |f| %>
+
+  <% if @function_user_project.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @function_user_project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+      <%= f.label :user_id %>
+      <%= f.collection_select(:user_id, User.all, :id, :name, {:prompt => 'Selecione um usuário'}, {class: 'ui search dropdown'}) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :function_id %>
+      <%= f.collection_select(:function_id, Function.all, :id, :name, {:prompt => 'Selecione uma função'}, {class: 'ui search dropdown'}) %>
+    </div>
+
+  <% end %>
+
+<script type="text/javascript">
+  $('.save').click(function(){
+    $('form').submit();
+  });
+
+  $('.ui.search.dropdown').dropdown({ allowLabels:true});
+</script>

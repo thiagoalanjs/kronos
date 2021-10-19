@@ -1,0 +1,36 @@
+<%= form_for(@ability, html: {class: 'ui form'}) do |f| %>
+
+  <% if @ability.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @ability.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+    <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :description %>
+    <%= f.text_area :description %>
+    </div>
+
+    <div class="field">
+      <%= f.label :scope %>
+    <%= f.number_field :scope %>
+    </div>
+
+  <% end %>
+
+<script type="text/javascript">
+  $('.save').click(function(){
+    $('form').submit();
+  });
+
+  $('.ui.search.dropdown').dropdown({ allowLabels:true});
+</script>

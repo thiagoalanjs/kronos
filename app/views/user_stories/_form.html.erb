@@ -1,0 +1,68 @@
+<%= form_for(@user_story, html: {class: 'ui form'}) do |f| %>
+
+  <% if @user_story.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @user_story.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="inline field">
+      <%# f.label 'Tema' %>
+      <div class="ui search icon input">
+          <%= f.text_field :theme_search, class: 'prompt', placeholder: 'Tema' %>
+          <i class="search icon"></i>
+        <div class="results"></div>
+      </div>
+
+      <%= f.number_field :business_value, placeholder: 'business value' %>
+      <%= f.number_field :story_points, placeholder: 'Story point' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+
+    <div class="inline field">
+      <%# f.select(:theme_id, sprints, {:prompt => false}, {class: 'ui search dropdown'} ) %>
+
+      <% sprints = current_project.themes.map {|sprint| [sprint.name, sprint.id] }; sprints << ["Selecione um tema", ""] %>
+      
+      <%= f.collection_select( :sprint_id, Sprint.all, :id, :name, {:prompt => 'Sprint'}, {class: 'ui search dropdown', placeholder: 'Sprint'} ) %>
+
+      <%= f.select :status, options_for_select({1 => 'Pendente', 2 => 'Desenvolvimento', 3 => 'Code Review', 4 => 'QA', 5 => 'Concluída'}), {:prompt => false}, { :class => 'ui search dropdown', placeholder: 'Status' } %>
+    </div>
+
+  <% end %>
+
+<p></p>
+<p></p>
+<p></p>
+
+<script type="text/javascript">
+  $('.save').click(function(){
+    $('form').submit();
+  });
+
+  $('.ui.search.dropdown').dropdown({ allowLabels:true});
+
+  $(document).ready(function() {
+    $('.ui.search')
+    .search({
+      apiSettings: {
+        url: "//" + location.host + "/themes/autocomplete.json?query={query}"
+      },
+      fields: {
+        results: 'themes',
+        title: 'name',
+        description: 'description'
+      },
+      minCharacters : 0
+    });
+  });
+
+</script>

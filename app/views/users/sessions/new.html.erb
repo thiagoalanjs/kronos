@@ -1,0 +1,33 @@
+<div class="img_background">
+<div class="logo form">
+      <%= image_tag("logo.png") %>
+  </div>
+<div class="ui centered grid container ">
+
+  <div class="six wide column form_box">
+  
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'ui form'}) do |f| %>
+      <div class="field">
+        <%= f.label "Email" %>
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label "Senha" %>
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Entrar", class: 'ui button teal' %>
+      </div>
+
+    <% end %>
+
+    <p></p>
+    <p></p>
+    <p></p>
+         Esqueceu a senha?
+ 
+  </div>
+ </div>
+</div>

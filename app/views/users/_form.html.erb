@@ -1,0 +1,46 @@
+<%= form_for(@user, html: {class: 'ui form'}) do |f| %>
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+    <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email %>
+    <%= f.text_field :email %>
+    </div>
+
+    <div class="field">
+      <%= f.label :schedule %>
+      <%= f.select :schedule, options_for_select([:tarde,:manha,:noite]), {}, { :class => 'form-control' } %>
+    </div>
+
+    <div class="field">
+      <%= f.label :group %>
+      <%= f.select :group, options_for_select([:admin,:normal_user]), {}, { :class => 'form-control' } %> 
+    </div>
+
+    <div class="field">
+      <%= f.label :local %>
+      <%= f.collection_select(:local_id,Local.all,:id,:name,{:prompt=>true},{class:'form-control'}) %> 
+    </div>
+
+  <% end %>
+
+<script type="text/javascript">
+  $('.save').click(function(){
+    $('form').submit();
+  });
+
+  $('.ui.search.dropdown').dropdown({ allowLabels:true});
+</script>

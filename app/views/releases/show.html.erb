@@ -1,0 +1,20 @@
+<p></p>
+
+<div class="ui container">
+  <div class="ui menu"">
+    <a href="#" class="item active"><strong>Release</strong></a>
+    <%= link_to 'Novo', new_release_path, class: 'item' %>
+    <%= link_to 'Editar', edit_release_path(@release), class: 'item' %>
+    <%= link_to 'Voltar', releases_path, class: 'item' %>
+  </div>
+
+    <p>
+    <strong>Version:</strong>
+    <%= @release.version %>
+  </p>
+    <p>
+    <strong>Deliver date:</strong>
+    <%= @release.deliver_date %>
+  </p>
+  
+</div>

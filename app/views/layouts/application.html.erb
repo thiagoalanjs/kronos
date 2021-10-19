@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>Kronos - Agile Management</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!-- link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.css" / -->
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+
+<% if !user_signed_in? %>
+  <%= render 'layouts/default_top_menu_bar' %>
+  <%= yield %>
+  <%= render 'layouts/footer' %>
+<% else %>
+  <%= render 'layouts/user_top_menu_bar' %>
+  <%= render 'layouts/admin_side_bar' if current_user.group == 'admin' %>
+  <%= render 'layouts/user_side_bar' if current_user.group != 'admin' %>
+  
+  <!-- content -->
+  <div class="pusher main-pusher">
+    <%= render 'layouts/alert_messages' %>
+    <%= yield %>
+  </div>
+<% end %>
+
+</body>
+</html>
+
+<script>
+$(document).ready(function() {
+    // create sidebar and attach to menu open
+    $('.ui.sidebar').sidebar('attach events', '.toc.item');
+    $('.ui.dropdown').dropdown();
+    $('.message .close').on('click', function() {
+      $(this)
+        .closest('.message')
+        .transition('fade');
+    });
+
+    //$('.calendar').calendar();
+  });
+</script>

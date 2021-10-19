@@ -1,0 +1,41 @@
+<p></p>
+
+<div class="ui container">
+  <div class="ui menu"">
+    <a href="#" class="item active"><strong>Sprint</strong></a>
+    <%= link_to 'Novo', new_sprint_path, class: 'item' %>
+    <%= link_to 'Editar', edit_sprint_path(@sprint), class: 'item' %>
+    <%= link_to 'Voltar', sprints_path, class: 'item' %>
+  </div>
+
+  <p>
+    <strong>Duração:</strong>
+    <%= l @sprint.start_date %> à <%= l @sprint.end_date %>
+  </p>
+
+  <p>
+    <strong>Planejamento:</strong>
+    <%= l @sprint.planning_start_date %> à <%= l @sprint.planning_end_date %>
+  </p>
+
+  <p>
+    <strong>Execução:</strong>
+    <%= l @sprint.execution_start_date %> à <%= l @sprint.execution_end_date %>
+  </p>
+
+  <p>
+    <strong>Review meeting:</strong>
+    <%= l @sprint.review_meeting_date %>
+  </p>
+
+  <p>
+    <strong>Retrospective meeting:</strong>
+    <%= l @sprint.retrospective_meeting_date %>
+  </p>
+
+  <p>
+    <strong>Release:</strong>
+    <%= @sprint.release_id %>
+  </p>
+  
+</div>

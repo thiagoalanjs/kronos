@@ -1,0 +1,129 @@
+<p></p>
+
+<div class="ui container">
+  <!-- NAVBAR -->
+  <div class="ui menu"">
+    <a href="#" class="item active"><strong>Projetos</strong></a>
+    <%= link_to "Voltar", projects_path, class: 'item' %>
+    <%= link_to "Editar", edit_project_path(@project), class: 'item' %>
+    <%= link_to 'Excluír', @project, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'item' %>
+  </div>
+  <!-- /NAVBAR -->
+
+  <p></p>
+
+  <p>
+    <strong>
+      <i class="grid layout icon"></i>
+      Projeto:
+    </strong>
+    <%= @project.name %>
+  </p>
+
+  <p>
+    <strong>
+      <i class="signal icon"></i> 
+      Tamanho:
+    </strong>
+    <%= @project.size %> Story points
+  </p>
+
+  <p>
+    <strong>
+      <i class="calendar icon"></i>
+      Data de inicio:
+    </strong>
+    <%= l @project.start_date %>
+  </p>
+
+  <p>
+    <strong>
+      <i class="calendar icon"></i>
+      Data final:
+    </strong>
+    <%= l @project.end_date %>
+  </p>
+
+  <p>
+    <strong>
+      <i class="marker icon"></i>
+      Local:
+    </strong>
+    <%= @project.local.name unless @project.local.nil? %>
+  </p>
+
+  <div class="ui teal progress" id="project-progress" data-percent="<%= @project.progress %>">
+    <div class="bar"></div>
+    <div class="label">
+      Progresso <%= @project.progress %>%
+    </div>
+  </div>
+
+    
+  <p></p>
+
+  <div class="ui four cards">
+    <div class="card">
+      <div class="content">
+        <div class="header">Product Backlog</div>
+        <div class="description">
+          Gerencie aqui as user stories (requisitos na visão do usuário).
+        </div>
+      </div>
+
+      <button class="ui bottom attached button" onclick="window.location.href='<%= user_stories_path %>'">
+        <i class="settings icon"></i>
+        Gerenciar
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="content">
+        <div class="header">Sprints</div>
+        <div class="description">
+          Gerencie aqui frequência na entrega de valor ao negócio.
+        </div>
+      </div>
+
+      <button class="ui bottom attached button" onclick="window.location.href='<%= sprints_path %>'">
+        <i class="settings icon"></i>
+        Gerenciar
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="content">
+        <div class="header">Releases</div>
+        <div class="description">
+          Gerencie aqui as fases de entrega do software.
+        </div>
+      </div>
+
+      <button class="ui bottom attached button" onclick="window.location.href='<%= releases_path %>'">
+        <i class="settings icon"></i>
+        Gerenciar
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="content">
+        <div class="header">Membros</div>
+        <div class="description">
+          Gerencie aqui a equipe participante desse projeto.
+        </div>
+      </div>
+
+      <button class="ui bottom attached button" onclick="window.location.href='<%= function_user_projects_path %>'">
+        <i class="settings icon"></i>
+        Gerenciar
+      </button>
+    </div>
+  </div>
+</div>
+
+<p></p>
+<p></p>
+
+<script type="text/javascript">
+  $('.progress').progress();
+</script>

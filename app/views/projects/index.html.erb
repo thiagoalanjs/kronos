@@ -1,0 +1,19 @@
+<p></p>
+
+<div class="ui container">
+
+  <% if current_user.group != 'admin' %>
+    <h1>Projetos <%= image_tag("gerenciamento-de-projetos.png")%></h1>
+    <hr>
+    <p></p>
+    <%= render 'projects/list_projects_default' %>
+  <% else %>
+    <div class="ui menu">
+      <a href="#" class="item active"><strong>Projetos</strong></a>
+      <%= link_to "Novo", new_project_path, class: 'item' %>
+    </div>
+
+    <%= render 'projects/list_projects_admin' %>
+  <% end %>
+
+</div>

@@ -1,0 +1,31 @@
+<%= form_for(@function, html: {class: 'ui form'}) do |f| %>
+
+  <% if @function.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @function.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+    <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :description %>
+    <%= f.text_area :description %>
+    </div>
+
+  <% end %>
+
+<script type="text/javascript">
+  $('.save').click(function(){
+    $('form').submit();
+  });
+
+  $('.ui.search.dropdown').dropdown({ allowLabels:true});
+</script>

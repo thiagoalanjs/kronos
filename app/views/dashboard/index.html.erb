@@ -1,0 +1,45 @@
+<div class="ui container">
+  <h1 class="ui center aligned icon header">
+    <i class="users icon"></i>
+    <div class="content">
+      Bem-vindo so SGP
+      <div class="sub header">Sistema de Gerenciamento de Projetos</div>
+    </div>
+  </h1>
+
+  <h2>Minhas Skills (Habilidades)</h2>
+  <div class="ui four cards">
+  <% @skills.each do |skill| %>
+    <div class="ui link card">
+      <div class="content">
+        <div class="header"><%= skill.name %></div>
+      </div>
+
+      <div class="content">
+        <div class="description">
+          <h1>Nível: <%= current_user.skill_level(current_user.xp(skill)) %></h1>
+          <p></p>
+          <div class="ui tiny teal progress" data-value="<%= current_user.xp(skill) %>" data-total="<%= current_user.xp_required_to_next_level(current_user.xp(skill)) %>">
+            <div class="bar"></div>
+            <div class="label">
+              <%= current_user.xp(skill) %> XP / 
+              <%= current_user.xp_required_to_next_level(current_user.xp(skill)) %> XP para o Nível 
+              <%= current_user.skill_level(current_user.xp(skill)) + 1 %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+  </div>
+
+  <!-- <div class="ui medium bordered image">
+    <canvas id="mySkills" width="400" height="400"></canvas>
+  </div> -->
+
+</div>
+
+<script type="text/javascript">
+  $('.progress').progress();
+</script>

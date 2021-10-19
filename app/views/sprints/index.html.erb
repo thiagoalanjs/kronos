@@ -1,0 +1,59 @@
+<p></p>
+
+<div class="ui container">
+  <div class="ui menu"">
+    <a href="#" class="item active"><strong>Sprints</strong></a>
+    <%= link_to "Novo", new_sprint_path, class: 'item' %>
+  </div>
+
+  <%= render 'sprints/breadcrumb' %>
+
+  <table class="ui celled table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Duração</th>
+        <th>Planejamento</th>
+        <th>Execução</th>
+        <th>Review meeting</th>
+        <th>Retrospective meeting</th>
+        <th>Release</th>
+        <th width="250">Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @sprints.each do |sprint| %>
+        <tr>
+          <td><%= sprint.name %></td>
+          <td class="ui center aligned">
+            <%= l sprint.start_date %>
+            <br>à<br> 
+            <%= l sprint.end_date %>    
+          </td>
+          <td class="ui center aligned">
+            <%= l sprint.planning_start_date %>
+            <br>à<br> 
+            <%= l sprint.planning_end_date %>    
+          </td>
+          <td class="ui center aligned">
+            <%= l sprint.execution_start_date %>
+            <br>à<br> 
+            <%= l sprint.execution_end_date %>    
+          </td>
+          <td class="ui center aligned"><%= l sprint.review_meeting_date %></td>
+          <td class="ui center aligned"><%= l sprint.retrospective_meeting_date %></td>
+          <td class="ui center aligned"><%= sprint.release.version unless sprint.release.nil?  %></td>
+          <td>
+            <div class="ui buttons">
+            <%= link_to 'Exibir', sprint, class: 'ui blue basic button' %>
+            <%= link_to 'Editar', edit_sprint_path(sprint), class: 'ui blue basic button' %>
+            <%= link_to 'Remover', sprint, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'ui red basic button' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

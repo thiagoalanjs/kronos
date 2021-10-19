@@ -1,0 +1,7 @@
+== SGP 
+
+Sistema de gerenciamento de projetos
+
+Implementado Scrum e Kambam
+
+adicionado aspectos de gamificação 

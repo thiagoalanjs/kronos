@@ -1,0 +1,20 @@
+<p></p>
+
+<div class="ui container">
+  <div class="ui menu"">
+    <a href="#" class="item active"><strong>Membro</strong></a>
+    <%= link_to 'Novo', new_function_user_project_path, class: 'item' %>
+    <%= link_to 'Editar', edit_function_user_project_path(@function_user_project), class: 'item' %>
+    <%= link_to 'Voltar', function_user_projects_path, class: 'item' %>
+  </div>
+
+    <p>
+    <strong>User:</strong>
+    <%= @function_user_project.user.name %>
+  </p>
+    <p>
+    <strong>Function:</strong>
+    <%= @function_user_project.function.name %>
+  </p>
+  
+</div>
