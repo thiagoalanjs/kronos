@@ -1,34 +1,20 @@
-<!-- NAVBAR -->
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container">
-    <!-- agrupar para mobile -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-submenu-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Tasks", tasks_path, class: 'navbar-brand' %>
-    </div>
-  
-    <!-- links da navbar -->
-    <div class="collapse navbar-collapse navbar-submenu-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <p class="navbar-btn">
-          <%= link_to new_task_path, class: 'btn btn-default' do %>
-            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-            Novo
-          <% end %>
-          </p>
-        </li>
-      </ul>
-    </div>
-    <!-- /.navbar-collapse -->
+<div class="ui container">
+  <div class="ui menu"">
+    <a href="#" class="item active"><strong>Tasks</strong></a>
+    <%= link_to "Nova tarefa", new_task_path, class: 'item' %>
   </div>
-</nav>
-<!-- /NAVBAR -->
+
+
+<p></p> 
+<p></p>
+<% if @tasks.empty? %> 
+  <div class="box_center">
+      <%= image_tag("clipboard.png") %>
+      <br />
+      <br />
+      <p class="access_deny"> Nenhuma tarefa criada. Clique no botão "Nova tarefa" para criar uma nova task.</p>
+  </div>
+<% end %>
 
 <!-- TABLE -->
 <div class="container">
@@ -38,14 +24,15 @@
         <table class="table table-hover">
           <thead>
             <tr>
-                            <th>Description</th>
-                            <th>End date</th>
-                            <th>Start date</th>
-                            <th>Status</th>
-                            <th>User story</th>
-                            <th style="width: 20%;">Ações</th>
+                <th>Código</th>
+                <th>Título</th>
+                <th>Data criação</th>
+                <th>Status</th>
+                <th>User story</th>
+                <th style="width: 20%;">Ações</th>
             </tr>
           </thead>
+
 
           <tbody>
             <% @tasks.each do |task| %>
@@ -96,3 +83,4 @@
   </div>
 </div>
 <!-- /TABLE -->
+

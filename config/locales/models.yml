@@ -5,7 +5,6 @@ pt-BR:
           function_user_project: Função Usuário e projeto
           function: Função
           language: Linguagem
-          local: Localidade
           project: projeto
           release: Lançamento
           sprint: Ciclo
@@ -31,22 +30,19 @@ pt-BR:
             name: Nome
           language:
             name: Nome
-          local:
-            name: Nome
-            country: País
-            state: Estado
-            city: Cidade
           project:
             name: Nome
+            initial: Sigla
+            description: Descrição
             size: Tamanho
             start_date: Data de ínicio
             end_date: Data de termino
-            local_id: Localidade
           release:
             version: Versão
             deliver_date: Data de entrega
             project_id: Projeto
           sprint:
+            
             project_id: Projeto
             start_date: Data de ínicio
             end_date: Data de termino
@@ -62,10 +58,15 @@ pt-BR:
             ability_id: Habilidade
             level: Nível
           task:
+            title: Título
             description: Descrição
-            status: Estado
+            status: Status
+            kind: Tipo da tarefa
+            priority: Prioridade
             end_date: Data de termino
-            user_story_id: Relato de usuário
+            user_story_id: História
+            kind_id: Tipo
+            priority_id: Prioridade
           theme:
             name: Nome
             project_id: Projeto
@@ -77,14 +78,16 @@ pt-BR:
             user_id: Usuário
             proficiency: Proeficiência
           user_story:
+            title: Título
             description: Descrição
             business_value: Valor de negócio
-            status: Estado
+            status: Status
             story_points: Pontos de relator
             theme_id: Tema
+            priority_id: Prioridade
           user_story_acceptance_criterion:
             description: Descrição
-            status: Estado
+            status: Status
             user_story_id: Relator de usuário
           user_task:
             user_id: Usuário

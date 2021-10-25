@@ -20,12 +20,11 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-
     respond_to do |format|
       if @task.save
         format.html { redirect_to user_stories_path }
       else
-        format.html { redirect_to user_stories_path, notice: 'NÃO foi possível salvar a tarefa!' }
+        format.html { redirect_to user_stories_path, notice: 'Não foi possível salvar a tarefa!' }
         # format.html { render :new }
       end
     end
@@ -34,7 +33,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to @task, notice: 'Task criada com sucesso!' }
       else
         format.html { render :edit }
       end
@@ -54,6 +53,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:description, :end_date, :start_date, :status, :user_story_id, ability_ids: [])
+      params.require(:task).permit(:title, :description, :end_date, :start_date, :code, :status, :user_story_id, :kind_id, :priority_id)
     end
 end

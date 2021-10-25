@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  enum group: [:admin, :normal_user]
+  enum group: [:admin, :coordenador, :analista]
 
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable, :registerable
@@ -27,8 +27,7 @@ class User < ActiveRecord::Base
 
   has_many :notifications
   
-  belongs_to :local
-  #has_and_belongs_to_many :tasks
+ #has_and_belongs_to_many :tasks
 
   def avatar_thumbnail
     if avatar.attached?

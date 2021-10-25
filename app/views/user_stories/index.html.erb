@@ -1,121 +1,141 @@
 <div class="ui container">
-  <div class="ui menu"">
+  <div class="ui menu">
     <a href="#" class="item active"><strong>User Stories</strong></a>
     <%= link_to "Novo", new_user_story_path, class: 'item' %>
   </div>
 
   <%= render 'user_stories/breadcrumb' %>
+  <br />
+  <br />
 
-  <table class="ui sortable very compact celled table">
-    <thead>
-      <tr>
-        <th>Tema</th>
-        <th>Descrição</th>
-        <th title="Business Value">BV</th>
-        <th title="Story Points">SP</th>
-        <th>ROI</th>
-        <th>Status</th>
-        <th>Sprint</th>
-        <th>Critérios de aceitação</th>
-        <th>Tarefas</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @user_stories.each do |user_story| %>
-        <tr>
-          <td><%= user_story.theme.name unless user_story.theme.nil?  %></td>
-          <td><%= user_story.description.truncate(25, omission: '...') %></td>
-          <td><%= user_story.business_value %></td>
-          <td><%= user_story.story_points %></td>
-          <td><%= user_story.roi %></td>
-          <td><%= user_story.status_label %></td>
-          <td><%= user_story.sprint.name unless user_story.sprint.nil?  %></td>
-          <td>
-            <a class="ui compact teal icon mini button new_criterion" userstory="<%= user_story.id %>" title="Adicionar critério de aceitação"><i class="plus icon"></i> Adicionar</a>
-            <p></p>
-            <% user_story.user_story_acceptance_criterions.each do |c| %>
-            <p>
-              <%= link_to c, method: :delete, class: 'ui compact mini icon red basic button', title: 'Remover critério de aceitação' do %>
-                <i class="trash icon"></i>
-                Remover
-              <% end %>
-              <%= c.description %>
-            </p>
-            <% end %>
-          </td>
-
-          <td>
-            <a class="ui compact teal icon mini button new_task" userstory="<%= user_story.id %>" title="Adicionar tarefa"><i class="plus icon"></i> Adicionar</a>
-            <p></p>
-            <% user_story.tasks.each do |s| %>
-            <p>
-              <%= link_to s, method: :delete, class: 'ui compact mini icon red basic button', title: 'Remover tarefa' do %>
-                <i class="trash icon"></i>
-                Remover
-              <% end %>
-              <%= s.description %>
-            </p>
-            <% end %>
-          </td>
-          
-          <td>
-            <div class="ui compact mini icon buttons">
-            <%= link_to user_story, class: 'ui blue basic button' do %>
-            <i class="search icon"></i>
-            <% end %>
-
-            <%= link_to edit_user_story_path(user_story), class: 'ui blue basic button' do %>
-            <i class="edit icon"></i>
-            <% end %>
-
-            <%= link_to user_story, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'ui red basic button' do %>
-            <i class="trash icon"></i>
-            <% end %>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-
-<!-- MODAL CRITÉRIOS DE ACEITAÇÃO -->
-<div class="ui container">
-  <div class="ui small modal criterion">
-    
-    <div class="header">
-      Adicionar critério de aceitação
-    </div>
-    
-    <div class="content">
-      <div class="ui grid">
-        <div class="row">
-          <div class="sixteen wide tablet eight wide computer column">
-            <%= form_for(@criterion, html: {class: 'ui form'}) do |f| %>
-
-              <div class="field">
-                <label><strong>Descrição: </strong></label>
-                <%= f.text_field :description %>
-              </div>
-              
-              <div class="field">
-                <%= f.hidden_field :user_story_id %>
-                <%= f.hidden_field :status, value: '1' %>
-              </div>
-
-              <div class="field">
-                <%= f.submit 'Adicionar', class: 'ui teal button' %>
-              </div>
-            <% end %>
-          </div>
-        </div>
+<% @user_stories.each do |user_story| %>
+<button class="us-accordion">
+      <%= link_to user_story do %>
+      <div class="ui green button">
+        US-<%= user_story.project.initial %>-<%= user_story.id %> 
       </div> 
-    </div>
-  </div> 
-</div>
-<!-- /MODAL CRITÉRIOS DE ACEITAÇÃO -->
+       <%= user_story.title %>
+      <% end %>
+      
+      <div class="info_accordion">
+       <div class="ui compact teal mini button"><b>Sprint: </b>
+         <%= user_story.sprint.name %>
+       </div>
+      </div>
+
+      <div class="info_accordion">
+       <div class="ui compact mini icon silver basic button"><b>Status: </b>
+         <% if user_story.status == 1 %>
+          Pendente
+         <% end %>
+         <% if user_story.status == 2 %>
+          Desenvolvimento
+         <% end %>
+         <% if user_story.status == 3 %>
+          Code Review
+         <% end %>
+         <% if user_story.status == 4 %>
+          QA
+         <% end %>
+         <% if user_story.status == 5 %>
+          Concluída
+         <% end %>
+       </div>
+      </div>
+</button>
+      <div class="panel">
+             <br />
+             <%= user_story.description unless user_story.description.nil?  %>
+            
+            <p></p>
+            <b>Lista de Sub-task associadas</b>
+          
+            <a class="ui compact teal icon mini button new_task" userstory="<%= user_story.id %>" title="Adicionar tarefa">+ Adicionar</a>
+            
+            <br />  
+            <p>
+              <% user_story.tasks.each do |s| %>
+             
+
+              <div class="kind_task_accordion">
+                     <% if s.kind_id == 1 %>
+                       <%= image_tag('bug.png', title: "Task do tipo BUG") %>
+                     <% else %>
+                       <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
+                     <% end %>
+             </div>
+                
+
+                 <%= link_to edit_task_path(s.id) do %>
+                     <div class="ui button">TK-<%= user_story.project.initial %>-<%= s.id %> <%= s.title %></div>
+                 <% end %>
+
+                  <% if s.priority_id == 1 %>
+                 
+                    <div class="ui compact mini icon red basic button">
+                    <b>Prioridade: </b>
+                     Alta
+                 </div>
+                 <% end %>
+
+                 <% if s.priority_id == 2 %>
+                    <div class="ui compact mini silver icon orange basic button ">
+                        <b>Prioridade: </b>
+                          Média
+                    </div>
+                 <% end %>
+
+                  <% if s.priority_id == 3 %>
+                    <div class="ui compact mini icon green basic button ">
+                        <b>Prioridade: </b>
+                        Baixa
+                    </div>
+                 <% end %>
+
+                 <div class="ui compact mini icon silver basic button"><b>Status: </b>
+                     <% if s.status == 1 %>
+                      Pendente
+                     <% end %>
+                     <% if s.status == 2 %>
+                      Desenvolvimento
+                     <% end %>
+                     <% if s.status == 3 %>
+                      Code Review
+                     <% end %>
+                     <% if s.status == 4 %>
+                      QA
+                     <% end %>
+                     <% if s.status == 5 %>
+                      Concluída
+                     <% end %>
+                </div>
+                 
+                 <%= link_to s, method: :delete, class: "delete_task_accordion", data: { confirm: "Deseja deletar a tarefa TK-#{user_story.project.initial}-#{ s.id } #{s.title} ?" }, title: "Remover tarefa TK-#{user_story.project.initial}-#{ s.id } #{s.title}" do %>
+                   <%= image_tag('delete_btn.png') %>
+                 <% end %>
+              </p>
+          
+            <% end %>
+          
+          <br />
+          <br /> 
+            <div class="ui buttons">
+              <%= link_to edit_user_story_path(user_story), class: 'ui yellow button' do %>
+                Editar
+              <% end %>
+            </div>
+
+            <div class="ui buttons">
+              <%= link_to user_story, method: :delete, data: { confirm: "Deseja deletar a história US-#{user_story.project.initial}-#{ user_story.id } #{ user_story.title } ?" }, class: 'ui red button' do %>
+                Remover
+              <% end %>
+              
+            </div>   
+            <br />
+            <br />    
+      </div>          
+<% end %>
+
 
 <!-- MODAL TAREFA -->
 <div class="ui container">
@@ -130,6 +150,10 @@
         <div class="row">
           <div class="sixteen wide tablet eight wide computer column">
             <%= form_for(@task, html: {class: 'ui form'}) do |f| %>
+              <div class="field">
+                <label><strong>Título: </strong></label>
+                <%= f.text_field :title %>
+              </div>
 
               <div class="field">
                 <label><strong>Descrição: </strong></label>
@@ -137,8 +161,14 @@
               </div>
               
               <div class="field">
-                <label><strong>Skills necessárias: </strong></label>
-                <%= f.select :ability_ids, Ability.all.collect {|x| [x.name, x.id]}, {prompt: 'Selecionar Skills'}, multiple: true, class: "ui search dropdown" %>
+                <label><strong>Tipo da task </strong></label>
+                <%= f.select :kind_id, Kind.all.collect {|x| [x.name, x.id]}, { prompt: 'Selecionar o tipo de tarefa' }, class: "ui search dropdown" %>
+              </div>
+              
+
+              <div class="field">
+                <label><strong>Prioridade</strong></label>
+                <%= f.select :priority_id, Priority.all.collect {|x| [x.name, x.id]}, { prompt: 'Selecionar a prioridade de tarefa' }, class: "ui search dropdown" %>
               </div>
               
               <div class="field">
@@ -157,7 +187,6 @@
   </div> 
 </div>
 <!-- /MODAL TAREFA -->
-
 <script type="text/javascript">
   $(document).ready(function() {
     //$('.sortable').tablesort();
@@ -176,4 +205,21 @@
     $('.ui.modal.task').modal('show');
     return false;
   });
+  
+  ///Accordion
+
+  var acc = document.getElementsByClassName("us-accordion");
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  }
 </script>

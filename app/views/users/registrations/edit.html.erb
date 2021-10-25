@@ -21,12 +21,12 @@
     
           <div>
               <%= f.label "Nome", class: "p" %><br />
-              <%= f.text_field :name, autofocus: true, class: "field_devise" %>
+              <%= f.text_field :name, autofocus: true, class: "field_input" %>
           </div>
     
           <div>
             <%= f.label "Email", class: "p" %><br />
-           <%= f.email_field :email, autofocus: true, class: "field_devise" %>
+           <%= f.email_field :email, autofocus: true, class: "field_input" %>
           </div>
     
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -36,19 +36,19 @@
           <div>
             <%= f.label "Senha", class: "p" %> <b class="sub_text">(Deixe a senha em branco caso não queira alterá-la)</b>
             <br />
-            <%= f.password_field :password, placeholder: "Digite sua senha", autocomplete: "off", class: "field_devise" %>
+            <%= f.password_field :password, placeholder: "Digite sua senha", autocomplete: "off", class: "field_input" %>
           </div>
     
           <div>
             <%= f.label "Confirmação de senha", class: "p" %>
            <br />
-           <%= f.password_field :password_confirmation, placeholder: "Digite a nova senha", autocomplete: "off", class: "field_devise" %>
+           <%= f.password_field :password_confirmation, placeholder: "Digite a nova senha", autocomplete: "off", class: "field_input" %>
          </div>
     
          <div>
             <%= f.label "Senha atual", class: "p" %> <b class="sub_text">(Digite sua senha atual para confirmar as mudanças)</b>
             <br />
-            <%= f.password_field :current_password, autocomplete: "off", class: "field_devise"  %>
+            <%= f.password_field :current_password, autocomplete: "off", class: "field_input"  %>
           </div>
     
           <div>

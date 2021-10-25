@@ -9,6 +9,7 @@
  *
  */
 /*@import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin');*/
+
 @font-face {
   font-family: "Lato";
   src: font-url("Lato-Regular.ttf");
@@ -733,7 +734,7 @@ input::selection {
 ;  
 }
 
-.field_devise {
+.field_input {
   width: 40%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -824,6 +825,48 @@ input::selection {
   transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
   will-change: '';
   -webkit-tap-highlight-color: transparent;
+}
+
+
+/*-------------------------------------
+    Accordion User stories
+--------------------------------------*/
+
+.us-accordion {
+  background-color: rgb(237, 237, 237);
+  color: #FFF;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  box-shadow: 0px 2px 3px black;
+}
+
+.info_accordion {
+  float: right;
+}
+
+.kind_task_accordion{
+  float: left;
+  margin: 10px 10px;
+  vertical-align: middle
+}
+
+.delete_task_accordion{
+  margin: 5px 5px;
+  vertical-align: middle
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0px 1px 1px black;
 }
 
 /*******************************
@@ -2695,7 +2738,7 @@ input::selection {
   color: #FFFFFF;
   text-shadow: none;
   background-image: none;
-  width: 100%;
+  width: 10%;
 }
 
 .ui.blue.button {

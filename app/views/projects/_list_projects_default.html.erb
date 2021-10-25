@@ -21,6 +21,7 @@
 
     <div class="content">
       <div class="description">
+        <p class="info"><strong>Sigla: </strong><%= project.initial %></p>
         <p class="info"><strong>Iniciado em:</strong> <%= l project.start_date %></p>
         <p class="info"><strong>Termino previsto:</strong> <%= l project.end_date %></p>
         <p class="info"><strong>Membros:</strong> <%= project.members_number %></p>
@@ -35,9 +36,6 @@
       </div>
     </div>
    
-       
-
-
     <button class="ui bottom attached button" onclick="window.location.href='<%= scrumboard_path(project) %>'">
       <i class="grid layout icon"></i>
       Scrumboard

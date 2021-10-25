@@ -10,6 +10,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
+#gem 'actiontext'
+#gem 'trix'
 
 group :production do
   gem 'pg'

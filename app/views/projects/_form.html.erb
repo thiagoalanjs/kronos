@@ -15,6 +15,16 @@
     <%= f.text_field :name %>
   </div>
 
+  <div class="inline field">
+    <%= f.label :initial %>
+    <%= f.text_field :initial %>
+  </div>
+
+  <div class="inline field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  
   <div class="inline field"><label>Duração</label></div>
   <div class="inline fields">
     <div class="ui calendar">
@@ -32,10 +42,7 @@
     </div>
   </div>
 
-  <div class="inline field">
-    <%= f.label :local_id %>
-    <%= f.collection_select(:local_id, Local.all, :id, :name, {:prompt => true}, {class: 'ui search dropdown'}) %>
-  </div>
+
 <% end %>
 
 <script type="text/javascript">

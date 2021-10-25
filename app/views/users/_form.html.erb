@@ -12,27 +12,17 @@
 
     <div class="field">
       <%= f.label :name %>
-    <%= f.text_field :name %>
+      <%= f.text_field :name %>
     </div>
 
     <div class="field">
       <%= f.label :email %>
-    <%= f.text_field :email %>
-    </div>
-
-    <div class="field">
-      <%= f.label :schedule %>
-      <%= f.select :schedule, options_for_select([:tarde,:manha,:noite]), {}, { :class => 'form-control' } %>
+      <%= f.text_field :email %>
     </div>
 
     <div class="field">
       <%= f.label :group %>
-      <%= f.select :group, options_for_select([:admin,:normal_user]), {}, { :class => 'form-control' } %> 
-    </div>
-
-    <div class="field">
-      <%= f.label :local %>
-      <%= f.collection_select(:local_id,Local.all,:id,:name,{:prompt=>true},{class:'form-control'}) %> 
+      <%= f.select :group, options_for_select([:admin,:coordenador,:analista]), {}, { :class => 'form-control' } %> 
     </div>
 
   <% end %>

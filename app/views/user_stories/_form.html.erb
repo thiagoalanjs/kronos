@@ -1,3 +1,4 @@
+
 <%= form_for(@user_story, html: {class: 'ui form'}) do |f| %>
 
   <% if @user_story.errors.any? %>
@@ -11,7 +12,6 @@
   <% end %>
 
     <div class="inline field">
-      <%# f.label 'Tema' %>
       <div class="ui search icon input">
           <%= f.text_field :theme_search, class: 'prompt', placeholder: 'Tema' %>
           <i class="search icon"></i>
@@ -22,19 +22,33 @@
       <%= f.number_field :story_points, placeholder: 'Story point' %>
     </div>
 
+   <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+
     <div class="field">
       <%= f.label :description %>
       <%= f.text_area :description %>
     </div>
 
+    <div class="i f.collection_select(:user_story_id,currnline field">
+      <%= f.label :priority %>
+      <br />
+      <%= f.collection_select(:priority_id, Priority.all, :id, :name, {:prompt => 'Prioridade da história'}, {class: 'ui search dropdown', placeholder: 'Prioridade da história'} ) %>
+      <br />
+    </div>
+
     <div class="inline field">
-      <%# f.select(:theme_id, sprints, {:prompt => false}, {class: 'ui search dropdown'} ) %>
-
+      <%= f.label :Sprint %>
+      <br />
       <% sprints = current_project.themes.map {|sprint| [sprint.name, sprint.id] }; sprints << ["Selecione um tema", ""] %>
-      
-      <%= f.collection_select( :sprint_id, Sprint.all, :id, :name, {:prompt => 'Sprint'}, {class: 'ui search dropdown', placeholder: 'Sprint'} ) %>
-
-      <%= f.select :status, options_for_select({1 => 'Pendente', 2 => 'Desenvolvimento', 3 => 'Code Review', 4 => 'QA', 5 => 'Concluída'}), {:prompt => false}, { :class => 'ui search dropdown', placeholder: 'Status' } %>
+      <%= f.collection_select(:sprint_id, Sprint.all, :id, :name, {:prompt => 'Sprint'}, {class: 'ui search dropdown', placeholder: 'Sprint'} ) %>
+    </div>  
+    <div class="inline field">
+      <%= f.label :Status %>
+      <br />
+      <%= f.select :status, options_for_select({'Pendente' => 1 , 'Desenvolvimento' => 2 , 'Code Review' => 3, 'QA' => 4 , 'Concluída' => 5 }), {:prompt => false}, { :class => 'ui search dropdown', placeholder: 'Status' } %>
     </div>
 
   <% end %>
@@ -64,5 +78,4 @@
       minCharacters : 0
     });
   });
-
 </script>

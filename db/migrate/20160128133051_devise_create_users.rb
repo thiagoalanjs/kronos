@@ -31,9 +31,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
       t.string :name
-      t.string :schedule
       t.integer :group
-      t.references :local
 
       t.timestamps null: false
     end

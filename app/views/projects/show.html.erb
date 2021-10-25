@@ -14,10 +14,18 @@
 
   <p>
     <strong>
-      <i class="grid layout icon"></i>
+     <i class="signal icon"></i> 
       Projeto:
     </strong>
     <%= @project.name %>
+  </p>
+
+   <p>
+    <strong>
+    <i class="signal icon"></i> 
+       Sigla:
+    </strong>
+    <%= @project.initial %>
   </p>
 
   <p>
@@ -30,28 +38,26 @@
 
   <p>
     <strong>
-      <i class="calendar icon"></i>
+     
       Data de inicio:
     </strong>
     <%= l @project.start_date %>
   </p>
 
   <p>
-    <strong>
-      <i class="calendar icon"></i>
-      Data final:
+    <strong><i class="calendar icon "></i>
+       Data final:
     </strong>
     <%= l @project.end_date %>
   </p>
 
-  <p>
-    <strong>
-      <i class="marker icon"></i>
-      Local:
-    </strong>
-    <%= @project.local.name unless @project.local.nil? %>
-  </p>
 
+ <p>
+    <strong><i class="calendar icon"></i>
+       Descrição:
+    </strong>
+    <%= @project.description %>
+  </p>
   <div class="ui teal progress" id="project-progress" data-percent="<%= @project.progress %>">
     <div class="bar"></div>
     <div class="label">
@@ -72,7 +78,7 @@
       </div>
 
       <button class="ui bottom attached button" onclick="window.location.href='<%= user_stories_path %>'">
-        <i class="settings icon"></i>
+       
         Gerenciar
       </button>
     </div>
@@ -86,7 +92,6 @@
       </div>
 
       <button class="ui bottom attached button" onclick="window.location.href='<%= sprints_path %>'">
-        <i class="settings icon"></i>
         Gerenciar
       </button>
     </div>
@@ -100,7 +105,6 @@
       </div>
 
       <button class="ui bottom attached button" onclick="window.location.href='<%= releases_path %>'">
-        <i class="settings icon"></i>
         Gerenciar
       </button>
     </div>
@@ -114,7 +118,6 @@
       </div>
 
       <button class="ui bottom attached button" onclick="window.location.href='<%= function_user_projects_path %>'">
-        <i class="settings icon"></i>
         Gerenciar
       </button>
     </div>

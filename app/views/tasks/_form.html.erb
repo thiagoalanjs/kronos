@@ -1,7 +1,9 @@
 <div class="container">
+  <div class="ui  teal basic button">TK-<%= @task.user_story.project.initial %>-<%= @task.id %> </div>
+  <br >
+  <br >
   <div class="row">
     <%= form_for(@task) do |f| %>
-
       <% if @task.errors.any? %>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <div class="alert alert-danger">
@@ -16,34 +18,50 @@
         </div>
       <% end %>
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+        
               <div class="form-group">
-                <%= f.label :description %>
-          <%= f.text_area :description, class: 'form-control' %>
+                <%= f.label :title, class: 'p' %>
+                <br />
+                <%= f.text_field :title, class: 'field_input' %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :description, class: 'p' %>
+                <br />
+                <%= f.text_area :description, class: 'field_input' %>
+                <br />
               </div>
         
               <div class="form-group">
-                <%= f.label :end_date %>
-          <%= f.date_select :end_date, class: 'form-control' %>
+                <%= f.label :status, class: 'p' %>
+                <br />
+
+                  <%= f.select :status, options_for_select({'Pendente' => 1 , 'Desenvolvimento' => 2 , 'Code Review' => 3, 'QA' => 4 , 'Concluída' => 5 }), {:prompt => false}, { :class => 'ui search dropdown', placeholder: 'Status' } %>
+              </div>
+        
+              <div class="form-group">                
+                <br />
+                <%= f.label :user_story_id, class: 'p' %>
+                <br />
+                <%= f.collection_select(:user_story_id,current_project.user_stories,:id,:title, {:prompt=>false},{class:'field_input'}) %>
               </div>
         
               <div class="form-group">
-                <%= f.label :start_date %>
-          <%= f.date_select :start_date, class: 'form-control' %>
+                <br />
+                <%= f.label :kind_id, class: 'p' %>
+                <br />
+                <%= f.select :kind_id, Kind.all.collect {|x| [x.name, x.id]}, {prompt: 'Selecionar o tipo de tarefa'}, class: "ui search dropdown" %>
               </div>
-        
-              <div class="form-group">
-                <%= f.label :status %>
-                <%= f.select :status, options_for_select([:pendent,:development,:completed]), {}, { :class => 'form-control' } %> 
+ 
+               <div class="form-group">
+                <br />
+                <%= f.label :priority_id, class: 'p' %>
+                <br />
+                <%= f.select :priority_id, Priority.all.collect {|x| [x.name, x.id]}, {prompt: 'Selecionar a prioridade da tarefa'}, class: "ui search dropdown" %>
               </div>
-        
-              <div class="form-group">
-                <%= f.label :user_story_id %>
-                <%= f.collection_select(:user_story_id,current_project.user_stories,:id,:description,{:prompt=>false},{class:'form-control'}) %>
-              </div>
-        
-              <div class="form-group">
-          <%= f.button type: 'submit', class: 'btn btn-primary' do %>
-            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+              <br />              
+              <div class="ui buttons">
+            <%= f.button type: 'submit', class: 'ui blue button' do %>
             Salvar
           <% end %>
         </div>

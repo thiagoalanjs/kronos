@@ -20,4 +20,13 @@ Language.create(name: 'Portuguese Brazil', description: '')
 Language.create(name: 'Russian', description: '')
 Language.create(name: 'Spanish', description: '')
 
+puts "creating Kinds..."
+Kind.create(name: 'Bug')
+Kind.create(name: 'Sub-task')
+
+puts "creating Priorities..."
+Priority.create(name: 'Alta')
+Priority.create(name: 'Média')
+Priority.create(name: 'Baixa')
+
 puts "done!"
