@@ -2916,7 +2916,7 @@ input::selection {
 
 .ui.green.buttons .button:focus,
 .ui.green.button:focus {
-  background-color: #0ea432;
+  background-color: #049f60;
   color: #FFFFFF;
   text-shadow: none;
 }

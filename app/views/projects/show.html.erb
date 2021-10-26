@@ -69,58 +69,49 @@
   <p></p>
 
   <div class="ui four cards">
-    <div class="card">
-      <div class="content">
-        <div class="header">Product Backlog</div>
-        <div class="description">
-          Gerencie aqui as user stories (requisitos na visão do usuário).
-        </div>
-      </div>
-
-      <button class="ui bottom attached button" onclick="window.location.href='<%= user_stories_path %>'">
-       
-        Gerenciar
+   <div class="card">
+        <button class="ui bottom attached button" onclick="window.location.href='<%= user_stories_path %>'">
+         <%= image_tag("backlog.png") %>
+         <div class="description">
+           Aqui você administra o backlog do projeto.
+           <p></p>
+           <p></p>
+         </div>
       </button>
     </div>
 
     <div class="card">
-      <div class="content">
-        <div class="header">Sprints</div>
-        <div class="description">
+     <button class="ui bottom attached button" onclick="window.location.href='<%= sprints_path %>'">
+         <%= image_tag("scrum.png") %>
+         <div class="description">
           Gerencie aqui frequência na entrega de valor ao negócio.
-        </div>
-      </div>
-
-      <button class="ui bottom attached button" onclick="window.location.href='<%= sprints_path %>'">
-        Gerenciar
+          <p></p>
+          <p></p>
+         </div>
       </button>
     </div>
 
+   <div class="card">
+    <button class="ui bottom attached button" onclick="window.location.href='<%= releases_path %>'">   
+        <%= image_tag("product-release.png") %>
+         <div class="description">
+             Gerencie aqui as fases de entrega do software.
+         <p></p>
+         <p></p>
+       </div>
+    </button>
+   </div>
+    
     <div class="card">
-      <div class="content">
-        <div class="header">Releases</div>
-        <div class="description">
-          Gerencie aqui as fases de entrega do software.
-        </div>
-      </div>
-
-      <button class="ui bottom attached button" onclick="window.location.href='<%= releases_path %>'">
-        Gerenciar
-      </button>
+        <button class="ui bottom attached button" onclick="window.location.href='<%= function_user_projects_path %>'">   
+            <%= image_tag("team.png") %>
+            <div class="description">
+              Aqui você administra a equipe responsável pelo desenvolvimento do projeto.
+            </div>
+        </button>
     </div>
 
-    <div class="card">
-      <div class="content">
-        <div class="header">Membros</div>
-        <div class="description">
-          Gerencie aqui a equipe participante desse projeto.
-        </div>
-      </div>
-
-      <button class="ui bottom attached button" onclick="window.location.href='<%= function_user_projects_path %>'">
-        Gerenciar
-      </button>
-    </div>
+    
   </div>
 </div>
 
