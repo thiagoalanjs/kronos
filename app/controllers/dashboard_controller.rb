@@ -1,5 +1,4 @@
 class DashboardController < ApplicationController
-  def index
-    @skills = Ability.all
+  def index 
   end
 end

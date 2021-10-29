@@ -32,7 +32,7 @@
       <%= f.text_area :description %>
     </div>
 
-    <div class="i f.collection_select(:user_story_id,currnline field">
+    <div class="inline fieldca">
       <%= f.label :priority %>
       <br />
       <%= f.collection_select(:priority_id, Priority.all, :id, :name, {:prompt => 'Prioridade da história'}, {class: 'ui search dropdown', placeholder: 'Prioridade da história'} ) %>

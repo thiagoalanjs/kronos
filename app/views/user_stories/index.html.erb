@@ -1,3 +1,5 @@
+
+
 <div class="ui container">
   <div class="ui menu">
     <a href="#" class="item active"><strong>User Stories</strong></a>
@@ -8,6 +10,16 @@
   <br />
   <br />
 
+<% if @user_stories.empty? %> 
+  <div class="box_center">
+      <%= image_tag("backlog_big.png") %>
+      <br />
+      <br />
+      <p class="access_deny">Nenhuma user story criada. Clique em "Novo" para iniciar o backlog.</p>
+    </div>
+  </div>
+<% end %>
+
 <% @user_stories.each do |user_story| %>
 <button class="us-accordion">
       <%= link_to user_story do %>
@@ -17,11 +29,15 @@
        <%= user_story.title %>
       <% end %>
       
+      <% if user_story.sprint.nil? %>
+      
+      <% else %>
       <div class="info_accordion">
        <div class="ui compact teal mini button"><b>Sprint: </b>
-         <%= user_story.sprint.name %>
+         <%= user_story.sprint.name %>  
        </div>
       </div>
+     <% end %>
 
       <div class="info_accordion">
        <div class="ui compact mini icon silver basic button"><b>Status: </b>

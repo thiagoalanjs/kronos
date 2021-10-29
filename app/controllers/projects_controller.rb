@@ -12,7 +12,6 @@ class ProjectsController < ApplicationController
   end
 
   def scrumboard
-    
   end
 
   def index

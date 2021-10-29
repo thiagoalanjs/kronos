@@ -1,3 +1,13 @@
+<% if @projects.empty? %> 
+  <div class="box_center">
+      <%= image_tag("project.png") %>
+      <br />
+      <br />
+      <p class="access_deny">Nenhum projeto criado. Clique em "Novo" para iniciar um projeto.</p>
+    </div>
+  </div>
+<% else %>
+
 <div class="ui four cards">
 <% @projects.each do |project| %>
   <div class="card">
@@ -28,7 +38,7 @@
   </div>
 <% end %>
 </div>
-
+<% end %>
 <script type="text/javascript">
   $('.progress').progress();
 </script>

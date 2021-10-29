@@ -32,7 +32,7 @@ class SprintsController < ApplicationController
 
     respond_to do |format|
       if @sprint.save
-        format.html { redirect_to @sprint, notice: 'Sprint was successfully created.' }
+        format.html { redirect_to @sprint, notice: 'Sprint criada com sucesso.' }
         format.json { render :show, status: :created, location: @sprint }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class SprintsController < ApplicationController
   def update
     respond_to do |format|
       if @sprint.update(sprint_params)
-        format.html { redirect_to @sprint, notice: 'Sprint was successfully updated.' }
+        format.html { redirect_to @sprint, notice: 'Sprint atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @sprint }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class SprintsController < ApplicationController
   def destroy
     @sprint.destroy
     respond_to do |format|
-      format.html { redirect_to sprints_url, notice: 'Sprint was successfully destroyed.' }
+      format.html { redirect_to sprints_url, notice: 'Sprint deletada com sucesso.' }
       format.json { head :no_content }
     end
   end
@@ -71,7 +71,7 @@ class SprintsController < ApplicationController
       @sprint = Sprint.where(id: params[:id], project_id: current_project_id).first
 
       if @sprint.nil?
-        redirect_to releases_url, notice: 'Sprint not found.'
+        redirect_to releases_url, notice: 'Sprint não encontrada.'
       end
     end
 
