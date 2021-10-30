@@ -26,8 +26,6 @@ rails g scaffold user_story_acceptance_criterion description:text status:integer
 
 rails g scaffold task description:text end_date:date start_date:date status:integer user_story:references
 
-rails g scaffold task_requirement level:integer task:references ability:references
-
 rails g devise user name schedule:string group:integer local:references 
 
 rails g scaffold user_language proficiency:integer user:references language:references
