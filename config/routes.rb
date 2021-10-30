@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :priorities
-  resources :kinds
+
   # CRUMBOARD
   get '/task/take_task/:id', to: 'scrumboard#take_task', as: 'take_task'
   get '/task/get_out_task/:id', to: 'scrumboard#get_out_task', as: 'get_out_task'
@@ -10,16 +9,12 @@ Rails.application.routes.draw do
   get '/task/redo_task/:id', to: 'scrumboard#redo_task', as: 'redo_task'
   get '/task/done_task/:id', to: 'scrumboard#done_task', as: 'done_task'
 
-  # GAMIFICATION
-  get '/gaming/achievements', to: 'gamification#achievements', as: 'achievements'
-  get '/gaming/ranks', to: 'gamification#ranks', as: 'ranks'
-
   get '/project/scrumboard/:id', to: 'projects#scrumboard', as: 'scrumboard'
 
   get '/settings', to: 'settings#index', as: 'settings'
 
   #root to: redirect('/users/sign_in')
-  root to: 'projects#user_project'
+  root to: 'projects#index'
   
   get '/dashboard', to: 'dashboard#index', as: 'dashboard'
 
@@ -37,9 +32,8 @@ Rails.application.routes.draw do
   #           :registrations => 'users/registrations',
   #           :sessions => 'users/sessions'
   #         }
-
-  resources :user_abilities
-  resources :user_languages
+  resources :priorities
+  resources :kinds 
   resources :task_requirements
   resources :tasks
   resources :user_story_acceptance_criterions

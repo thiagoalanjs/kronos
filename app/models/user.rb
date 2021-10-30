@@ -9,11 +9,6 @@ class User < ActiveRecord::Base
   has_one_attached :avatar
   after_commit :add_default_avatar, on: %i[create update]
 
-  has_many :user_languages, dependent: :destroy
-  has_many :languages, through: :user_languages
-  
-  has_many :user_abilities, dependent: :destroy
-  has_many :abilities, through: :user_abilities
   
   has_many :function_user_projects, dependent: :destroy
   has_many :functions, through: :function_user_projects
