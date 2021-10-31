@@ -1,5 +1,18 @@
   
 <h1>Board <%= image_tag("scrumboard-icon.png")%></h1>
+<hr>
+ <br />
+ <br />
+<% if @project.sprints.empty? %> 
+        <div class="box_center">
+            <%= image_tag("access-denied.png") %>
+            <br />
+            <br />
+            <p class="access_deny">Nenhuma sprint ativa no momento. Entre em contato com o administrador / PO.</p>
+        </div>
+</div>
+
+<% else %>
 
 <div class="ui top attached tabular menu">
   <% @project.sprints.each_with_index do |sprint, i| %>
@@ -71,7 +84,9 @@
             <div class="ui orange card">
               <div class="content">           
                 <div class="meta">
+                  <%= link_to task_path(task.id) do %>
                   <h3><span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span></h3>
+                  <% end %>
                 </div>
                 <div class="description">
                   <p>
@@ -89,8 +104,20 @@
                  <% if task.priority_id == 1 %>
                     <div class="ui compact mini icon red basic button">
                     <b>Prioridade: </b>
-                     Alta
-                    </div>
+                       <div class="ui four cards">
+
+                  <div class="card">
+                       <button class="ui bottom attached button" onclick="window.location.href='<%= user_stories_path %>'">
+                        <%= image_tag("backlog.png") %>
+                        <div class="description">
+                          Aqui você administra o backlog do projeto.
+                          <p></p>
+                          <p></p>
+                        </div>
+                     </button>
+                   </div>
+             
+                      </div>
                  <% end %>
 
                  <% if task.priority_id == 2 %>
@@ -133,7 +160,9 @@
             <div class="ui teal card">
               <div class="content">
                 <div class="meta">
+                <%= link_to task_path(task.id) do %>
                   <h3><span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span></h3>
+                <% end %>
                 </div>
                  <div class="description">
                   <div class="ui mini icon buttons">
@@ -183,7 +212,6 @@
                   </p>   
              </div>
               
-              
               <div class="extra content">
                 <div class="right floated author">
                   <% task.users.each do |u| %>
@@ -205,8 +233,10 @@
             <div class="ui teal card">
               <div class="content">
                 <div class="meta">
-                  <h3><span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span></h3>
-                </div>
+                   <%= link_to task_path(task.id) do %>
+                     <h3><span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span></h3>
+                    <% end %>  
+                 </div>
 
                 <div class="description">
                   <div class="ui mini icon buttons">
@@ -273,7 +303,9 @@
             <div class="ui blue card">
               <div class="content">
                 <div class="meta">
-                  <h3><span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span></h3>
+                   <%= link_to task_path(task.id) do %>
+                     <h3><span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span></h3>
+                    <% end %>   
                 </div>
                 <div class="description">
           
@@ -324,7 +356,9 @@
               <div class="content">
                 
                 <div class="meta">
-                  <h3><span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span></h3>
+                   <%= link_to task_path(task.id) do %>
+                     <h3><span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span></h3>
+                    <% end %>   
                 </div>
                 <div class="description">
                   <div class="ui mini icon buttons">
@@ -368,7 +402,7 @@
   </table>
 </div>
 <% end %>
-
+<% end %>
 
 <script type="text/javascript">
   $('.tabular.menu .item').tab();

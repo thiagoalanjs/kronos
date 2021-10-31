@@ -5,7 +5,6 @@ class Project < ActiveRecord::Base
   has_many :function_user_projects
   has_many :functions, through: :function_user_projects
   has_many :users, through: :function_user_projects
-
   has_many :user_stories
   has_many :tasks, through: :user_stories
 
@@ -48,7 +47,7 @@ class Project < ActiveRecord::Base
 
     # progress per tasks
     count = self.tasks.count
-    done = self.tasks.where(status: 4).count
+    done = self.tasks.where(status: 5).count
 
     if count > 0
       return done * 100 / count

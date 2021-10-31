@@ -1,8 +1,8 @@
 class TaskRequirementsController < ApplicationController
   before_action :set_task_requirement, only: [:show, :edit, :update, :destroy]
-  before_action do
-    redirect_to no_project_selected_path unless has_project_selected?
-  end
+  # before_action do
+  #   redirect_to no_project_selected_path unless has_project_selected?
+  # end
 
   # GET /task_requirements
   # GET /task_requirements.json
@@ -49,9 +49,6 @@ class TaskRequirementsController < ApplicationController
         format.json { render :show, status: :ok, location: @task_requirement }
       else
         format.html { render :edit }
-        format.json { render json: @task_requirement.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # DELETE /task_requirements/1
@@ -72,6 +69,6 @@ class TaskRequirementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_requirement_params
-      params.require(:task_requirement).permit(:level, :task_id, :ability_id)
+      params.require(:task_requirement).permit(:level, :task_id)
     end
 end

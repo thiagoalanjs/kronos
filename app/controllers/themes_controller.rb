@@ -1,8 +1,8 @@
 class ThemesController < ApplicationController
   before_action :set_theme, only: [:show, :edit, :update, :destroy]
-  before_action do
-    redirect_to no_project_selected_path unless has_project_selected?
-  end
+  # before_action do
+  #   redirect_to no_project_selected_path unless has_project_selected?
+  # end
 
   def autocomplete
     @themes = Theme.order(:name).where("project_id = #{current_project_id} and name like ?", "%#{params[:query]}%")

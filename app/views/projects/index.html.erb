@@ -3,24 +3,24 @@
 <p></p>
 
 <div class="ui container">
-
   <% if current_user.group != 'admin' %>
     <h1>Projetos <%= image_tag("gerenciamento-de-projetos.png") %></h1>
     <hr>
     <p></p>
 
     <% if @projects.empty? %> 
-  <div class="box_center">
-      <%= image_tag("access-denied.png") %>
-      <br />
-      <br />
-      <p class="access_deny">Nenhum projeto criado. Clique em "Novo" para iniciar um projeto.</p>
+        <div class="box_center">
+            <%= image_tag("access-denied.png") %>
+            <br />
+            <br />
+            <p class="access_deny">Você não possui nenum projeto. Entre em contato com o administrador / PO.</p>
+        </div>
     </div>
-  </div>
 <% end %>
     <%= render 'projects/list_projects_default' %>
   <% else %>
-    <div class="ui menu"">
+  
+    <div class="ui menu">
       <a href="#" class="item active"><strong>Projetos</strong></a>
       <%= link_to "Novo", new_project_path, class: 'item' %>
     </div>

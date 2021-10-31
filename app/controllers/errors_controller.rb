@@ -1,4 +1,4 @@
 class ErrorsController < ApplicationController
-  def no_project_selected
-  end
+  # def no_project_selected
+  # end
 end

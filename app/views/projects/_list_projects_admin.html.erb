@@ -10,18 +10,24 @@
 
 <div class="ui four cards">
 <% @projects.each do |project| %>
+
   <div class="card">
     <div class="content">
-      <div class="header"><%= project.name %></div>
+      <div class="header"><%= project.name %> <%= image_tag("gerenciamento-de-projetos.png") %></div>
     </div>
 
     <div class="content">
       <div class="description">
-        <p class="info"><strong>Sigla: </strong><%= project.initial %></p>
-        <p class="info"><strong>Iniciado em:</strong> <%= l project.start_date %></p>
-        <p class="info"><strong>Termino previsto:</strong> <%= l project.end_date %></p>
-        <p class="info"><strong>Membros:</strong> <%= project.members_number %></p>
-        <p class="info"><strong>Sprint atual:</strong> <%= project.current_sprint %></p>
+        <p class="info"><%= image_tag("initial.png") %> <strong>Sigla: </strong><%= project.initial %></p>
+        <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Iniciado em:</strong> <%= l project.start_date %></p>
+        <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Termino previsto:</strong> <%= l project.end_date %></p>
+        <p class="info"><%= image_tag("team_icon.png") %> <strong>Membros:</strong> <%= project.members_number %></p>
+        <p class="info"><%= image_tag("sprint_icon.png") %> <strong>Sprint atual:</strong> 
+        <% if project.current_sprint.nil? %> 
+             -
+        <% else %>
+        <%= project.current_sprint %>
+        <% end %></p>
         <p></p>
         <div class="ui teal progress" id="project-progress" data-percent="<%= project.progress %>">
           <div class="bar"></div>
@@ -33,7 +39,7 @@
     </div>
 
     <button class="ui bottom attached button" onclick="window.location.href='<%= select_project_path(project) %>'">
-      Gerenciar
+      Administrar
     </button>
   </div>
 <% end %>

@@ -11,53 +11,19 @@
   <!-- /NAVBAR -->
 
   <p></p>
+<div class="content">
+  <p class="info"><%= image_tag("project_icon.png") %> <strong>Projeto:</strong> <%= @project.name %></p>
+  <p class="info"><%= image_tag("initial.png") %> <strong>Sigla:</strong> <%= @project.initial %></p>
+  <p class="info"><%= image_tag("width.png") %><strong> Tamanho:</strong> <%= @project.size %> Story points</p>
+  <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Data de inicio:</strong> <%= l @project.start_date %></p>
+  <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Data final:</strong> <%= l @project.end_date %></p>
+  <p class="info"><%= image_tag("product-description.png") %> <strong>Descrição:</strong></p>
 
   <p>
-    <strong>
-     <i class="signal icon"></i> 
-      Projeto:
-    </strong>
-    <%= @project.name %>
-  </p>
-
-   <p>
-    <strong>
-    <i class="signal icon"></i> 
-       Sigla:
-    </strong>
-    <%= @project.initial %>
-  </p>
-
-  <p>
-    <strong>
-      <i class="signal icon"></i> 
-      Tamanho:
-    </strong>
-    <%= @project.size %> Story points
-  </p>
-
-  <p>
-    <strong>
-     
-      Data de inicio:
-    </strong>
-    <%= l @project.start_date %>
-  </p>
-
-  <p>
-    <strong><i class="calendar icon "></i>
-       Data final:
-    </strong>
-    <%= l @project.end_date %>
-  </p>
-
-
- <p>
-    <strong><i class="calendar icon"></i>
-       Descrição:
-    </strong>
     <%= @project.description %>
   </p>
+  </div>
+  </div>
   <div class="ui teal progress" id="project-progress" data-percent="<%= @project.progress %>">
     <div class="bar"></div>
     <div class="label">

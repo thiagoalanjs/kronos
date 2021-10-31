@@ -1,8 +1,8 @@
 class FunctionUserProjectsController < ApplicationController
   before_action :set_function_user_project, only: [:show, :edit, :update, :destroy]
-  before_action do
-    redirect_to no_project_selected_path unless has_project_selected?
-  end
+  # before_action do
+  #   redirect_to no_project_selected_path unless has_project_selected?
+  # end
 
   # GET /function_user_projects
   # GET /function_user_projects.json
@@ -31,8 +31,8 @@ class FunctionUserProjectsController < ApplicationController
     @function_user_project.project_id = current_project_id
     respond_to do |format|
       if @function_user_project.save
-        format.html { redirect_to @function_user_project, notice: 'Function user project was successfully created.' }
-        format.json { render :show, status: :created, location: @function_user_project }
+        format.html { redirect_to function_user_projects_url, notice: 'Usuário associado ao projeto com sucesso.' }
+        format.json { render :show, status: :created, redirect_to: @function_user_project }
       else
         format.html { render :new }
         format.json { render json: @function_user_project.errors, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ class FunctionUserProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @function_user_project.update(function_user_project_params)
-        format.html { redirect_to @function_user_project, notice: 'Function user project was successfully updated.' }
+        format.html { redirect_to @function_user_project, notice: 'Função do usuário atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @function_user_project }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class FunctionUserProjectsController < ApplicationController
   def destroy
     @function_user_project.destroy
     respond_to do |format|
-      format.html { redirect_to function_user_projects_url, notice: 'Function user project was successfully destroyed.' }
+      format.html { redirect_to function_user_projects_url, notice: 'Usuário retirado do projeto com sucesso.' }
       format.json { head :no_content }
     end
   end

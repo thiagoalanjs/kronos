@@ -1,8 +1,8 @@
 class UserStoriesController < ApplicationController
   before_action :set_user_story, only: [:show, :edit, :update, :destroy]
-  before_action do
-    redirect_to no_project_selected_path unless has_project_selected?
-  end
+  # before_action do
+  #   redirect_to no_project_selected_path unless has_project_selected?
+  # end
   
   def index
     @user_stories = UserStory.where(project_id: current_project_id)

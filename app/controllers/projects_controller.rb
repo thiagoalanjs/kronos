@@ -42,9 +42,9 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project }
+        format.html { redirect_to @project, notice: "Projeto criado com sucesso." }
       else
-        format.html { render :new }
+        format.html { render :new, notice: "Houve um erro ao criar o projeto." }
       end
     end
   end
@@ -63,7 +63,7 @@ class ProjectsController < ApplicationController
     @project.destroy
     session[:project] = nil
     respond_to do |format|
-      format.html { redirect_to projects_url }
+      format.html { redirect_to projects_url, notice: 'Projeto deletado com sucesso.' }
     end
   end
 
