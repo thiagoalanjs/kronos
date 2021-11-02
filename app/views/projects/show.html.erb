@@ -77,7 +77,14 @@
         </button>
     </div>
 
-    
+    <div class="card">
+        <button class="ui bottom attached button" onclick="window.location.href='<%= scrumboard_path(@project.id) %>'">   
+            <%= image_tag("kanban_icon.png") %>
+            <div class="description">
+             Acesse o board do projeto <%= @project.name %>.
+            </div>
+        </button>
+    </div>
   </div>
 </div>
 

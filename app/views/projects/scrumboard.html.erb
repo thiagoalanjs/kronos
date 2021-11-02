@@ -3,22 +3,38 @@
 <hr>
  <br />
  <br />
-<% if @project.sprints.empty? %> 
+<% if @project.sprints.empty? && current_user.group == 'analista' %> 
         <div class="box_center">
             <%= image_tag("access-denied.png") %>
             <br />
             <br />
             <p class="access_deny">Nenhuma sprint ativa no momento. Entre em contato com o administrador / PO.</p>
         </div>
-</div>
+
+
+<% elsif @project.sprints.empty? && current_user.group != 'coordenador' %>
+        <div class="box_center">
+            <%= image_tag("access-denied.png") %>
+            <br />
+            <br />
+            <p class="access_deny">Nenhuma sprint ativa no momento.</p>
+            <%= link_to "Criar sprint", new_sprint_path, class: "ui blue button"%>
+        </div>
+<% end %>
 
 <% else %>
+
 
 <div class="ui top attached tabular menu">
   <% @project.sprints.each_with_index do |sprint, i| %>
     <a class="item <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>">Sprint: <%= sprint.name %></a>
+    &nbsp
+    <%= link_to "Nova User Story", new_user_story_path, class: "ui red button" %> 
+    <%= link_to "Nova task", new_task_path, class: "ui teal button" %>
   <% end %>
 </div>
+
+
 
 <% @project.sprints.each_with_index do |sprint, i| %>
 <div class="ui bottom attached tab segment <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>">
@@ -104,20 +120,7 @@
                  <% if task.priority_id == 1 %>
                     <div class="ui compact mini icon red basic button">
                     <b>Prioridade: </b>
-                       <div class="ui four cards">
-
-                  <div class="card">
-                       <button class="ui bottom attached button" onclick="window.location.href='<%= user_stories_path %>'">
-                        <%= image_tag("backlog.png") %>
-                        <div class="description">
-                          Aqui você administra o backlog do projeto.
-                          <p></p>
-                          <p></p>
-                        </div>
-                     </button>
-                   </div>
-             
-                      </div>
+                    </div>
                  <% end %>
 
                  <% if task.priority_id == 2 %>
@@ -197,14 +200,14 @@
                       <% end %>
 
                       <% if task.priority_id == 2 %>
-                         <div class="ui compact mini silver icon orange basic button ">
+                         <div class="ui compact mini silver icon orange basic button">
                              <b>Prioridade: </b>
                                Média
                          </div>
                       <% end %>
 
                       <% if task.priority_id == 3 %>
-                        <div class="ui compact mini icon green basic button ">
+                        <div class="ui compact mini icon green basic button">
                             <b>Prioridade: </b>
                             Baixa
                         </div>
@@ -282,7 +285,7 @@
               <div class="extra content">
                 <div class="right floated author">
                   <% task.users.each do |u| %>
-                    <%= image_tag 'avatar.svg', class: 'ui avatar image' %> <%= u.name %>
+                    <%= image_tag 'avatar.svg', class: 'ui avatar' %> <%= u.name %>
                   <% end %>
                 </div>
               </div>
@@ -402,7 +405,7 @@
   </table>
 </div>
 <% end %>
-<% end %>
+
 
 <script type="text/javascript">
   $('.tabular.menu .item').tab();

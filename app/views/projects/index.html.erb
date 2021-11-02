@@ -3,7 +3,7 @@
 <p></p>
 
 <div class="ui container">
-  <% if current_user.group != 'admin' %>
+  <% if current_user.group != 'admin' && current_user.group != 'coordenador' %>
     <h1>Projetos <%= image_tag("gerenciamento-de-projetos.png") %></h1>
     <hr>
     <p></p>
@@ -13,7 +13,7 @@
             <%= image_tag("access-denied.png") %>
             <br />
             <br />
-            <p class="access_deny">Você não possui nenum projeto. Entre em contato com o administrador / PO.</p>
+            <p class="access_deny">Você não possui nenhum projeto. Entre em contato com o administrador / PO.</p>
         </div>
     </div>
 <% end %>

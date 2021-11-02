@@ -33,9 +33,8 @@
       
       <% else %>
       <div class="info_accordion">
-       <div class="ui compact teal mini button"><b>Sprint: </b>
-         <%= user_story.sprint.name %>  
-       </div>
+     
+         <%= link_to "Sprint: #{user_story.sprint.name}", scrumboard_path(user_story.project.id), class: 'ui compact teal mini button', title: 'Acessar board da sprint' %> 
       </div>
      <% end %>
 

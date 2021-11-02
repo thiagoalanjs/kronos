@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    if current_user.admin?
+    if current_user.admin? || current_user.coordenador?
       @projects = Project.all
     else
       redirect_to user_project_path
@@ -42,7 +42,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: "Projeto criado com sucesso." }
+        format.html { redirect_to @project, notice: "Projeto #{@project.name} criado com sucesso!" }
       else
         format.html { render :new, notice: "Houve um erro ao criar o projeto." }
       end
@@ -63,7 +63,7 @@ class ProjectsController < ApplicationController
     @project.destroy
     session[:project] = nil
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Projeto deletado com sucesso.' }
+      format.html { redirect_to projects_url, notice: "Projeto #{@project.name} deletado com sucesso!" }
     end
   end
 

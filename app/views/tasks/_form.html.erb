@@ -45,7 +45,7 @@
                 <%= f.label :user_story_id, class: 'p' %>
                 <br />
                 <%= f.collection_select(:user_story_id, current_project.user_stories, :id, :title, {:prompt=>false},{class:'field_input'}) %>
-
+              
               </div>
         
             <div class="form-group">

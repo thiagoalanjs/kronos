@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     respond_to do |format|
       if @task.save
-        format.html { redirect_to user_stories_path }
+        format.html { redirect_to user_stories_path, notice: "Tarefa TK-#{@task.user_story.project.initial}-#{@task.id} criada com sucesso!"  }
       else
         format.html { redirect_to user_stories_path, notice: 'Não foi possível salvar a tarefa!' }
         # format.html { render :new }
@@ -33,7 +33,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task criada com sucesso!' }
+        format.html { redirect_to @task, notice: "Tarefa TK-#{@task.user_story.project.initial}-#{@task.id} atualizada com sucesso!" }
       else
         format.html { render :edit }
       end
@@ -43,7 +43,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to user_stories_path }
+      format.html { redirect_to user_stories_path, notice: "Tarefa TK-#{@task.user_story.project.initial}-#{@task.id} deletada com sucesso!" }
     end
   end
 
