@@ -21,7 +21,11 @@ class User < ActiveRecord::Base
   has_many :tasks, through: :users_tasks
 
   has_many :notifications
-  
+
+  validates :name,  format:{ with: /\A[a-zA-Z ]+\z/, message: "deve conter apenas letras" }, presence: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "inválido"}, uniqueness: { case_sensitive: false }
+  validates :group, presence: true
+
  #has_and_belongs_to_many :tasks
 
   def avatar_thumbnail

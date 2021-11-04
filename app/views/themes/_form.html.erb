@@ -1,14 +1,16 @@
 <%= form_for(@theme, html: {class: 'ui form'}) do |f| %>
 
   <% if @theme.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert_notice_error">
       <ul>
       <% @theme.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
+    <br />
   <% end %>
+  
     <div class="field">
       <%= f.label :project_id %>
       <%= f.collection_select( :project_id, Project.all, :id, :name, {:prompt => 'Projeto'}, {class: 'ui search dropdown', placeholder: 'Projeto'} ) %>

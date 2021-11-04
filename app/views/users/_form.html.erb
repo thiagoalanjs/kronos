@@ -1,13 +1,15 @@
 <%= form_for(@user, html: {class: 'ui form'}) do |f| %>
 
+
   <% if @user.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert_notice_error">
       <ul>
       <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
+    <br />
   <% end %>
 
     <div class="field">

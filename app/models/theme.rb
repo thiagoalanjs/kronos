@@ -2,6 +2,7 @@ class Theme < ActiveRecord::Base
   belongs_to :project
   has_many :user_stories
 
-  validates :name, presence: true
+  validates :name, presence: true, format:{ with: /\A[a-zA-Z ]+\z/, message: "deve conter apenas letras" }, presence: true
   validates :project_id, presence: true
+
 end

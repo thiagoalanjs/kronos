@@ -11,25 +11,18 @@ pt-BR:
           task_requirement: Requerimento de atividade
           task: Atividade
           theme: Tema
-          user_ability: Habilidade de usuário
-          user_language: Linguagem de usuário
           user_story_acceptance_criterion: Critério de aceitação
           user_story: Relato de usuário
           user_task: Atividade de usuário
           user: Usuário
         attributes:
-          ability:
-            name: Nome
-            description: Descrição
-            scope: Escopo
           function_user_project:
             project_id: Projeto
             function_id: Função
             user_id: Usuário
           function:
             name: Nome
-          language:
-            name: Nome
+            description: Descrição
           project:
             name: Nome
             initial: Sigla
@@ -42,7 +35,6 @@ pt-BR:
             deliver_date: Data de entrega
             project_id: Projeto
           sprint:
-            
             project_id: Projeto
             start_date: Data de ínicio
             end_date: Data de termino
@@ -55,7 +47,6 @@ pt-BR:
             retrospective_meeting_date: Reunião de retrospectiva
           task_requirement:
             task_id: Atividade
-            ability_id: Habilidade
             level: Nível
           task:
             title: Título
@@ -70,13 +61,11 @@ pt-BR:
           theme:
             name: Nome
             project_id: Projeto
-          user_ability:
-            user_id: Usuário
-            ability_id: Habilidade
-          user_language:
-            language_id: Linguagem
-            user_id: Usuário
-            proficiency: Proeficiência
+            description: Descrição
+          user:
+            name: Nome
+            email: Email
+            group: Grupo  
           user_story:
             title: Título
             description: Descrição

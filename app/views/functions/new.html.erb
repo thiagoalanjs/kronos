@@ -1,11 +1,12 @@
 <p></p>
 
 <div class="ui container">
-  <div class="ui menu"">
-    <a href="#" class="item active"><strong>Novo function</strong></a>
-    <%= link_to 'Salvar', '#', class: 'item save' %>
-    <%= link_to 'Cancelar', functions_path, class: 'item' %>
+  <div class="ui menu">
+    <a href="#" class="item active"><strong>Nova Função</strong></a>
   </div>
 
   <%= render 'form' %>
+    <br />
+    <%= link_to 'Salvar', '#', class: 'ui blue button' %>
+    <%= link_to 'Cancelar', functions_path, class: 'ui red button' %>
 </div>

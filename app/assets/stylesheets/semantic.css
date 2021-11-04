@@ -870,9 +870,13 @@ input::selection {
 }
 
 /*******************************
-            States
+            message
 *******************************/
-
+.alert_notice_error {
+  padding: 2px;
+  background-color: #f44336;
+  color: white;
+}
 /*--------------
       Hover
 ---------------*/

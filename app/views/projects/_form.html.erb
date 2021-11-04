@@ -1,13 +1,14 @@
 <%= form_for(@project, html: {class: 'ui form'}) do |f| %>
 
   <% if @project.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert_notice_error">
       <ul>
       <% @project.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
+    <br />
   <% end %>
 
   <div class="inline field">

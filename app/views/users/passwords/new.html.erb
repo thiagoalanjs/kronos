@@ -9,14 +9,27 @@
     <h4 class="box_center">Digite seu email para recuperação da senha</h4>
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'ui form' }) do |f| %>
      
-       <h4> <%= devise_error_messages! %> </h4>
+     <% if resource.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert_notice_error">
+    <h4>
+    </h2>
+    <ul>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </div>
+    </ul>
+  </div>
+  <br />
+  
+<% end %>
         <div class="field">
-          <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true %>
         </div>
 
         <div class="actions">
-          <%= f.submit "Enviar email com instruções de reset", class: 'ui teal button' %>
+          <%= f.submit "Enviar email com instruções de recuperação de senha", class: 'ui teal button' %>
         </div>
       <% end %>
 

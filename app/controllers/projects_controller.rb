@@ -42,7 +42,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: "Projeto #{@project.name} criado com sucesso!" }
+        format.html { redirect_to projects_url, notice: "Projeto #{@project.name} criado com sucesso!" }
       else
         format.html { render :new, notice: "Houve um erro ao criar o projeto." }
       end

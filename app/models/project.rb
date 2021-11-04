@@ -8,7 +8,12 @@ class Project < ActiveRecord::Base
   has_many :user_stories
   has_many :tasks, through: :user_stories
 
-  validates :name, presence: true
+  validates :name, format:{with: /\A[a-zA-Z0-9_ ]+\z/, message: "deve conter apenas letras e números" }, presence: true
+  validates :initial, length: { in: 2..6, message: "deve ter entre 2 e 6 letras" },
+             format:{ with: /\A[a-zA-Z]+\z/, message: "deve conter apenas letras" }, presence: true
+  validates :description, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
 
   before_save do |project|
     project.start_date = project.start_date.beginning_of_day
