@@ -36,6 +36,7 @@ pt-BR:
             deliver_date: Data de entrega
             project_id: Projeto
           sprint:
+            name: Nome
             project_id: Projeto
             start_date: Data de ínicio
             end_date: Data de termino
