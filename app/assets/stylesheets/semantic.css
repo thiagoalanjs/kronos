@@ -869,6 +869,18 @@ input::selection {
   box-shadow: 0px 1px 1px black;
 }
 
+/****************************
+Alert Error Message
+
+*****************************/
+
+.alert_notice_error{
+  background-color: #9e1317;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 /*****************************
   Kaminari Pagination
   

@@ -1,7 +1,6 @@
 pt-BR:
     activerecord:
         models:
-          ability: Habilidade
           function_user_project: Função Usuário e projeto
           function: Função
           language: Linguagem
@@ -20,6 +19,8 @@ pt-BR:
             project_id: Projeto
             function_id: Função
             user_id: Usuário
+            user: Usuário
+            function: Função
           function:
             name: Nome
             description: Descrição
@@ -81,10 +82,3 @@ pt-BR:
           user_task:
             user_id: Usuário
             task_id: Atividade
-
-    pagination:
-      first: "&laquo; Primeiro"
-      last: "Último &raquo;"
-      next: Próximo &rsaquo;
-      previous: "&lsaquo; Anterior"
-      truncate: "&hellip;"
