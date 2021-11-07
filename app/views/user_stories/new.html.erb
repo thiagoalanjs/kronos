@@ -2,10 +2,13 @@
 
 <div class="ui container">
   <div class="ui menu">
-     <strong class="item active">Novo User Story</strong>
-    <%= link_to 'Salvar', '#', class: 'item save' %>
-    <%= link_to 'Cancelar', user_stories_path, class: 'item' %>
+     <strong class="item active">Nova User Story</strong>
   </div>
 
   <%= render 'form' %>
+   <br />
+    <%= link_to 'Salvar', new_user_story_path({ controller: 'user_stories', action: 'create' }), class: 'item save ui blue button' %>
+    <%= link_to 'Cancelar', user_stories_path, class: 'item save ui red button' %>
+    <br />
+    <br />
 </div>

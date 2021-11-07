@@ -3,9 +3,8 @@
 <div class="ui container">
   <div class="ui menu">
     <a href="#" class="item active"><strong>Tema</strong></a>
-    <%= link_to "Novo", new_theme_path, class: 'item' %>
   </div>
-
+  <%= render 'themes/breadcrumb' %>
 <br />
 <br />
 
@@ -15,6 +14,7 @@
       <br />
       <br />
       <p class="access_deny">Nenhum tema criado. Clique em "Novo" para iniciar um tema.</p>
+      <%= link_to "Novo", new_theme_path, class: 'item ui blue button' %>
     </div>
   </div>
 <% else %>
@@ -22,7 +22,6 @@
   <table class="ui celled table">
     <thead>
       <tr>
-        <th>Projeto</th>
         <th>Nome</th>
         <th>Descrição</th>
         <th width="290">Ações</th>
@@ -32,7 +31,7 @@
     <tbody>
       <% @themes.each do |theme| %>
         <tr>
-          <td><%= theme.project.name %></td>
+       
           <td><%= theme.name %></td>
           <td><%= theme.description %></td>
           <td>
@@ -50,5 +49,6 @@
       <% end %>
     </tbody>
   </table>
+  <%= link_to "Novo", new_theme_path, class: 'item ui blue button' %>
 <% end %>
 </div>

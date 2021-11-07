@@ -28,13 +28,7 @@ class User < ActiveRecord::Base
 
  #has_and_belongs_to_many :tasks
 
-  def avatar_thumbnail
-    if avatar.attached?
-      avatar.variant(resize: "40X40!").processed 
-    else
-      "profile-user.png"
-    end
-  end
+
 
   def skill_level(xp)
     # curva de experiência
@@ -74,6 +68,14 @@ class User < ActiveRecord::Base
     connection.execute(query)
   end
 
+
+  def avatar_thumbnail
+    if avatar.attached?
+      avatar.variant(resize: "40X40!").processed 
+    else
+      "profile-user.png"
+    end
+  end
 
   private
   

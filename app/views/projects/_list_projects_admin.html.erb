@@ -4,10 +4,13 @@
       <br />
       <br />
       <p class="access_deny">Nenhum projeto criado. Clique em "Novo" para iniciar um projeto.</p>
+      <%= link_to "Novo", new_project_path, class: 'ui blue button' %>
     </div>
   </div>
 <% else %>
-
+<%= link_to "Novo", new_project_path, class: 'ui blue button' %>
+<br />
+<br />
 <div class="ui four cards">
 <% @projects.each do |project| %>
 

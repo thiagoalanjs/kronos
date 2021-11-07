@@ -9,6 +9,7 @@ class CreateUserStories < ActiveRecord::Migration[5.2]
       t.references :theme, index: true, foreign_key: true
       t.references :sprint, index: true, foreign_key: true
       t.references :priority, index: true, foreign_key: true
+      t.references :project, foreign_key: true
       t.timestamps null: false
     end
   end

@@ -22,11 +22,13 @@
   
     <div class="ui menu">
       <a href="#" class="item active"><strong>Projetos</strong></a>
-      
-      <%= link_to "Criar Projeto", new_project_path, class: 'ui green button' %>
     </div>
 
-    <%= render 'projects/list_projects_admin' %>
+    <%= render 'projects/list_projects_admin' %> 
+
+
+    <br />
+    <%= paginate @projects, class: "pagination" %>  
   <% end %>
 
 </div>

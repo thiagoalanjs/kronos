@@ -83,9 +83,23 @@
             <div class="description">
              Acesse o board do projeto <%= @project.name %>.
             </div>
+            <p></p>
+            <p></p>
         </button>
     </div>
+
+
+
+
+    <div class="card">   
+      <button class="ui bottom attached button" onclick="window.location.href='<%= themes_path %>'"> 
+         <%= image_tag("tema.png") %>
+         <div class="description">
+            Configure aqui os temas das user stories dos projetos
+         </div>
+    </button>
   </div>
+
 </div>
 
 <p></p>

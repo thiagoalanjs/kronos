@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
 
   def index
     if current_user.admin? || current_user.coordenador?
-      @projects = Project.all
+      @projects = Project.page(params[:page]).order('id DESC').per(8)  
     else
       redirect_to user_project_path
     end
@@ -63,11 +63,13 @@ class ProjectsController < ApplicationController
     @project.destroy
     session[:project] = nil
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: "Projeto #{@project.name} deletado com sucesso!" }
+      format.html { redirect_to projects_url, notice: "Projeto #{@project.name} deletado com sucesso!" }    
+    else
+      format.html { render :new, notice: "Houve um erro ao deletar o projeto." }
     end
   end
 
-  private
+  protected
     def set_project
       @project = Project.find(params[:id])
     end

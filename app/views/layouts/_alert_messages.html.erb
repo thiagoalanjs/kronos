@@ -3,7 +3,6 @@
 <p></p>
 <div class="ui container">
   <div class="ui message">
-    <i class="close icon"></i>
     <div class="header">
       Notificação!
     </div>
@@ -18,7 +17,7 @@
 <p></p>
 <div class="ui warning container">
   <div class="ui message">
-    <i class="close icon"></i>
+    <div class="close icon">X</div>
     <div class="header">
       Alerta!
     </div>
@@ -33,11 +32,26 @@
 <p></p>
 <div class="ui container">
   <div class="ui positive message">
-    <i class="close icon"></i>
+    <div class="close icon">X</div>
     <div class="header">
       Sucesso!
     </div>
     <p><%= flash[:success] %></p>
+  </div>
+</div>
+<p></p>
+<% end %>
+
+<!-- alert success -->
+<% if flash[:alert] %>
+<p></p>
+<div class="ui container">
+  <div class="ui negative message">
+    <div class="close icon">x</div>
+    <div class="header">
+      Sucesso!
+    </div>
+    <p><%= flash[:alert] %></p>
   </div>
 </div>
 <p></p>

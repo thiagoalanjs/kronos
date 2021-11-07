@@ -1,13 +1,23 @@
 <p></p>
 
 <div class="ui container">
-  <div class="ui menu"">
+  <div class="ui menu">
     <a href="#" class="item active"><strong>Releases</strong></a>
-    <%= link_to "Novo", new_release_path, class: 'item' %>
   </div>
 
   <%= render 'releases/breadcrumb' %>
 
+  <% if @releases.empty? %>
+      <div class="box_center">
+      <%= image_tag("product.png") %>
+      <br />
+      <br />
+      <p class="access_deny">Nenhum release está associado a esse projeto. Clique em "Novo" para incluír no projeto.</p>
+      <%= link_to "Novo", new_release_path, class: 'item ui blue button' %>
+    </div>
+  </div>
+  <% else %>
+ 
   <table class="ui celled table">
     <thead>
       <tr>
@@ -37,5 +47,5 @@
       <% end %>
     </tbody>
   </table>
-
+<% end %>
 </div>

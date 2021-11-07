@@ -7,9 +7,9 @@ class ThemesController < ApplicationController
   def autocomplete
     @themes = Theme.order(:name).where("project_id = #{current_project_id} and name like ?", "%#{params[:query]}%")
   end
-  
+
   def index
-    @themes = Theme.all.order(:project_id)
+    @themes = Theme.where(project_id: current_project_id)
   end
 
   def show
@@ -27,7 +27,7 @@ class ThemesController < ApplicationController
 
     respond_to do |format|
       if @theme.save
-        format.html { redirect_to @theme, notice: 'Theme was successfully created.' }
+        format.html { redirect_to @theme, notice: 'Tema criado com sucesso.' }
         format.json { render :show, status: :created, location: @theme }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class ThemesController < ApplicationController
   def update
     respond_to do |format|
       if @theme.update(theme_params)
-        format.html { redirect_to @theme, notice: 'Theme was successfully updated.' }
+        format.html { redirect_to @theme, notice: 'Tema atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @theme }
       else
         format.html { render :edit }
@@ -55,7 +55,7 @@ class ThemesController < ApplicationController
   def destroy
     @theme.destroy
     respond_to do |format|
-      format.html { redirect_to themes_url, notice: 'Theme was successfully destroyed.' }
+      format.html { redirect_to themes_url, notice: 'Tema deletado com sucesso.' }
       format.json { head :no_content }
     end
   end
@@ -66,12 +66,12 @@ class ThemesController < ApplicationController
       @theme = Theme.where(id: params[:id]).first
 
       if @theme.nil?
-        redirect_to releases_url, notice: 'Theme not found.'
+        redirect_to releases_url, notice: 'Tema não encontrado.'
       end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def theme_params
-      params.require(:theme).permit(:name, :description, :project_id)
+      params.require(:theme).permit(:name, :description,:project_id)
     end
 end

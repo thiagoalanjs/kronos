@@ -81,3 +81,10 @@ pt-BR:
           user_task:
             user_id: Usuário
             task_id: Atividade
+
+    pagination:
+      first: "&laquo; Primeiro"
+      last: "Último &raquo;"
+      next: Próximo &rsaquo;
+      previous: "&lsaquo; Anterior"
+      truncate: "&hellip;"

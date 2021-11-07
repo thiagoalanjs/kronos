@@ -1,11 +1,13 @@
 <p></p>
 
-<div class="ui container">
-  <div class="ui menu"">
-    <a href="#" class="item active"><strong>Novo Tema</strong></a>
-    <%= link_to 'Salvar', '#', class: 'item save' %>
-    <%= link_to 'Cancelar', themes_path, class: 'item' %>
-  </div>
+  <%= render 'themes/breadcrumb' %>
+    <br />
+     <br />
+    <%= render 'form' %>
+    <br />
 
-  <%= render 'form' %>
+<div class="ui container">
+    <%= link_to 'Salvar', new_theme_path({ controller: 'themes', action: 'create' }), class: 'item save ui blue button' %>
+    <%= link_to 'Cancelar', themes_path, class: 'item ui red button' %>
+</div>
 </div>

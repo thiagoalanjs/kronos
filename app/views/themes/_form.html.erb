@@ -12,18 +12,17 @@
   <% end %>
   
     <div class="field">
-      <%= f.label :project_id %>
-      <%= f.collection_select( :project_id, Project.all, :id, :name, {:prompt => 'Projeto'}, {class: 'ui search dropdown', placeholder: 'Projeto'} ) %>
+      <%= f.hidden_field :project_id, :value => current_project.id %>
     </div>
 
     <div class="field">
       <%= f.label :name %>
-    <%= f.text_field :name %>
+      <%= f.text_field :name %>
     </div>
 
     <div class="field">
       <%= f.label :description %>
-    <%= f.text_area :description %>
+      <%= f.text_area :description %>
     </div>
 
   <% end %>
@@ -33,5 +32,5 @@
     $('form').submit();
   });
 
-  $('.ui.search.dropdown').dropdown({ allowLabels:true});
+  $('.ui.search.dropdown').dropdown({ allowLabels:true });
 </script>

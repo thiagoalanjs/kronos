@@ -3,20 +3,21 @@
 <div class="ui container">
   <div class="ui menu">
     <a href="#" class="item active"><strong>Sprints</strong></a>
-    <%= link_to "Nova", new_sprint_path, class: 'item' %>
+    
   </div>
 
-
+  <%= render 'sprints/breadcrumb' %>
    <% if @sprints.empty? %> 
         <div class="box_center">
             <%= image_tag("access-denied.png") %>
             <br />
             <br />
             <p class="access_deny">Nenhuma sprint ativa no momento. Clique em "Nova" para criar.</p>
+            <%= link_to "Nova", new_sprint_path, class: 'item ui blue button' %>
         </div>
    <% else %> 
 
-  <%= render 'sprints/breadcrumb' %>
+
 
   <table class="ui celled table">
     <thead>

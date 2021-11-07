@@ -1,13 +1,14 @@
 <%= form_for(@function_user_project, html: {class: 'ui form'}) do |f| %>
 
   <% if @function_user_project.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert_notice_error">
       <ul>
       <% @function_user_project.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
+    <br />
   <% end %>
 
     <div class="field">
@@ -24,7 +25,8 @@
 
 <script type="text/javascript">
   $('.save').click(function(){
-    $('form').submit();
+    $('form').submit();    <%= link_to 'Salvar', '#', class: 'item save ui blue button' %>
+    <%= link_to 'Cancelar', sprints_path, class: 'item ui red button' %>
   });
 
   $('.ui.search.dropdown').dropdown({ allowLabels:true});

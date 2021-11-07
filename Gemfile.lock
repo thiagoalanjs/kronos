@@ -103,7 +103,8 @@ GEM
     ffi (1.15.4)
     globalid (0.5.2)
       activesupport (>= 5.0)
-    i18n (1.8.10)
+    gravatar_image_tag (1.2.0)
+    i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.1)
       mini_magick (>= 4.9.5, < 5)
@@ -127,6 +128,9 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
+    kaminari-i18n (0.3.2)
+      kaminari
+      rails
     loofah (2.12.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -263,9 +267,12 @@ DEPENDENCIES
   capistrano-rbenv (~> 2.1)
   coffee-rails (~> 5.0)
   devise
+  gravatar_image_tag (~> 1.2)
   image_processing (~> 1.12, >= 1.12.1)
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
+  kaminari-i18n (~> 0.3.2)
   notifications
   pg
   pundit

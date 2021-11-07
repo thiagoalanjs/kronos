@@ -10,16 +10,6 @@ Function.create(name: 'Programador', description: 'O programador é o membro res
 Function.create(name: 'Design', description: 'O design é quem irá trabalhar em todos os componentes visuais de um sistema.')
 Function.create(name: 'Tester', description: 'O Tester é quem irá testar cada tarefa desenvolvida e se está dentro dos critérios de aceitação.')
 
-puts "creating Languages..."
-Language.create(name: 'English', description: '')
-Language.create(name: 'French', description: '')
-Language.create(name: 'German', description: '')
-Language.create(name: 'Japanese', description: '')
-Language.create(name: 'Mandarin', description: '')
-Language.create(name: 'Portuguese Brazil', description: '')
-Language.create(name: 'Russian', description: '')
-Language.create(name: 'Spanish', description: '')
-
 puts "creating Kinds..."
 Kind.create(name: 'Bug')
 Kind.create(name: 'Sub-task')

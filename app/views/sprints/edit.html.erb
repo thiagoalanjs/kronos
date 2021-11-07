@@ -3,9 +3,10 @@
 <div class="ui container">
   <div class="ui menu">
     <a href="#" class="item active"><strong>Editando sprint</strong></a>
-    <%= link_to 'Salvar', '#', class: 'item save' %>
-    <%= link_to 'Cancelar', sprints_path, class: 'item' %>
   </div>
 
   <%= render 'form' %>
+  <br />
+    <%= link_to 'Salvar', '#', class: 'item save ui blue button' %>
+    <%= link_to 'Cancelar', sprints_path, class: 'item ui red button' %>
 </div>

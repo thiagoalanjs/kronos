@@ -10,6 +10,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
+gem 'gravatar_image_tag', '~> 1.2'
+gem 'kaminari'
+gem 'kaminari-i18n', '~> 0.3.2'
 #gem 'actiontext'
 #gem 'trix'
 

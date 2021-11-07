@@ -3,16 +3,29 @@
 <div class="ui container">
   <div class="ui menu">
     <a href="#" class="item active"><strong>Membros</strong></a>
-    <%= link_to "Novo", new_function_user_project_path, class: 'item' %>
+    
   </div>
 
   <%= render 'function_user_projects/breadcrumb' %>
 
+
+ <% if @function_user_projects.empty? %>
+    <div class="box_center">
+      <%= image_tag("teamwork.png") %>
+      <br />
+      <br />
+      <p class="access_deny">Nenhum usuário está associado a esse projeto. Clique em "Associar" para incluí-lo no projeto.</p>
+      <%= link_to "Associar", new_function_user_project_path, class: 'item ui blue button' %>
+    </div>
+  </div>
+ <% else %>
+
+
   <table class="ui celled table">
     <thead>
       <tr>
-                <th>User</th>
-                <th>Function</th>
+                <th>Usuário</th>
+                <th>Função</th>
                 <th width="290">Ações</th>
       </tr>
     </thead>
@@ -37,5 +50,5 @@
       <% end %>
     </tbody>
   </table>
-
+<% end %>
 </div>

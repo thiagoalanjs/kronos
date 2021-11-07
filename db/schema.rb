@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_23_044239) do
-
-  create_table "abilities", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.integer "scope"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2021_11_06_231446) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -70,13 +62,6 @@ ActiveRecord::Schema.define(version: 2021_10_23_044239) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "languages", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -187,30 +172,10 @@ ActiveRecord::Schema.define(version: 2021_10_23_044239) do
   create_table "themes", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_themes_on_project_id"
-  end
-
-  create_table "user_abilities", force: :cascade do |t|
-    t.integer "points"
-    t.integer "user_id"
-    t.integer "ability_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ability_id"], name: "index_user_abilities_on_ability_id"
-    t.index ["user_id"], name: "index_user_abilities_on_user_id"
-  end
-
-  create_table "user_languages", force: :cascade do |t|
-    t.integer "proficiency"
-    t.integer "user_id"
-    t.integer "language_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["language_id"], name: "index_user_languages_on_language_id"
-    t.index ["user_id"], name: "index_user_languages_on_user_id"
   end
 
   create_table "user_stories", force: :cascade do |t|
@@ -222,9 +187,9 @@ ActiveRecord::Schema.define(version: 2021_10_23_044239) do
     t.integer "theme_id"
     t.integer "sprint_id"
     t.integer "priority_id"
+    t.integer "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "project_id"
     t.index ["priority_id"], name: "index_user_stories_on_priority_id"
     t.index ["project_id"], name: "index_user_stories_on_project_id"
     t.index ["sprint_id"], name: "index_user_stories_on_sprint_id"
@@ -287,10 +252,6 @@ ActiveRecord::Schema.define(version: 2021_10_23_044239) do
   add_foreign_key "tasks_users", "tasks"
   add_foreign_key "tasks_users", "users"
   add_foreign_key "themes", "projects"
-  add_foreign_key "user_abilities", "abilities"
-  add_foreign_key "user_abilities", "users"
-  add_foreign_key "user_languages", "languages"
-  add_foreign_key "user_languages", "users"
   add_foreign_key "user_stories", "priorities"
   add_foreign_key "user_stories", "projects"
   add_foreign_key "user_stories", "sprints"
