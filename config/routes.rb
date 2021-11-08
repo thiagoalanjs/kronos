@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get '/task/done_task/:id', to: 'scrumboard#done_task', as: 'done_task'
 
   get '/project/scrumboard/:id', to: 'projects#scrumboard', as: 'scrumboard'
-
   get '/settings', to: 'settings#index', as: 'settings'
 
   #root to: redirect('/users/sign_in')

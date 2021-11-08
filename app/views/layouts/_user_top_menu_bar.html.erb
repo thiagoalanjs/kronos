@@ -1,9 +1,11 @@
 <!-- Following Menu for user logged in -->
 <div class="ui large top fixed no-hidden inverted menu">
 <%= image_tag('logo.png', :class=>"logo menu")%>
+
+
+
   <div class="right menu">
     <%= link_to notifications_path, class: "#{is_current_page?(notifications_path)} item", title: 'Notificações' do %>
-      <%= image_tag("bell_notification.png") %>
       Notificações
       <% if Notification.unread_count(current_user) > 0 %>
         <div class="ui red label"><%= Notification.unread_count(current_user) %></div>

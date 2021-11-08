@@ -5,9 +5,16 @@ class UserStoriesController < ApplicationController
   # end
   
   def index
-    @user_stories = UserStory.where(project_id: current_project_id)
-    @criterion = UserStoryAcceptanceCriterion.new
-    @task = Task.new
+      @user_stories = UserStory.where(project_id: current_project_id).page(params[:page]).order('priority_id ASC').per(8)
+      @criterion = UserStoryAcceptanceCriterion.new
+      @task = Task.new
+    # if params[:search]  
+    #   @user_stories = UserStory.where("business_value LIKE ?", '%'"#{params[:search]}"'%').page(params[:page]).order('priority_id ASC').per(8)
+    # else
+    #   @user_stories = UserStory.where(project_id: current_project_id).page(params[:page]).order('priority_id ASC').per(8)
+    #   @criterion = UserStoryAcceptanceCriterion.new
+    #   @task = Task.new
+    # end
   end
 
   def show

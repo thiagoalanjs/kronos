@@ -3,9 +3,11 @@
 <div class="ui container">
   <div class="ui menu">
     <strong class="item active">Novo projeto</strong>
-    <%= link_to 'Salvar', new_project_path({ controller: 'projects', action: 'create' }), class: 'item save' %>
-    <%= link_to 'Cancelar', projects_path, class: 'item' %>
+    
   </div>
 
   <%= render 'form' %>
+  
+    <%= link_to 'Salvar', new_project_path({controller: 'projects', action: 'create' }), class: 'item save ui blue button' %>
+    <%= link_to 'Cancelar', projects_path, class: 'item ui red button' %>
 </div>

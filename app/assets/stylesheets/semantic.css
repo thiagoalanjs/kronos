@@ -753,6 +753,12 @@ input::selection {
   font-size: 10px;
   color: #928D8D;
 }
+
+.sub_title {
+  font-family: 'Public Sans', sans-serif;
+  color: #928D8D;
+}
+
 .header_text{
   font-family: 'Public Sans', sans-serif;
   font-weight: bold;

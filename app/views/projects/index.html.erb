@@ -2,6 +2,7 @@
 
 <p></p>
 
+
 <div class="ui container">
   <% if current_user.group != 'admin' && current_user.group != 'coordenador' %>
     <h1>Projetos <%= image_tag("gerenciamento-de-projetos.png") %></h1>
@@ -18,17 +19,32 @@
     </div>
 <% end %>
     <%= render 'projects/list_projects_default' %>
-  <% else %>
-  
-    <div class="ui menu">
-      <a href="#" class="item active"><strong>Projetos</strong></a>
-    </div>
+  <% else %>   
+    
+     
+      <div class="info_accordion">
+        <%= form_tag(projects_path, method: :get, class: "ui form") do %>
+           <div class="inline field">
+              <%= text_field_tag :search, params[:search], placeholder: "Buscar projetos" %>
+              <%= image_submit_tag("search.png") %>
+           </div>    
+        <% end %>
+      </div>
+      <h1>Projetos</h1>
+      <div class="sub_title">Aqui você cria e gerencia seus projetos.</div>
+      <hr>
+       
+      
+
 
     <%= render 'projects/list_projects_admin' %> 
 
 
     <br />
-    <%= paginate @projects, class: "pagination" %>  
+      <%= paginate @projects %>  
+    <br />
+    <br />
+    <br />
   <% end %>
 
 </div>
