@@ -7,6 +7,18 @@
   <div class="six wide column form_box">
   
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'ui form'}) do |f| %>
+
+    <% if alert %>
+      <div class="ui container">
+        <div class="ui negative message">
+           <div class="close icon">x</div>
+              <div class="header">
+           <p><%= alert %></p>
+          </div>
+         </div>
+       <p></p>
+    <% end%>
+
       <div class="field">
         <%= f.label "Email" %>
         <%= f.email_field :email, autofocus: true %>
@@ -18,7 +30,7 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "Entrar", class: 'ui button teal' %>
+        <%= f.submit "Entrar", class: 'ui button teal', id: "btn_entrar" %>
       </div>
 
     <% end %>
@@ -29,5 +41,11 @@
          <%= link_to "Esqueceu a senha?", new_password_path(resource_name)  %>
  
   </div>
+ 
  </div>
+    <br />
+     <br />
+       <br />
+         <br />
+           <br />
 </div>

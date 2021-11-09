@@ -3,45 +3,51 @@
   <div class="logo form">
       <%= image_tag("logo.png") %>
   </div>
+<br />
+
 
 <div class="ui centered grid container ">
+
+
   <div class="six wide column form_box">
     <h4 class="box_center">Digite seu email para recuperação da senha</h4>
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'ui form' }) do |f| %>
      
      <% if resource.errors.any? %>
-  <div id="error_explanation">
-    <div class="alert_notice_error">
-    <h4>
-    </h2>
-    <ul>
-      <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </div>
-    </ul>
-  </div>
-  <br />
-  
-<% end %>
+      <div class="ui container">
+        <div class="ui negative message">
+           <div class="close icon">x</div>
+              <div class="header">
+           <p> <% resource.errors.full_messages.each do |message| %>
+                <%= message %>
+            <% end %></p>
+          </div>
+         </div>
+       <p></p>
+    <% end%>
+
         <div class="field">
           <%= f.email_field :email, autofocus: true %>
         </div>
 
-        <div class="actions">
-          <%= f.submit "Enviar email com instruções de recuperação de senha", class: 'ui teal button' %>
+        <div class="field">
+          <%= f.submit " Clique aqui para envio de email de recuperação de senha  ", class: 'ui teal button' %>
         </div>
       <% end %>
+   <br />
+ <br />
+  <%= render "users/shared/links" %>
+  
+  <br />
 
-<%= render "users/shared/links" %>
-
-    <p></p>
-    <p></p>
-    <p></p>
-
- 
   </div>
+  
  </div>
+ <br />
+    <br />
+      <br />
+         <br />
+           <br />
 </div>
 
 

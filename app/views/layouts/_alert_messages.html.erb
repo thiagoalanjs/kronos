@@ -2,10 +2,8 @@
 <% if notice %>
 <p></p>
 <div class="ui container">
-  <div class="ui message">
-    <div class="header">
-      Notificação!
-    </div>
+  <div class="ui positive message">
+  <div class="close icon">x</div>
     <p><%= notice %></p>
   </div>
 </div>
@@ -49,7 +47,7 @@
   <div class="ui negative message">
     <div class="close icon">x</div>
     <div class="header">
-      Sucesso!
+      Ops!
     </div>
     <p><%= flash[:alert] %></p>
   </div>

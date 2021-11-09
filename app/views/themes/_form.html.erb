@@ -1,16 +1,17 @@
 <%= form_for(@theme, html: {class: 'ui form'}) do |f| %>
 
-  <% if @theme.errors.any? %>
-    <div class="alert_notice_error">
-      <ul>
-      <% @theme.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-    <br />
-  <% end %>
-  
+ <% if @theme.errors.any? %>
+
+        <div class="ui negative message">
+           <div class="close icon">x</div>
+              <div class="header">
+                <% @theme.errors.full_messages.each do |message| %>
+                 <p> - <%= message %> </p>
+                   <% end %>
+              </div>
+        </div>
+       <p></p>
+  <% end%>
     <div class="field">
       <%= f.hidden_field :project_id, :value => current_project.id %>
     </div>

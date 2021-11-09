@@ -1,15 +1,17 @@
 <%= form_for(@sprint, html: {class: 'ui form'}) do |f| %>
 
-   <% if @sprint.errors.any? %>
-    <div class="alert_notice_error">
-      <ul>
-      <% @sprint.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-    <br />
-  <% end %>
+  <% if @sprint.errors.any? %>
+      <div class="ui container">
+        <div class="ui negative message">
+           <div class="close icon">x</div>
+              <div class="header">
+            <% @sprint.errors.full_messages.each do |message| %>
+                <p> - <%= message %> </p>
+            <% end %>
+          </div>
+         </div>
+       <p></p>
+    <% end%>
 
   <div class="inline field">
     <%= f.label :name %>
