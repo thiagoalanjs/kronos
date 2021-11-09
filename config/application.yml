@@ -1,0 +1,7 @@
+development:
+  host:           'localhost:3000'    
+  user_name:      'suporte@agilekronos.online'
+  password:       '7bDprAvXky6UBQ8'
+  domain:         'agilekronos.online'
+  address:        'smtpout.secureserver.net'
+  port:           '587'

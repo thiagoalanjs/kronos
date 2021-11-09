@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   has_one_attached :avatar
   after_commit :add_default_avatar, on: %i[create update]
 
-  
   has_many :function_user_projects, dependent: :destroy
   has_many :functions, through: :function_user_projects
   has_many :projects, through: :function_user_projects
@@ -73,7 +72,7 @@ class User < ActiveRecord::Base
     if avatar.attached?
       avatar.variant(resize: "40X40!").processed 
     else
-      "profile-user.png"
+      "/profile-user.png"
     end
   end
 
@@ -81,7 +80,7 @@ class User < ActiveRecord::Base
   
   def add_default_avatar
     unless avatar.attached?
-      avatar.attached(
+      avatar.attach(
         io: File.open(
           Rails.root.join(
             'app', 'assets', 'images', 'profile-user.png'

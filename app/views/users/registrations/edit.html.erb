@@ -1,22 +1,24 @@
    <div class="form_devise">
-          <br />
-          <div class="header_text">Editar perfil</div>
-          <br />
+          
     
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   
-
-     <% if resource.errors.any? %>
+  <% if resource.errors.any? %>
       <div class="ui container">
         <div class="ui negative message">
            <div class="close icon">x</div>
               <div class="header">
-                <p> - <%= devise_error_messages! %></p>
-              </div>
+            <% resource.errors.full_messages.each do |message| %>
+                <p> - <%= message %> </p>
+            <% end %>
+          </div>
          </div>
        <p></p>
-     <% end%>
+  <% end%>
 
+         <br />
+          <div class="header_text">Editar perfil</div>
+          <br />
            <% if current_user %>
             <% if current_user.avatar.attached? %>
             <%= image_tag(current_user.avatar_thumbnail, :class=> "image_profile") %>
@@ -24,7 +26,8 @@
             <%= image_tag("profile-user.png", :class=> "image_profile") %>
            <% end %>
            <% end %>
-         
+
+             
           <div>
             <%= f.file_field :avatar %>
           </div>

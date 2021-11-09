@@ -6,7 +6,6 @@ class Task < ActiveRecord::Base
   	has_many :users, through: :users_tasks
   	#has_one :kind
   	has_many :task_requirements, dependent: :destroy
-	has_many :abilities, through: :task_requirements
 
 	validates :description, presence: true
 	# validates :end_date, presence: true

@@ -68,6 +68,7 @@ pt-BR:
             name: Nome
             email: Email
             group: Grupo  
+            current_password: Senha atual
           user_story:
             title: Título
             description: Descrição

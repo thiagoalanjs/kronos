@@ -13,6 +13,8 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
+  config.active_storage.service = :local
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
@@ -40,24 +42,20 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   # Devise
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: ENV['host'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    # :address => "smtp.secureserver.net",
-    # :port => 587,
-    # :domain => 'agilekronos.online',
-    # :user_name => 'suporte@agilekronos.online',
-    # :password => '7bDprAvXky6UBQ8',
-    # :authentication => 'plain',
-    #:enable_starttls_auto => true
-    :user_name => 'infomebay@gmail.com',
-    :password => 'infomebay@7000',
-    :address => "smtp.gmail.com",
-    :domain => 'localhost:3000',
-    :port => 587,
-    :authentication => 'plain',
-    :enable_starttls_auto => true
+    user_name:      ENV['user_name'],
+    password:       ENV['password'],
+    domain:         ENV['domain'],
+    address:        ENV['address'],
+    port:           ENV['port'],
+    authentication: :plain,
+    enable_starttls_auto: true
   }
+  
+
 
   
 end

@@ -11,6 +11,7 @@ pt-BR:
       edit:
         title: Mudar sua senha
         submit: Mudar minha senha
+        current_password: Senha atual
       new:
         title: Esqueceu sua senha?
         submit: Me enviar instruções para reiniciar minha senha
