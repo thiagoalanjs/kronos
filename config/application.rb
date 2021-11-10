@@ -24,6 +24,10 @@ module Kronos
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :'pt-BR'
 
+    config.hosts << "#{ENV['JELASTIC']}"
+    config.hosts << "www.#{ENV['host']}"
+    config.hosts << "#{ENV['host']}"
+
     # Do not swallow errors in after_commit/after_rollback callbacks.
     #config.active_record.raise_in_transactional_callbacks = true
     
