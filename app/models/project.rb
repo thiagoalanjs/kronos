@@ -9,8 +9,9 @@ class Project < ActiveRecord::Base
   has_many :tasks, through: :user_stories
 
   validates :name, format:{with: /\A[a-zA-Z0-9_ ]+\z/, message: "deve conter apenas letras e números" }, presence: true, uniqueness: { case_sensitive: false }
-  validates :initial, length: { in: 2..6, message: "deve ter entre 2 e 6 letras" },
+  validates :initial, length: { in: 2..6, message: "deve ter entre 2 e 6 letras", maximum: 6 },
              format:{ with: /\A[a-zA-Z]+\z/, message: "deve conter apenas letras" }, presence: true, uniqueness: { case_sensitive: false }
+
   validates :description, presence: true
 
   validate :start_date_cannot_be_nil, 
