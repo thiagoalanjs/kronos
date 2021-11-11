@@ -12,18 +12,34 @@ class Project < ActiveRecord::Base
   validates :initial, length: { in: 2..6, message: "deve ter entre 2 e 6 letras" },
              format:{ with: /\A[a-zA-Z]+\z/, message: "deve conter apenas letras" }, presence: true, uniqueness: { case_sensitive: false }
   validates :description, presence: true
-  validates :start_date, presence: true
-  validates :end_date, presence: true
-  validates :end_date_cannot_be_in_the_past, presence: true
+
+  validate :start_date_cannot_be_nil, 
+           :end_date_cannot_be_nil,
+           :end_date_cannot_be_in_the_past
 
   before_save do |project|
     project.start_date = project.start_date.beginning_of_day
     project.end_date = project.end_date.end_of_day
   end
 
+
+  def start_date_cannot_be_nil
+    if start_date.nil?
+      errors.add(:start_date, presence: true, message: "deve ser preenchida")
+    end
+  end
+
+  def end_date_cannot_be_nil
+    if end_date.nil?
+      errors.add(:end_date, presence: true, message: "deve ser preenchida")
+    end
+  end
+
   def end_date_cannot_be_in_the_past
-    if :end_date < :start_date
-      errors.add(:end_date, message: "não pode ser anterior a data início do projeto")
+    if start_date.present? && end_date.present?
+      if start_date > end_date
+         errors.add(:end_date, message: "não pode ser anterior a data início do projeto")
+      end  
     end
   end
 

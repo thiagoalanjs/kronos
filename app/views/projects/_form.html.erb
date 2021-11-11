@@ -31,14 +31,14 @@
   <div class="inline fields">
     <div class="ui calendar">
       <div class="ui input left icon">
-        <i class="calendar icon"></i>
+        
         <%= f.text_field :start_date, placeholder: 'Data inicial' %>
       </div>
     </div>
     <p style="margin-right: 1em; margin-left: 1em">à</p>
     <div class="ui calendar">
       <div class="ui input left icon">
-        <i class="calendar icon"></i>
+    
         <%= f.text_field :end_date, placeholder: 'Data final' %>
       </div>
     </div>
@@ -54,5 +54,9 @@
 
   $('.ui.search.dropdown').dropdown({ allowLabels:true});
 
-  $('.ui.calendar').calendar({type: 'date'});
+  $('.ui.calendar').calendar({
+    type: 'date',
+    minDate:new Date() 
+  });
+  
 </script>

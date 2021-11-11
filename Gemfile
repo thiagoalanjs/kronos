@@ -15,6 +15,8 @@ gem 'kaminari'
 gem 'kaminari-i18n', '~> 0.3.2'
 #gem 'actiontext'
 #gem 'trix'
+gem 'bootstrap'
+gem 'popper_js'
 
 group :production do
   gem 'pg'
