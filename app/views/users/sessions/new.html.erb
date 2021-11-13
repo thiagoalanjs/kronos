@@ -8,17 +8,17 @@
   
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'ui form'}) do |f| %>
 
-    <% if alert %>
-      <div class="ui container">
-        <div class="ui negative message">
-           <div class="close icon">x</div>
-              <div class="header">
-           <p><%= alert %></p>
-          </div>
-         </div>
-       <p></p>
-    <% end%>
-
+    <% flash.each do |message_type, message|%>
+            <div class="ui container">
+              <%= content_tag :div, message, class: [:alert, alert_for(message_type)], role: 'alert' do %>
+                 <div class="close icon">x</div>
+                     <div class="header">
+                     <p><%= message %></p>
+                     </div>
+                 </div>
+              <%end%>
+    <%end%>
+    <br />
       <div class="field">
         <%= f.label "Email" %>
         <%= f.email_field :email, autofocus: true %>

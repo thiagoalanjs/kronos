@@ -1,7 +1,17 @@
 <h2>Resend confirmation instructions</h2>
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+   <% flash.each do |message_type, message|%>
+            <div class="ui container">
+              <%= content_tag :div, message, class: [:alert, alert_for(message_type)], role: 'alert' do %>
+                 <div class="close icon">x</div>
+                     <div class="header">
+                     <p><%= message %></p>
+                     </div>
+                 </div>
+              <%end%>
+    <%end%>
+
 
   <div class="field">
     <%= f.label :email %><br />

@@ -3,18 +3,18 @@
     
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   
-  <% if resource.errors.any? %>
-      <div class="ui container">
-        <div class="ui negative message">
-           <div class="close icon">x</div>
-              <div class="header">
-            <% resource.errors.full_messages.each do |message| %>
-                <p> - <%= message %> </p>
-            <% end %>
-          </div>
-         </div>
-       <p></p>
-  <% end%>
+             <% if resource.errors.any? %>
+             <% flash.each do |message_type, message|%>
+                       <div class="ui container">
+                         <%= content_tag :div, message, class: [:alert, alert_for(message_type)], role: 'alert' do %>
+                            <div class="close icon">x</div>
+                                <div class="header">
+                                <p><%= message %></p>
+                                </div>
+                            </div>
+                         <%end%>
+               <%end%>
+             <% end%>
 
          <br />
           <div class="header_text">Editar perfil</div>
