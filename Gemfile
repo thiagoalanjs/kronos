@@ -16,7 +16,8 @@ gem 'kaminari-i18n', '~> 0.3.2'
 #gem 'actiontext'
 #gem 'trix'
 gem 'bootstrap'
-gem 'popper_js'
+gem 'apexcharts'
+gem 'groupdate'
 
 group :production do
   gem 'pg'
@@ -33,6 +34,7 @@ group :development, :test do
   gem 'capistrano-passenger', '~> 0.2.0'
   # Add this if you're using rbenv
   gem 'capistrano-rbenv', '~> 2.1'
+  gem 'figaro', '~> 1.1', '>= 1.1.1'
 end
 
 gem 'thin'

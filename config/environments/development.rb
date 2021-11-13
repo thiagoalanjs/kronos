@@ -41,10 +41,12 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   # Devise
+  config.action_mailer.asset_host = "http://localhost:3000"
+  config.action_controller.asset_host = "http://localhost:3000"
+  config.assets.prefix = "/assets/images"
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: ENV['host'] }
-  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     user_name:      ENV['user_name'],
     password:       ENV['password'],
@@ -54,8 +56,6 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
-  
-
 
   
 end

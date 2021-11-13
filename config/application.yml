@@ -1,5 +1,5 @@
 development:
-  host:           'localhost:3000'    
+  host:           'localhost:3000'
   user_name:      'suporte@agilekronos.online'
   password:       '7bDprAvXky6UBQ8'
   domain:         'agilekronos.online'

@@ -32,6 +32,7 @@ pt-BR:
       send_paranoid_instructions: "Se o seu endereço de e-mail estiver cadastrado, você receberá um link de recuperação da senha via e-mail."
       updated: "Sua senha foi alterada com sucesso. Você está logado."
       updated_not_active: "Sua senha foi alterada com sucesso."
+      password: "Senha"
     registrations:
       destroyed: "Sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve."
       signed_up: "Login efetuado com sucesso. Se não foi autorizado, a confirmação será enviada por e-mail."

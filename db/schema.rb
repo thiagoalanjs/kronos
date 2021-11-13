@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_06_231446) do
+ActiveRecord::Schema.define(version: 2021_11_12_031939) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -114,6 +114,15 @@ ActiveRecord::Schema.define(version: 2021_11_06_231446) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_releases_on_project_id"
+  end
+
+  create_table "sprint_graphs", force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "sprint_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_sprint_graphs_on_project_id"
+    t.index ["sprint_id"], name: "index_sprint_graphs_on_sprint_id"
   end
 
   create_table "sprints", force: :cascade do |t|
@@ -242,6 +251,8 @@ ActiveRecord::Schema.define(version: 2021_11_06_231446) do
   add_foreign_key "participants", "user_stories"
   add_foreign_key "participants", "users"
   add_foreign_key "releases", "projects"
+  add_foreign_key "sprint_graphs", "projects"
+  add_foreign_key "sprint_graphs", "sprints"
   add_foreign_key "sprints", "projects"
   add_foreign_key "sprints", "releases"
   add_foreign_key "task_requirements", "abilities"

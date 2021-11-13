@@ -26,7 +26,7 @@
         <%= form_tag(projects_path, method: :get, class: "ui form") do %>
            <div class="inline field">
               <%= text_field_tag :search, params[:search], placeholder: "Buscar projetos" %>
-              <%= image_submit_tag("search.png") %>
+              <%= image_submit_tag("search.png", id: "btn_seach") %>
            </div>    
         <% end %>
       </div>
@@ -34,11 +34,7 @@
       <div class="sub_title">Aqui você cria e gerencia seus projetos.</div>
       <hr>
        
-      
-
-
     <%= render 'projects/list_projects_admin' %> 
-
 
     <br />
       <%= paginate @projects %>  
