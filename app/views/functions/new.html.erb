@@ -1,10 +1,9 @@
 <p></p>
 
 <div class="ui container">
-  <div class="ui menu">
-    <a href="#" class="item active"><strong>Nova Função</strong></a>
-  </div>
-
+     <h1>Nova função</h1>
+  <hr>
+  <br />
   <%= render 'form' %>
     <br />
     <%= link_to 'Salvar', new_function_path({ controller: 'functions', action: 'create' }), class: 'item save ui blue button' %>

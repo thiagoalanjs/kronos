@@ -1,17 +1,27 @@
 <p></p>
 
 <div class="ui container">
-  <div class="ui menu">
-    <a href="#" class="item active"><strong>Usuário</strong></a>
-  </div>
+  <div class="info_accordion">
+        <%= form_tag(users_path, method: :get, class: "ui form") do %>
+           <div class="inline field">
+              <%= text_field_tag :search, params[:search], placeholder: "Buscar usuários" %>
+              <%= image_submit_tag("search.png", id: "btn_seach") %>
+           </div>    
+        <% end %>
+      </div>
+      <h1>Usuários</h1>
+      <div class="sub_title">Aqui você cria e gerencia acessos dos usuários no seu projeto.</div>
+      <hr>
+ <br />      
+<%= link_to "Novo", new_user_path, class: 'item ui blue button', id: "btn_new_user" %>
 
   <table class="ui celled table">
     <thead>
       <tr>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Grupo</th>
-                <th width="290">Ações</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Grupo</th>
+          <th width="250">Ações</th>
       </tr>
     </thead>
 
@@ -23,9 +33,6 @@
                     <td><%= user.group %></td>
           <td>
             <div class="ui buttons">
-              <%= link_to 'Exibir', user, class: 'ui blue button' %>
-            </div>
-            <div class="ui buttons">
                <%= link_to 'Editar', edit_user_path(user), class: 'ui blue button' %>
             </div>
             <div class="ui buttons">
@@ -36,5 +43,10 @@
       <% end %>
     </tbody>
   </table>
-<%= link_to "Novo", new_user_path, class: 'item ui blue button' %>
 </div>
+</div>
+<br />
+      <%= paginate @users %>  
+    <br />
+    <br />
+    <br />

@@ -16,8 +16,7 @@ gem 'kaminari-i18n', '~> 0.3.2'
 #gem 'actiontext'
 #gem 'trix'
 gem 'bootstrap'
-gem 'apexcharts'
-gem 'groupdate'
+gem 'morris.js-rails'
 
 group :production do
   gem 'pg'

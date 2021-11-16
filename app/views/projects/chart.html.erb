@@ -1,0 +1,90 @@
+
+<div class="ui container">
+ 
+
+<% if @project.user_stories.empty? %>
+<div class="box_center"> 
+   <%= image_tag("pie-chart.png") %>
+            <br />
+            <br />
+   <p class="access_deny">Esse projeto não possui nenhum gráfico no momento.</p>
+</div>
+<% else %>
+
+<h1> Veja os gráficos abaixo referentes ao projeto <%= current_project.name %> : </h1>
+
+<fieldset>
+
+  <b> Quantidade de User Stories:</b> <%= UserStory.where(project: current_project).count %> <br />
+  <b> Quantidade de Sprint:</b> <%= Sprint.where(project: current_project).count %> <br />
+  <b> Quantidade de tarefas do tipo "Sub-task":</b> <%= Task.joins("INNER JOIN user_stories ON user_stories.id = 
+                                                                tasks.user_story_id
+                                                                WHERE kind_id = 2 AND project_id = '#{ current_project_id }'").count %> <br />
+  <b> Quantidade de tarefas do tipo "Bug": </b> <%= Task.joins("INNER JOIN user_stories ON user_stories.id = 
+                                                                tasks.user_story_id
+                                                                WHERE kind_id = 1 AND project_id = '#{ current_project_id }'").count %> <br />
+
+
+</fieldset>
+
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+          var data = google.visualization.arrayToDataTable([
+            ['User stories', 'Quantidade x Status'],
+            ['Pendente',     <%= UserStory.where(status: 1, project: current_project).count %> ],
+            ['Em desenvolvimento', <%= UserStory.where(status: 2, project: current_project).count %> ],
+            ['Code Review',  <%= UserStory.where(status: 3, project: current_project).count %> ],
+            ['QA', <%= UserStory.where(status: 4, project: current_project).count %> ],
+            ['Concluída',    <%= UserStory.where(status: 5, project: current_project).count %> ]
+          ]);
+
+          var options = {
+            title: 'Status das Users Stories'
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart_user_stories'));
+
+          chart.draw(data, options);
+        }
+      </script>
+
+    
+      <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+          var data = google.visualization.arrayToDataTable([
+            ['User stories', 'Quantidade x Status'],
+            ['Sub-task',  <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 2 AND project_id = '#{ current_project_id }'").count %> ],
+            ['Bug', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 1 AND project_id = '#{ current_project_id }'").count %> ]
+          ]);
+
+          var options = {
+            title: 'Relação de Sub-task x Bug'
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart_task'));
+
+          chart.draw(data, options);
+        }
+      </script>
+   
+
+    <body>
+      <div id="piechart_user_stories" style="width: 900px; height: 500px;"></div>
+      <% if @project.tasks.empty? %>
+      <% else %>
+      <div class="box_center">
+         <div id="piechart_task" style="width: 900px; height: 500px;"></div>
+      </div>
+      <% end %>
+    </body>
+  </div>
+  <% end %>

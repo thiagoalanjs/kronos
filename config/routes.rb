@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :sprint_graphs
   # CRUMBOARD
   get '/task/take_task/:id', to: 'scrumboard#take_task', as: 'take_task'
   get '/task/get_out_task/:id', to: 'scrumboard#get_out_task', as: 'get_out_task'
@@ -22,7 +21,7 @@ Rails.application.routes.draw do
 
   # normal_user 
   get '/projects/list', to: 'projects#user_project', as: 'user_project'
-
+  get '/project/chart/:id', to: 'projects#chart', as: 'chart'
   #devise_for :users, :controllers  => {
   #           :registrations => 'users/registrations',
   #           :sessions => 'users/sessions'
@@ -35,6 +34,7 @@ Rails.application.routes.draw do
   resources :user_stories
   resources :sprints
   resources :releases
+
   
   resources :themes do
     get :autocomplete, :on => :collection

@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy, :select, :scrumboard]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :select, :scrumboard, :chart]
 
   def select
     session[:project] = @project.id
@@ -9,6 +9,9 @@ class ProjectsController < ApplicationController
   def deselect
     session[:project] = nil
     redirect_to projects_path
+  end
+
+  def chart
   end
 
   def scrumboard

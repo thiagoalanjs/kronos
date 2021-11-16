@@ -21,7 +21,6 @@
     <%= render 'projects/list_projects_default' %>
   <% else %>   
     
-     
       <div class="info_accordion">
         <%= form_tag(projects_path, method: :get, class: "ui form") do %>
            <div class="inline field">
@@ -30,6 +29,7 @@
            </div>    
         <% end %>
       </div>
+      
       <h1>Projetos</h1>
       <div class="sub_title">Aqui você cria e gerencia seus projetos.</div>
       <hr>

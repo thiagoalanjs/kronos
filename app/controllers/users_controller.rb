@@ -5,7 +5,13 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     authorize User
-    @users = User.all
+    if params[:search]
+      @users = User.where("name || email LIKE ?", '%'"#{params[:search]}"'%').page(params[:page]).order('id DESC').per(10)  
+    elsif current_user.admin? || current_user.coordenador?
+     @users = User.page(params[:page]).order('id DESC').per(8)
+    else
+      redirect_to user_path   
+    end
   end
 
   # GET /users/1
@@ -35,8 +41,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'Usuário criado com sucesso.' }
-        format.json { render :show, status: :created, location: @user }
+        format.html { redirect_to users_path, notice: 'Usuário criado com sucesso.' }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }

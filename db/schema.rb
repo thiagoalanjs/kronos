@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_12_031939) do
+ActiveRecord::Schema.define(version: 2021_11_14_001020) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(version: 2021_11_12_031939) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "graphs", force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "sprint_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_graphs_on_project_id"
+    t.index ["sprint_id"], name: "index_graphs_on_sprint_id"
   end
 
   create_table "kinds", force: :cascade do |t|
@@ -248,6 +257,8 @@ ActiveRecord::Schema.define(version: 2021_11_12_031939) do
   add_foreign_key "function_user_projects", "functions"
   add_foreign_key "function_user_projects", "projects"
   add_foreign_key "function_user_projects", "users"
+  add_foreign_key "graphs", "projects"
+  add_foreign_key "graphs", "sprints"
   add_foreign_key "participants", "user_stories"
   add_foreign_key "participants", "users"
   add_foreign_key "releases", "projects"
