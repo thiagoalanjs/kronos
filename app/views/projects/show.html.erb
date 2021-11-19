@@ -1,14 +1,10 @@
 <p></p>
 
 <div class="ui container">
-  <!-- NAVBAR -->
-  <div class="ui menu">
-    <a href="#" class="item active"><strong>Projetos</strong></a>
-    <%= link_to "Voltar", projects_path, class: 'item' %>
-    <%= link_to "Editar", edit_project_path(@project), class: 'item' %>
-    <%= link_to 'Excluír', @project, method: :delete, data: { confirm: "Deseja deletar o projeto '#{ @project.name }'? Se sim você vai perder todos os dados de backlog, sprint, release e usuários associados a ele." }, class: 'item' %>
-  </div>
-  <!-- /NAVBAR -->
+    <h2> Gestão do projeto </h2>
+   
+    <%= link_to 'Excluír', @project, method: :delete, data: { confirm: "Deseja deletar o projeto '#{ @project.name }'? Se sim você vai perder todos os dados de backlog, sprint, release e usuários associados a ele." }, class: 'item ui red button info_accordion' %>    
+    <%= link_to "Editar", edit_project_path(@project), class: 'item ui blue button info_accordion' %>
 
   <p></p>
 <div class="content">
@@ -68,6 +64,7 @@
     </button>
    </div>
     
+    <% if current_user.group == "admin" || current_user.group == "coordenador" %>
     <div class="card">
         <button class="ui bottom attached button" onclick="window.location.href='<%= function_user_projects_path %>'">   
             <%= image_tag("team.png") %>
@@ -76,6 +73,7 @@
             </div>
         </button>
     </div>
+    <% end %>
 
     <div class="card">
         <button class="ui bottom attached button" onclick="window.location.href='<%= scrumboard_path(@project.id) %>'">   
@@ -102,6 +100,15 @@
          <%= image_tag("barra-do-grafico.png") %>
          <div class="description">
             Acompanhe os relatórios e gráficos do andamento do projeto.
+         </div>
+    </button>
+  </div>
+
+    <div class="card">   
+      <button class="ui bottom attached button" onclick="window.location.href='<%= repository_path %>'"> 
+         <%= image_tag("cloud.png") %>
+         <div class="description">
+            Acesse o repositório do projeto
          </div>
     </button>
   </div>

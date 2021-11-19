@@ -1,6 +1,13 @@
-
 <div class="ui container">
- 
+ <div class="content">
+
+<h1> Veja os gráficos abaixo referentes ao projeto <%= current_project.name %> : </h1>
+
+<%= render 'charts/breadcrumb' %>
+<br />
+<br />
+<br />
+
 
 <% if @project.user_stories.empty? %>
 <div class="box_center"> 
@@ -10,8 +17,6 @@
    <p class="access_deny">Esse projeto não possui nenhum gráfico no momento.</p>
 </div>
 <% else %>
-
-<h1> Veja os gráficos abaixo referentes ao projeto <%= current_project.name %> : </h1>
 
 <fieldset>
 
@@ -27,8 +32,8 @@
 
 </fieldset>
 
-      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-      <script type="text/javascript">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
 
@@ -36,11 +41,11 @@
 
           var data = google.visualization.arrayToDataTable([
             ['User stories', 'Quantidade x Status'],
-            ['Pendente',     <%= UserStory.where(status: 1, project: current_project).count %> ],
-            ['Em desenvolvimento', <%= UserStory.where(status: 2, project: current_project).count %> ],
-            ['Code Review',  <%= UserStory.where(status: 3, project: current_project).count %> ],
+            ['Pendente', <%= UserStory.where(status: 1, project: current_project).count %> ],
+            ['Desenvolvimento', <%= UserStory.where(status: 2, project: current_project).count %> ],
+            ['Code Review', <%= UserStory.where(status: 3, project: current_project).count %> ],
             ['QA', <%= UserStory.where(status: 4, project: current_project).count %> ],
-            ['Concluída',    <%= UserStory.where(status: 5, project: current_project).count %> ]
+            ['Concluída', <%= UserStory.where(status: 5, project: current_project).count %> ]
           ]);
 
           var options = {
@@ -51,23 +56,24 @@
 
           chart.draw(data, options);
         }
-      </script>
-
-    
-      <script type="text/javascript">
+    </script>
+    <!--
+    END User Stories piechart
+    -->
+    <script type="text/javascript">
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
 
           var data = google.visualization.arrayToDataTable([
-            ['User stories', 'Quantidade x Status'],
+            ['User stories', 'Bugs x Status'],
             ['Sub-task',  <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 2 AND project_id = '#{ current_project_id }'").count %> ],
             ['Bug', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 1 AND project_id = '#{ current_project_id }'").count %> ]
           ]);
 
           var options = {
-            title: 'Relação de Sub-task x Bug'
+            title: 'Subtasks x Bugs'
           };
 
           var chart = new google.visualization.PieChart(document.getElementById('piechart_task'));
@@ -75,16 +81,128 @@
           chart.draw(data, options);
         }
       </script>
-   
+   <!--
+    END Status bug piechart
+    -->
+  
+       <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
 
-    <body>
-      <div id="piechart_user_stories" style="width: 900px; height: 500px;"></div>
-      <% if @project.tasks.empty? %>
-      <% else %>
-      <div class="box_center">
-         <div id="piechart_task" style="width: 900px; height: 500px;"></div>
-      </div>
-      <% end %>
-    </body>
+        function drawChart() {
+
+          var data = google.visualization.arrayToDataTable([
+            ['User stories', 'Bugs x Status'],
+            ['Pendente', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 1 AND tasks.status = 1 AND project_id = '#{ current_project_id }'").count %>  ],
+            ['Desenvolvimento', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 1 AND tasks.status = 2 AND project_id = '#{ current_project_id }'").count %>  ],
+            ['Code Review', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 1 AND tasks.status = 3 AND project_id = '#{ current_project_id }'").count %> ],
+            ['QA', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 1 AND tasks.status = 4 AND project_id = '#{ current_project_id }'").count %> ],
+            ['Concluída', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 1 AND tasks.status = 5 AND project_id = '#{ current_project_id }'").count %> ]
+          ]);
+
+          var options = {
+            title: 'Status das tasks de BUG'
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart_status_bug'));
+
+          chart.draw(data, options);
+        }
+      </script>
+    <!--
+    END Use Stories piechart
+    -->
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+          var data = google.visualization.arrayToDataTable([
+            ['User stories', 'Bugs x Status'],
+            ['Pendente', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 2 AND tasks.status = 1 AND project_id = '#{ current_project_id }'").count %>  ],
+            ['Desenvolvimento', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 2 AND tasks.status = 2 AND project_id = '#{ current_project_id }'").count %>  ],
+            ['Code Review', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 2 AND tasks.status = 3 AND project_id = '#{ current_project_id }'").count %> ],
+            ['QA', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 2 AND tasks.status = 4 AND project_id = '#{ current_project_id }'").count %> ],
+            ['Concluída', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 2 AND tasks.status = 5 AND project_id = '#{ current_project_id }'").count %> ]
+          ]);
+
+          var options = {
+            title: 'Status das Subtasks'
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart_status_subtask'));
+
+          chart.draw(data, options);
+        }
+      </script>
+
+
+   <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Opening Move', 'Percentage'],
+          [<%= UsersTask.joins("INNER JOIN users_tasks ON users_tasks.user_id = users.id") %>, 44],
+          ["Queen's pawn (d4)", 31],
+          ["Knight to King 3 (Nf3)", 12],
+          ["Queen's bishop pawn (c4)", 10],
+          ['Other', 3]
+        ]);
+
+        var options = {
+          title: 'Chess opening moves',
+          width: 900,
+          legend: { position: 'none' },
+          chart: { title: 'Chess opening moves',
+                   subtitle: 'popularity by percentage' },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Percentage'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        chart.draw(data, options);
+      };
+    </script>
+    
+<br />
+
+  <div class="ui two cards">
+    <div class="card">
+     <div id="piechart_user_stories" style="width: 500px; height: 300px;"></div>
+    </div>
+    <% if @project.tasks.empty? %>
+    <% else %>
+        <div class="card">    
+            <div id="piechart_task" style="width: 500px; height: 300px;"></div>
+        </div>
+
+         <div class="card">
+              <div id="piechart_status_subtask" style="width: 530px; height: 300px;"></div> 
+         </div>
+
+         <div class="card">
+              <div id="piechart_status_bug" style="width: 530px; height: 300px;"></div> 
+         </div>
+    <% end %>
+</div>
+
+ <div class="ui one cards">
+     <div class="card">
+          <div id="top_x_div" style="width: 900px; height: 500px;"></div>
+     </div>
+ </div>
+
+
+
+
+  </div>
   </div>
   <% end %>

@@ -4,8 +4,10 @@
      <h1>Editar usuário</h1>
     <hr>
     <br />
+    
   <%= render 'form' %>
     <br />
-   <%= link_to 'Salvar', '#', class: 'item save ui blue button' %>
-   <%= link_to 'Cancelar', user_stories_path, class: 'item ui red button' %>
+     <%= link_to 'Salvar', new_user_path, class: 'item save ui blue button info_accordion', id: "btn_save_user" %>
+     <%= link_to 'Cancelar', user_stories_path, class: 'item ui red button info_accordion' %>
+    
 </div>

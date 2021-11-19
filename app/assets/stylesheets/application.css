@@ -1,6 +1,8 @@
 /*
  *= require_tree .
  *= require_self
+ *= require actiontext 
+ *= require trix
  */
 /* layout samantic */
 

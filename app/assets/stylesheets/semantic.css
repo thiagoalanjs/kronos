@@ -8,6 +8,7 @@
  * http://opensource.org/licenses/MIT
  *
  */
+
 /*@import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin');*/
 
 @font-face {
@@ -794,6 +795,11 @@ input::selection {
   border-radius: 50%;
 }
 
+.image_profile_card{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
 
 
 /*******************************

@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require raphael
-//= require morris
+//= require trix
 //= require_tree .
+
+require("trix")
+require("@rails/actiontext")

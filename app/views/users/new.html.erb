@@ -4,8 +4,12 @@
     <h1>Novo usuário</h1>
     <hr>
     <br />
+    
+    <%= link_to 'Salvar', new_user_path, class: 'item save ui blue button info_accordion', id: "btn_save_user" %>
+    <%= link_to 'Cancelar', users_path, class: 'item ui red button info_accordion', id: "btn_cancel_user" %>
+    <br />
+    <br />
+
   <%= render 'form' %>
     <br />
-    <%= link_to 'Salvar', new_user_path({ controller: 'users', action: 'create' }), class: 'item save ui blue button', id: "btn_save_user" %>
-    <%= link_to 'Cancelar', users_path, class: 'item ui red button', id: "btn_cancel_user" %>
-</div>
+  </div>

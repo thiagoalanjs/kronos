@@ -100,9 +100,19 @@
             <div class="ui orange card">
               <div class="content">           
                 <div class="meta">
+
                   <%= link_to task_path(task.id) do %>
-                  <h3><span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span></h3>
-                  <% end %>
+                  <h3>
+                 
+                     <% if task.kind_id == 1 %>
+                       <%= image_tag('bug.png', title: "Task do tipo BUG") %>
+                     <% else %>
+                       <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
+                     <% end %>
+                 
+                     <span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span>
+                  </h3>
+                <% end %>
                 </div>
                 <div class="description">
                   <p>
@@ -164,7 +174,16 @@
               <div class="content">
                 <div class="meta">
                 <%= link_to task_path(task.id) do %>
-                  <h3><span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span></h3>
+                  <h3>
+                 
+                     <% if task.kind_id == 1 %>
+                       <%= image_tag('bug.png', title: "Task do tipo BUG") %>
+                     <% else %>
+                       <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
+                     <% end %>
+                 
+                     <span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span>
+                  </h3>
                 <% end %>
                 </div>
                  <div class="description">
@@ -218,8 +237,14 @@
               <div class="extra content">
                 <div class="right floated author">
                   <% task.users.each do |u| %>
-                    <%= image_tag 'avatar.svg', class: 'ui avatar image' %> <%= u.name %>
-                  <% end %>
+
+        <% if u.avatar.attached? %>
+            <%= image_tag(u.avatar_thumbnail, :class=> "image_profile_card") %>
+           <% else %>
+            <%= image_tag("profile-user.png", :class=> "image_profile_card") %>
+        <% end %>
+
+          <% end %>
                 </div>
               </div>
             </div>
@@ -236,9 +261,18 @@
             <div class="ui teal card">
               <div class="content">
                 <div class="meta">
-                   <%= link_to task_path(task.id) do %>
-                     <h3><span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span></h3>
-                    <% end %>  
+                    <%= link_to task_path(task.id) do %>
+                  <h3>
+                 
+                     <% if task.kind_id == 1 %>
+                       <%= image_tag('bug.png', title: "Task do tipo BUG") %>
+                     <% else %>
+                       <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
+                     <% end %>
+                 
+                     <span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span>
+                  </h3>
+                <% end %>  
                  </div>
 
                 <div class="description">
@@ -285,7 +319,11 @@
               <div class="extra content">
                 <div class="right floated author">
                   <% task.users.each do |u| %>
-                    <%= image_tag 'avatar.svg', class: 'ui avatar' %> <%= u.name %>
+                    <% if u.avatar.attached? %>
+                          <%= image_tag(u.avatar_thumbnail, :class=> "image_profile_card") %>
+                    <% else %>
+                        <%= image_tag("profile-user.png", :class=> "image_profile") %>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
@@ -306,9 +344,18 @@
             <div class="ui blue card">
               <div class="content">
                 <div class="meta">
-                   <%= link_to task_path(task.id) do %>
-                     <h3><span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span></h3>
-                    <% end %>   
+                    <%= link_to task_path(task.id) do %>
+                  <h3>
+                 
+                     <% if task.kind_id == 1 %>
+                       <%= image_tag('bug.png', title: "Task do tipo BUG") %>
+                     <% else %>
+                       <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
+                     <% end %>
+                 
+                     <span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span>
+                  </h3>
+                <% end %> 
                 </div>
                 <div class="description">
           
@@ -339,7 +386,11 @@
               <div class="extra content">
                 <div class="right floated author">
                   <% task.users.each do |u| %>
-                    <%= image_tag 'avatar.svg', class: 'ui avatar image' %> <%= u.name %>
+                   <% if u.avatar.attached? %>
+                          <%= image_tag(u.avatar_thumbnail, :class=> "image_profile_card") %>
+                    <% else %>
+                        <%= image_tag("profile-user.png", :class=> "image_profile_card") %>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
@@ -359,9 +410,18 @@
               <div class="content">
                 
                 <div class="meta">
-                   <%= link_to task_path(task.id) do %>
-                     <h3><span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span></h3>
-                    <% end %>   
+                    <%= link_to task_path(task.id) do %>
+                  <h3>
+                 
+                     <% if task.kind_id == 1 %>
+                       <%= image_tag('bug.png', title: "Task do tipo BUG") %>
+                     <% else %>
+                       <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
+                     <% end %>
+                 
+                     <span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span>
+                  </h3>
+                <% end %> 
                 </div>
                 <div class="description">
                   <div class="ui mini icon buttons">
@@ -391,7 +451,11 @@
               <div class="extra content">
                 <div class="right floated author">
                   <% task.users.each do |u| %>
-                    <%= image_tag 'avatar.svg', class: 'ui avatar image' %> <%= u.name %>
+                    <% if u.avatar.attached? %>
+                          <%= image_tag(u.avatar_thumbnail, :class=> "image_profile_card") %>
+                    <% else %>
+                        <%= image_tag("profile-user.png", :class=> "image_profile_card") %>
+                    <% end %>
                   <% end %>
                 </div>
               </div>

@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_14_001020) do
+ActiveRecord::Schema.define(version: 2021_11_19_033051) do
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -58,19 +68,19 @@ ActiveRecord::Schema.define(version: 2021_11_14_001020) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "graphs", force: :cascade do |t|
-    t.integer "project_id"
-    t.integer "sprint_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["project_id"], name: "index_graphs_on_project_id"
-    t.index ["sprint_id"], name: "index_graphs_on_sprint_id"
-  end
-
   create_table "kinds", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "mercury_images", force: :cascade do |t|
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -125,13 +135,13 @@ ActiveRecord::Schema.define(version: 2021_11_14_001020) do
     t.index ["project_id"], name: "index_releases_on_project_id"
   end
 
-  create_table "sprint_graphs", force: :cascade do |t|
+  create_table "repositories", force: :cascade do |t|
+    t.string "url"
+    t.text "rules"
     t.integer "project_id"
-    t.integer "sprint_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["project_id"], name: "index_sprint_graphs_on_project_id"
-    t.index ["sprint_id"], name: "index_sprint_graphs_on_sprint_id"
+    t.index ["project_id"], name: "index_repositories_on_project_id"
   end
 
   create_table "sprints", force: :cascade do |t|
@@ -257,13 +267,10 @@ ActiveRecord::Schema.define(version: 2021_11_14_001020) do
   add_foreign_key "function_user_projects", "functions"
   add_foreign_key "function_user_projects", "projects"
   add_foreign_key "function_user_projects", "users"
-  add_foreign_key "graphs", "projects"
-  add_foreign_key "graphs", "sprints"
   add_foreign_key "participants", "user_stories"
   add_foreign_key "participants", "users"
   add_foreign_key "releases", "projects"
-  add_foreign_key "sprint_graphs", "projects"
-  add_foreign_key "sprint_graphs", "sprints"
+  add_foreign_key "repositories", "projects"
   add_foreign_key "sprints", "projects"
   add_foreign_key "sprints", "releases"
   add_foreign_key "task_requirements", "abilities"

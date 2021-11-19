@@ -1,6 +1,7 @@
 class UserStory < ActiveRecord::Base
-  # enum status: {pendent: 1, development: 2, test: 3, completed: 4}
   attr_accessor :theme_search
+
+  has_rich_text :description
 
   belongs_to :theme
   belongs_to :sprint

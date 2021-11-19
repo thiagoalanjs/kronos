@@ -6,11 +6,6 @@ class ProjectsController < ApplicationController
     redirect_to @project
   end
 
-  def deselect
-    session[:project] = nil
-    redirect_to projects_path
-  end
-
   def chart
   end
 
