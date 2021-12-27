@@ -1,28 +1,31 @@
-<%= form_for(@project, html: {class: 'ui form'}) do |f| %>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">   
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+<%= form_for(@project, html: {class: 'form'}) do |f| %>
     <% if @project.errors.any? %>
-      <div class="ui container">
-        <div class="ui negative message">
-           <div class="close icon">x</div>
+        <div class="alert_danger">
+           <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
               <div class="header">
             <% @project.errors.full_messages.each do |message| %>
                 <p> - <%= message %> </p>
             <% end %>
           </div>
-         </div>
-       <p></p>
+          </div>
     <% end%>
 
-  <div class="inline field">
+  <div>
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
 
-  <div class="inline field">
+  <div>
     <%= f.label :initial %>
     <%= f.text_field :initial, maxlength: 6 %>
   </div>
 
-  <div class="inline field">
+  <div>
     <%= f.label :description %>
     <%= f.rich_text_area :description %>
   </div>
@@ -32,32 +35,51 @@
     <div class="ui calendar">
       <div class="ui input left icon">
         
-        <%= f.text_field :start_date, placeholder: 'Data inicial' %>
+        <%= f.text_field :start_date, placeholder: 'Data inicial', id: 'startDatepicker' %>
       </div>
     </div>
     <p style="margin-right: 1em; margin-left: 1em">à</p>
-    <div class="ui calendar">
-      <div class="ui input left icon">
     
-        <%= f.text_field :end_date, placeholder: 'Data final' %>
-      </div>
-    </div>
+        <%= f.text_field :end_date, placeholder: 'Data final', id: 'endDatepicker' %>
+    
   </div>
 
+    <%= link_to 'Salvar', new_project_path({controller: 'projects', action: 'create' }), class: 'save blue_button' %>
+    <%= link_to 'Cancelar', projects_path, class: 'red_button' %>
 
 <% end %>
 
 <script type="text/javascript">
   $('.save').click(function(){
     $('form').submit(); 
-
   });
 
-  $('.ui.search.dropdown').dropdown({ allowLabels:true });
-
-  $('.ui.calendar').calendar({
-    type: 'date',
-    minDate:new Date() 
-  });
-  
+  $( function() {
+      $("#startDatepicker").datepicker({
+       dateFormat: 'dd/mm/yy',
+       dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+       dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+       dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+       monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+       nextText: 'Próximo',
+       prevText: 'Anterior',
+       type: 'date',
+       minDate:new Date()
+     });
+     
+     $( "#endDatepicker" ).datepicker({
+       buttonImageOnly: true,
+       dateFormat: 'dd/mm/yy',
+       dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+       dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+       dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+       monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+       nextText: 'Próximo',
+       prevText: 'Anterior',
+       type: 'date',
+       minDate:new Date()
+     });
+  } );
 </script>

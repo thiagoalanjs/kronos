@@ -1,9 +1,8 @@
-<%= form_for(@function, html: {class: 'ui form'}) do |f| %>
+<%= form_for(@function, html: {class: 'form'}) do |f| %>
 
    <% if @function.errors.any? %>
-      <div class="ui container">
-        <div class="ui negative message">
-           <div class="close icon">x</div>
+        <div class="alert_danger">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>     
               <div class="header">
             <% @function.errors.full_messages.each do |message| %>
                 <p> - <%= message %> </p>
@@ -13,15 +12,21 @@
        <p></p>
     <% end%>
 
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+    <div>
+      <b><%= f.label :name %></b>
+      <br />
+      <%= f.text_field :name %>    
     </div>
 
-    <div class="field">
-      <%= f.label :description %>
-      <%= f.text_area :description %>
+    <div>
+     <b><%= f.label :description %></b>
+     <br />
+     <%= f.text_area :description %>
     </div>
+
+
+    <%= link_to 'Salvar', new_function_path({ controller: 'functions', action: 'create' }), class: 'item save blue_button' %>
+    <%= link_to 'Cancelar', functions_path, class: 'red_button' %>
 
   <% end %>
 
@@ -29,6 +34,4 @@
   $('.save').click(function(){
     $('form').submit();
   });
-
-  $('.ui.search.dropdown').dropdown({ allowLabels:true});
 </script> 

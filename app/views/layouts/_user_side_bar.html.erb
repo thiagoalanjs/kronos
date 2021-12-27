@@ -1,20 +1,28 @@
 
 
-  <div class="sidenav">
-    <%= link_to projects_path, class: "#{is_current_page?(projects_path)} item" do %>
-    Projetos
-    <% end %>
+ <div class="sidebar">
 
-    <%= link_to projects_path do %>
-     Backlog
-    <% end %>
+ 
 
-   <%= link_to projects_path do %>
-     Repositório
-   <% end %>
+ <ul>
+    <li>
+      <%= link_to projects_path, class: "#{is_current_page?(projects_path)} item" do %>
+      Projetos
+      <% end %>
+    </li>
+      <%= link_to projects_path do %>
+       Backlog
+      <% end %>
+    <li>
+     <%= link_to projects_path do %>
+       Repositório
+     <% end %>
+    </li>
+     <%= link_to projects_path do %>
+       Equipe
+     <% end %>
+    </li>
+  
+</ul>
 
-   <%= link_to projects_path do %>
-     Equipe
-   <% end %>
 </div>
-

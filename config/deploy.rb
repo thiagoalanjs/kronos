@@ -1,9 +1,9 @@
 lock "3.8.1"
 
-set :application, "sgp"
-set :repo_url, "https://github.com/jdruk/sgp.git"
+set :application, "kronos"
+set :repo_url, "https://github.com/thiagoalanjs/kronos.git"
 
-set :deploy_to, "/home/deploy/sgp"
+set :deploy_to, "/home/deploy/kronos"
 
 append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"

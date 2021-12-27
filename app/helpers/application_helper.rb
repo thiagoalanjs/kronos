@@ -12,10 +12,10 @@ module ApplicationHelper
   end
 
   def alert_for(flash_type){
-       success: 'ui success message',
-       alert: 'ui negative message',
-       notice: 'ui negative message',  
-       warning: 'ui negative message'
+       success: 'alert_success',
+       alert: 'alert_danger',
+       notice: 'alert_notice',  
+       warning: 'alert_danger'
       }[flash_type.to_sym] || flash_type.to_s
   end
  

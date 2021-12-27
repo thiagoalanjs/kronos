@@ -2,9 +2,9 @@
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
    <% flash.each do |message_type, message|%>
-            <div class="ui container">
+            <div class="container">
               <%= content_tag :div, message, class: [:alert, alert_for(message_type)], role: 'alert' do %>
-                 <div class="close icon">x</div>
+                  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                      <div class="header">
                      <p><%= message %></p>
                      </div>

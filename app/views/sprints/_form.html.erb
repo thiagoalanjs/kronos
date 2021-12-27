@@ -1,8 +1,8 @@
 <%= form_for(@sprint, html: {class: 'ui form'}) do |f| %>
 
   <% if @sprint.errors.any? %>
-      <div class="ui container">
-        <div class="ui negative message">
+      <div class="container">
+        <div class="alert_danger">
            <div class="close icon">x</div>
               <div class="header">
             <% @sprint.errors.full_messages.each do |message| %>

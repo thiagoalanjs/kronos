@@ -7,8 +7,8 @@
   <h4 class="box_center">Alterar Senha</h4>
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'ui form' }) do |f| %>
       <% if resource.errors.any? %>
-          <div class="ui container">
-            <div class="ui negative message">
+          <div class="container">
+            <div class="alert_danger">
                <div class="close icon">x</div>
                   <div class="header">
                    <p> <% resource.errors.full_messages.each do |message| %>

@@ -1,19 +1,23 @@
-<!-- side left menu -->
-<div class="sidenav">
-  
+ <div class="sidebar">
 
-  <%= link_to projects_path, class: "#{is_current_page?(projects_path)} item" do %>
+  <nav>
+    <ul>
+      <li>
+        <%= link_to projects_path, class: "#{is_current_page?(projects_path)} item" do %>
+              Projetos
+        <% end %>
+      </li>
+      <li>
+        <%= link_to users_path, class: "#{is_current_page?(users_path)} item" do %>
+              Usuários
+        <% end %>
+      </li>
+      <li>
+        <%= link_to settings_path, class: "#{is_current_page?(settings_path)} item" do %>
+              Configurações 
+        <% end %>
+      </li>
+    </ul>
+  </nav>
 
-  Projetos
-  <% end %>
-
-  <%= link_to users_path, class: "#{is_current_page?(users_path)} item" do %>
-
-  Usuários
-  <% end %>
-
-  <%= link_to settings_path, class: "#{is_current_page?(settings_path)} item" do %>
-
-  Configurações
-  <% end %>
 </div>

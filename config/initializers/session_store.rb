@@ -1,3 +1,3 @@
 # Be sure to restart your server when you modify this file.
 
-Rails.application.config.session_store :cookie_store, key: '_sgp_session'
+Rails.application.config.session_store :cookie_store, key: '_kronos_session'

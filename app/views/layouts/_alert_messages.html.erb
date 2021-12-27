@@ -1,41 +1,36 @@
 <!-- alert notification -->
 <% if flash[:notice] %>
 <p></p>
-<div class="ui container">
-  <div class="ui positive message">
-  <div class="close icon">x</div>
+<div class="container">
+  <div class="alert_success">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>     
     <p><%= flash[:notice] %></p>
     <p></p>
   </div>
-</div>
+</div>  
 <p></p>
 <% end %>
 
 
 <!-- alert success -->
+
 <% if flash[:success] %>
 <p></p>
-<div class="ui container">
-  <div class="ui positive message">
-    <div class="close icon">X</div>
-    <div class="header">
-      Sucesso!
-    </div>
-    <p><%= flash[:success] %></p>
-  </div>
-</div>
-<p></p>
+<div class="container">
+   <div class="alert_success">
+     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+     <p><%= flash[:success] %></p>
+   </div>
+ </div>
+ <p></p>  
 <% end %>
 
 <!-- alert success -->
 <% if flash[:alert] %>
 <p></p>
-<div class="ui container">
-  <div class="ui negative message">
-    <div class="close icon">x</div>
-    <div class="header">
-      Ops!
-    </div>
+<div class="container">
+  <div class="alert_danger">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
     <p><%= flash[:alert] %></p>
   </div>
 </div>

@@ -1,8 +1,9 @@
 <p></p>
 
-<div class="ui container">
+<div class="container">
   <div class="ui menu">
-    <a href="#" class="item active"><strong>Tema</strong></a>
+    <br />
+    <h2>Tema</h2>
   </div>
   <%= render 'themes/breadcrumb' %>
 <br />
@@ -14,7 +15,7 @@
       <br />
       <br />
       <p class="access_deny">Nenhum tema criado. Clique em "Novo" para iniciar um tema.</p>
-      <%= link_to "Novo", new_theme_path, class: 'item ui blue button' %>
+      <%= link_to "Novo", new_theme_path, class: 'item green_button' %>
     </div>
   </div>
 <% else %>

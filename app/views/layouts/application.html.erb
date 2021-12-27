@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="utf-8" />
-  <title>Kronos - Agile Management</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <%= favicon_link_tag asset_path("favicon.ico") %>
-  </head>
+  <head>
+    <meta charset="utf-8" />
+    <title>Kronos - Agile Projects</title>
+    <%= stylesheet_link_tag 'layout', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag asset_path("favicon.ico") %>
+    <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">	
+	  <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+   
+   </head>
 <body>
 
 <% if !user_signed_in? %>
@@ -41,6 +46,5 @@ $(document).ready(function() {
         .transition('fade');
     });
 
-    //$('.calendar').calendar();
-  });
+  }); 
 </script>

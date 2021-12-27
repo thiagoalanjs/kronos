@@ -55,8 +55,7 @@ class UsersController < ApplicationController
     authorize User
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to user_path, notice: 'Usuário atualizado com sucesso.' }
-        format.json { render :show, status: :ok, location: @user }
+        format.html { redirect_to users_path, notice: 'Usuário atualizado com sucesso.' }
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }

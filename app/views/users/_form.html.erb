@@ -1,40 +1,42 @@
-<%= form_for(@user, html: {class: 'ui form'}) do |f| %>
 
 
-<% if @user.errors.any? %>
-      <div class="ui container">
-        <div class="ui negative message">
-           <div class="close icon">x</div>
-              <div class="header">
-            <% @user.errors.full_messages.each do |message| %>
-                <p> - <%= message %> </p>
-            <% end %>
-          </div>
-         </div>
-       <p></p>
-<% end%>
 
-    <div class="field">
-      <%= f.label :name %>
+<%= form_for(@user, html: {class: 'form'}) do |f| %>
+
+  <% if @user.errors.any? %>
+          <div class="alert_danger">
+             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              <% @user.errors.full_messages.each do |message| %>
+                  <p> - <%= message %> </p>
+              <% end %>
+            </div>
+         <p></p>
+  <% end%>
+
+    <div>
+      <b><%= f.label :name %></b>
       <%= f.text_field :name %>
     </div>
 
-    <div class="field">
-      <%= f.label :email %>
+    <div>
+      <b><%= f.label :email %></b>
       <%= f.text_field :email %>
     </div>
 
-    <div class="field">
-      <%= f.label :group %>
+    <div>
+      <b><%= f.label :group %></b>
       <%= f.select :group, options_for_select([:admin,:coordenador,:analista]), {}, { :class => 'form-control' } %> 
     </div>
 
-  <% end %>
+ <br />
+    <%= link_to 'Salvar', new_user_path, class: 'item save blue_button', id: "btn_save_user" %>
+    <%= link_to 'Cancelar', users_path, class: 'item red red_button', id: "btn_cancel_user" %>
+<% end %>
+
 
 <script type="text/javascript">
   $('.save').click(function(){
     $('form').submit();
   });
 
-  $('.ui.search.dropdown').dropdown({ allowLabels:true});
 </script>

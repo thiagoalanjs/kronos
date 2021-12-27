@@ -1,49 +1,46 @@
-<p></p>
-
-<div class="ui container">
+<br />
+<div class="container">
     <h2> Gestão do projeto </h2>
    
-    <%= link_to 'Excluír', @project, method: :delete, data: { confirm: "Deseja deletar o projeto '#{ @project.name }'? Se sim você vai perder todos os dados de backlog, sprint, release e usuários associados a ele." }, class: 'item ui red button info_accordion' %>    
-    <%= link_to "Editar", edit_project_path(@project), class: 'item ui blue button info_accordion' %>
-
-  <p></p>
-<div class="content">
+  <div class="align_right">
+     <%= link_to "Editar", edit_project_path(@project), class: 'item blue_button' %>
+     <%= link_to 'Excluír', @project, method: :delete, data: { confirm: "Deseja deletar o projeto '#{ @project.name }'? Se sim você vai perder todos os dados de backlog, sprint, release e usuários associados a ele." }, class: 'item red_button' %>    
+  
+  </div>
+  <br />
   <p class="info"><%= image_tag("project_icon.png") %> <strong>Projeto:</strong> <%= @project.name %></p>
   <p class="info"><%= image_tag("initial.png") %> <strong>Sigla:</strong> <%= @project.initial %></p>
   <p class="info"><%= image_tag("width.png") %><strong> Tamanho:</strong> <%= @project.size %> Story points</p>
   <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Data de inicio:</strong> <%= l @project.start_date %></p>
   <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Data final:</strong> <%= l @project.end_date %></p>
+
   <p class="info"><%= image_tag("product-description.png") %> <strong>Descrição:</strong></p>
 
   <p>
     <%= @project.description %>
   </p>
-  </div>
-  </div>
-  <div class="ui teal progress" id="project-progress" data-percent="<%= @project.progress %>">
-    <div class="bar"></div>
-    <div class="label">
-      Progresso <%= @project.progress %>%
-    </div>
+
   </div>
 
-    
-  <p></p>
-
-  <div class="ui four cards">
-   <div class="card">
-        <button class="ui bottom attached button" onclick="window.location.href='<%= user_stories_path %>'">
+</div>
+<br />
+     <div class="container">
+        <div class="ui teal progress" id="project-progress" data-percent="<%= @project.progress %>">
+        <div class="bar"></div>
+        <div class="label">
+          <p>Progresso <%= @project.progress %>%</p>
+       </div>
+     </div>
+     <br />
+        <button class="card" onclick="window.location.href='<%= user_stories_path %>'">
          <%= image_tag("backlog.png") %>
          <div class="description">
-           Aqui você administra o backlog do projeto.
-           <p></p>
-           <p></p>
+           Aqui você administra o backlog das tarefas do projeto <%= @project.name %>.
+           
          </div>
       </button>
-    </div>
 
-    <div class="card">
-     <button class="ui bottom attached button" onclick="window.location.href='<%= sprints_path %>'">
+     <button class="card" onclick="window.location.href='<%= sprints_path %>'">
          <%= image_tag("scrum.png") %>
          <div class="description">
           Gerencie aqui frequência na entrega de valor ao negócio.
@@ -51,10 +48,8 @@
           <p></p>
          </div>
       </button>
-    </div>
 
-   <div class="card">
-    <button class="ui bottom attached button" onclick="window.location.href='<%= releases_path %>'">   
+    <button class="card" onclick="window.location.href='<%= releases_path %>'">   
         <%= image_tag("product-release.png") %>
          <div class="description">
              Gerencie aqui as fases de entrega do software.
@@ -62,62 +57,45 @@
          <p></p>
        </div>
     </button>
-   </div>
     
     <% if current_user.group == "admin" || current_user.group == "coordenador" %>
-    <div class="card">
-        <button class="ui bottom attached button" onclick="window.location.href='<%= function_user_projects_path %>'">   
+        <button class="card" onclick="window.location.href='<%= function_user_projects_path %>'">   
             <%= image_tag("team.png") %>
             <div class="description">
               Aqui você administra a equipe responsável pelo desenvolvimento do projeto.
             </div>
         </button>
-    </div>
     <% end %>
 
-    <div class="card">
-        <button class="ui bottom attached button" onclick="window.location.href='<%= scrumboard_path(@project.id) %>'">   
+    <button class="card" onclick="window.location.href='<%= scrumboard_path(@project.id) %>'">   
             <%= image_tag("kanban_icon.png") %>
             <div class="description">
-             Acesse o board do projeto <%= @project.name %>.
-            </div>
+             Acesse o board referente as sprints do projeto <%= @project.name %>.
+             </div>
             <p></p>
             <p></p>
-        </button>
-    </div>
+    </button>
 
-    <div class="card">   
-      <button class="ui bottom attached button" onclick="window.location.href='<%= themes_path %>'"> 
+      <button class="card" onclick="window.location.href='<%= themes_path %>'"> 
          <%= image_tag("tema.png") %>
          <div class="description">
             Configure aqui os temas das user stories dos projetos
          </div>
     </button>
-  </div>
 
-  <div class="card">   
-      <button class="ui bottom attached button" onclick="window.location.href='<%= chart_url %>'"> 
+      <button class="card" onclick="window.location.href='<%= chart_url %>'"> 
          <%= image_tag("barra-do-grafico.png") %>
          <div class="description">
             Acompanhe os relatórios e gráficos do andamento do projeto.
          </div>
     </button>
-  </div>
 
-    <div class="card">   
-      <button class="ui bottom attached button" onclick="window.location.href='<%= repository_path %>'"> 
-         <%= image_tag("cloud.png") %>
-         <div class="description">
-            Acesse o repositório do projeto
-         </div>
-    </button>
-  </div>
-
+    
+    <br />
+     <br />
+      <br />
 </div>
-
-<p></p>
-<p></p>
-
+</div>
 <script type="text/javascript">
   $('.progress').progress();
 </script>

@@ -1,9 +1,5 @@
-
-
-<p></p>
-
-
-<div class="ui container">
+<br />
+<div class="container">
   <% if current_user.group != 'admin' && current_user.group != 'coordenador' %>
     <h1>Projetos <%= image_tag("gerenciamento-de-projetos.png") %></h1>
     <hr>
@@ -19,21 +15,20 @@
     </div>
 <% end %>
     <%= render 'projects/list_projects_default' %>
-  <% else %>   
-    
-      <div class="info_accordion">
-        <%= form_tag(projects_path, method: :get, class: "ui form") do %>
-           <div class="inline field">
-              <%= text_field_tag :search, params[:search], placeholder: "Buscar projetos" %>
-              <%= image_submit_tag("search.png", id: "btn_seach") %>
-           </div>    
+  <% else %> 
+  
+      <div class="align_right">
+        <%= form_tag(projects_path, method: :get) do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Buscar projetos", class: "search_input" %>
+              <%= image_submit_tag("search.png", class:'search_btn', id: "btn_seach") %>
         <% end %>
       </div>
+     
       
       <h1>Projetos</h1>
-      <div class="sub_title">Aqui você cria e gerencia seus projetos.</div>
+        <div class="sub_title">Aqui você cria e gerencia seus projetos.</div>
       <hr>
-       
+  
     <%= render 'projects/list_projects_admin' %> 
 
     <br />
@@ -42,5 +37,4 @@
     <br />
     <br />
   <% end %>
-
-</div>
+</div> 

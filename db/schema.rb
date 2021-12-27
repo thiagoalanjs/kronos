@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_19_033051) do
+ActiveRecord::Schema.define(version: 2021_11_20_040249) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -68,19 +68,16 @@ ActiveRecord::Schema.define(version: 2021_11_19_033051) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "kinds", force: :cascade do |t|
-    t.string "name"
+  create_table "images", force: :cascade do |t|
+    t.text "image_data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "mercury_images", force: :cascade do |t|
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "kinds", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -135,15 +132,6 @@ ActiveRecord::Schema.define(version: 2021_11_19_033051) do
     t.index ["project_id"], name: "index_releases_on_project_id"
   end
 
-  create_table "repositories", force: :cascade do |t|
-    t.string "url"
-    t.text "rules"
-    t.integer "project_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["project_id"], name: "index_repositories_on_project_id"
-  end
-
   create_table "sprints", force: :cascade do |t|
     t.datetime "start_date"
     t.datetime "end_date"
@@ -165,10 +153,8 @@ ActiveRecord::Schema.define(version: 2021_11_19_033051) do
   create_table "task_requirements", force: :cascade do |t|
     t.integer "level"
     t.integer "task_id"
-    t.integer "ability_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ability_id"], name: "index_task_requirements_on_ability_id"
     t.index ["task_id"], name: "index_task_requirements_on_task_id"
   end
 
@@ -270,10 +256,8 @@ ActiveRecord::Schema.define(version: 2021_11_19_033051) do
   add_foreign_key "participants", "user_stories"
   add_foreign_key "participants", "users"
   add_foreign_key "releases", "projects"
-  add_foreign_key "repositories", "projects"
   add_foreign_key "sprints", "projects"
   add_foreign_key "sprints", "releases"
-  add_foreign_key "task_requirements", "abilities"
   add_foreign_key "task_requirements", "tasks"
   add_foreign_key "tasks", "kinds"
   add_foreign_key "tasks", "priorities"

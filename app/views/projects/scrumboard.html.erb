@@ -1,4 +1,5 @@
-  
+<div class="container">  
+<br />
 <h1>Board <%= image_tag("scrumboard-icon.png")%></h1>
 <hr>
  <br />
@@ -18,7 +19,7 @@
             <br />
             <br />
             <p class="access_deny">Nenhuma sprint ativa no momento.</p>
-            <%= link_to "Criar sprint", new_sprint_path, class: "ui blue button"%>
+            <%= link_to "Criar sprint", new_sprint_path, class: "ui green_button"%>
         </div>
 <% end %>
 
@@ -29,8 +30,8 @@
   <% @project.sprints.each_with_index do |sprint, i| %>
     <a class="item <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>">Sprint: <%= sprint.name %></a>
     &nbsp
-    <%= link_to "Nova User Story", new_user_story_path, class: "ui red button" %> 
-    <%= link_to "Nova task", new_task_path, class: "ui teal button" %>
+    <%= link_to "Nova User Story", new_user_story_path, class: "ui red_button" %> 
+    <%= link_to "Nova task", new_task_path, class: "ui blue_button" %>
   <% end %>
 </div>
 
@@ -367,6 +368,10 @@
                     <%= link_to get_out_task_path(task.id), class: 'ui mini orange button' do %>
                       Sair
                     <% end %>
+                    
+                    <%= link_to take_task_path(task.id), class: 'ui mini red button' do %>
+                          Desenvolvimento
+                        <% end %>
 
                     <%= link_to send_to_code_review_path(task.id), class: 'ui mini teal button' do %>
                       Code Review
@@ -467,6 +472,7 @@
       </tr>
     </tbody>
   </table>
+</div>
 </div>
 <% end %>
 

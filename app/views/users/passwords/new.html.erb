@@ -1,52 +1,49 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <%= stylesheet_link_tag "login.css" %>SS
+        <title>Kronos - Agile Management</title>
+      
+    </head>
+    <body>
+      <header>
+            <%= image_tag("novo_logo.png", id: "logo") %>
+      </header>
+      
+        <%= image_tag("Team work-amico.png", id: "image-left") %>
+        <%= image_tag("Coworking-rafiki.png", id: "image-right") %>
+        <div id="box-center">
+		<br />
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>	
+       <% if resource.errors.any? %>
+               <div class="alert_danger">
+                   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              <% resource.errors.full_messages.each do |message| %>
+               <%= message %>
+                <% end %>
+              </div>
+    <% end %>
+		
+            <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
+            <%= link_to "Voltar para a tela de Login", user_session_path %>
 
-<div class="img_background">
-  <div class="logo form">
-      <%= image_tag("logo.png") %>
-  </div>
-<br />
-
-<div class="ui centered grid container ">
-
-  <div class="six wide column form_box">
-    <h4 class="box_center">Digite seu email para recuperação da senha</h4>
-      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'ui form' }) do |f| %>
-     
-     <% if resource.errors.any? %>
-      <div class="ui container">
-        <div class="ui negative message">
-           <div class="close icon">x</div>
-              <div class="header">
-           <p> <% resource.errors.full_messages.each do |message| %>
-                <%= message %>
-            <% end %></p>
-          </div>
-         </div>
-       <p></p>
-    <% end%>
-
-        <div class="field">
-          <%= f.email_field :email, autofocus: true %>
+            <%= f.submit "Recuperar de senha", id: "button" %>
         </div>
+        <footer>
+            <ul>
+              <li>
+                  <a href="../../about.html" target="_blank">Conheça o Kronos</a>
+              </li>
+              <li>
+                  <a href="#">Termos de uso</a>
+              </li>
+              <li>
+                  <a href="#">FAQ</a>
+              </li>
+            </ul>
+        </footer>
+    </body>
+</html>
 
-        <div class="field">
-          <%= f.submit "  Clique aqui para enviar o email de recuperação de senha ", class: "ui teal button", id: "btn_reset_pass" %>
-        </div>
-      <% end %>
-   <br />
- <br />
-  <%= render "users/shared/links" %>
-  
-  <br />
-
-  </div>
-  
- </div>
- <br />
-    <br />
-      <br />
-         <br />
-           <br />
-</div>
-
-
-
+<% end %>

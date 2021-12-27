@@ -42,8 +42,8 @@ class FunctionsController < ApplicationController
   def update
     respond_to do |format|
       if @function.update(function_params)
-        format.html { redirect_to @function, notice: 'Função atualizada com sucesso.' }
-        format.json { render :show, status: :ok, location: @function }
+        format.html { redirect_to functions_path, notice: 'Função atualizada com sucesso.' }
+        format.json { redirect_to @function, status: :ok, location: @function }
       else
         format.html { render :edit }
         format.json { render json: @function.errors, status: :unprocessable_entity }

@@ -2,7 +2,7 @@
 
  <% if @theme.errors.any? %>
 
-        <div class="ui negative message">
+        <div class="alert_danger">
            <div class="close icon">x</div>
               <div class="header">
                 <% @theme.errors.full_messages.each do |message| %>

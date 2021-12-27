@@ -1,6 +1,6 @@
 <% if resource.errors.any? %>
-      <div class="ui container">
-        <div class="ui negative message">
+      <div class="container">
+        <div class="alert_danger">
            <div class="close icon">x</div>
               <div class="header">
             <% resource.errors.full_messages.each do |message| %>

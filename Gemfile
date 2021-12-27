@@ -12,7 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
 gem 'kaminari'
 gem 'kaminari-i18n', '~> 0.3.2'
-#gem 'bootstrap'
+gem 'bootstrap'
 gem 'pry-byebug'
 gem 'execjs'
 gem 'therubyracer'

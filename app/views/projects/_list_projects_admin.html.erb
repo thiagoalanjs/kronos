@@ -5,27 +5,28 @@
       <%= image_tag("project.png") %>
       <br />
       <br />
-      <p class="access_deny">Nenhum projeto criado. Clique em "Novo" para iniciar um projeto.</p>
-      <%= link_to "Novo", new_project_path, class: 'ui blue button' %>
+      <p class="access_deny">Nenhum projeto criado. Clique em "Novo projeto" para iniciar um projeto.</p>
+      <br />
+      <%= link_to "Novo projeto", new_project_path, class: 'green_button' %>
     </div>
   </div>
 <% else %>
-<%= link_to "Novo", new_project_path, class: 'ui blue button' %>
+<%= link_to "Novo projeto", new_project_path, class: 'green_button' %>
 <br />
 <br />
 <div class="ui four cards">
 <% @projects.each do |project| %>
 
   <div class="card">
-    <div class="content">
-      <div class="header"><%= project.name %> <%= image_tag("gerenciamento-de-projetos.png") %></div>
+    <div class="content_title">
+      <div class="header"><%= project.name %></div>
     </div>
 
     <div class="content">
       <div class="description">
         <p class="info"><%= image_tag("initial.png") %> <strong>Sigla: </strong><%= project.initial %></p>
         <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Iniciado em:</strong> <%= l project.start_date %></p>
-        <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Termino previsto:</strong> <%= l project.end_date %></p>
+        <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Término previsto:</strong> <%= l project.end_date %></p>
         <p class="info"><%= image_tag("team_icon.png") %> <strong>Membros:</strong> <%= project.members_number %></p>
         <p class="info"><%= image_tag("sprint_icon.png") %> <strong>Sprint atual:</strong> 
         <% if project.current_sprint.nil? %> 
@@ -34,7 +35,7 @@
         <%= project.current_sprint %>
         <% end %></p>
         <p></p>
-        <div class="ui teal progress" id="project-progress" data-percent="<%= project.progress %>">
+        <div class="bar_progress" id="project-progress" data-percent="<%= project.progress %>">
           <div class="bar"></div>
           <div class="label">
             <%= project.progress %>%
@@ -43,7 +44,7 @@
       </div>
     </div>
 
-    <button class="ui bottom attached button" onclick="window.location.href='<%= select_project_path(project) %>'">
+    <button class="button_card" onclick="window.location.href='<%= select_project_path(project) %>'">
       Administrar
     </button>
   </div>

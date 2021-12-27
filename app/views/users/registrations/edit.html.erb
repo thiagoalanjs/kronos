@@ -1,14 +1,11 @@
-   
-   
-          
-<div class="ui container">    
+  
  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'ui form', method: :put }) do |f| %>
-
-
-        <% if resource.errors.any? %>
-      <div class="ui container">
-        <div class="ui negative message">
-           <div class="close icon">x</div>
+        
+        <div class="container"> 
+         <% if resource.errors.any? %>
+   
+        <div class="alert_danger">
+           <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
               <div class="header">
             <% resource.errors.full_messages.each do |message| %>
                 <p> - <%= message %> </p>
@@ -27,7 +24,7 @@
             <% if current_user.avatar.attached? %>
             <%= image_tag(current_user.avatar_thumbnail, :class=> "image_profile") %>
            <% else %>
-            <%= image_tag("profile-user.png", :class=> "image_profile") %>
+            <%= image_tag("profile-no-image.png", :class=> "image_profile") %>
            <% end %>
            <% end %>
 
@@ -68,9 +65,9 @@
           </div>
     
           <div>
-            <%= f.submit "Alterar", class: "ui blue button" %>
+            <%= f.submit "Alterar", class: "blue_button" %>
           </div>
          <br />
           <% end %>
     
-    </div>
+   </div>

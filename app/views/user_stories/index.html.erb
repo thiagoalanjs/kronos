@@ -1,7 +1,6 @@
 
 
-<div class="ui container">
-
+<div class="container">
  <div class="info_accordion">
         <!--
         <%#= form_tag(user_stories_path, method: :get, class: "ui form") do %>
@@ -12,9 +11,8 @@
         <%# end %>
         -->
       </div>
-      <h1>User Stories</h1>
-      <div class="sub_title">Aqui você cria e gerencia suas histórias e backlog.</div>
-      <hr>
+      <br />
+      <h2>User Stories</h2>
 
 
   <%= render 'user_stories/breadcrumb' %>
@@ -27,22 +25,22 @@
       <br />
       <br />
       <p class="access_deny">Nenhuma user story criada. Clique em "Novo" para iniciar o backlog.</p>
-      <%= link_to "Novo", new_user_story_path, class: 'item ui blue button' %>
+      <%= link_to "Novo", new_user_story_path, class: 'item green_button' %>
     </div>
   </div>
 <% else %>
 
-<%= link_to "Novo", new_user_story_path, class: 'item ui blue button' %>
+<%= link_to "Novo", new_user_story_path, class: 'item green_button' %>
 <br />
 <br />
 
 <% @user_stories.each do |user_story| %>
-<button class="us-accordion">
+<button class="us_accordion">
       <%= link_to user_story do %>
-      <div class="ui green button">
+      <div class="green_button">
         US-<%= user_story.project.initial %>-<%= user_story.id %> 
       </div> 
-       <%= user_story.title %>
+         <%= user_story.title %>
       <% end %>
       
       <% if user_story.sprint.nil? %>
@@ -56,27 +54,27 @@
 
       <div class="info_accordion">
       <% if user_story.priority_id == 1 %>
-          <div class="ui compact mini icon red basic button">
+          <div class="mini_red_button">
                <b>Prioridade: </b>
                 Alta
           </div>
        <% end %>
 
       <% if user_story.priority_id == 2 %>
-         <div class="ui compact mini silver icon orange basic button ">
+         <div class="mini_orange_button">
              <b>Prioridade: </b>
                Média
          </div>
       <% end %>
 
       <% if user_story.priority_id == 3 %>
-        <div class="ui compact mini icon green basic button ">
+        <div class="mini_green_button ">
             <b>Prioridade: </b>
             Baixa
         </div>
       <% end %>
 
-       <div class="ui compact mini icon silver basic button"><b>Status: </b>
+       <div class="mini_status_button"><b>Status: </b>
          <% if user_story.status == 1 %>
           Pendente
          <% end %>
@@ -102,8 +100,7 @@
             <p></p>
             <b>Lista de Sub-task associadas</b>
           
-            <a class="ui compact teal icon mini button new_task" userstory="<%= user_story.id %>" title="Adicionar tarefa">+ Adicionar</a>
-            
+            <a class="blue_button" userstory="<%= user_story.id %>" title="Adicionar tarefa">+ Adicionar</a>
             <br />  
             <p>
               <% user_story.tasks.each do |s| %>
@@ -171,18 +168,14 @@
           
           <br />
           <br /> 
-            <div class="ui buttons">
-              <%= link_to edit_user_story_path(user_story), class: 'ui yellow button' do %>
+              <%= link_to edit_user_story_path(user_story), class: 'yellow_button' do %>
                 Editar
               <% end %>
-            </div>
-
-            <div class="ui buttons">
-              <%= link_to user_story, method: :delete, data: { confirm: "Deseja deletar a história US-#{user_story.project.initial}-#{ user_story.id } #{ user_story.title } ?" }, class: 'ui red button' do %>
+           
+              <%= link_to user_story, method: :delete, data: { confirm: "Deseja deletar a história US-#{user_story.project.initial}-#{ user_story.id } #{ user_story.title } ?" }, class: 'red_button' do %>
                 Remover
               <% end %>
               
-            </div>   
             <br />
             <br />    
       </div>          
@@ -190,7 +183,7 @@
 
 
 <!-- MODAL TAREFA -->
-<div class="ui container">
+<div class="container">
   <div class="ui small modal task">
     
     <div class="header">
@@ -209,7 +202,7 @@
 
               <div class="field">
                 <label><strong>Descrição: </strong></label>
-                <%= f.text_area :description %>
+                <%= f.rich_text_area :description  %>
               </div>
               
               <div class="field">
@@ -246,13 +239,14 @@
   <br />
 
 </div>
+
 <!-- /MODAL TAREFA -->
 <script type="text/javascript">
   $(document).ready(function() {
     //$('.sortable').tablesort();
   });
 
-  $('.ui.search.dropdown').dropdown({ allowLabels:true});
+  $('.dropdown').dropdown({ allowLabels:true});
 
   $('.button.new_criterion').click(function(){
     $('#user_story_acceptance_criterion_user_story_id').val($(this).attr('userstory'));
@@ -260,15 +254,15 @@
     return false;
   });
 
-  $('.button.new_task').click(function(){
+  $('blue_button').click(function(){
     $('#task_user_story_id').val($(this).attr('userstory'));
-    $('.ui.modal.task').modal('show');
+    $('.modal_task').modal('show');
     return false;
   });
   
   ///Accordion
 
-  var acc = document.getElementsByClassName("us-accordion");
+  var acc = document.getElementsByClassName("us_accordion");
   var i;
 
   for (i = 0; i < acc.length; i++) {

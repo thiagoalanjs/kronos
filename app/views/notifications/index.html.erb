@@ -1,16 +1,18 @@
-<div class="notifications row">
-  <div class="heading clearfix">
+
+  <div class="container">
+  <br />
     <h2>Notificações</h2>
 
+ 
     <span class="">
-      <%= link_to clean_notifications_path, class: 'ui compact orange button', method: 'delete' do %>
-      <i class="trash icon"></i>
+      <%= link_to clean_notifications_path, class: 'orange_button', method: 'delete' do %>
       Limpar notificações
       <% end %>
     </span>
-  </div>
+
   <div class="list">
     <% if @notifications.blank? %>
+     <br />
       <div class="no-records">Nenhuma notificação</div>
     <% else %>
       <% @notification_groups.each do |group, notifications| %>
@@ -22,4 +24,3 @@
     <% end %>
   </div>
   <%= paginate @notifications %>
-</div>

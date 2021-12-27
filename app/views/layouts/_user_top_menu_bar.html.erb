@@ -1,39 +1,91 @@
 <!-- Following Menu for user logged in -->
 <div class="ui large top fixed no-hidden inverted menu">
-<%= image_tag('logo.png', :class=>"logo menu")%>
 
+<div id="logo_left">
+<%= image_tag('novo_logo.png', class: 'logo')%>
+</div>
+    <nav>
+       <ul id="icon-menu-mobile">
+            <ion-icon name="grid-outline"></ion-icon>
+          </ul>
+              <div id="menu_right">
+            <ul>
+              <li>
+                <div class="dropdown">  
+                      <% if current_user %>
+                             <% if current_user.avatar.attached? %>
+                               <%= image_tag(current_user.avatar_thumbnail, :title=> current_user.name, :class=> "image_thumbnail") %>
+                             <% else %>
+                               <%= image_tag("profile-user.png", :title=> current_user.name, :class=> "image_thumbnail") %>
+                             <% end %>
+                      <% end %>
 
+                      <div class="dropdown-content">
+                    <%= link_to edit_user_registration_path, class: '' do %>
+                               <p>Editar perfil</p>
+                        <% end %>
+                        <%= link_to destroy_user_session_path, method: :delete, class: '' do %>
+                               <p>Sair</p>
+                        <% end %>
+                      </div>
+                   </div>
+                </li>
+        </ul>   
+          
+          
+          <div id="menu_left">  
+              <ul>
+                  <li> 
+                      <%= link_to notifications_path, class: "#{is_current_page?(notifications_path)} item", title: 'Notificações' do %>
+                                  Notificações 
+                        <% if Notification.unread_count(current_user) > 0 %>
+                            <div id="notification_actived">
+                                     <%= Notification.unread_count(current_user) %>
+                            </div>
+                        <% else %>
+                           <div id="notification_inactived">0</div>
+                        <% end %>
+                      <% end %>
+                   </li>
+                  
+              
+                   
+                   
+              </ul>
+            </div>
+            
+      
+              </div>
+            </nav>
 
-  <div class="right menu">
-    <%= link_to notifications_path, class: "#{is_current_page?(notifications_path)} item", title: 'Notificações' do %>
-      Notificações
-      <% if Notification.unread_count(current_user) > 0 %>
-        <div class="ui red label"><%= Notification.unread_count(current_user) %></div>
-      <% else %>
-        <div class="ui label">0</div>
-      <% end %>
-    <% end %>
-    <div class="ui dropdown item">
-           <% if current_user %>
-             <% if current_user.avatar.attached? %>
-             <%= image_tag(current_user.avatar_thumbnail, :title=> current_user.name, :class=> "image_thumbnail") %>
-           <% else %>
-             <%= image_tag("profile-user.png", :title=> current_user.name, :class=> "image_thumbnail") %>
-           <% end %>
-           <% end %>
-      <i class="dropdown icon"></i>
-      <div class="menu">
-     
-        <%= link_to edit_user_registration_path, class: 'item' do %>
-          Editar perfil
-        <% end %>
-
-        <%= link_to destroy_user_session_path, method: :delete, class: 'item' do %>
-          Sair
-        <% end %>
-
-        
-      </div>
+  
     </div>
   </div>
 </div>
+
+<script>
+  
+function showMenu(){
+    $('div#menu_left').css('display', 'flex');
+    $('sidebar').css('display', 'flex');
+    $('div#menu_right').css('display', 'flex');
+}
+function hiddenMenu(){
+    $('div#menu_left').css('display', 'none');
+    $('sidebar').css('display', 'flex');
+    $('div#menu_right').css('display', 'none');
+}
+
+var eventsController = true;
+$('div ul#icon-menu-mobile').click(function() {
+    
+    if(eventsController == true) {
+        showMenu();
+        eventsController = false
+    } else {
+        hiddenMenu();
+        eventsController = true
+    }
+})
+
+</script>
