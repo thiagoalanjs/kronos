@@ -17,7 +17,7 @@ gem 'pry-byebug'
 gem 'execjs'
 gem 'therubyracer'
 gem 'coffee-script-source'
-gem 'trix'
+gem "wysiwyg-rails"
 
 group :production do
   gem 'pg'

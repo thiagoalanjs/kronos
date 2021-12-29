@@ -1,12 +1,10 @@
-<p></p>
-
+<br />
 <div class="container">
   <div class="ui menu">
-    <a class="item active"><strong>Novo membro</strong></a>
+    <h2>Novo membro</h2>
   </div>
 
   <%= render 'form' %>
     <br />
-    <%= link_to 'Salvar', new_function_user_project_path({ controller: 'function_user_projects', action: 'create' }), class: 'item save ui blue button' %>
-    <%= link_to 'Cancelar', function_user_projects_path, class: 'item ui red button' %>
+    
 </div>

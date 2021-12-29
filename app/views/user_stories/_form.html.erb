@@ -1,10 +1,9 @@
 
-<%= form_for(@user_story, html: {class: 'ui form'}) do |f| %>
+<%= form_for(@user_story, html: {class: 'form'}) do |f| %>
 
   <% if @user_story.errors.any? %>
-      <div class="container">
         <div class="alert_danger">
-           <div class="close icon">x</div>
+           <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>   
               <div class="header">
             <% @user_story.errors.full_messages.each do |message| %>
                 <p> - <%= message %> </p>
@@ -13,50 +12,63 @@
          </div>
        <p></p>
   <% end%>
+<br />
 
-    <div>
-      <div class="ui search icon input">
-          <%= f.text_field :theme_search, class: 'prompt', placeholder: 'Tema' %>
-          <i class="search icon"></i>
-        <div class="results"></div>
+<div class="inline field">
+      <b>Tema</b>
+      <br />
+      <div>
+        <% themes = current_project.themes {|theme| [theme.name, theme.id] };  %>
+        <%= f.collection_select( :theme_id, themes, :id, :name, {:prompt => 'Escolha um tema'}, { placeholder: 'Theme'} ) %>
       </div>
-
-      <%= f.number_field :business_value, placeholder: 'business value' %>
-      <%= f.number_field :story_points, placeholder: 'Story point' %>
+      <b>Business value</b>
+      <div>
+        <%= f.number_field :business_value, placeholder: 'business value' %>
+      </div>
+      <b>Story point</b>
+      <br />
+      <div>
+        <%= f.number_field :story_points, placeholder: 'Story point' %>
+      </div>
     </div>
 
    <div>
-      <%= f.label :title %>
+      <b><%= f.label :title %></b>
+      <br />
       <%= f.text_field :title %>
     </div>
 
     <div>
-      <%= f.label :description %>
-      <%= f.rich_text_area :description, options = {style:"height:300px;"} %>
+      <b><%= f.label :description %></b>
+      <%= f.text_area :description %>
     </div>
 
     <div>
-      <%= f.label :priority %>
+      <b><%= f.label :priority %></b>
       <br />
       <%= f.collection_select(:priority_id, Priority.all, :id, :name, {:prompt => 'Prioridade da história'}, {class: 'dropdown', placeholder: 'Prioridade da história'} ) %>
       <br />
     </div>
 
     <div>
-      <%= f.label :Sprint %>
+      <b><%= f.label :Sprint %></b>
       <br />
       <% sprints = current_project.sprints {|sprint| [sprint.name, sprint.id] };  %>
 
-      <%= f.collection_select( :sprint_id, sprints, :id, :name, {:prompt => 'Sprint'}, {class: 'dropdown', placeholder: 'Sprint'} ) %>
+      <%= f.collection_select( :sprint_id, sprints, :id, :name, {:prompt => 'Sprint'}, {placeholder: 'Sprint'} ) %>
 
- 
     </div>  
     <div>
-      <%= f.label :Status %>
+      <b><%= f.label :Status %></b>
       <br />
-      <%= f.select :status, options_for_select({'Pendente' => 1 , 'Desenvolvimento' => 2 , 'Code Review' => 3, 'QA' => 4 , 'Concluída' => 5 }), {:prompt => false}, { :class => 'ui search dropdown', placeholder: 'Status' } %>
+      <%= f.select :status, options_for_select({'Pendente' => 1 , 'Desenvolvimento' => 2 , 'Code Review' => 3, 'QA' => 4 , 'Concluída' => 5 }), {:prompt => false}, { :class => 'dropdown', placeholder: 'Status' } %>
     </div>
-
+   
+    <br />
+        <%= link_to 'Salvar', new_user_story_path({ controller: 'user_stories', action: 'create' }), class: 'item save blue_button' %>
+        <%= link_to 'Cancelar', user_stories_path, class: 'item save red_button' %>
+    <br />
+    <br />
   <% end %>
 
 <p></p>
@@ -66,22 +78,5 @@
 <script type="text/javascript">
   $('.save').click(function(){
     $('form').submit();
-  });
-
-  $('.ui.search.dropdown').dropdown({ allowLabels:true});
-
-  $(document).ready(function() {
-    $('.ui.search')
-    .search({
-      apiSettings: {
-        url: "//" + location.host + "/themes/autocomplete.json?query={query}"
-      },
-      fields: {
-        results: 'themes',
-        title: 'name',
-        description: 'description'
-      },
-      minCharacters : 0
-    });
   });
 </script>

@@ -63,7 +63,9 @@ input#button {
     border-radius: 3px;
     transition: all 0.4s;
 }
-
+submit{
+    background-color: #252527;
+}
 img#logo {
     display: block;
     margin-left: auto;

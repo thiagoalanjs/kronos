@@ -46,7 +46,7 @@ class SprintsController < ApplicationController
   def update
     respond_to do |format|
       if @sprint.update(sprint_params)
-        format.html { redirect_to @sprint, notice: 'Sprint atualizada com sucesso.' }
+        format.html { redirect_to sprints_url, notice: 'Sprint atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @sprint }
       else
         format.html { render :edit }

@@ -37,19 +37,19 @@
           <td><%= theme.description %></td>
           <td>
             <div class="ui buttons">
-              <%= link_to 'Exibir', theme, class: 'ui blue button' %>
+              <%= link_to 'Exibir', theme, class: 'blue_button' %>
             </div>
             <div class="ui buttons">
-              <%= link_to 'Editar', edit_theme_path(theme), class: 'ui yellow button' %>
+              <%= link_to 'Editar', edit_theme_path(theme), class: 'yellow_button' %>
             </div>
             <div class="ui buttons">
-              <%= link_to 'Remover', theme, method: :delete, data: { confirm: 'Você tem certeza que deseja excluir esse tema ?' }, class: 'ui red button' %>
+              <%= link_to 'Remover', theme, method: :delete, data: { confirm: 'Você tem certeza que deseja excluir esse tema ?' }, class: 'red_button' %>
             </div>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <%= link_to "Novo", new_theme_path, class: 'item ui blue button' %>
+  <%= link_to "Novo", new_theme_path, class: 'item green_button' %>
 <% end %>
 </div>

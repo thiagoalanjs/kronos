@@ -8,7 +8,7 @@
   </div>
 
   <%= render 'function_user_projects/breadcrumb' %>
-
+<br />
 
  <% if @function_user_projects.empty? %>
     <div class="box_center">
@@ -37,15 +37,12 @@
                     <td><%= function_user_project.user.name %></td>
                     <td><%= function_user_project.function.name %></td>
                     <td>
-            <div class="ui buttons">
-              <%= link_to 'Exibir', function_user_project, class: 'ui blue button' %>
-            </div>
-            <div class="ui buttons">
-              <%= link_to 'Editar', edit_function_user_project_path(function_user_project), class: 'ui yellow button' %>
-            </div>
-            <div class="ui buttons">
-            <%= link_to 'Remover', function_user_project, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'ui red button' %>
-            </div>
+      
+           
+              <%= link_to 'Editar', edit_function_user_project_path(function_user_project), class: 'yellow_button' %>
+          
+            <%= link_to 'Remover', function_user_project, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'red_button' %>
+          
           </td>
         </tr>
       <% end %>

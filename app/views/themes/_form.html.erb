@@ -3,12 +3,10 @@
  <% if @theme.errors.any? %>
 
         <div class="alert_danger">
-           <div class="close icon">x</div>
-              <div class="header">
+           <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 <% @theme.errors.full_messages.each do |message| %>
-                 <p> - <%= message %> </p>
-                   <% end %>
-              </div>
+                 <p>- <%= message %> </p>
+                <% end %>
         </div>
        <p></p>
   <% end%>
@@ -17,14 +15,20 @@
     </div>
 
     <div class="field">
-      <%= f.label :name %>
+      <b><%= f.label :name %></b>
+      <br />
       <%= f.text_field :name %>
     </div>
 
     <div class="field">
-      <%= f.label :description %>
+      <b><%= f.label :description %></b>
+      <br />
       <%= f.text_area :description %>
     </div>
+
+     <br />
+        <%= link_to 'Salvar', new_theme_path({ controller: 'theme', action: 'create' }), class: 'item save blue_button' %>
+       <%= link_to 'Cancelar', themes_path, class: 'item red_button' %>
 
   <% end %>
 
@@ -33,5 +37,4 @@
     $('form').submit();
   });
 
-  $('.ui.search.dropdown').dropdown({ allowLabels:true });
 </script>

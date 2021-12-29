@@ -1,9 +1,13 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">   
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
 <%= form_for(@sprint, html: {class: 'ui form'}) do |f| %>
 
   <% if @sprint.errors.any? %>
-      <div class="container">
         <div class="alert_danger">
-           <div class="close icon">x</div>
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>     
               <div class="header">
             <% @sprint.errors.full_messages.each do |message| %>
                 <p> - <%= message %> </p>
@@ -13,98 +17,209 @@
        <p></p>
     <% end%>
 
+<br />
   <div class="inline field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <b><%= f.label :name %></b>
+    <br />
+    <%= f.text_field :name, placeholder: 'Nome da Sprint' %>
   </div>
 
-  <div class="inline field"><label>Duração</label></div>
+  <div class="inline field"><b>Duração</b></div>
   <div class="inline fields">
     <div class="ui calendar">
       <div class="ui input left icon">
         <i class="calendar icon"></i>
-        <%= f.text_field :start_date, placeholder: 'Data inicial' %>
+        <%= f.text_field :start_date, placeholder: 'Data inicial', id: 'startDuration' %>
       </div>
     </div>
     <p style="margin-right: 1em; margin-left: 1em">à</p>
     <div class="ui calendar">
       <div class="ui input left icon">
         <i class="calendar icon"></i>
-        <%= f.text_field :end_date, placeholder: 'Data final' %>
+        <%= f.text_field :end_date, placeholder: 'Data final' , id: 'endDuration' %>
       </div>
     </div>
   </div>
 
-  <div class="inline field"><label>Planejamento</label></div>
+  <div class="inline field"><b>Planejamento</b></div>
   <div class="inline fields">
     <div class="ui calendar">
       <div class="ui input left icon">
         <i class="calendar icon"></i>
-        <%= f.text_field :planning_start_date, placeholder: 'Data inicial' %>
+        <%= f.text_field :planning_start_date, placeholder: 'Data inicial', id: 'startPlan' %>
       </div>
     </div>
     <p style="margin-right: 1em; margin-left: 1em">à</p>
     <div class="ui calendar">
       <div class="ui input left icon">
         <i class="calendar icon"></i>
-        <%= f.text_field :planning_end_date, placeholder: 'Data final' %>
+        <%= f.text_field :planning_end_date, placeholder: 'Data final', id: 'endPlan' %>
       </div>
     </div>
   </div>
 
-  <div class="inline field"><label>Execução</label></div>
+  <div class="inline field"><b>Execução</b></div>
   <div class="inline fields">
     <div class="ui calendar">
       <div class="ui input left icon">
         <i class="calendar icon"></i>
-        <%= f.text_field :execution_start_date, placeholder: 'Data inicial' %>
+        <%= f.text_field :execution_start_date, placeholder: 'Data inicial', id: 'startExec' %>
       </div>
     </div>
     <p style="margin-right: 1em; margin-left: 1em">à</p>
     <div class="ui calendar">
       <div class="ui input left icon">
         <i class="calendar icon"></i>
-        <%= f.text_field :execution_end_date, placeholder: 'Data final' %>
+        <%= f.text_field :execution_end_date, placeholder: 'Data final', id: 'endExec' %>
       </div>
     </div>
   </div>
 
   <div class="inline field">
-    <label>Review meeting</label>
+    <b>Review meeting</b>
     <div class="ui calendar">
       <div class="ui input left icon">
         <i class="calendar icon"></i>
-        <%= f.text_field :review_meeting_date, placeholder: 'Data' %>
+        <%= f.text_field :review_meeting_date, placeholder: 'Data',  id: 'startReview' %>
       </div>
     </div>
   </div>
 
   <div class="inline field">
-    <label>Retrospective meeting</label>
+    <b>Retrospective meeting</b>
     <div class="ui calendar">
       <div class="ui input left icon">
         <i class="calendar icon"></i>
-        <%= f.text_field :retrospective_meeting_date, placeholder: 'Data' %>
+        <%= f.text_field :retrospective_meeting_date, placeholder: 'Data', id: 'endReview' %>
       </div>
     </div>
   </div>
 
   <div class="inline field">
-    <%= f.label :release_id %>
+    <b><%= f.label :release_id %></b>
+    <br />
     <%= f.collection_select(:release_id,Release.all,:id,:version,{:prompt=>true},{class: 'ui search dropdown'}) %>
   </div>
+
+   <br />
+    <%= link_to 'Salvar', new_sprint_path({ controller: 'sprint', action: 'create' }), class: 'item save blue_button' %>
+    <%= link_to 'Cancelar', sprints_path, class: 'item red_button' %>
+  <br />
+  <br />
+
 <% end %>
 
-<p></p>
-<p></p>
-<p></p>
 
 <script type="text/javascript">
   $('.save').click(function(){
-    $('form').submit();
+    $('form').submit(); 
   });
 
-  $('.ui.search.dropdown').dropdown({ allowLabels:true});
+  $( function() {
+      $("#startDuration").datepicker({
+       dateFormat: 'dd/mm/yy',
+       dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+       dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+       dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+       monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+       nextText: 'Próximo',
+       prevText: 'Anterior',
+       type: 'date',
+       minDate:new Date()
+     });
+     
+     $( "#endDuration" ).datepicker({
+       buttonImageOnly: true,
+       dateFormat: 'dd/mm/yy',
+       dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+       dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+       dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+       monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+       nextText: 'Próximo',
+       prevText: 'Anterior',
+       type: 'date',
+       minDate:new Date()
+     });
 
-  $('.ui.calendar').calendar({type: 'date'});
+     $("#startPlan").datepicker({
+       dateFormat: 'dd/mm/yy',
+       dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+       dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+       dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+       monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+       nextText: 'Próximo',
+       prevText: 'Anterior',
+       type: 'date',
+       minDate:new Date()
+     });
+
+     $("#endPlan").datepicker({
+       dateFormat: 'dd/mm/yy',
+       dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+       dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+       dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+       monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+       nextText: 'Próximo',
+       prevText: 'Anterior',
+       type: 'date',
+       minDate:new Date()
+     });
+
+    $("#startExec").datepicker({
+       dateFormat: 'dd/mm/yy',
+       dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+       dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+       dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+       monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+       nextText: 'Próximo',
+       prevText: 'Anterior',
+       type: 'date',
+       minDate:new Date()
+     });
+
+    $("#endExec").datepicker({
+       dateFormat: 'dd/mm/yy',
+       dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+       dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+       dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+       monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+       nextText: 'Próximo',
+       prevText: 'Anterior',
+       type: 'date',
+       minDate:new Date()
+     });  
+     
+    $("#startReview").datepicker({
+       dateFormat: 'dd/mm/yy',
+       dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+       dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+       dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+       monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+       nextText: 'Próximo',
+       prevText: 'Anterior',
+       type: 'date',
+       minDate:new Date()
+     }); 
+
+     $("#endReview").datepicker({
+       dateFormat: 'dd/mm/yy',
+       dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+       dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+       dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+       monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+       nextText: 'Próximo',
+       prevText: 'Anterior',
+       type: 'date',
+       minDate:new Date()
+     });
+     
+  } );
 </script>

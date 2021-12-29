@@ -1,37 +1,31 @@
-<%= form_for(@function_user_project, html: {class: 'ui form'}) do |f| %>
-
-
+<%= form_for(@function_user_project, html: {class: 'form'}) do |f| %>
      <% if @function_user_project.errors.any? %>
-      <div class="container">
         <div class="alert_danger">
-           <div class="closebtn">x</div>
-              <div class="header">
+           <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             <% @function_user_project.errors.full_messages.each do |message| %>
                 <p> - <%= message %> </p>
             <% end %>
-          </div>
          </div>
        <p></p>
     <% end%>
 
-
-
     <div class="field">
-      <%= f.label :user_id %>
+      <b><%= f.label :user_id %></b>
       <%= f.collection_select(:user_id, User.all, :id, :name, {:prompt => 'Selecione um usuário'}, {class: 'ui search dropdown'}) %>
     </div>
 
     <div class="field">
-      <%= f.label :function_id %>
+      <b><%= f.label :function_id %></b>
       <%= f.collection_select(:function_id, Function.all, :id, :name, {:prompt => 'Selecione uma função'}, {class: 'ui search dropdown'}) %>
     </div>
 
+    <br />
+      <%= link_to 'Salvar', new_function_user_project_path({ controller: 'function_user_projects', action: 'create' }), class: 'item save blue_button' %>
+      <%= link_to 'Cancelar', function_user_projects_path, class: 'item red_button' %>
   <% end %>
 
 <script type="text/javascript">
   $('.save').click(function(){
     $('form').submit();    
   });
-
-  $('.ui.search.dropdown').dropdown({ allowLabels:true});
 </script>

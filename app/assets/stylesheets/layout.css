@@ -307,7 +307,7 @@ div#notification_inactived {
     padding: 15px;
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 75%;
+    width: 95%;
     background-color: #1c7a1d;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -388,10 +388,11 @@ div#notification_inactived {
    border-bottom-right-radius: 5px 5px;
    border-bottom-left-radius: 5px 5px;
    background-image: linear-gradient(#f8f8f8, #cccbcb);
-   border-style:solid;
-   border-width: 1px;
    font-size: 17px;
    color: #2e2e2e;
+   border-style:solid;
+   border-width: 1px;
+   border-color:#797979
 }
 
 .button_card:hover {
@@ -630,6 +631,38 @@ th {
     user-select: text;
     will-change: top, left, margin, transform, opacity;
   }
+
+
+.ui.search {
+    background: none transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    cursor: text;
+    top: 0em;
+    left: 1px;
+    width: 100%;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    padding: inherit;
+  }
+
+  .results {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    -webkit-transform-origin: center top;
+    transform-origin: center top;
+    white-space: normal;
+    background: #FFFFFF;
+    margin-top: 0.5em;
+    width: 18em;
+    border-radius: 0.28571429rem;
+    box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
+    border: 1px solid #D4D4D5;
+    z-index: 998;
+  }
+  
 
 /**********************************************************/
 /*************** M E D I A S   Q U E R I E S **************/

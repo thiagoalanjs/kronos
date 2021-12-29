@@ -1,8 +1,6 @@
 class UserStory < ActiveRecord::Base
   attr_accessor :theme_search
 
-  has_rich_text :description
-
   belongs_to :theme
   belongs_to :sprint
   belongs_to :project

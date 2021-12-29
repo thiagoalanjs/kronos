@@ -1,13 +1,10 @@
-<p></p>
-
-  <%= render 'themes/breadcrumb' %>
-    <br />
+<br />
+<div class="container">
+    <h2>Novo Tema</h2>
      <br />
     <%= render 'form' %>
     <br />
 
 
-    <%= link_to 'Salvar', new_theme_path({ controller: 'themes', action: 'create' }), class: 'item save ui blue button' %>
-    <%= link_to 'Cancelar', themes_path, class: 'item ui red button' %>
 
 </div>

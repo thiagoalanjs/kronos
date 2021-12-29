@@ -45,7 +45,7 @@ class FunctionUserProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @function_user_project.update(function_user_project_params)
-        format.html { redirect_to @function_user_project, notice: 'Função do usuário atualizada com sucesso.' }
+        format.html { redirect_to function_user_projects_url, notice: 'Função do usuário atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @function_user_project }
       else
         format.html { render :edit }

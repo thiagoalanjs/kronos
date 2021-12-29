@@ -18,7 +18,7 @@
         </div>
    <% else %> 
 
-
+<br />
 
   <table class="ui celled table">
     <thead>
@@ -57,15 +57,10 @@
           <td class="ui center aligned"><%= l sprint.retrospective_meeting_date %></td>
           <td class="ui center aligned"><%= sprint.release.version unless sprint.release.nil?  %></td>
           <td>
-            <div class="ui buttons">
-                 <%= link_to 'Exibir', sprint, class: 'ui blue button' %>
-            </div>
-            <div class="ui buttons">
-                  <%= link_to 'Editar', edit_sprint_path(sprint), class: 'ui blue button' %> 
-            </div>
-            <div class="ui buttons">
-                <%= link_to 'Remover', sprint, method: :delete, data: { confirm: 'Você tem certeza que deseja remover a sprint?' }, class: 'ui red button' %>
-            </div>
+            
+            <%= link_to 'Editar', edit_sprint_path(sprint), class: 'blue_button' %> 
+            <%= link_to 'Remover', sprint, method: :delete, data: { confirm: 'Você tem certeza que deseja remover a sprint?' }, class: 'red_button' %>
+         
           </td>
         </tr>
       <% end %>
