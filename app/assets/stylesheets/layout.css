@@ -284,7 +284,6 @@ div#notification_inactived {
 }
 
 .search_btn{
-    float: right;
     padding-top: 12px;
     padding-left: 12px;
 }
@@ -1154,8 +1153,6 @@ th {
         display: inline;
     }
 
-
-    
     .image_thumbnail {
         border-radius: 40px;
     }  
@@ -1201,4 +1198,212 @@ th {
         color: rgb(19, 18, 18);
     }
 
+}
+
+@media only screen and (max-width:360px){
+    .sidebar nav {
+        display: none;
+    }
+
+    h1, hr, .sub_title {
+        display: none;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    .search_input {
+        width: 70%;
+        float: left;
+        display: inline;    
+        position: absolute;
+        margin-left: -260px;
+    }
+
+    input#btn_seach{
+        display: inline-block;
+        width: 15px;
+        float: right;
+        margin-right: -10px;
+        margin-bottom: 20px;
+    }
+
+    .card {
+       width: 320px;
+       margin-top: 10px;
+       margin-right: 10px;
+       display: inline-block;
+    }
+
+    button .description{
+        float: left;
+        margin-left: -20px;
+    }
+
+    .box_center img{
+        margin-left: 80px;
+    }
+    
+    .box_center img{
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    input#project_name, 
+    input#project_initial,
+    input#startDatepicker,
+    input#endDatepicker {
+        width: 90%;
+    }
+
+    .search_input:hover{
+        background-color: #e6e6e6;
+    }
+
+    .content_title{
+        width: 310px;
+        height: 5px;
+        margin-left: -5px;  
+        padding-top: 5px;
+        padding-left: 2.5px;
+        padding-right: 2.5px;
+        padding-bottom: 25px;
+        border-style:solid;
+        border-top-right-radius: 5px 5px;
+        border-top-left-radius: 5px 5px;
+        border-width: 1px;
+        border-color:#797979;
+        color: #FFF;
+        background-image: linear-gradient(rgb(5, 134, 255), rgb(0, 116, 211));
+    }    
+
+    .content{
+        width: 315px;
+        margin-left: -5px;    
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-style:solid;
+        border-width: 1px;
+        border-color:#797979
+    }
+    
+    .description{
+        display: block;
+        width: 95%;
+        padding-bottom: 22px;
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    .button_card {
+        width: 317px;
+        height: 50px;
+        margin-left: -5px;
+        border-bottom-right-radius: 5px 5px;
+        border-bottom-left-radius: 5px 5px;
+        background-image: linear-gradient(#f8f8f8, #cccbcb);
+        font-size: 17px;
+        color: #2e2e2e;
+        border-style:solid;
+        border-width: 1px;
+        border-color:#797979
+     }
+     
+     .button_card:hover {
+         background-image: linear-gradient(#f8f8f8, #949393);
+         color: rgb(0, 0, 0);
+     }
+     
+    .bar_progress {
+        border-radius: 10px;
+        width: 85%;
+        height: 30px;
+        margin-top: 15px;
+        padding-top: 15px;
+        padding-left: 0px;
+        background-image: linear-gradient(#ffffff, #fff6f6);
+        border-style: solid;
+        border-width: 1px;
+        text-align: center;
+    }
+
+    .green_button{
+        width: 285px;
+    }
+
+    .blue_button{
+        width: 295px;
+        margin-bottom: 10px;
+    }
+
+    .red_button{
+        width: 295px;
+        margin-bottom: 20px;
+    }
+    .container{
+        width: 90%;
+        margin-left: 20px;
+    }
+
+
+/*****************************
+  Kaminari Pagination
+*****************************/
+
+.pagination {
+    background-color: #FFF;
+    border: 0;
+}
+
+.pagination a, .pagination span.gap {
+    float: left;
+    margin: 2px;
+    line-height: 38px;
+    text-decoration: none;
+    background-color: #d3d3d3;
+    border: 1px solid #DDD;
+    border-left-width: 0;
+    color: #4F4F4F;
+    font-size: 15px;
+  }
+  
+  .pagination span.current{
+    float: left;
+    padding: 0 20px;
+    margin: 2px;
+    line-height: 38px;
+    text-decoration: none;
+    background-color: #545454;
+    border: 1px solid #DDD;
+    border-left-width: 0;
+    color: #fff;
+  }
+  
+.pagination {
+    .first {
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .prev {
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .page{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .next{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .last{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+ }
 }
