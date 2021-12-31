@@ -1,9 +1,55 @@
 <!-- Following Menu for user logged in -->
 <div class="ui large top fixed no-hidden inverted menu">
-
+<!--
 <div id="logo_left">
-<%= image_tag('novo_logo.png', class: 'logo')%>
+  <%= image_tag('novo_logo.png', class: 'logo')%>
 </div>
+-->
+<nav id='menu'>
+
+  <input type='checkbox'>
+  <label></label>
+
+  <%= image_tag('novo_logo.png', class: 'logo')%>
+  <ul>
+    
+    <li>
+       <% if current_user %>
+             <% if current_user.avatar.attached? %>
+               <%= image_tag(current_user.avatar_thumbnail, :title=> current_user.name, :class=> "image_thumbnail") %>
+             <% else %>
+               <%= image_tag("profile-user.png", :title=> current_user.name, :class=> "image_thumbnail") %>
+             <% end %>
+      <% end %>
+      <ul class='sub-menus'>
+        <li>
+           <%= link_to edit_user_registration_path, class: '' do %>
+               Editar perfil
+           <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete, class: '' do %>
+               Sair
+          <% end %>
+        </li>
+      </ul>
+      
+    </li>
+    <li>
+       <%= link_to notifications_path, class: "#{is_current_page?(notifications_path)} item", title: 'Notificações' do %>
+                                  Notificações 
+            <% if Notification.unread_count(current_user) > 0 %>
+                <div id="notification_actived">
+                         <%= Notification.unread_count(current_user) %>
+                </div>
+            <% else %>
+               <div id="notification_inactived">0</div>
+            <% end %>
+      <% end %>
+   </li>
+</nav>
+
+<!-- >
     <nav>
        <ul id="icon-menu-mobile">
             <ion-icon name="grid-outline"></ion-icon>
@@ -48,7 +94,9 @@
                       <% end %>
                    </li>
                   
-              
+                  <li>Teste </li>
+                  <li>Teste </li>
+                  
                    
                    
               </ul>
@@ -57,35 +105,11 @@
       
               </div>
             </nav>
-
+-->
   
     </div>
   </div>
 </div>
 
-<script>
-  
-function showMenu(){
-    $('div#menu_left').css('display', 'flex');
-    $('sidebar').css('display', 'flex');
-    $('div#menu_right').css('display', 'flex');
-}
-function hiddenMenu(){
-    $('div#menu_left').css('display', 'none');
-    $('sidebar').css('display', 'flex');
-    $('div#menu_right').css('display', 'none');
-}
 
-var eventsController = true;
-$('div ul#icon-menu-mobile').click(function() {
-    
-    if(eventsController == true) {
-        showMenu();
-        eventsController = false
-    } else {
-        hiddenMenu();
-        eventsController = true
-    }
-})
 
-</script>
