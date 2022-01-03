@@ -1,23 +1,4 @@
 
-<script src="https://cdn.tiny.cloud/1/1gti6vv8xhfz31p7cvmfjste6wojlysx8ebudo4umd24bd0x/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-<script>
-$( function initPage() {
-    tinymce.init({
-        selector: '#tinymce', 
-        menubar: false,
-        plugins: [
-          'advlist autolink lists link image charmap print preview anchor',
-          'searchreplace visualblocks code fullscreen',
-          'insertdatetime media table paste code help wordcount'
-        ],
-          toolbar: 'undo redo | formatselect | ' +
-          ' bold italic backcolor | alignleft aligncenter ' +
-          ' alignright alignjustify | bullist numlist outdent indent | ' +
-          ' removeformat | help'
-      });
-});
-</script>
-
 <script>
 $( function initPage() {
       $("#startDatepicker").datepicker({
@@ -76,7 +57,7 @@ $( function initPage() {
   <div>
     <b><%= f.label :description %></b>
     <br />
-    <%= f.text_area :description, id: "tinymce" %>
+    <%= f.text_area :description %>
   </div>
   <br />
   <div><b>Duração</b></div>

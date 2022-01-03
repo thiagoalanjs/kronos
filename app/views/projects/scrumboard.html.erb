@@ -19,28 +19,26 @@
             <br />
             <br />
             <p class="access_deny">Nenhuma sprint ativa no momento.</p>
-            <%= link_to "Criar sprint", new_sprint_path, class: "ui green_button"%>
+            <%= link_to "Criar sprint", new_sprint_path, class: " green_button"%>
         </div>
 <% end %>
 
 <% else %>
 
 
-<div class="ui top attached tabular menu">
+<div class=" top attached tabular menu">
   <% @project.sprints.each_with_index do |sprint, i| %>
     <a class="item <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>">Sprint: <%= sprint.name %></a>
     &nbsp
-    <%= link_to "Nova User Story", new_user_story_path, class: "ui red_button" %> 
-    <%= link_to "Nova task", new_task_path, class: "ui blue_button" %>
+    <%= link_to "Nova User Story", new_user_story_path, class: "red_button" %> 
+    <%= link_to "Nova task", new_task_path, class: "blue_button" %>
   <% end %>
 </div>
 
-
-
 <% @project.sprints.each_with_index do |sprint, i| %>
-<div class="ui bottom attached tab segment <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>">
+<div class=" bottom attached tab segment <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>">
 
-  <table class="ui very celled table">
+  <table class=" very celled table">
     <thead>
       <tr>
         <th>Duração</th>
@@ -70,14 +68,14 @@
     </tbody>
   </table>
 
-  <div class="ui teal progress" data-percent="<%= sprint.progress %>">
+  <div class=" teal progress" data-percent="<%= sprint.progress %>">
     <div class="bar"></div>
     <div class="label">
       <%= sprint.progress %>% Concluído
     </div>
   </div>
 
-  <table class="ui very  celled table">
+  <table class=" very  celled table">
     <thead>
       <tr>
         <th width="25%">Pendente</th>
@@ -98,7 +96,7 @@
           <% us.tasks.where(status: 1).each do |task| %>
             <p></p>
             <!-- CARD -->
-            <div class="ui orange card">
+            <div class=" orange card">
               <div class="content">           
                 <div class="meta">
 
@@ -117,32 +115,32 @@
                 </div>
                 <div class="description">
                   <p>
-                        <a href="#" data-modal="usertory-<%= us.id %>" class="ui  mini button modal-task">
+                        <a href="#" data-modal="usertory-<%= us.id %>" class="  mini button modal-task">
                           Detalhes
                         </a>
 
-                        <%= link_to take_task_path(task.id), class: 'ui  mini teal button' do %>
-                          Atribuir
+                        <%= link_to take_task_path(task.id), class: '  mini teal button' do %>
+                          Atribr
                         <% end %>
                   </p>
 
                   <p>
                   Criada em: <%= l task.created_at%>
                  <% if task.priority_id == 1 %>
-                    <div class="ui compact mini icon red basic button">
+                    <div class=" compact mini icon red basic button">
                     <b>Prioridade: </b>
                     </div>
                  <% end %>
 
                  <% if task.priority_id == 2 %>
-                    <div class="ui compact mini silver icon orange basic button ">
+                    <div class=" compact mini silver icon orange basic button ">
                         <b>Prioridade: </b>
                           Média
                     </div>
                  <% end %>
 
                   <% if task.priority_id == 3 %>
-                    <div class="ui compact mini icon green basic button ">
+                    <div class=" compact mini icon green basic button ">
                         <b>Prioridade: </b>
                         Baixa
                     </div>
@@ -156,7 +154,7 @@
               <div class="extra content">
                 <div class="right floated author">
                   <% task.users.each do |u| %>
-                    <%= image_tag 'avatar.svg', class: 'ui avatar image' %> <%= u.name %>
+                    <%= image_tag 'avatar.svg', class: ' avatar image' %> <%= u.name %>
                   <% end %>
                 </div>
               </div>
@@ -171,7 +169,7 @@
           <% us.tasks.where(status: 2).each do |task| %>
             <p></p>
             <!-- CARD -->
-            <div class="ui teal card">
+            <div class=" teal card">
               <div class="content">
                 <div class="meta">
                 <%= link_to task_path(task.id) do %>
@@ -188,21 +186,21 @@
                 <% end %>
                 </div>
                  <div class="description">
-                  <div class="ui mini icon buttons">
+                  <div class=" mini icon buttons">
                   
-                    <a href="#" data-modal="usertory-<%= us.id %>" class="ui mini icon button modal-task" title="Detalhes">
+                    <a href="#" data-modal="usertory-<%= us.id %>" class=" mini icon button modal-task" title="Detalhes">
                     <%= image_tag("info.png") %>
                     </a>
                  
-                    <%= link_to get_out_task_path(task.id), class: 'ui mini yellow button', title: 'Voltar para a coluna pendente' do %>
+                    <%= link_to get_out_task_path(task.id), class: ' mini yellow button', title: 'Voltar para a coluna pendente' do %>
                       Sair
                     <% end %>
 
-                    <%= link_to take_task_path(task.id), class: 'ui mini orange button', title: 'Participar da tarefa' do %>
+                    <%= link_to take_task_path(task.id), class: ' mini orange button', title: 'Participar da tarefa' do %>
                       Ajudar
                     <% end %>
 
-                    <%= link_to send_to_code_review_path(task.id), class: 'ui mini teal button', title: 'Enviar para Code Review' do %>
+                    <%= link_to send_to_code_review_path(task.id), class: ' mini teal button', title: 'Enviar para Code Review' do %>
                       Code Review
                     <% end %>
                  
@@ -213,21 +211,21 @@
                   <br />
                       Criada em: <%= l task.created_at%>
                       <% if task.priority_id == 1 %>
-                         <div class="ui compact mini icon red basic button">
+                         <div class=" compact mini icon red basic button">
                          <b>Prioridade: </b>
                           Alta
                          </div>
                       <% end %>
 
                       <% if task.priority_id == 2 %>
-                         <div class="ui compact mini silver icon orange basic button">
+                         <div class=" compact mini silver icon orange basic button">
                              <b>Prioridade: </b>
                                Média
                          </div>
                       <% end %>
 
                       <% if task.priority_id == 3 %>
-                        <div class="ui compact mini icon green basic button">
+                        <div class=" compact mini icon green basic button">
                             <b>Prioridade: </b>
                             Baixa
                         </div>
@@ -259,7 +257,7 @@
           <% us.tasks.where(status: 3).each do |task| %>
             <p></p>
             <!-- CARD -->
-            <div class="ui teal card">
+            <div class=" teal card">
               <div class="content">
                 <div class="meta">
                     <%= link_to task_path(task.id) do %>
@@ -277,16 +275,16 @@
                  </div>
 
                 <div class="description">
-                  <div class="ui mini icon buttons">
-                        <a href="#" data-modal="usertory-<%= us.id %>" class="ui mini icon button modal-task" title="Detalhes">
+                  <div class=" mini icon buttons">
+                        <a href="#" data-modal="usertory-<%= us.id %>" class=" mini icon button modal-task" title="Detalhes">
                           <%= image_tag("info.png") %></a>
-                        <%= link_to get_out_task_path(task.id), class: 'ui mini orange button' do %>
+                        <%= link_to get_out_task_path(task.id), class: ' mini orange button' do %>
                           Pendente
                         <% end %>
-                        <%= link_to take_task_path(task.id), class: 'ui mini red button' do %>
+                        <%= link_to take_task_path(task.id), class: ' mini red button' do %>
                           Desenvolvimento
                         <% end %>
-                        <%= link_to send_task_to_test_path(task.id), class: 'ui mini green button' do %>
+                        <%= link_to send_task_to_test_path(task.id), class: ' mini green button' do %>
                           QA
                         <% end %>
                   </div>
@@ -295,21 +293,21 @@
                   <br />
                      Criada em: <%= l task.created_at%>
                     <% if task.priority_id == 1 %>
-                       <div class="ui compact mini icon red basic button">
+                       <div class=" compact mini icon red basic button">
                        <b>Prioridade: </b>
                         Alta
                        </div>
                     <% end %>
 
                     <% if task.priority_id == 2 %>
-                       <div class="ui compact mini silver icon orange basic button ">
+                       <div class=" compact mini silver icon orange basic button ">
                            <b>Prioridade: </b>
                              Média
                        </div>
                     <% end %>
 
                      <% if task.priority_id == 3 %>
-                       <div class="ui compact mini icon green basic button ">
+                       <div class=" compact mini icon green basic button ">
                            <b>Prioridade: </b>
                            Baixa
                        </div>
@@ -342,7 +340,7 @@
           <% us.tasks.where(status: 4).each do |task| %>
             <p></p>
             <!-- CARD -->
-            <div class="ui blue card">
+            <div class=" blue card">
               <div class="content">
                 <div class="meta">
                     <%= link_to task_path(task.id) do %>
@@ -360,28 +358,28 @@
                 </div>
                 <div class="description">
           
-                  <div class="ui mini icon buttons">
-                    <a href="#" data-modal="usertory-<%= us.id %>" class="ui mini icon button modal-task" title="Detalhes">
+                  <div class=" mini icon buttons">
+                    <a href="#" data-modal="usertory-<%= us.id %>" class=" mini icon button modal-task" title="Detalhes">
                       <%= image_tag("info.png") %>
                     </a>
 
-                    <%= link_to get_out_task_path(task.id), class: 'ui mini orange button' do %>
+                    <%= link_to get_out_task_path(task.id), class: ' mini orange button' do %>
                       Sair
                     <% end %>
                     
-                    <%= link_to take_task_path(task.id), class: 'ui mini red button' do %>
+                    <%= link_to take_task_path(task.id), class: ' mini red button' do %>
                           Desenvolvimento
                         <% end %>
 
-                    <%= link_to send_to_code_review_path(task.id), class: 'ui mini teal button' do %>
+                    <%= link_to send_to_code_review_path(task.id), class: ' mini teal button' do %>
                       Code Review
                     <% end %>
 
-                    <%= link_to take_task_path(task.id), class: 'ui mini teal button', title: 'Participar da tarefa' do %>
+                    <%= link_to take_task_path(task.id), class: ' mini teal button', title: 'Participar da tarefa' do %>
                       Ajudar
                     <% end %>
 
-                    <%= link_to done_task_path(task.id), class: 'ui mini green button' do %>
+                    <%= link_to done_task_path(task.id), class: ' mini green button' do %>
                       Pronto
                     <% end %>
                   </div>
@@ -411,7 +409,7 @@
           <% us.tasks.where(status: 5).each do |task| %>
             <p></p>
             <!-- CARD -->
-            <div class="ui green card">
+            <div class=" green card">
               <div class="content">
                 
                 <div class="meta">
@@ -429,11 +427,11 @@
                 <% end %> 
                 </div>
                 <div class="description">
-                  <div class="ui mini icon buttons">
-                    <a href="#" data-modal="usertory-<%= us.id %>" class="ui  mini icon button modal-task" title="Detalhes">
+                  <div class=" mini icon buttons">
+                    <a href="#" data-modal="usertory-<%= us.id %>" class="  mini icon button modal-task" title="Detalhes">
                       <%= image_tag("info.png") %>
                     </a>
-                    <%= link_to redo_task_path(task.id), class: 'ui  mini teal button', title: 'Enviar para teste' do %>
+                    <%= link_to redo_task_path(task.id), class: '  mini teal button', title: 'Enviar para teste' do %>
                       Refazer
                     <% end %>
                   </div>

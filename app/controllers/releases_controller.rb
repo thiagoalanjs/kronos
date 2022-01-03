@@ -29,8 +29,8 @@ class ReleasesController < ApplicationController
 
     respond_to do |format|
       if @release.save
-        format.html { redirect_to @release, notice: 'Release was successfully created.' }
-        format.json { render :show, status: :created, location: @release }
+        format.html { redirect_to releases_path, notice: 'Release criado com sucesso.' }
+        format.json { redirect_to releases_path :show, status: :created, location: @release }
       else
         format.html { render :new }
         format.json { render json: @release.errors, status: :unprocessable_entity }
@@ -43,8 +43,8 @@ class ReleasesController < ApplicationController
   def update
     respond_to do |format|
       if @release.update(release_params)
-        format.html { redirect_to @release, notice: 'Release was successfully updated.' }
-        format.json { render :show, status: :ok, location: @release }
+        format.html { redirect_to releases_path, notice: 'Release atualizado com sucesso.' }
+        format.json { redirect_to releases_path, status: :ok, location: @release }
       else
         format.html { render :edit }
         format.json { render json: @release.errors, status: :unprocessable_entity }
@@ -57,7 +57,7 @@ class ReleasesController < ApplicationController
   def destroy
     @release.destroy
     respond_to do |format|
-      format.html { redirect_to releases_url, notice: 'Release was successfully destroyed.' }
+      format.html { redirect_to releases_url, notice: 'Release deletado com sucesso.' }
       format.json { head :no_content }
     end
   end
@@ -68,7 +68,7 @@ class ReleasesController < ApplicationController
       @release = Release.where(id: params[:id], project_id: current_project_id).first
 
       if @release.nil?
-        redirect_to releases_url, notice: 'Release not found.'
+        redirect_to releases_url, notice: 'Release não encontrado.'
       end
     end
 

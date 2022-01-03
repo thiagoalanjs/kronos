@@ -19,6 +19,11 @@
   </div>
   <% else %>
  
+  <br />
+  <%= link_to "Novo", new_release_path, class: 'item green_button' %>
+  
+  <br />
+  <br />
   <table class="ui celled table">
     <thead>
       <tr>
@@ -34,14 +39,12 @@
           <td><%= release.version %></td>
           <td><%= release.deliver_date %></td>
           <td>
+
             <div class="ui buttons">
-              <%= link_to 'Exibir', release, class: 'ui blue button' %>
+              <%= link_to 'Editar', edit_release_path(release), class: 'blue_button' %>
             </div>
             <div class="ui buttons">
-              <%= link_to 'Editar', edit_release_path(release), class: 'ui yellow button' %>
-            </div>
-            <div class="ui buttons">
-              <%= link_to 'Remover', release, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'ui red button' %>
+              <%= link_to 'Remover', release, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'ui red_button' %>
             </div>
           </td>
         </tr>

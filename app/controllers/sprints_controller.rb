@@ -32,6 +32,7 @@ class SprintsController < ApplicationController
 
     respond_to do |format|
       if @sprint.save
+        UserSprintNotifierMailer.send_create_sprint_email(@sprint).deliver
         format.html { redirect_to @sprint, notice: 'Sprint criada com sucesso.' }
         format.json { render :show, status: :created, location: @sprint }
       else
@@ -46,6 +47,7 @@ class SprintsController < ApplicationController
   def update
     respond_to do |format|
       if @sprint.update(sprint_params)
+        UserSprintNotifierMailer.send_update_sprint_email(@sprint).deliver
         format.html { redirect_to sprints_url, notice: 'Sprint atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @sprint }
       else
@@ -59,6 +61,7 @@ class SprintsController < ApplicationController
   # DELETE /sprints/1.json
   def destroy
     @sprint.destroy
+      UserSprintNotifierMailer.send_delete_sprint_email(@sprint).deliver
     respond_to do |format|
       format.html { redirect_to sprints_url, notice: 'Sprint deletada com sucesso.' }
       format.json { head :no_content }

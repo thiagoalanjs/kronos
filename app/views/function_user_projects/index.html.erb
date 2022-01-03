@@ -7,8 +7,11 @@
     
   </div>
 
+
+
   <%= render 'function_user_projects/breadcrumb' %>
 <br />
+
 
  <% if @function_user_projects.empty? %>
     <div class="box_center">
@@ -16,12 +19,15 @@
       <br />
       <br />
       <p class="access_deny">Nenhum usuário está associado a esse projeto. Clique em "Associar" para incluí-lo no projeto.</p>
-      <%= link_to "Associar", new_function_user_project_path, class: 'item ui green_button' %>
+      <%= link_to "Associar", new_function_user_project_path, class: 'item green_button' %>
     </div>
   </div>
  <% else %>
 
 
+   <%= link_to "Associar", new_function_user_project_path, class: 'item green_button' %>
+  <br />
+  <br />
   <table class="ui celled table">
     <thead>
       <tr>
@@ -32,9 +38,10 @@
     </thead>
 
     <tbody>
-      <% @function_user_projects.each do |function_user_project| %>
+      <% @function_user_projects.each do |function_user_project| %> 
         <tr>
-                    <td><%= function_user_project.user.name %></td>
+
+                    <td><%= function_user_project.user.name %> </td>
                     <td><%= function_user_project.function.name %></td>
                     <td>
       

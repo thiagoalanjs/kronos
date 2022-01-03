@@ -27,8 +27,8 @@ class ThemesController < ApplicationController
 
     respond_to do |format|
       if @theme.save
-        format.html { redirect_to @theme, notice: 'Tema criado com sucesso.' }
-        format.json { render :show, status: :created, location: @theme }
+        format.html { redirect_to themes_path, notice: 'Tema criado com sucesso.' }
+        format.json { redirect_to themes_path, status: :created, location: @theme }
       else
         format.html { render :new }
         format.json { render json: @theme.errors, status: :unprocessable_entity }
@@ -41,8 +41,8 @@ class ThemesController < ApplicationController
   def update
     respond_to do |format|
       if @theme.update(theme_params)
-        format.html { redirect_to @theme, notice: 'Tema atualizado com sucesso.' }
-        format.json { render :show, status: :ok, location: @theme }
+        format.html { redirect_to themes_path, notice: 'Tema atualizado com sucesso.' }
+        format.json { redirect_to themes_path, status: :ok, location: @theme }
       else
         format.html { render :edit }
         format.json { render json: @theme.errors, status: :unprocessable_entity }

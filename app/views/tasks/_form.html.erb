@@ -1,58 +1,74 @@
 <div class="container">
   <br >
   <br >
-  <div class="row"><h3>
-    <%= form_for(@task) do |f| %>
-      
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
-              <div class="form-group">
-                <%= f.label :title, class: 'p' %>
+  
+    <%= form_for(@task, html: {class: 'form'})  do |f| %>
+       <% if @task.errors.any? %>
+        <div class="alert_danger">
+           <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              <div class="header">
+            <% @task.errors.full_messages.each do |message| %>
+                <p> - <%= message %> </p>
+            <% end %>
+          </div>
+          </div>
+       <% end%>
+       
+              <div>
+                <%= f.label :title %>
                 <br />
-                <%= f.text_field :title, class: 'field_input' %>
+                <%= f.text_field :title %>
               </div>
 
-              <div class="form-group">
-                <%= f.label :description, class: 'p' %>
+              <div>
+                <%= f.label :description %>
                 <br />
-                <%= f.text_area :description, class: 'field_input' %>
+                <%= f.text_area :description %>
                 <br />
               </div>
         
-              <div class="form-group">
-                <%= f.label :status, class: 'p' %>
+              <div>
+                <%= f.label :status %>
                 <br />
 
-                  <%= f.select :status, options_for_select({'Pendente' => 1 , 'Desenvolvimento' => 2 , 'Code Review' => 3, 'QA' => 4 , 'Concluída' => 5 }), {:prompt => false}, { :class => 'ui search dropdown', placeholder: 'Status' } %>
+                  <%= f.select :status, options_for_select({'Pendente' => 1 , 'Desenvolvimento' => 2 , 'Code Review' => 3, 'QA' => 4 , 'Concluída' => 5 }), {:prompt => false}, {  placeholder: 'Status' } %>
               </div>
         
-              <div class="form-group">                
+              <div>               
                 <br />
-                <%= f.label :user_story_id, class: 'p' %>
+                <%= f.label :user_story_id  %>
                 <br />
-                <%= f.collection_select(:user_story_id, current_project.user_stories, :id, :title, {:prompt=>false},{class:'field_input'}) %>
+                <%= f.collection_select(:user_story_id, current_project.user_stories, :id, :title, {:prompt=>false}) %>
               
               </div>
         
-            <div class="form-group">
+            <div>
                 <br />
-                <%= f.label :kind_id, class: 'p' %>
+                <%= f.label :kind_id%>
                 <br />
-                <%= f.select :kind_id, Kind.all.collect {|x| [x.name, x.id]}, {prompt: 'Selecionar o tipo de tarefa'}, class: "ui search dropdown" %>
+                <%= f.select :kind_id, Kind.all.collect {|x| [x.name, x.id]}, { prompt: 'Selecionar o tipo de tarefa' } %>
               </div>
  
-               <div class="form-group">
+               <div>
                 <br />
-                <%= f.label :priority_id, class: 'p' %>
+                <%= f.label :priority_id %>
                 <br />
-                <%= f.select :priority_id, Priority.all.collect {|x| [x.name, x.id]}, {prompt: 'Selecionar a prioridade da tarefa'}, class: "ui search dropdown" %>
+                <%= f.select :priority_id, Priority.all.collect {|x| [x.name, x.id]}, { prompt: 'Selecionar a prioridade da tarefa' } %>
               </div>
               <br />              
-              <div class="ui buttons">
-            <%= f.button type: 'submit', class: 'ui blue button' do %>
-            Salvar
-          <% end %>
+              <div>
+         
+            <%= link_to 'Salvar', new_task_path({controller: 'task', action: 'create'}), class: 'save blue_button' %>
+            <%= link_to 'Cancelar', tasks_path, class: 'red_button' %>
         </div>
       <% end %>
     </div>
-  </div>
+
 </div>    
+
+
+<script type="text/javascript">
+  $('.save').click(function(){
+    $('form').submit(); 
+  });
+</script>

@@ -41,6 +41,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        UserNotifierMailer.send_registered_email(@user).deliver
         format.html { redirect_to users_path, notice: 'Usuário criado com sucesso.' }
       else
         format.html { render :new }
@@ -69,6 +70,7 @@ class UsersController < ApplicationController
     authorize User
     @user.destroy
     respond_to do |format|
+      UserNotifierMailer.send_delete_email(@user).deliver
       format.html { redirect_to users_url, notice: 'Usuário deletado com sucesso.' }
       format.json { head :no_content }
     end

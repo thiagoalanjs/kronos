@@ -2,40 +2,42 @@
 
 <br />
 <br />
-
-<div class="ui four cards">
-
 <% @projects.each do |project| %>
 
- <div class="card">
-    <div class="content">
+  <div class="card">
+    <div class="content_title">
       <div class="header"><%= project.name %></div>
     </div>
 
     <div class="content">
       <div class="description">
-        <p class="info"><strong>Sigla: </strong><%= project.initial %></p>
-        <p class="info"><strong>Iniciado em:</strong> <%= l project.start_date %></p>
-        <p class="info"><strong>Termino previsto:</strong> <%= l project.end_date %></p>
-        <p class="info"><strong>Membros:</strong> <%= project.members_number %></p>
-        <p class="info"><strong>Sprint atual:</strong> <%= project.current_sprint %></p>
+        <p class="info"><%= image_tag("initial.png") %> <strong>Sigla: </strong><%= project.initial %></p>
+        <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Iniciado em:</strong> <%= l project.start_date %></p>
+        <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Término previsto:</strong> <%= l project.end_date %></p>
+        <p class="info"><%= image_tag("team_icon.png") %> <strong>Membros:</strong> <%= project.members_number %></p>
+        <p class="info"><%= image_tag("sprint_icon.png") %> <strong>Sprint atual:</strong> 
+        <% if project.current_sprint.nil? %> 
+             -
+        <% else %>
+        <%= project.current_sprint %>
+        <% end %></p>
         <p></p>
-        <div class="ui teal progress" data-percent="<%= project.progress %>">
+        <div class="bar_progress" id="project-progress" data-percent="<%= project.progress %>">
           <div class="bar"></div>
           <div class="label">
-            <%= project.progress %>
+            <%= project.progress %>%
           </div>
         </div>
       </div>
     </div>
-   
-   <button class="ui bottom attached button" onclick="window.location.href='<%= select_project_path(project) %>'">
-    Acessar projeto
-   </button>
-  </div>
 
+    <button class="button_card" onclick="window.location.href='<%= select_project_path(project) %>'">
+      Administrar
+    </button>
+  </div>
+  
 <% end %>
-</div>
+
 
 <script type="text/javascript">
   $('.progress').progress();

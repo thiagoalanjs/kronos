@@ -202,8 +202,10 @@ ActiveRecord::Schema.define(version: 2021_11_20_040249) do
     t.integer "sprint_id"
     t.integer "priority_id"
     t.integer "project_id"
+    t.integer "function_user_project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["function_user_project_id"], name: "index_user_stories_on_function_user_project_id"
     t.index ["priority_id"], name: "index_user_stories_on_priority_id"
     t.index ["project_id"], name: "index_user_stories_on_project_id"
     t.index ["sprint_id"], name: "index_user_stories_on_sprint_id"
@@ -265,6 +267,7 @@ ActiveRecord::Schema.define(version: 2021_11_20_040249) do
   add_foreign_key "tasks_users", "tasks"
   add_foreign_key "tasks_users", "users"
   add_foreign_key "themes", "projects"
+  add_foreign_key "user_stories", "function_user_projects"
   add_foreign_key "user_stories", "priorities"
   add_foreign_key "user_stories", "projects"
   add_foreign_key "user_stories", "sprints"

@@ -3,7 +3,6 @@ class UserStoriesController < ApplicationController
   
   def index
       @user_stories = UserStory.where(project_id: current_project_id).page(params[:page]).order('priority_id ASC').per(8)
-      @criterion = UserStoryAcceptanceCriterion.new
       @task = Task.new
     # if params[:search]  
     #   @user_stories = UserStory.where("business_value LIKE ?", '%'"#{params[:search]}"'%').page(params[:page]).order('priority_id ASC').per(8)
@@ -30,7 +29,8 @@ class UserStoriesController < ApplicationController
 
     respond_to do |format|
       if @user_story.save
-        format.html { redirect_to @user_story, notice: 'User story foi criada com sucesso!!' }
+        UserStoryNotifierMailer.send_create_user_story_email(@user_story).deliver
+        format.html { redirect_to user_stories_url, notice: 'User story foi criada com sucesso!!' }
       else
         format.html { render :new }
       end
@@ -38,10 +38,9 @@ class UserStoriesController < ApplicationController
   end
 
   def update
-
-
     respond_to do |format|
       if @user_story.update(user_story_params)
+        UserStoryNotifierMailer.send_update_user_story_email(@user_story).deliver
         format.html { redirect_to @user_story, notice: 'User story foi atualizada com sucesso.' }
       else
         format.html { render :edit }
@@ -51,6 +50,7 @@ class UserStoriesController < ApplicationController
 
   def destroy
     @user_story.destroy
+    UserStoryNotifierMailer.send_delete_user_story_email(@user_story).deliver
     respond_to do |format|
       format.html { redirect_to user_stories_url, notice: 'User story foi deletada com sucesso.' }
     end
@@ -61,7 +61,7 @@ class UserStoriesController < ApplicationController
       @user_story = UserStory.where(id: params[:id], project_id: current_project_id).first
 
       if @user_story.nil?
-        redirect_to releases_url, notice: 'User story não encontrada.'
+        redirect_to user_stories_url, notice: 'User story não encontrada.'
       end
     end
 

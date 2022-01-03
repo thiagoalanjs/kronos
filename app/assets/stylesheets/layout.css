@@ -77,12 +77,12 @@
 	height: auto;
 	overflow: hidden;
 	width: 270px;
-  padding: 15px;
+    padding: 15px;
 	background: rgb(100, 149, 237);
 	position: absolute;
 	z-index: 99;
 	display: none;
-  margin-left: -235px;
+    margin-left: -235px;
 }
 
 #menu ul.sub-menus li {
@@ -144,87 +144,10 @@
 	#menu input:checked ~ ul {display:block}
 }
 
-@media only screen and (max-width: 640px){
-  #menu {
-    background: rgb(100, 149, 237);
-    color: #FFF;
-    width: 100%;
-    height: 75px;
-    border-radius: 0px;	
-  }
-
-  .sidebar{
-    display: none;
-  }
-
-  div .container{
-    margin-left: -80px;
-  }
-}
 
 
 
 
-
-/*****************************************/
-/*************** MENU NAV ****************/
-/*****************************************/
-
-nav {
-    width:  100%;
-    height: 80px;
-    margin: 0 auto;
-    background-color: rgb(100, 149, 237);
-}
-
-div ul#icon-menu-mobile{
-    float: right;
-    display: none;
-}
-
-div#menu_left ul {
-    float: right;
-    display: flex;
-    flex-flow: wrap;
-    justify-content: left;
-    margin-top: 20px;
-    height: 40px;
-    color: #FFF;
-}
-
-div#menu_left ul li {
-    margin: 15px;
-    display: inline;
-}
-
-div#menu_left a{
-    text-decoration: none;
-    color: #FFF;
-}
-
-div#menu_left a:hover{
-    text-decoration: none;
-}
-
-div#menu_right ul{
-    float: right;
-    display: flex;
-    flex-flow: wrap;
-    justify-content: left;
-    margin-top: 20px;
-    margin-left:20px;
-    margin-right:20px;
-    height: 40px;
-    color: #FFF;
-}
-div#menu_right ul li{ 
-    list-style: none;
-    text-decoration: none;
-}
-
-div#menu_right a{
-    color: #FFF;
-}
 
 .dropdown {
     position: relative;
@@ -353,6 +276,10 @@ div#notification_inactived {
   margin-left: 23%;
 }
 
+.container_user {
+  width: 100%;
+}
+
 .yellow_button{
     background-color: #ffbd08;
     border: none;
@@ -399,6 +326,19 @@ div#notification_inactived {
     font-size: 16px;
 }
 
+.silver_button {
+    background-color: #bbbbbb;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+
 .orange_button{
     background-color: #f36d2e;
     border: none;
@@ -412,7 +352,7 @@ div#notification_inactived {
 
 .kind_task_accordion{
     float: left;
-    margin: 10px 10px;
+    margin: 5px 10px;
     vertical-align: middle
 }
   
@@ -478,8 +418,10 @@ div#notification_inactived {
 }
 
 .alert_danger {
-    padding: 10px;
+    padding: 15px;
+    margin-top: 20px;
     margin-bottom: 20px;
+    width: 95%;
     background-color: #f44336;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -617,6 +559,16 @@ th {
     padding: 5px;
     display: inline-block;
 }
+
+.content_charts {
+    width: 40%;
+    padding: 20px;
+    background-color: #e6e6e6;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    box-shadow: #303030;
+}
 /*****************************
   Kaminari Pagination
 *****************************/
@@ -710,22 +662,24 @@ th {
     transition: 0.4s;
     box-shadow: 0px 2px 3px black;
   }
-
-  .us_accordion a {
-      text-decoration: none;
-      font-size: 18px;
-      color: #303030;
-      cursor: pointer;
+  .us_accordion a{
+    text-decoration: none;
+    color: #6d6d6d;
+    font-weight: 600;
   }
-  
+  .user_story_title{
+     color: #303030; 
+  }
+
   .info_accordion {
     float: right;
   }
   
   .kind_task_accordion{
     float: left;
+    padding: 5px;
     margin: 10px 10px;
-    vertical-align: middle
+    vertical-align:auto
   }
   
   .delete_task_accordion{
@@ -739,10 +693,16 @@ th {
     background-color: white;
     overflow: hidden;
     box-shadow: 0px 1px 1px black;
+    
+  }
+
+  .panel{
+      text-decoration: none;
   }
   
   .mini_red_button{
     margin-bottom: 2px;
+    max-width: 150px;
     padding: 5px;
     border-radius: 4px;
     background-color: #b30000;
@@ -750,6 +710,8 @@ th {
 
   .mini_orange_button{
     margin-bottom: 2px;
+    max-width: 150px;
+    margin:2px;
     padding: 5px;
     border-radius: 4px;
     background-color: #fd5d00;
@@ -757,15 +719,33 @@ th {
 
   .mini_green_button{
     margin-bottom: 2px;
+    max-width: 150px;
     padding: 5px;
     border-radius: 4px;
     background-color: #049604
   }
   
+  .mini_info_button{
+    padding: 5px;
+    margin:2px;
+    max-width: 150px;
+    border-radius: 4px;
+    background-color: #d4af06;
+    color: #FFF;
+  }
+
+  .mini_info_button a{
+    text-decoration: none; 
+    font-size: 15px; 
+    color:#FFF
+  }
+
   .mini_status_button{
     padding: 5px;
+    max-width: 150px;
     border-radius: 4px;
     background-color: #b9b9b9;
+
   }
   
   .modal_task {
@@ -1364,7 +1344,7 @@ th {
     #menu label{
       float: left;
       padding-right: 10px;
-      margin-left: 285px;
+      margin-left: 260px;
     
     }
 
@@ -1381,23 +1361,23 @@ th {
     }
 
     .search_input {
-        width: 70%;
+        width: 50%;
         float: left;
         display: inline;    
         position: absolute;
-        margin-left: -260px;
+        margin-left: -30px;
     }
 
     input#btn_seach{
         display: inline-block;
         width: 15px;
         float: right;
-        margin-right: -10px;
+        margin-right: -40px;
         margin-bottom: 20px;
     }
 
     .card {
-       width: 320px;
+       width: 300px;
        margin-top: 10px;
        margin-right: 10px;
        display: inline-block;
@@ -1429,9 +1409,9 @@ th {
     }
 
     .content_title{
-        width: 310px;
+        width: 285px;
         height: 5px;
-        margin-left: -5px;  
+        margin-left: 3px;
         padding-top: 5px;
         padding-left: 2.5px;
         padding-right: 2.5px;
@@ -1446,8 +1426,8 @@ th {
     }    
 
     .content{
-        width: 315px;
-        margin-left: -5px;    
+        width: 290px;
+        margin-left: 3px;    
         padding-top: 15px;
         padding-bottom: 15px;
         border-style:solid;
@@ -1463,9 +1443,9 @@ th {
     }
 
     .button_card {
-        width: 317px;
+        width: 292px;
         height: 50px;
-        margin-left: -5px;
+        margin-left: 3px;
         border-bottom-right-radius: 5px 5px;
         border-bottom-left-radius: 5px 5px;
         background-image: linear-gradient(#f8f8f8, #cccbcb);
@@ -1495,7 +1475,7 @@ th {
     }
 
     .green_button{
-        width: 285px;
+        width: 205px;
     }
 
     .blue_button{
@@ -1507,10 +1487,10 @@ th {
         width: 295px;
         margin-bottom: 20px;
     }
+    
     .container{
-        width: 90%;
-        margin-right: 0px;
-        
+        width: 100px;
+        margin-left: -120px;
     }
 
 

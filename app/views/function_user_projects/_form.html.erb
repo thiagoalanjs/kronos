@@ -11,12 +11,12 @@
 
     <div class="field">
       <b><%= f.label :user_id %></b>
-      <%= f.collection_select(:user_id, User.all, :id, :name, {:prompt => 'Selecione um usuário'}, {class: 'ui search dropdown'}) %>
+      <%= f.collection_select(:user_id, User.all, :id, :name) %>
     </div>
 
     <div class="field">
       <b><%= f.label :function_id %></b>
-      <%= f.collection_select(:function_id, Function.all, :id, :name, {:prompt => 'Selecione uma função'}, {class: 'ui search dropdown'}) %>
+      <%= f.collection_select(:function_id, Function.all, :id, :name, {:prompt => 'Selecione uma função'}) %>
     </div>
 
     <br />

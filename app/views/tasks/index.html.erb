@@ -1,7 +1,6 @@
 <div class="container">
   <div class="ui menu">
-    <a href="#" class="item active"><strong>Tasks</strong></a>
-    <%= link_to "Nova tarefa", new_task_path, class: 'item' %>
+    <h2>Tasks</h2>
   </div>
 
 <p></p> 
@@ -12,6 +11,7 @@
       <br />
       <br />
       <p class="access_deny"> Nenhuma tarefa criada. Clique no botão "Nova tarefa" para criar uma nova task.</p>
+          <%= link_to "Nova tarefa", new_task_path, class: 'green_button' %>
   </div>
 <% end %>
 
@@ -45,13 +45,13 @@
                  <% end %>
 
                   <% if task.priority_id == 3 %>
-                    <div class="ui compact mini icon green basic button ">
+                    <div class="mini_green_button ">
                         <b>Prioridade: </b>
                         Baixa
                     </div>
                  <% end %>
 
-                 <div class="ui compact mini icon silver basic button"><b>Status: </b>
+                 <div class="mini_status_button"><b>Status: </b>
                      <% if task.status == 1 %>
                       Pendente
                      <% end %>

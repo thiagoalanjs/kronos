@@ -37,10 +37,7 @@
           <td><%= theme.description %></td>
           <td>
             <div class="ui buttons">
-              <%= link_to 'Exibir', theme, class: 'blue_button' %>
-            </div>
-            <div class="ui buttons">
-              <%= link_to 'Editar', edit_theme_path(theme), class: 'yellow_button' %>
+              <%= link_to 'Editar', edit_theme_path(theme), class: 'blue_button' %>
             </div>
             <div class="ui buttons">
               <%= link_to 'Remover', theme, method: :delete, data: { confirm: 'Você tem certeza que deseja excluir esse tema ?' }, class: 'red_button' %>

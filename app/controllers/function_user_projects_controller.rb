@@ -31,6 +31,7 @@ class FunctionUserProjectsController < ApplicationController
     @function_user_project.project_id = current_project_id
     respond_to do |format|
       if @function_user_project.save
+        UserAssociateNotifierMailer.send_associated_email(@function_user_project).deliver
         format.html { redirect_to function_user_projects_url, notice: 'Usuário associado ao projeto com sucesso.' }
         format.json { render :show, status: :created, redirect_to: @function_user_project }
       else
@@ -59,6 +60,7 @@ class FunctionUserProjectsController < ApplicationController
   def destroy
     @function_user_project.destroy
     respond_to do |format|
+      UserAssociateNotifierMailer.send_delete_associated_email(@function_user_project).deliver
       format.html { redirect_to function_user_projects_url, notice: 'Usuário retirado do projeto com sucesso.' }
       format.json { head :no_content }
     end
