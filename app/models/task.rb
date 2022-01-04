@@ -1,11 +1,8 @@
 class Task < ActiveRecord::Base
 	# enum status: [:development, :pendent, :completed]
 	belongs_to :user_story
-	#has_and_belongs_to_many :users
   	has_many :users_tasks, dependent: :destroy
   	has_many :users, through: :users_tasks
-  	#has_one :kind
-  	has_many :task_requirements, dependent: :destroy
 
 	validates :title, format:{with: /\A[a-zA-Z0-9_ ]+\z/, message: "deve conter apenas letras e números" }, presence: true, uniqueness: { case_sensitive: false }
 	validates :description, presence: true

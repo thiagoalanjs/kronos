@@ -10,5 +10,4 @@ class UserNotifierMailer < ApplicationMailer
         mail( :to => @user.email,
         :subject => 'Exclusão da plataforma Agile Kronos feito com sucesso!' )
       end
-  end
 end

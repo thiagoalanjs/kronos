@@ -117,7 +117,8 @@
   }
 	#menu ul {
     background: rgb(100, 149, 237);
-    position:absolute;
+    position:abs
+    olute;
     top:100%;
     right:0;
     left:0;
@@ -327,7 +328,7 @@ div#notification_inactived {
 }
 
 .silver_button {
-    background-color: #bbbbbb;
+    background-color: #999898;
     border: none;
     color: white;
     padding: 10px;
@@ -418,7 +419,7 @@ div#notification_inactived {
 }
 
 .alert_danger {
-    padding: 15px;
+    padding: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
     width: 95%;
@@ -649,7 +650,7 @@ th {
       font-weight: 300;
   }
 
-  .us_accordion {
+  .accordion {
     background-color: rgb(237, 237, 237);
     color: #FFF;
     cursor: pointer;
@@ -662,17 +663,18 @@ th {
     transition: 0.4s;
     box-shadow: 0px 2px 3px black;
   }
-  .us_accordion a{
-    text-decoration: none;
-    color: #6d6d6d;
-    font-weight: 600;
-  }
-  .user_story_title{
-     color: #303030; 
+
+  .accordion_title{
+     color: #575656; 
+     font-size: 20px;
+     position: relative;  
   }
 
   .info_accordion {
     float: right;
+    margin-right: 20px;
+    display: inline-block;
+    max-width: 900px;
   }
   
   .kind_task_accordion{
@@ -700,6 +702,11 @@ th {
       text-decoration: none;
   }
   
+  .task_content_accordion {
+      float: left;
+      width: 100%;
+  }
+
   .mini_red_button{
     margin-bottom: 2px;
     max-width: 150px;
@@ -742,12 +749,66 @@ th {
 
   .mini_status_button{
     padding: 5px;
+    margin: 5px;
     max-width: 150px;
     border-radius: 4px;
     background-color: #b9b9b9;
 
   }
-  
+  .info_sprint_user_story {
+    border: #010399;
+    border-style: solid;
+    border-width: 0.5px;
+    color: #010399;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    
+  }
+
+  .info_sprint_bug {
+    border: #bb0000;
+    border-style: solid;
+    border-width: 0.5px;
+    color: #bb0000;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+
+  .info_sub_task {
+    border: rgb(0, 73, 67);
+    border-style: solid;
+    border-width: 0.5px;
+    color: rgb(0, 73, 67);
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+
+  }
+
+  .info_sprint_status {
+
+    color: rgb(255, 255, 255);
+    background-color: cornflowerblue;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+
+  }
+
   .modal_task {
     display: none;
     position: fixed;

@@ -1,8 +1,7 @@
+<br />
 <div class="container">
-  <div class="ui menu">
     <h2>Tasks</h2>
-  </div>
-
+ 
 <p></p> 
 <p></p>
 <% if @tasks.empty? %> 
@@ -11,14 +10,16 @@
       <br />
       <br />
       <p class="access_deny"> Nenhuma tarefa criada. Clique no botão "Nova tarefa" para criar uma nova task.</p>
-          <%= link_to "Nova tarefa", new_task_path, class: 'green_button' %>
+          <%= link_to "Nova task", new_task_path, class: 'green_button' %>
   </div>
-<% end %>
+<% else %>
 
-
+<%= link_to "Nova task", new_task_path, class: 'green_button' %>
+<br />
+<br />
 <% @tasks.each do |task| %>
 
-<p>
+<p class="task_content_accordion">
     <div class="kind_task_accordion">
          <% if task.kind_id == 1 %>
            <%= image_tag('bug.png', title: "Task do tipo BUG") %>
@@ -27,31 +28,31 @@
          <% end %>
     </div>
           <%= link_to edit_task_path(task.id) do %>
-             <div class="ui button"> TK-<%= task.user_story.project.initial %>-<%= task.id %> <%= task.title %></div>
+             <div class="silver_button"> TK-<%= task.user_story.project.initial %>-<%= task.id %> <%= task.title %></div>
           <% end %>
 
           <% if task.priority_id == 1 %>       
-            <div class="ui compact mini icon red basic button">
+            <div class="red_button">
             <b>Prioridade: </b>
              Alta
             </div>
           <% end %>
 
                  <% if task.priority_id == 2 %>
-                    <div class="ui compact mini silver icon orange basic button ">
+                    <div class="orange_button ">
                         <b>Prioridade: </b>
                           Média
                     </div>
                  <% end %>
 
                   <% if task.priority_id == 3 %>
-                    <div class="mini_green_button ">
+                    <div class="green_button ">
                         <b>Prioridade: </b>
                         Baixa
                     </div>
                  <% end %>
 
-                 <div class="mini_status_button"><b>Status: </b>
+                 <div class="silver_button"><b>Status: </b>
                      <% if task.status == 1 %>
                       Pendente
                      <% end %>
@@ -69,13 +70,12 @@
                      <% end %>
                 </div>
                  
-                 <%= link_to task, method: :delete, class: "delete_task_accordion", data: { confirm: "Deseja deletar a tarefa TK-#{task.user_story.project.initial}-#{ task.id } #{task.title} ?" }, title: "Remover tarefa TK-#{task.user_story.project.initial}-#{ task.id } #{ task.title}" do %>
+                 <%= link_to task, method: :delete, data: { confirm: "Deseja deletar a tarefa TK-#{task.user_story.project.initial}-#{ task.id } #{task.title} ?" }, title: "Remover tarefa TK-#{task.user_story.project.initial}-#{ task.id } #{ task.title}" do %>
                    <%= image_tag('delete_btn.png') %>
                  <% end %>
- <% end %>
-
+                 <br />
+     <% end %>
+<% end %>
  </p>
-  </div>
+  
 </div>
-<!-- /TABLE -->
-

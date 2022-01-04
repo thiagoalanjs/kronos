@@ -1,10 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @tasks = Task.all
-  end
-
   def show
   end
 
@@ -20,7 +16,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: "Tarefa TK-#{@task.user_story.project.initial}-#{@task.id} criada com sucesso!"  }
+        format.html { redirect_to user_stories_path, notice: "Tarefa TK-#{@task.user_story.project.initial}-#{@task.id} criada com sucesso!"  }
       else
          format.html { render :new }
       end
@@ -30,7 +26,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: "Tarefa TK-#{@task.user_story.project.initial}-#{@task.id} atualizada com sucesso!" }
+        format.html { redirect_to user_stories_path, notice: "Tarefa TK-#{@task.user_story.project.initial}-#{@task.id} atualizada com sucesso!" }
       else 
         format.html { render :edit }
       end

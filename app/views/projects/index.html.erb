@@ -1,11 +1,13 @@
 <br />
 
+
 <div class="container">
+
   <% if current_user.group != 'admin' && current_user.group != 'coordenador' %>
     <h1>Projetos <%= image_tag("gerenciamento-de-projetos.png") %></h1>
     <hr>
     <p></p>
-
+  
     <% if @projects.empty? %> 
         <div class="box_center">
             <%= image_tag("access-denied.png") %>
@@ -25,17 +27,18 @@
         <% end %>
       </div>
      
-      
+
       <h1>Projetos</h1>
         <div class="sub_title">Aqui você cria e gerencia seus projetos.</div>
       <hr>
   
     <%= render 'projects/list_projects_admin' %> 
-
+  
     <br />
       <%= paginate @projects %>  
     <br />
     <br />
     <br />
   <% end %>
+  </div>
 </div> 

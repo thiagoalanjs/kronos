@@ -16,12 +16,11 @@ header {
     clip-path: polygon(0 0, 100% 0, 100% 40%,0 40%);
 }
 
-
 div#box-center {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 28% ;
+    width: 29% ;
     height: 350px auto;
     transform: translate(-50%, -50%);
     background-color: rgb(255, 255, 255);
@@ -63,9 +62,11 @@ input#button {
     border-radius: 3px;
     transition: all 0.4s;
 }
+
 submit{
     background-color: #252527;
 }
+
 img#logo {
     display: block;
     margin-left: auto;
@@ -180,6 +181,7 @@ footer a {
 .alert_danger {
     padding: 10px;
     margin: 20px;
+    width: 355px;
     background-color: #f44336;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

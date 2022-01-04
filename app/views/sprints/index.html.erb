@@ -1,13 +1,16 @@
 <p></p>
+<div id="loader"></div> 
+
 
 <div class="container">
-  <div class="ui menu">
+  <div>
   <br />
     <h2>Sprints</h2>
   </p>
 
   <%= render 'sprints/breadcrumb' %>
-  
+  </div> 
+  <div style="display:none;" id="myDiv" class="animate-bottom">
    <% if @sprints.empty? %> 
         <div class="box_center">
             <%= image_tag("access-denied.png") %>
@@ -20,53 +23,131 @@
 
 <br />
 
-  <table class="ui celled table">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Duração</th>
-        <th>Planejamento</th>
-        <th>Execução</th>
-        <th>Review meeting</th>
-        <th>Retrospective meeting</th>
-        <th>Release</th>
-        <th width="290">Ações</th>
-      </tr>
-    </thead>
 
-    <tbody>
-      <% @sprints.each do |sprint| %>
-        <tr>
-          <td><%= sprint.name %></td>
-          <td class="ui center aligned">
-            <%= l sprint.start_date %>
-            <br>à<br> 
-            <%= l sprint.end_date %>    
-          </td>
-          <td class="ui center aligned">
-            <%= l sprint.planning_start_date %>
-            <br>à<br> 
-            <%= l sprint.planning_end_date %>    
-          </td>
-          <td class="ui center aligned">
-            <%= l sprint.execution_start_date %>
-            <br>à<br> 
-            <%= l sprint.execution_end_date %>    
-          </td>
-          <td class="ui center aligned"><%= l sprint.review_meeting_date %></td>
-          <td class="ui center aligned"><%= l sprint.retrospective_meeting_date %></td>
-          <td class="ui center aligned"><%= sprint.release.version unless sprint.release.nil?  %></td>
-          <td>
-            
-            <%= link_to 'Editar', edit_sprint_path(sprint), class: 'blue_button' %> 
-            <%= link_to 'Remover', sprint, method: :delete, data: { confirm: 'Você tem certeza que deseja remover a sprint?' }, class: 'red_button' %>
-         
-          </td>
-        </tr>
+<% @sprints.each do |sprint| %>
+<button class="accordion">
+    <b class="accordion_title">
+     <%= sprint.name %>
+    </b>
+ 
+    <div class="info_accordion">
+      <div class="info_sprint_user_story">
+       User Stories :  <%= UserStory.where(project: current_project).count %>
+      </div>
+      <div class="info_sprint_bug">
+      Bugs:
+       <%= Task.joins("INNER JOIN user_stories ON user_stories.id = 
+                                                                tasks.user_story_id
+                                                                WHERE kind_id = 1 AND project_id = '#{ current_project_id }'").count %>
+       </div>  
+
+           <div class="info_sub_task">
+      Sub-task:
+       <%= Task.joins("INNER JOIN user_stories ON user_stories.id = 
+                                                                tasks.user_story_id
+                                                                WHERE kind_id = 2 AND project_id = '#{ current_project_id }'").count %>
+       </div>
+       <div class="info_sprint_status">
+          ATIVA
+       </div>                                                       
+    </div>
+</button>
+    <div class="panel">
+      <br />
+ <div>
+   <b>Duração: </b>
+   <%= l sprint.start_date %> à <%= l sprint.end_date %>
+ </div> 
+
+ <div>
+    <b>Planejamento: </b>
+    <%= l sprint.planning_start_date %> à <%= l sprint.planning_end_date %> 
+ </div> 
+
+<div>
+    <b>Execução: </b>
+    <%= l sprint.execution_start_date %> à <%= l sprint.execution_end_date %>  
+ </div> 
+
+ <div>
+    <b>Review meeting: </b>
+    <%= l sprint.review_meeting_date %>
+ </div>
+
+  <div>
+    <b>Retrospective meeting: </b>
+    <%= l sprint.retrospective_meeting_date %>
+ </div> 
+
+ <div>
+    <b>Release: </b>
+    <%= sprint.release.version unless sprint.release.nil?  %>
+ </div> 
+   
+    <br />
+     <%= link_to 'Editar', edit_sprint_path(sprint), class: 'blue_button' %> 
+     <%= link_to 'Remover', sprint, method: :delete, data: { confirm: 'Você tem certeza que deseja remover a sprint?' }, class: 'red_button' %>
+          <br /> <br />
       <% end %>
-    </tbody>
-  </table>
+ </div>
  <% end %>
 
 
+<script type="text/javascript">
+  $(document).ready(function() {
+    //$('.sortable').tablesort();
+  });
+  ///Accordion
+
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div> 
 </div>

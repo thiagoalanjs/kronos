@@ -1,3 +1,6 @@
+<div id="loader"></div> 
+
+
 <div class="container">
 <br />
 <h2> Gráficos do projeto <%= current_project.name %> : </h2>
@@ -7,7 +10,7 @@
 <br />
 <br />
 
-
+<div style="display:none;" id="myDiv" class="animate-bottom">
 <% if @project.user_stories.empty? %>
 <div class="box_center"> 
    <%= image_tag("pie-chart.png") %>
@@ -171,36 +174,34 @@
       };
     </script>
     
-<br />
+   <br />
 
-  <div class="ui two cards">
-    <div class="card">
-     <div id="piechart_user_stories" style="width: 500px; height: 300px;"></div>
-    </div>
-    <% if @project.tasks.empty? %>
-    <% else %>
-        <div class="card">    
-            <div id="piechart_task" style="width: 500px; height: 300px;"></div>
-        </div>
+      <div class="ui two cards">
+          <div class="card">
+           <div id="piechart_user_stories" style="width: 500px; height: 300px;"></div>
+          </div>
+          <% if @project.tasks.empty? %>
+          <% else %>
+              <div class="card">    
+                  <div id="piechart_task" style="width: 500px; height: 300px;"></div>
+              </div>
 
-         <div class="card">
-              <div id="piechart_status_subtask" style="width: 530px; height: 300px;"></div> 
-         </div>
+               <div class="card">
+                    <div id="piechart_status_subtask" style="width: 530px; height: 300px;"></div> 
+               </div>
 
-         <div class="card">
-              <div id="piechart_status_bug" style="width: 530px; height: 300px;"></div> 
-         </div>
-    <% end %>
-</div>
+               <div class="card">
+                    <div id="piechart_status_bug" style="width: 530px; height: 300px;"></div> 
+               </div>
+          <% end %>
+      </div>
 
- <div class="ui one cards">
-     <div class="card">
-          <div id="top_x_div" style="width: 900px; height: 500px;"></div>
-     </div>
- </div>
+      <div class="ui one cards">
+          <div class="card">
+               <div id="top_x_div" style="width: 900px; height: 500px;"></div>
+          </div>
+      </div>
 
-
-
-
+    </div> 
   </div>
-  <% end %>
+<% end %>

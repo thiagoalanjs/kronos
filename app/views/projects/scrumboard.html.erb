@@ -1,9 +1,12 @@
+<div id="loader"></div>
+
 <div class="container">  
 <br />
 <h1>Board <%= image_tag("scrumboard-icon.png")%></h1>
 <hr>
  <br />
  <br />
+ <div style="display:none;" id="myDiv" class="animate-bottom">
 <% if @project.sprints.empty? && current_user.group == 'analista' %> 
         <div class="box_center">
             <%= image_tag("access-denied.png") %>

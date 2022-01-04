@@ -9,19 +9,19 @@
        <p></p>
     <% end%>
 
-    <div class="field">
+    <div>
       <b><%= f.label :user_id %></b>
       <%= f.collection_select(:user_id, User.all, :id, :name) %>
     </div>
 
-    <div class="field">
+    <div>
       <b><%= f.label :function_id %></b>
       <%= f.collection_select(:function_id, Function.all, :id, :name, {:prompt => 'Selecione uma função'}) %>
     </div>
 
     <br />
-      <%= link_to 'Salvar', new_function_user_project_path({ controller: 'function_user_projects', action: 'create' }), class: 'item save blue_button' %>
-      <%= link_to 'Cancelar', function_user_projects_path, class: 'item red_button' %>
+      <%= link_to 'Salvar', new_function_user_project_path({ controller: 'function_user_projects', action: 'create' }), class: 'save blue_button' %>
+      <%= link_to 'Cancelar', function_user_projects_path, class: 'red_button' %>
   <% end %>
 
 <script type="text/javascript">

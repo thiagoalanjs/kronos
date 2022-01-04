@@ -11,7 +11,7 @@ class CreateSprints < ActiveRecord::Migration[5.2]
       t.datetime :retrospective_meeting_date
       t.references :project, index: true, foreign_key: true
       t.references :release, index: true, foreign_key: true
-
+      t.references :sprint_status, index: true, foreign_key: true
       t.timestamps null: false
     end
   end

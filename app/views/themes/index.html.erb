@@ -1,21 +1,23 @@
 <p></p>
+<div id="loader"></div> 
+
 
 <div class="container">
-  <div class="ui menu">
+  <div>
     <br />
     <h2>Tema</h2>
   </div>
   <%= render 'themes/breadcrumb' %>
 <br />
 <br />
-
+<div style="display:none;" id="myDiv" class="animate-bottom">
 <% if @themes.empty? %> 
   <div class="box_center">
       <%= image_tag("tema_big.png") %>
       <br />
       <br />
       <p class="access_deny">Nenhum tema criado. Clique em "Novo" para iniciar um tema.</p>
-      <%= link_to "Novo", new_theme_path, class: 'item green_button' %>
+      <%= link_to "Novo tema", new_theme_path, class: 'item green_button' %>
     </div>
   </div>
 <% else %>
