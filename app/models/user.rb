@@ -72,9 +72,10 @@ class User < ActiveRecord::Base
     if avatar.attached?
       avatar.variant(resize: "40X40!").processed 
     else
-      "/profile-user.png"
+      "/profile-no-image.png"
     end
   end
+ 
 
   private
   
@@ -83,9 +84,9 @@ class User < ActiveRecord::Base
       avatar.attach(
         io: File.open(
           Rails.root.join(
-            'app', 'assets', 'images', 'profile-user.png'
+            'app', 'assets', 'images', 'profile-no-image.png'
           )
-        ), filename: 'profile-user.png',
+        ), filename: 'profile-no-image.png',
         content_type: 'image/png'
       )
     end

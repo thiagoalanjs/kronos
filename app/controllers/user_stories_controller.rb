@@ -35,7 +35,7 @@ class UserStoriesController < ApplicationController
     respond_to do |format|
       if @user_story.update(user_story_params)
         UserStoryNotifierMailer.send_update_user_story_email(@user_story).deliver
-        format.html { redirect_to @user_story, notice: 'User story foi atualizada com sucesso.' }
+        format.html { redirect_to user_stories_url, notice: 'User story foi atualizada com sucesso.' }
       else
         format.html { render :edit }
       end

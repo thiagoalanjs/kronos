@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get '/select/project/:id', to: 'projects#select', as: 'select_project'
   delete '/deselect/project', to: 'projects#deselect', as: 'deselect_project'
 
+  post '/sprints/:id', to: 'sprints#change_status', as: 'change_sprint'
+  #
+
   # normal_user 
   get '/projects/list', to: 'projects#user_project', as: 'user_project'
   get '/project/chart/:id', to: 'projects#chart', as: 'chart'

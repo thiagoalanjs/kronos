@@ -1,60 +1,57 @@
-<div class="img_background">
-<div class="logo form">
-      <%= image_tag("logo.png") %>
-  </div>
-<div class="ui centered grid container">
-  <div class="six wide column form_box">
-  <h4 class="box_center">Alterar Senha</h4>
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'ui form' }) do |f| %>
-      <% if resource.errors.any? %>
-          <div class="container">
-            <div class="alert_danger">
-               <div class="close icon">x</div>
-                  <div class="header">
-                   <p> <% resource.errors.full_messages.each do |message| %>
-                    <%= message %>
-                    <% end %></p>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <%= stylesheet_link_tag "login.css" %>
+        <title>Kronos - Agile Management</title>
+      
+    </head>
+    <body>
+      <header>
+            <%= image_tag("novo_logo.png", id: "logo") %>
+      </header>
+      
+        <%= image_tag("Team work-amico.png", id: "image-left") %>
+        <%= image_tag("Coworking-rafiki.png", id: "image-right") %>
+        <div id="box-center">
+		<br />
+     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+       <% if resource.errors.any? %>
+               <div class="alert_danger">
+                   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              <% resource.errors.full_messages.each do |message| %>
+               <%= message %>
+                <% end %>
               </div>
-             </div>
-           <p></p>
-      <% end%>
+    <% end %>
 
-        <%= f.hidden_field :reset_password_token %>
+     <%= f.hidden_field :reset_password_token %>
 
-      <div class="field">
-        <b> Nova senha </b>- 
-        <% if @minimum_password_length %>
-          <em>(Mínimo <%= @minimum_password_length %> caracteres)</em><br />
-        <% end %>
-         <br />
-        <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+      <div>
+
+        <%= f.password_field :password, autofocus: true, autocomplete: "off", placeholder: "Nova senha - mínimo 4 caracteres" %>
      </div>
     
-      <div class="field">
-         <%= f.label :password_confirmation, "Confirmar senha" %><br />
-         <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      <div>
+         <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirmar senha" %>
       </div>
 
-       <div class="field">
-          <%= f.submit "Alterar senha", class: "ui teal button", id: "change_pass"%>
-         </div>
-
+      
+      <%= f.submit "Alterar senha", id: "button"%>
+        
     <% end %>
 
     <p></p>
     <p></p>
     <p></p>
-         <%= render "users/shared/links" %>
+
  
-  </div>
- 
- </div>
-    <br />
-     <br />
-       <br />
-         <br />
-           <br />
-</div>
+
+  
+    </body>
+</html>
+
+
 
 
 

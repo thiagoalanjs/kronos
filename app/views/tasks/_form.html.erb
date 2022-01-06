@@ -55,11 +55,18 @@
                 <br />
                 <%= f.select :priority_id, Priority.all.collect {|x| [x.name, x.id]}, { prompt: 'Selecionar a prioridade da tarefa' } %>
               </div>
+
+                <div>
+                <br />
+                <b> Atribuir para:</b>
+                <br />
+                <%= f.select :function_user_projects_id, FunctionUserProject.all.collect {|x| [ "#{x.user.name}" " - ""#{x.user.email}" ,  x.user.id]}, { prompt: 'Selecionar um responsável' } %>
+              </div>
               <br />              
               <div>
          
             <%= link_to 'Salvar', new_task_path({controller: 'task', action: 'create'}), class: 'save blue_button' %>
-            <%= link_to 'Cancelar', tasks_path, class: 'red_button' %>
+            <%= link_to 'Cancelar', user_stories_path, class: 'red_button' %>
         </div>
       <% end %>
     </div>

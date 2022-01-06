@@ -66,7 +66,7 @@ $( function initPage() {
         <p style="margin-right: 1em; margin-left: 1em">à</p>
         <%= f.text_field :end_date, placeholder: 'Data final', id: 'endDatepicker' %>
   </div>
-    <%= link_to 'Salvar', new_project_path({controller: 'projects', action: 'create' }), class: 'save blue_button' %>
+    <%= link_to 'Salvar', new_project_path(@project), class: 'save blue_button' %>
     <%= link_to 'Cancelar', projects_path, class: 'red_button' %>
 
     <br />

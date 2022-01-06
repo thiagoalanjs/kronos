@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 2021_11_20_040249) do
   end
 
   create_table "sprints", force: :cascade do |t|
+    t.string "name"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "planning_start_date"
@@ -141,21 +142,13 @@ ActiveRecord::Schema.define(version: 2021_11_20_040249) do
     t.datetime "execution_end_date"
     t.datetime "review_meeting_date"
     t.datetime "retrospective_meeting_date"
+    t.string "sprint_status", default: "ATIVA"
     t.integer "project_id"
     t.integer "release_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.index ["project_id"], name: "index_sprints_on_project_id"
     t.index ["release_id"], name: "index_sprints_on_release_id"
-  end
-
-  create_table "task_requirements", force: :cascade do |t|
-    t.integer "level"
-    t.integer "task_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["task_id"], name: "index_task_requirements_on_task_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -167,8 +160,10 @@ ActiveRecord::Schema.define(version: 2021_11_20_040249) do
     t.integer "user_story_id"
     t.integer "kind_id"
     t.integer "priority_id"
+    t.integer "function_user_projects_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["function_user_projects_id"], name: "index_tasks_on_function_user_projects_id"
     t.index ["kind_id"], name: "index_tasks_on_kind_id"
     t.index ["priority_id"], name: "index_tasks_on_priority_id"
     t.index ["user_story_id"], name: "index_tasks_on_user_story_id"
@@ -202,24 +197,12 @@ ActiveRecord::Schema.define(version: 2021_11_20_040249) do
     t.integer "sprint_id"
     t.integer "priority_id"
     t.integer "project_id"
-    t.integer "function_user_project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["function_user_project_id"], name: "index_user_stories_on_function_user_project_id"
     t.index ["priority_id"], name: "index_user_stories_on_priority_id"
     t.index ["project_id"], name: "index_user_stories_on_project_id"
     t.index ["sprint_id"], name: "index_user_stories_on_sprint_id"
     t.index ["theme_id"], name: "index_user_stories_on_theme_id"
-  end
-
-  create_table "user_story_acceptance_criterions", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.integer "status"
-    t.integer "user_story_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_story_id"], name: "index_user_story_acceptance_criterions_on_user_story_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -260,19 +243,17 @@ ActiveRecord::Schema.define(version: 2021_11_20_040249) do
   add_foreign_key "releases", "projects"
   add_foreign_key "sprints", "projects"
   add_foreign_key "sprints", "releases"
-  add_foreign_key "task_requirements", "tasks"
+  add_foreign_key "tasks", "function_user_projects", column: "function_user_projects_id"
   add_foreign_key "tasks", "kinds"
   add_foreign_key "tasks", "priorities"
   add_foreign_key "tasks", "user_stories"
   add_foreign_key "tasks_users", "tasks"
   add_foreign_key "tasks_users", "users"
   add_foreign_key "themes", "projects"
-  add_foreign_key "user_stories", "function_user_projects"
   add_foreign_key "user_stories", "priorities"
   add_foreign_key "user_stories", "projects"
   add_foreign_key "user_stories", "sprints"
   add_foreign_key "user_stories", "themes"
-  add_foreign_key "user_story_acceptance_criterions", "user_stories"
   add_foreign_key "users_tasks", "tasks"
   add_foreign_key "users_tasks", "users"
 end

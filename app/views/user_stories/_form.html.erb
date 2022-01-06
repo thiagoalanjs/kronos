@@ -2,7 +2,7 @@
 
 
 
-<%= form_for(@user_story, html: {class: 'form'},  onsubmit: 'myFunction()') do |f| %>
+<%= form_for(@user_story, html: {class: 'form'}) do |f| %>
 
   <% if @user_story.errors.any? %>
         <div class="alert_danger">

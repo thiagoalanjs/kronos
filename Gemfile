@@ -20,7 +20,7 @@ gem 'coffee-script-source'
 gem "wysiwyg-rails"
 
 group :production do
-  gem 'pg'
+  gem 'sqlite3'
 end
 
 group :development, :test do

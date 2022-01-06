@@ -1,5 +1,4 @@
 class Task < ActiveRecord::Base
-	# enum status: [:development, :pendent, :completed]
 	belongs_to :user_story
   	has_many :users_tasks, dependent: :destroy
   	has_many :users, through: :users_tasks

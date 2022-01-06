@@ -18,7 +18,7 @@
              <% if current_user.avatar.attached? %>
                <%= image_tag(current_user.avatar_thumbnail, :title=> current_user.name, :class=> "image_thumbnail") %>
              <% else %>
-               <%= image_tag("profile-user.png", :title=> current_user.name, :class=> "image_thumbnail") %>
+               <%= image_tag("profile-no-image.png", :title=> current_user.name, :class=> "image_thumbnail") %>
              <% end %>
       <% end %>
       <ul class='sub-menus'>
@@ -49,64 +49,6 @@
    </li>
 </nav>
 
-<!-- >
-    <nav>
-       <ul id="icon-menu-mobile">
-            <ion-icon name="grid-outline"></ion-icon>
-          </ul>
-              <div id="menu_right">
-            <ul>
-              <li>
-                <div class="dropdown">  
-                      <% if current_user %>
-                             <% if current_user.avatar.attached? %>
-                               <%= image_tag(current_user.avatar_thumbnail, :title=> current_user.name, :class=> "image_thumbnail") %>
-                             <% else %>
-                               <%= image_tag("profile-user.png", :title=> current_user.name, :class=> "image_thumbnail") %>
-                             <% end %>
-                      <% end %>
-
-                      <div class="dropdown-content">
-                    <%= link_to edit_user_registration_path, class: '' do %>
-                               <p>Editar perfil</p>
-                        <% end %>
-                        <%= link_to destroy_user_session_path, method: :delete, class: '' do %>
-                               <p>Sair</p>
-                        <% end %>
-                      </div>
-                   </div>
-                </li>
-        </ul>   
-          
-          
-          <div id="menu_left">  
-              <ul>
-                  <li> 
-                      <%= link_to notifications_path, class: "#{is_current_page?(notifications_path)} item", title: 'Notificações' do %>
-                                  Notificações 
-                        <% if Notification.unread_count(current_user) > 0 %>
-                            <div id="notification_actived">
-                                     <%= Notification.unread_count(current_user) %>
-                            </div>
-                        <% else %>
-                           <div id="notification_inactived">0</div>
-                        <% end %>
-                      <% end %>
-                   </li>
-                  
-                  <li>Teste </li>
-                  <li>Teste </li>
-                  
-                   
-                   
-              </ul>
-            </div>
-            
-      
-              </div>
-            </nav>
--->
-  
     </div>
   </div>
 </div>

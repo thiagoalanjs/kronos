@@ -36,7 +36,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to @task, notice: "Tarefa TK-#{@task.user_story.project.initial}-#{@task.id} deletada com sucesso!" }
+      format.html { redirect_to user_stories_path, notice: "Tarefa TK-#{@task.user_story.project.initial}-#{@task.id} deletada com sucesso!" }
     end
   end
 
@@ -47,7 +47,7 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:title, :description, :status, :user_story_id, :kind_id, :priority_id)
+      params.require(:task).permit(:title, :description, :status, :user_story_id, :kind_id, :priority_id, :function_user_projects_id)
     end
 end
 

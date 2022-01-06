@@ -18,6 +18,12 @@ class UserSprintNotifierMailer < ApplicationMailer
         :subject => "A Sprint #{ sprint.name } foi atualizada com sucesso no projeto #{ sprint.project.name }" )     
     end
 
+    def send_complete_sprint_email(sprint)
+        @sprint = sprint
+        mail( :to => send_email + ';',
+        :subject => "A Sprint #{ sprint.name } foi concluída com sucesso no projeto #{ sprint.project.name }" )     
+    end
+
     def send_delete_sprint_email(sprint)
         @sprint = sprint
         mail( :to => send_email + ';',
