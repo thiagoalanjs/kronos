@@ -3,8 +3,7 @@ class UserStoriesController < ApplicationController
   
   def index
       @user_stories = UserStory.where(project_id: current_project_id).page(params[:page]).order('priority_id ASC').per(8)
-      @task = Task.new
-
+      @tasks =  Task.where(user_story_id: @user_stories).order('priority_id DESC')
   end
 
   def show

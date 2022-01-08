@@ -5,9 +5,10 @@ class SprintsController < ApplicationController
   # GET /sprints.json
   def index
     @sprints = Sprint.where(project_id: current_project_id).page(params[:page]).order('id DESC').per(8) 
-    
   end
 
+
+ 
   # def index
   #   if params[:search]
   #     @sprints = Sprint.where("name LIKE ?", '%'"#{params[:search]}"'%').page(params[:page]).order('id DESC').per(8)  
@@ -102,7 +103,7 @@ class SprintsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sprint_params
-      params.require(:sprint).permit(:name,:start_date, :end_date, :planning_start_date, :planning_end_date, :execution_start_date, :execution_end_date, :review_meeting_date, :retrospective_meeting_date, :release_id)
+      params.require(:sprint).permit(:name, :start_date, :end_date, :planning_start_date, :planning_end_date, :execution_start_date, :execution_end_date, :review_meeting_date, :retrospective_meeting_date, :release_id)
     end
 
 end

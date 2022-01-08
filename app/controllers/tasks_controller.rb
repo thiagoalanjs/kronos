@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-
+ 
   def show
   end
 
@@ -47,7 +47,7 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:title, :description, :status, :user_story_id, :kind_id, :priority_id, :function_user_projects_id)
+      params.require(:task).permit(:title, :description, :status, :user_story_id, :kind_id, :priority_id, :function_user_projects_id, :user_id)
     end
 end
 

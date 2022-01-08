@@ -679,7 +679,8 @@ th {
   .accordion_title{
      color: #575656; 
      font-size: 20px;
-     position: relative;  
+     position: relative; 
+     text-decoration: none; 
   }
 
   .info_accordion {
@@ -765,8 +766,39 @@ th {
     max-width: 150px;
     border-radius: 4px;
     background-color: #b9b9b9;
-
   }
+
+  .task_button{
+    margin: 5px;
+    border-radius: 4px;
+    height: 40px;
+    padding-top: 15px ;
+    background-color: #f7f7f7;
+    border: 0.5px solid rgb(180, 180, 180)
+  }
+
+  .task_button .high_priority{
+      color: #DB2828;
+  }
+
+  .task_button .medium_priority{
+    color: #e47a18;
+  }
+
+  .task_button .low_priority{
+    color: #216104;
+  }
+  
+  .task_button .status{
+    margin-left: 10px;
+    color: #272727;
+  }
+
+  .task_button .kind_task_accordion img {
+        float: left;
+        margin-top: -13px;
+  }
+  
   .info_sprint_user_story {
     border: #010399;
     border-style: solid;
@@ -778,7 +810,6 @@ th {
     display: inline-block;
     font-size: 16px;
     border-radius: 5px;
-    
   }
 
   .info_sprint_bug {

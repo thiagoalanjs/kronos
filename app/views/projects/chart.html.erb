@@ -22,14 +22,10 @@
 
 <div class="content_charts">
 
-  <b> Quantidade de User Stories:</b> <%= UserStory.where(project: current_project).count %> <br />
-  <b> Quantidade de Sprint:</b> <%= Sprint.where(project: current_project).count %> <br />
-  <b> Quantidade de tarefas do tipo "Sub-task":</b> <%= Task.joins("INNER JOIN user_stories ON user_stories.id = 
-                                                                tasks.user_story_id
-                                                                WHERE kind_id = 2 AND project_id = '#{ current_project_id }'").count %> <br />
-  <b> Quantidade de tarefas do tipo "Bug": </b> <%= Task.joins("INNER JOIN user_stories ON user_stories.id = 
-                                                                tasks.user_story_id
-                                                                WHERE kind_id = 1 AND project_id = '#{ current_project_id }'").count %> <br />
+  <b> Quantidade de User Stories:</b> <%= user_story_by_project_count  %> <br />
+  <b> Quantidade de Sprint:</b> <%= sprint_by_project_count %> <br />
+  <b> Quantidade de tarefas do tipo "Sub-task":</b> <%= sub_task_by_project_count %> <br />
+  <b> Quantidade de tarefas do tipo "Bug": </b> <%= bug_by_project_count %> <br />
 
 
 </div>
@@ -43,11 +39,11 @@
 
           var data = google.visualization.arrayToDataTable([
             ['User stories', 'Quantidade x Status'],
-            ['Pendente', <%= UserStory.where(status: 1, project: current_project).count %> ],
-            ['Desenvolvimento', <%= UserStory.where(status: 2, project: current_project).count %> ],
-            ['Code Review', <%= UserStory.where(status: 3, project: current_project).count %> ],
-            ['QA', <%= UserStory.where(status: 4, project: current_project).count %> ],
-            ['Concluída', <%= UserStory.where(status: 5, project: current_project).count %> ]
+            ['Pendente', <%= user_story_pending_count %> ],
+            ['Desenvolvimento', <%= user_story_development_count %> ],
+            ['Code Review', <%= user_story_code_review_count %> ],
+            ['QA', <%= user_story_qa_count %> ],
+            ['Concluída', <%= user_story_finished_count%> ]
           ]);
 
           var options = {
@@ -70,8 +66,8 @@
 
           var data = google.visualization.arrayToDataTable([
             ['User stories', 'Bugs x Status'],
-            ['Sub-task',  <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 2 AND project_id = '#{ current_project_id }'").count %> ],
-            ['Bug', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 1 AND project_id = '#{ current_project_id }'").count %> ]
+            ['Sub-task',  <%= sub_task_by_project_count %> ],
+            ['Bug', <%= bug_by_project_count %> ]
           ]);
 
           var options = {
@@ -95,11 +91,11 @@
 
           var data = google.visualization.arrayToDataTable([
             ['User stories', 'Bugs x Status'],
-            ['Pendente', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 1 AND tasks.status = 1 AND project_id = '#{ current_project_id }'").count %>  ],
-            ['Desenvolvimento', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 1 AND tasks.status = 2 AND project_id = '#{ current_project_id }'").count %>  ],
-            ['Code Review', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 1 AND tasks.status = 3 AND project_id = '#{ current_project_id }'").count %> ],
-            ['QA', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 1 AND tasks.status = 4 AND project_id = '#{ current_project_id }'").count %> ],
-            ['Concluída', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 1 AND tasks.status = 5 AND project_id = '#{ current_project_id }'").count %> ]
+            ['Pendente', <%= bug_pending_project_count %>  ],
+            ['Desenvolvimento', <%= bug_development_project_count %>  ],
+            ['Code Review', <%= bug_code_review_project_count %> ],
+            ['QA', <%= bug_qa_project_count %> ],
+            ['Concluída', <%= bug_finished_project_count %> ]
           ]);
 
           var options = {
@@ -122,11 +118,11 @@
 
           var data = google.visualization.arrayToDataTable([
             ['User stories', 'Bugs x Status'],
-            ['Pendente', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 2 AND tasks.status = 1 AND project_id = '#{ current_project_id }'").count %>  ],
-            ['Desenvolvimento', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 2 AND tasks.status = 2 AND project_id = '#{ current_project_id }'").count %>  ],
-            ['Code Review', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 2 AND tasks.status = 3 AND project_id = '#{ current_project_id }'").count %> ],
-            ['QA', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 2 AND tasks.status = 4 AND project_id = '#{ current_project_id }'").count %> ],
-            ['Concluída', <%= Task.joins("INNER JOIN user_stories ON user_stories.id = tasks.user_story_id WHERE kind_id = 2 AND tasks.status = 5 AND project_id = '#{ current_project_id }'").count %> ]
+            ['Pendente', <%= sub_task_pending_project_count %>  ],
+            ['Desenvolvimento', <%= sub_task_development_project_count %>  ],
+            ['Code Review', <%= sub_task_code_review_project_count %> ],
+            ['QA', <%= sub_task_qa_project_count %> ],
+            ['Concluída', <%= sub_task_finished_project_count %> ]
           ]);
 
           var options = {
@@ -139,41 +135,6 @@
         }
       </script>
 
-
-   <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawStuff);
-
-      function drawStuff() {
-        var data = new google.visualization.arrayToDataTable([
-          ['Opening Move', 'Percentage'],
-          [<%= UsersTask.joins("INNER JOIN users_tasks ON users_tasks.user_id = users.id") %>, 44],
-          ["Queen's pawn (d4)", 31],
-          ["Knight to King 3 (Nf3)", 12],
-          ["Queen's bishop pawn (c4)", 10],
-          ['Other', 3]
-        ]);
-
-        var options = {
-          title: 'Chess opening moves',
-          width: 900,
-          legend: { position: 'none' },
-          chart: { title: 'Chess opening moves',
-                   subtitle: 'popularity by percentage' },
-          bars: 'horizontal', // Required for Material Bar Charts.
-          axes: {
-            x: {
-              0: { side: 'top', label: 'Percentage'} // Top x-axis.
-            }
-          },
-          bar: { groupWidth: "90%" }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
-        chart.draw(data, options);
-      };
-    </script>
-    
    <br />
 
       <div class="ui two cards">

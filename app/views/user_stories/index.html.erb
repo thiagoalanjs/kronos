@@ -1,7 +1,4 @@
 
-<div id="loader"></div>
-
-<div style="display:none;" id="myDiv" class="animate-bottom">
 
 <div class="container">
  
@@ -105,46 +102,51 @@
             <%= link_to '+ Adicionar', new_task_path(@task),  target: "_blank", class: 'blue_button' %>
             <br />  
 
-              <% user_story.tasks.each do |s| %>
-             
-              <p class="task_content_accordion">           
+          <% user_story.tasks.each do |s| %>
+              <p class="task_content_accordion">  
+               <div class="task_button">         
                   <div class="kind_task_accordion">
                          <% if s.kind_id == 1 %>
+                         
                            <%= image_tag('bug.png', title: "Task do tipo BUG") %>
                          <% else %>
                            <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
                          <% end %>
                  </div>
-       
-                 <%= link_to edit_task_path(s.id) do %>
-                     <div class="green_button">
-                          TK-<%= user_story.project.initial %>-<%= s.id %> <%= s.title %>
-                     </div>
+               
+                 <%= link_to edit_task_path(s.id), class: "accordion_title" do %> 
+                        <b> TK-<%= user_story.project.initial %>-<%= s.id %> </b>
+                 <% end %> 
+
+                 <%= link_to edit_task_path(s.id), class: "accordion_title" do %> 
+                    <%= s.title %> 
                  <% end %>
-                  
+
+     <% @user_stories.each do |us| %>
+        <% us.tasks.each do |task| %>
+          <% task.users.each do |u| %>
+                    <% if u.avatar.attached? %>
+                      <%= image_tag(u.avatar_thumbnail, :class=> "image_thumbnail") %>
+                    <% else %>
+                      <%= image_tag("team_icon.png", :class=> "image_thumbnail") %>
+                    <% end %>
+          <% end %>
+      <% end %>
+    <% end %>
+                <div class="info_accordion">
                   <% if s.priority_id == 1 %>
-                    <div class="red_button">
-                      <b>Prioridade: </b>
-                       Alta
-                    </div>
+                     <b class="high_priority">Alta</b>
                  <% end %>
 
                  <% if s.priority_id == 2 %>
-                    <div class="orange_button ">
-                        <b>Prioridade: </b>
-                          Média
-                    </div>
+                     <b class="medium_priority">Média</b>
                  <% end %>
 
-                  <% if s.priority_id == 3 %>
-                    <div class="green_button ">
-                        <b>Prioridade: </b>
-                        Baixa
-                    </div>
+                 <% if s.priority_id == 3 %>
+                        <b class="low_priority">Baixa</b>
                  <% end %>
 
-                 <div class="silver_button">
-                 <b>Status: </b>
+                  <b class="status">
                      <% if s.status == 1 %>
                       Pendente
                      <% end %>
@@ -160,14 +162,18 @@
                      <% if s.status == 5 %>
                       Concluída
                      <% end %>
-                </div>
-            
+                 </b>
+             
                  <%= link_to s, method: :delete, class: "delete_task_accordion", data: { confirm: "Deseja deletar a tarefa TK-#{user_story.project.initial}-#{ s.id } #{s.title} ?" }, title: "Remover tarefa TK-#{user_story.project.initial}-#{ s.id } #{s.title}" do %>
                    <%= image_tag('delete_btn.png') %>
                  <% end %>
+
+               
+                </div>  
+              </div>
             </p> 
             <% end %>
-            
+           
           <br />
           <br /> 
               <%= link_to edit_user_story_path(user_story), class: 'blue_button' do %>
@@ -196,7 +202,7 @@
   <br />
  </div>
 </div>
-</div>
+
 
 <script type="text/javascript">
   $(document).ready(function() {

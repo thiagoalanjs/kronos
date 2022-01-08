@@ -31,7 +31,7 @@
 <% end %>
 
 <% @sprints.each do |sprint| %>
-
+  
 <button class="accordion">
     <b class="accordion_title">
      <%= sprint.name %>
@@ -39,22 +39,17 @@
  
     <div class="info_accordion">
       <div class="info_sprint_user_story">
-       User Stories :  <%= UserStory.where(project: current_project).count %>
+       User Stories :  <%= user_story_count %>
       </div>
       
       <div class="info_sprint_bug">
       Bugs:
-       <%= Task.joins("INNER JOIN user_stories ON user_stories.id = 
-                                                                tasks.user_story_id
-                                                                WHERE kind_id = 1 AND project_id = '#{ current_project_id }'").count %>
+      <%= task_bug_count %>
       </div>  
 
       <div class="info_sub_task">
-         Sub-task:
-         <%= Task.joins("INNER JOIN user_stories ON user_stories.id = 
-                                                                tasks.user_story_id
-                                                                WHERE kind_id = 2 AND project_id = '#{ current_project_id }'").count %>
-       </div>
+         Sub-task: <%= task_sub_task_count %>
+      </div>
 
        <div class="info_sprint_status">
           <%= sprint.sprint_status %>
@@ -62,6 +57,8 @@
 
     </div>
 </button>
+
+
 <div class="panel">
             <br />
        <div>
@@ -94,14 +91,14 @@
        </div> 
 
           <br />
-           <%= link_to 'Editar', edit_sprint_path(sprint), class: 'blue_button' %> 
-           <%= link_to 'Remover', sprint, method: :delete, data: { confirm: 'Você tem certeza que deseja remover a sprint?' }, class: 'red_button' %>
-           <%= link_to 'Acessar board', scrumboard_path(current_project.id), class: 'black_button' %>
-           <%= link_to 'Concluir a Sprint', change_sprint_path(sprint, { controller: 'sprints', action: 'change_status' } ), method: :post,  data: { confirm: 'Você tem certeza que deseja finalizar a sprint? ' }, class: 'orange_button' %>
-          
+          <% if sprint.sprint_status == "ATIVA" %>
+            <%= link_to 'Editar', edit_sprint_path(sprint), class: 'blue_button' %> 
+            <%= link_to 'Remover', sprint, method: :delete, data: { confirm: 'Você tem certeza que deseja remover a sprint?' }, class: 'red_button' %>
+            <%= link_to 'Acessar board', scrumboard_path(current_project.id), class: 'black_button' %>
+            <%= link_to 'Concluir a Sprint', change_sprint_path(sprint, { controller: 'sprints', action: 'change_status' } ), method: :post,  data: { confirm: 'Você tem certeza que deseja finalizar a sprint? ' }, class: 'orange_button' %>
+          <% end %>             
             <br /> 
             <br />    
-   
  </div>
    <% end %>
     <br />

@@ -59,13 +59,13 @@
       <br />
       <% sprints = current_project.sprints {|sprint| [sprint.name, sprint.id] };  %>
 
-      <%= f.collection_select( :sprint_id, sprints, :id, :name, {:prompt => 'Sprint'}, {placeholder: 'Sprint'} ) %>
-
+      <%= f.collection_select(:sprint_id, sprints, :id, :name, {:prompt => 'Selecione a sprint'}) %>
+     
     </div>  
     <div>
       <b><%= f.label :Status %></b>
       <br />
-      <%= f.select :status, options_for_select({'Pendente' => 1 , 'Desenvolvimento' => 2 , 'Code Review' => 3, 'QA' => 4 , 'Concluída' => 5 }), {:prompt => false}, { :class => 'dropdown', placeholder: 'Status' } %>
+       <%= f.select :status, options_for_select({'Pendente' => 1 , 'Desenvolvimento' => 2 , 'Code Review' => 3, 'QA' => 4 , 'Concluída' => 5 }), {:prompt => false}, {  placeholder: 'Status' } %>
     </div>
    
     <br />

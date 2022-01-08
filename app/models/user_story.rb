@@ -7,7 +7,7 @@ class UserStory < ActiveRecord::Base
 
   has_many :user_story_acceptance_criterions
   has_many :tasks
-  #has_one :priority
+
   has_many :participants, dependent: :destroy
   has_many :users, through: :participants
 
