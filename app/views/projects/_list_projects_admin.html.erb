@@ -1,4 +1,12 @@
 
+
+<style type="text/css">
+    .ui-widget-header {
+      background: #4DD257;
+			border-radius: 5px;
+    }
+</style>
+
 <br />
 <% if @projects.empty? %> 
   <div class="box_center">
@@ -34,14 +42,24 @@
         <% else %>
         <%= project.current_sprint %>
         <% end %></p>
-        <p></p>
-        <div class="bar_progress" id="project-progress" data-percent="<%= project.progress %>">
-          <div class="bar"></div>
-          <div class="label">
-            <%= project.progress %>%
-          </div>
-        </div>
+       
+       <br />
+        <div id="progressbar" class="ui-progressbar-value ui-widget-header ui-corner-left" style="border: 1px solid black; color: black; height:30px; padding-top: 10px; text-align: center; width:<%= project.progress %>%;">
+       <%= project.progress %>%
+        </div>       
         <br />
+          <p>
+         <% if project.end_date < Time.now && project.current_sprint %>
+            <div class="button_warning" title="Existem tarefas em atraso">
+                <b> Projeto atrasado </b>   
+            </div> 
+           <% else %>
+            <div class="button_status">
+                <b> Sem alertas </b>   
+            </div> 
+           <% end %>
+        </p>
+        
       </div>
     </div>
 
@@ -52,6 +70,10 @@
 <% end %>
 </div>
 <% end %>
-<script type="text/javascript">
-  $('.progress').progress();
+<script>
+    $(function() {
+        $("#progressbar").progressbar({
+            value: project.progress
+        });
+    });
 </script>

@@ -1,6 +1,5 @@
 <p></p>
 
-<div id="loader"></div> 
 <div class="container">
   <div>
   <br />
@@ -8,29 +7,29 @@
   </div>
 
   <%= render 'releases/breadcrumb' %>
-<div style="display:none;" id="myDiv" class="animate-bottom">
+
   <% if @releases.empty? %>
       <div class="box_center">
       <%= image_tag("product.png") %>
       <br />
       <br />
       <p class="access_deny">Nenhum release está associado a esse projeto. Clique em "Novo" para incluír no projeto.</p>
-      <%= link_to "Novo", new_release_path, class: 'item green_button' %>
+      <%= link_to "Novo", new_release_path, class: 'green_button' %>
     </div>
   </div>
   <% else %>
  
   <br />
-  <%= link_to "Novo", new_release_path, class: 'item green_button' %>
+  <%= link_to "Novo", new_release_path, class: 'green_button' %>
   
   <br />
   <br />
-  <table class="ui celled table">
+  <table>
     <thead>
       <tr>
         <th>Version</th>
         <th>Data de entrega</th>
-        <th width="290">Ações</th>
+        <th >Ações</th>
       </tr>
     </thead>
 
@@ -38,16 +37,14 @@
       <% @releases.each do |release| %>
         <tr>
           <td><%= release.version %></td>
-          <td><%= release.deliver_date %></td>
+          <td><%= l release.deliver_date %></td>
           <td>
 
             <div class="ui buttons">
               <%= link_to 'Editar', edit_release_path(release), class: 'blue_button' %>
-            </div>
-            <div class="ui buttons">
               <%= link_to 'Remover', release, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'ui red_button' %>
             </div>
-          </td>
+         
         </tr>
       <% end %>
     </tbody>

@@ -1,3 +1,9 @@
+<style type="text/css">
+    .ui-widget-header {
+      background: #4DD257;
+			border-radius: 5px;
+    }
+</style>
 
 
 <div class="container">  
@@ -15,6 +21,9 @@
         </div>
 
 
+  
+
+
 <% elsif @project.sprints.empty? && current_user.group != 'coordenador' %>
         <div class="box_center">
             <%= image_tag("access-denied.png") %>
@@ -27,83 +36,50 @@
 
 <% else %>
 
-<% @sprint = Sprint.find_by_sql("SELECT * from sprints where sprint_status == 'ATIVA' AND project_id = #{ current_project_id } ") %>
-<div class=" top attached tabular menu">
+<% @sprint = sprint_actived %>
+<div class="info_accordion">
 
   <% @sprint.each_with_index do |sprint, i| %>
-    <a class="item <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>"><b>Sprint:</b> <%= sprint.name %></a>
-    &nbsp
-    <%= link_to "Nova User Story", new_user_story_path, class: "red_button" %> 
+     <%= link_to "Nova User Story", new_user_story_path, class: "red_button" %> 
     <%= link_to "Nova task", new_task_path, class: "blue_button" %>
   <% end %>
 </div>
 
 <% @sprint.each_with_index do |sprint, i| %>
 <div class=" bottom attached tab segment <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>">
+    
+ <a class="item <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>"><b>Sprint:</b> <%= sprint.name %></a>
 
-  <table class=" very celled table">
-    <thead>
-      <tr>
-        <th>Duração</th>
-        <th>Planejamento</th>
-        <th>Execução</th>
-        <th>Review meeting</th>
-        <th>Retrospective meeting</th>
-        <th>Release</th>
-      </tr>
-    </thead>
+<br />
 
-    <tbody>
-      <tr>
-        <td>
-          <%= l sprint.start_date %> à <%= l sprint.end_date %>    
-        </td>
-        <td>
-          <%= l sprint.planning_start_date %> à <%= l sprint.planning_end_date %>    
-        </td>
-        <td>
-          <%= l sprint.execution_start_date %> à <%= l sprint.execution_end_date %>    
-        </td>
-        <td><%= l sprint.review_meeting_date %></td>
-        <td><%= l sprint.retrospective_meeting_date %></td>
-        <td><%= sprint.release.version unless sprint.release.nil? %></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class=" teal progress" data-percent="<%= sprint.progress %>">
-    <div class="bar"></div>
-    <div class="label">
+<br />
+<br />
+   <div id="progressbar" class="ui-progressbar-value ui-widget-header ui-corner-left" style="border: 1px solid black; color: black; height:30px; padding-top: 10px; text-align: center; width:<%= @project.progress %>%;">
       <%= sprint.progress %>% Concluído
     </div>
   </div>
-
-  <table class=" very  celled table">
+<br />
+<br />
+<br />
+  <table>
     <thead>
       <tr>
-        <th width="25%">Pendente</th>
-        <th width="25%">Desenvolvimento</th>
-        <th width="25%">Code Review</th>
-        <th width="25%">QA</th>
-        <th width="25%">Concluído</th>
+        <th>Pendente (<%= tasks_pending_count %>)</th>
+        <th>Desenvolvimento (<%= tasks_development_count %>)</th>
+        <th>Code Review (<%= tasks_code_review_count %>)</th>
+        <th>QA (<%= tasks_qa_count %>)</th>
+        <th>Concluído (<%= tasks_finished_count %>)</th>
       </tr>
     </thead>
 
     <tbody>
       <tr>
-        <td class="top aligned">
+        <td>
           <% sprint.user_stories.each do |us| %>
-          
-          <%= render partial: 'projects/modal_tasks', locals: {us: us} %>
-
+          <!-- CARD -->
           <% us.tasks.where(status: 1).each do |task| %>
-            <p></p>
-            <!-- CARD -->
-            <div class=" orange card">
-              <div class="content">           
-                <div class="meta">
-
-                  <%= link_to task_path(task.id) do %>
+              <div class="content_task">           
+                 <%= link_to task_path(task.id) do %>
                   <h3>
                  
                      <% if task.kind_id == 1 %>
@@ -112,10 +88,11 @@
                        <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
                      <% end %>
                  
-                     <span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span>
+                     TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %>
                   </h3>
                 <% end %>
-                </div>
+          
+              
                 <div class="description">
                   <p>
                         <a href="#" data-modal="usertory-<%= us.id %>" class="  mini button modal-task">
@@ -130,50 +107,54 @@
                   <p>
                   Criada em: <%= l task.created_at%>
                  <% if task.priority_id == 1 %>
-                    <div class=" compact mini icon red basic button">
+                    <div class="mini_red_button">
                     <b>Prioridade: </b>
                     </div>
                  <% end %>
 
                  <% if task.priority_id == 2 %>
-                    <div class=" compact mini silver icon orange basic button ">
+                    <div class="mini_silver_button">
                         <b>Prioridade: </b>
                           Média
                     </div>
                  <% end %>
 
                   <% if task.priority_id == 3 %>
-                    <div class=" compact mini icon green basic button ">
+                    <div class="mini_green_button">
                         <b>Prioridade: </b>
                         Baixa
                     </div>
                  <% end %>
                   </p>
-                     
-                </div>
-
-              </div>
+                    
                
-              <div class="extra content">
+              <div class="extra_content">
                 <div class="right floated author">
-                  <% task.users.each do |u| %>
-                    <%= image_tag 'avatar.svg', class: ' avatar image' %> <%= u.name %>
-                  <% end %>
-                </div>
+                <% task.users.each do |u| %>
+                    <% if u.avatar.attached? %>
+                        <%= image_tag(u.avatar_thumbnail, :class=> "image_profile_card") %>
+                       <% else %>
+                        <%= image_tag("profile-no-image.png", :class=> "image_profile_card") %>
+                    <% end %>
+                <% end %>
               </div>
             </div>
+          </div>
           <% end %>
           <!-- /CARD -->
           <% end %>
+         
+                </div>
+              </div>
         </td>
-
-        <td class="top aligned">
+</div>
+        <td>
           <% sprint.user_stories.each do |us| %>       
           <% us.tasks.where(status: 2).each do |task| %>
             <p></p>
             <!-- CARD -->
-            <div class=" teal card">
-              <div class="content">
+            <div>
+              <div class="content_task">
                 <div class="meta">
                 <%= link_to task_path(task.id) do %>
                   <h3>
@@ -221,14 +202,14 @@
                       <% end %>
 
                       <% if task.priority_id == 2 %>
-                         <div class=" compact mini silver icon orange basic button">
+                         <div class="mini_silver_button">
                              <b>Prioridade: </b>
                                Média
                          </div>
                       <% end %>
 
                       <% if task.priority_id == 3 %>
-                        <div class=" compact mini icon green basic button">
+                        <div class="mini_green_button">
                             <b>Prioridade: </b>
                             Baixa
                         </div>
@@ -236,7 +217,7 @@
                   </p>   
              </div>
               
-              <div class="extra content">
+              <div class="extra_content">
                 <div class="right floated author">
        <% task.users.each do |u| %>
 
@@ -260,8 +241,8 @@
           <% us.tasks.where(status: 3).each do |task| %>
             <p></p>
             <!-- CARD -->
-            <div class=" teal card">
-              <div class="content">
+            <div>
+              <div class="content_task">
                 <div class="meta">
                     <%= link_to task_path(task.id) do %>
                   <h3>
@@ -281,10 +262,10 @@
                   <div class=" mini icon buttons">
                         <a href="#" data-modal="usertory-<%= us.id %>" class=" mini icon button modal-task" title="Detalhes">
                           <%= image_tag("info.png") %></a>
-                        <%= link_to get_out_task_path(task.id), class: ' mini orange button' do %>
+                        <%= link_to get_out_task_path(task.id), class: 'mini_orange_button' do %>
                           Pendente
                         <% end %>
-                        <%= link_to take_task_path(task.id), class: ' mini red button' do %>
+                        <%= link_to take_task_path(task.id), class: 'mini_red_button' do %>
                           Desenvolvimento
                         <% end %>
                         <%= link_to send_task_to_test_path(task.id), class: ' mini green button' do %>
@@ -296,21 +277,21 @@
                   <br />
                      Criada em: <%= l task.created_at%>
                     <% if task.priority_id == 1 %>
-                       <div class=" compact mini icon red basic button">
+                       <div class="mini_red_button">
                        <b>Prioridade: </b>
                         Alta
                        </div>
                     <% end %>
 
                     <% if task.priority_id == 2 %>
-                       <div class=" compact mini silver icon orange basic button ">
+                       <div class="mini_orange_button">
                            <b>Prioridade: </b>
                              Média
                        </div>
                     <% end %>
 
                      <% if task.priority_id == 3 %>
-                       <div class=" compact mini icon green basic button ">
+                       <div class="mini_green_button">
                            <b>Prioridade: </b>
                            Baixa
                        </div>
@@ -318,7 +299,7 @@
                  </p>
                </div>
  
-              <div class="extra content">
+              <div class="extra_content">
                 <div class="right floated author">
                   <% task.users.each do |u| %>
                     <% if u.avatar.attached? %>
@@ -344,7 +325,7 @@
             <p></p>
             <!-- CARD -->
             <div class=" blue card">
-              <div class="content">
+              <div class="content_task">
                 <div class="meta">
                     <%= link_to task_path(task.id) do %>
                   <h3>
@@ -389,7 +370,7 @@
 
                 </div>
               </div>
-              <div class="extra content">
+              <div class="extra_content">
                 <div class="right floated author">
                   <% task.users.each do |u| %>
                    <% if u.avatar.attached? %>
@@ -412,8 +393,8 @@
           <% us.tasks.where(status: 5).each do |task| %>
             <p></p>
             <!-- CARD -->
-            <div class=" green card">
-              <div class="content">
+            <div>
+              <div class="content_task">
                 
                 <div class="meta">
                     <%= link_to task_path(task.id) do %>
@@ -454,7 +435,7 @@
                   <% end %>
                 </div>
               </div>
-              <div class="extra content">
+              <div class="extra_content">
                 <div class="right floated author">
                   <% task.users.each do |u| %>
                     <% if u.avatar.attached? %>
@@ -479,12 +460,8 @@
 
 
 <script type="text/javascript">
-  $('.tabular.menu .item').tab();
-
   $('.modal-task').click(function(){
     $('.'+$(this).attr('data-modal')).modal('show');
     return false;
   });
-
-  $('.progress').progress();
 </script>

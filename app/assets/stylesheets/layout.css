@@ -117,8 +117,7 @@
   }
 	#menu ul {
     background: rgb(100, 149, 237);
-    position:abs
-    olute;
+    position:absolute;
     top:100%;
     right:0;
     left:0;
@@ -283,6 +282,7 @@ div#notification_inactived {
 
 .yellow_button{
     background-color: #ffbd08;
+    border-radius: 10px;
     border: none;
     color: white;
     margin-top: 10px;
@@ -295,6 +295,7 @@ div#notification_inactived {
 
 .black_button{
     background-color: #111111e3;
+    border-radius: 10px;
     border: none;
     color: white;
     margin-top: 10px;
@@ -307,6 +308,7 @@ div#notification_inactived {
 
 .green_button {
     background-color: #06963d;
+    border-radius: 10px;
     border: none;
     color: white;
     margin-top: 10px;
@@ -319,6 +321,7 @@ div#notification_inactived {
 
 .blue_button {
     background-color: #2185D0;
+    border-radius: 10px;
     border: none;
     color: white;
     padding: 10px;
@@ -330,6 +333,7 @@ div#notification_inactived {
 
 .red_button {
     background-color: #DB2828;
+    border-radius: 10px;
     border: none;
     color: white;
     padding: 10px;
@@ -341,6 +345,7 @@ div#notification_inactived {
 
 .silver_button {
     background-color: #999898;
+    border-radius: 10px;
     border: none;
     color: white;
     padding: 10px;
@@ -354,9 +359,38 @@ div#notification_inactived {
 
 .orange_button{
     background-color: #f36d2e;
+    border-radius: 10px;
     border: none;
     color: white;
     padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.button_warning{
+    background-color: #DB2828;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.button_status{
+    background-color: #cecece;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    padding: 5px;
+    width: 95%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -476,7 +510,22 @@ div#notification_inactived {
     padding-bottom: 15px;
     border-style:solid;
     border-width: 1px;
-    border-color:#797979
+    border-color:#797979;
+}
+
+
+.content_task{
+    width: 180px;   
+    padding-top: 15px;
+    padding-left: 5px;
+    padding-bottom: 15px;
+    border-style:solid;
+    border-width: 1px;
+    border-color:#797979;
+}
+
+.extra_content{
+    width: 50px; 
 }
 
 .header {
@@ -486,9 +535,7 @@ div#notification_inactived {
 
 .description{
    display: block;
-   padding-top: 22px;
-   padding-left: 22px;
-   padding-bottom: 22px;
+   padding: 15px;
    color: rgba(0, 0, 0, 0.7);
 }
 
@@ -511,18 +558,6 @@ div#notification_inactived {
     color: rgb(0, 0, 0);
 }
 
-.bar_progress {
-    border-radius: 10px;
-    width: 85%;
-    height: 30px;
-    margin-top: 15px;
-    padding-top: 15px;
-    padding-left: 10px;
-    background-image: linear-gradient(#ffffff, #fff6f6);
-    border-style: solid;
-    border-width: 1px;
-    text-align: center;
-}
 
 h1, h2, h4, h5, h6 {
     color:rgb(58, 58, 58);
@@ -538,7 +573,8 @@ table {
 td, th {
   border: 1px solid #ddd;
   padding: 8px;
-  width: 200px;
+  min-width: 180px;
+  max-width: 180px;
 }
 
 tr:nth-child(even){
@@ -677,10 +713,12 @@ th {
   }
 
   .accordion_title{
-     color: #575656; 
+     color: #575656;
      font-size: 20px;
-     position: relative; 
+     position: relative;
+     margin-top: 10px; 
      text-decoration: none; 
+     display: inline-block;
   }
 
   .info_accordion {
@@ -688,6 +726,13 @@ th {
     margin-right: 20px;
     display: inline-block;
     max-width: 900px;
+  }
+
+  .info_accordion .warning {
+        float: left;
+        margin-top: -5px;
+        margin-right: 4px;
+        display: inline-blcok;
   }
   
   .kind_task_accordion{
@@ -798,6 +843,8 @@ th {
         float: left;
         margin-top: -13px;
   }
+
+
   
   .info_sprint_user_story {
     border: #010399;

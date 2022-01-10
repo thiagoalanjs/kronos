@@ -9,24 +9,30 @@ class UserSprintNotifierMailer < ApplicationMailer
     def send_create_sprint_email(sprint)
         @sprint = sprint
         mail( :to => send_email + ';',
-        :subject => "A Sprint #{ sprint.name } foi criada com sucesso para o projeto #{ sprint.project.name }" )     
+        :subject => "A sprint #{ sprint.name } foi criada com sucesso para o projeto #{ sprint.project.name }" )     
     end
 
     def send_update_sprint_email(sprint)
         @sprint = sprint
         mail( :to => send_email + ';',
-        :subject => "A Sprint #{ sprint.name } foi atualizada com sucesso no projeto #{ sprint.project.name }" )     
+        :subject => "A sprint #{ sprint.name } foi atualizada com sucesso no projeto #{ sprint.project.name }" )     
     end
 
     def send_complete_sprint_email(sprint)
         @sprint = sprint
         mail( :to => send_email + ';',
-        :subject => "A Sprint #{ sprint.name } foi concluída com sucesso no projeto #{ sprint.project.name }" )     
+        :subject => "A sprint #{ sprint.name } foi concluída com sucesso no projeto #{ sprint.project.name }" )     
     end
 
     def send_delete_sprint_email(sprint)
         @sprint = sprint
         mail( :to => send_email + ';',
-        :subject => "A Sprint #{ sprint.name } foi deletada com sucesso no projeto #{ sprint.project.name }" )     
+        :subject => "A sprint #{ sprint.name } foi deletada com sucesso no projeto #{ sprint.project.name }" )     
+    end
+
+    def send_late_sprint_email(sprint)
+        @sprint = sprint
+        mail( :to => send_email + ';',
+        :subject => "A sprint #{ sprint.name } está atrasada no projeto" )     
     end
 end

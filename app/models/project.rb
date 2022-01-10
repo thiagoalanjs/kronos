@@ -53,7 +53,7 @@ class Project < ActiveRecord::Base
     today = Time.now
 
     self.sprints.each do |sprint|
-      if today.between?(sprint.start_date, sprint.end_date)
+      if sprint.sprint_status == 'ATIVA'
         current = sprint
       end
     end

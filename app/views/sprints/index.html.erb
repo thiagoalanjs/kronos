@@ -20,7 +20,7 @@
    <% else %> 
 
 <br />
-<% if Sprint.find_by_sql("SELECT * from sprints where sprint_status == 'ATIVA' AND project_id = #{ current_project_id } ").count == 0 %>
+<% if sprint_status_actived_count? %>
  <%= link_to "Nova sprint", new_sprint_path, class: 'green_button' %>
   <br />
   <br />
@@ -36,8 +36,15 @@
     <b class="accordion_title">
      <%= sprint.name %>
     </b>
- 
+
     <div class="info_accordion">
+      <% if sprint.sprint_status == 'ATIVA' && sprint.end_date < Time.now  %>
+        <div class="red_button">
+          <%= image_tag("warning.png", class: 'warning')%> 
+          Sprint atrasada
+        </div> 
+      <% end %>
+      
       <div class="info_sprint_user_story">
        User Stories :  <%= user_story_count %>
       </div>
@@ -61,10 +68,27 @@
 
 <div class="panel">
             <br />
+
+
+       <div>
+          <b>Release: </b>
+          <% unless sprint.release.nil? %>
+            <%= sprint.release.version %>
+          <% else %>
+            -
+          <% end %>
+       </div> 
+
+      <div>
+        <b>Criada em:</b>
+        <%= l sprint.created_at %>
+      </div>
+
        <div>
          <b>Duração: </b>
          <%= l sprint.start_date %> à <%= l sprint.end_date %>
        </div> 
+     
 
        <div>
           <b>Planejamento: </b>
@@ -85,10 +109,13 @@
           <%= l sprint.retrospective_meeting_date %>
        </div> 
 
-       <div>
-          <b>Release: </b>
-          <%= sprint.release.version unless sprint.release.nil?  %>
-       </div> 
+
+       <% if sprint.end_date < Time.now && sprint.sprint_status == 'ATIVA' %>
+         <div>
+           <b>Dias em atraso:</b> <i style="color: red;"><%= sprint_days_count %></i>
+           
+         </div>
+      <% end %>
 
           <br />
           <% if sprint.sprint_status == "ATIVA" %>

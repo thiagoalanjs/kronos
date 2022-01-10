@@ -18,4 +18,6 @@ module ApplicationHelper
        warning: 'alert_danger'
       }[flash_type.to_sym] || flash_type.to_s
   end
+
+
 end

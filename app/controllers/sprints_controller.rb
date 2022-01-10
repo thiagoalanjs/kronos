@@ -7,8 +7,6 @@ class SprintsController < ApplicationController
     @sprints = Sprint.where(project_id: current_project_id).page(params[:page]).order('id DESC').per(8) 
   end
 
-
- 
   # def index
   #   if params[:search]
   #     @sprints = Sprint.where("name LIKE ?", '%'"#{params[:search]}"'%').page(params[:page]).order('id DESC').per(8)  
@@ -90,6 +88,23 @@ class SprintsController < ApplicationController
     end
   end
 
+
+  def late_sprint
+    respond_to do |format|
+      @sprint = Sprint.where("end_date < #{Time.now} 
+        AND sprint_status = 'ATIVO' 
+        AND project_id: current_project_id")
+
+      if @sprint
+       UserSprintNotifierMailer.send_late_sprint_email(@sprint).deliver 
+       format.html { redirect_to sprints_path, notice: 'Sprint finalizada com sucesso.' }
+       format.json { render :show, status: :ok, location: @sprint }
+     else
+       format.html { redirect_to sprints_path }
+       format.json { render json: @sprint.errors, status: :unprocessable_entity }
+     end
+   end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

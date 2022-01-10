@@ -1,12 +1,21 @@
+
+
+<style type="text/css">
+    .ui-widget-header {
+      background: #4DD257;
+			border-radius: 5px;
+    }
+</style>
+
 <br />
 <div class="container">
   <h2> Gestão do projeto </h2>
-   
+  <% if current_user.admin? || current_user.coordenador? %>
   <div class="align_right">
-     <%= link_to "Editar", edit_project_path(@project), class: 'item blue_button' %>
+     <%= link_to "Editar", edit_project_path(@project), class: 'blue_button' %>
      <%= link_to 'Excluír', @project, method: :delete, data: { confirm: "Deseja deletar o projeto '#{ @project.name }'? Se sim você vai perder todos os dados de backlog, sprint, release e usuários associados a ele." }, class: 'item red_button' %>    
-  
   </div>
+  <% end %>
   <br />
   <p class="info"><%= image_tag("project_icon.png") %> <strong>Projeto:</strong> <%= @project.name %></p>
   <p class="info"><%= image_tag("initial.png") %> <strong>Sigla:</strong> <%= @project.initial %></p>
@@ -25,12 +34,15 @@
 </div>
 <br />
      <div class="container">
-        <div class="ui teal progress" id="project-progress" data-percent="<%= @project.progress %>">
-        <div class="bar"></div>
-        <div class="label">
+           <div id="progressbar" class="ui-progressbar-value ui-widget-header ui-corner-left" style="border: 1px solid black; color: black; height:30px; padding-top: 10px; text-align: center; width:<%= @project.progress %>%;">
           <p>Progresso <%= @project.progress %>%</p>
-       </div>
      </div>
+     
+     <% if @project.end_date < Time.now && @project.current_sprint %>
+             <div class="button_warning">
+                <b> Projeto atrasado </b>   
+            </div> 
+     <% end %>
      <br />
         <button class="card" onclick="window.location.href='<%= user_stories_path %>'">
          <%= image_tag("backlog.png") %>
@@ -96,6 +108,10 @@
       <br />
 </div>
 </div>
-<script type="text/javascript">
-  $('.progress').progress();
+<script>
+    $(function() {
+        $("#progressbar").progressbar({
+            value: project.progress
+        });
+    });
 </script>
