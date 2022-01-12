@@ -57,10 +57,8 @@
     <div>
       <b><%= f.label :Sprint %></b>
       <br />
-      <% sprints = current_project.sprints {|sprint| [sprint.name, sprint.id] };  %>
-
-      <%= f.collection_select(:sprint_id, sprints, :id, :name, {:prompt => 'Selecione a sprint'}) %>
-     
+      <% sprints = current_project.sprints { |sprint| [ sprint.name, sprint.id ] };  %>
+      <%= f.collection_select(:sprint_id, sprints.where(sprint_status: 'ATIVA'), :id, :name, {:prompt => 'Selecione a sprint'}) %>
     </div>  
     <div>
       <b><%= f.label :Status %></b>

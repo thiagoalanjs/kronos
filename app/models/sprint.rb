@@ -30,6 +30,7 @@ class Sprint < ActiveRecord::Base
       return 0
     end
   end
+
 end
 
 

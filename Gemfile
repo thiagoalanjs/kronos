@@ -19,7 +19,7 @@ gem 'therubyracer'
 gem 'coffee-script-source'
 gem "wysiwyg-rails"
 gem "faker"
-gem 'whenever'
+gem 'whenever', require: false
 
 group :production do
   gem 'sqlite3'

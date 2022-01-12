@@ -46,16 +46,16 @@
       <% end %>
       
       <div class="info_sprint_user_story">
-       User Stories :  <%= user_story_count %>
+       User Stories :  <%= sprint.user_stories.count %>
       </div>
       
       <div class="info_sprint_bug">
       Bugs:
-      <%= task_bug_count %>
+      <%= sprint.tasks.where(kind_id: 1).count %>
       </div>  
 
       <div class="info_sub_task">
-         Sub-task: <%= task_sub_task_count %>
+         Sub-task: <%= sprint.tasks.where(kind_id: 2).count %>
       </div>
 
        <div class="info_sprint_status">

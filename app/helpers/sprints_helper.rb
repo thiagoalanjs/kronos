@@ -7,21 +7,12 @@ module SprintsHelper
                 AND project_id = #{ current_project_id }")
     end
 
-    def user_story_count
-      UserStory.where(@sprint).count
+    def late_sprint_notify
+      if :end_date < Time.now && :sprint_status == "ATIVA"
+        UserSprintNotifierMailer.send_late_sprint_email(@sprint).deliver  
+      end
     end
-
-    def task_bug_count
-      Task.joins("INNER JOIN user_stories 
-                ON user_stories.id = tasks.user_story_id
-                WHERE kind_id = 1 AND  sprint_id = sprint_id").count
-    end
-    
-    def task_sub_task_count
-      Task.joins("INNER JOIN user_stories 
-             ON user_stories.id = tasks.user_story_id 
-             WHERE kind_id = 2 AND sprint_id = sprint_id").count
-    end
+  
 
     def sprint_status_actived_count?
       Sprint.find_by_sql("SELECT * from sprints 

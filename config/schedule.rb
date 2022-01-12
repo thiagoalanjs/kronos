@@ -5,7 +5,8 @@
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
+env :PATH, ENV['PATH']
+set :output, "/log/cron.log"
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -18,3 +19,10 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+every 1.minute do
+    runner "Sprint.late_sprint_notify", :environment => 'development'
+end 
+
+# every 1.day, at: '10am' do
+#     runner "Sprint.late_sprint"
+# end 
