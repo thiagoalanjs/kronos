@@ -13,7 +13,7 @@
   <% if current_user.admin? || current_user.coordenador? %>
   <div class="align_right">
      <%= link_to "Editar", edit_project_path(@project), class: 'blue_button' %>
-     <%= link_to 'Excluír', @project, method: :delete, data: { confirm: "Deseja deletar o projeto '#{ @project.name }'? Se sim você vai perder todos os dados de backlog, sprint, release e usuários associados a ele." }, class: 'item red_button' %>    
+     <%= link_to 'Deletar', @project, method: :delete, data: { confirm: "Deseja deletar o projeto '#{ @project.name }' ? Se sim você vai perder todos os dados de backlog, sprint, release e usuários associados a ele." }, class: 'item red_button' %>    
   </div>
   <% end %>
   <br />

@@ -1,12 +1,12 @@
 class Project < ActiveRecord::Base
-  has_many :themes
-  has_many :sprints
-  has_many :releases
-  has_many :function_user_projects
-  has_many :functions, through: :function_user_projects
-  has_many :users, through: :function_user_projects
-  has_many :user_stories
-  has_many :tasks, through: :user_stories
+  has_many :themes, dependent: :destroy 
+  has_many :sprints, dependent: :destroy 
+  has_many :releases,dependent: :destroy 
+  has_many :function_user_projects, dependent: :destroy 
+  has_many :functions, through: :function_user_projects, dependent: :destroy 
+  has_many :users, through: :function_user_projects, dependent: :destroy 
+  has_many :user_stories, dependent: :destroy 
+  has_many :tasks, through: :user_stories, dependent: :destroy 
 
   validates :name, format:{with: /\A[a-zA-Z0-9_ ]+\z/, message: "deve conter apenas letras e números" }, presence: true, uniqueness: { case_sensitive: false }
   validates :initial, length: { in: 2..6, message: "deve ter entre 2 e 6 letras", maximum: 6 },
@@ -70,11 +70,6 @@ class Project < ActiveRecord::Base
   end
 
   def progress
-    # progress per user story
-    # count = self.user_stories.count
-    # done = self.user_stories.where(status: 4).count
-
-    # progress per tasks
     count = self.tasks.count
     done = self.tasks.where(status: 5).count
 

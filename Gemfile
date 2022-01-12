@@ -18,6 +18,8 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'coffee-script-source'
 gem "wysiwyg-rails"
+gem "faker"
+gem 'whenever'
 
 group :production do
   gem 'sqlite3'

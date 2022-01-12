@@ -43,9 +43,9 @@ class UserStoriesController < ApplicationController
 
   def destroy
     @user_story.destroy
-    UserStoryNotifierMailer.send_delete_user_story_email(@user_story).deliver
     respond_to do |format|
       format.html { redirect_to user_stories_url, notice: 'User story foi deletada com sucesso.' }
+      UserStoryNotifierMailer.send_delete_user_story_email(@user_story).deliver
     end
   end
 

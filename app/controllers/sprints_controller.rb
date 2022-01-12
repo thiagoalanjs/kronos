@@ -75,10 +75,10 @@ class SprintsController < ApplicationController
   end
 
   def change_status
-      respond_to do |format|
+    respond_to do |format|
        @sprint = Sprint.where(id: params[:id], project_id: current_project_id).first 
       if @sprint.update(sprint_status: "FINALIZADA") 
-        UserSprintNotifierMailer.send_complete_sprint_email(@sprint).deliver
+        UserSprintNotifierMailer.send_complete_sprint_email(@sprint).deliver       
         format.html { redirect_to sprints_path, notice: 'Sprint finalizada com sucesso.' }
         format.json { render :show, status: :ok, location: @sprint }
       else
@@ -88,23 +88,6 @@ class SprintsController < ApplicationController
     end
   end
 
-
-  def late_sprint
-    respond_to do |format|
-      @sprint = Sprint.where("end_date < #{Time.now} 
-        AND sprint_status = 'ATIVO' 
-        AND project_id: current_project_id")
-
-      if @sprint
-       UserSprintNotifierMailer.send_late_sprint_email(@sprint).deliver 
-       format.html { redirect_to sprints_path, notice: 'Sprint finalizada com sucesso.' }
-       format.json { render :show, status: :ok, location: @sprint }
-     else
-       format.html { redirect_to sprints_path }
-       format.json { render json: @sprint.errors, status: :unprocessable_entity }
-     end
-   end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

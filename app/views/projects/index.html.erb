@@ -1,8 +1,6 @@
 <br />
 
-
 <div class="container">
-
   <% if current_user.group != 'admin' && current_user.group != 'coordenador' %>
     <h1>Projetos <%= image_tag("gerenciamento-de-projetos.png") %></h1>
     <hr>
@@ -10,6 +8,8 @@
   
     <% if @projects.empty? %> 
         <div class="box_center">
+        <br />
+        <br />
             <%= image_tag("access-denied.png") %>
             <br />
             <br />
@@ -29,7 +29,7 @@
      
 
       <h1>Projetos</h1>
-        <div class="sub_title">Aqui você cria e gerencia seus projetos.</div>
+        <div class="sub_title">Aqui você cria e gerencia seus projetos. </div>
       <hr>
   
     <%= render 'projects/list_projects_admin' %> 
@@ -39,6 +39,6 @@
     <br />
     <br />
     <br />
-  <% end %>
   </div>
+ <% end %>
 </div> 

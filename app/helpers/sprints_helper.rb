@@ -1,13 +1,10 @@
 module SprintsHelper
-
     def late_sprint
       @sprint = Sprint.connection.select_value("
                 SELECT name from sprints 
                        WHERE end_date < '#{ Time.now }' 
                 AND sprint_status = 'ATIVA' 
                 AND project_id = #{ current_project_id }")
-      
-      UserSprintNotifierMailer.send_late_sprint_email(@sprint).deliver
     end
 
     def user_story_count
@@ -37,9 +34,9 @@ module SprintsHelper
                                       FROM sprints WHERE id = id")
 
       if @sprint == 1 
-        p "#{@sprint.to_i} " + 'dia'
+        "#{@sprint.to_i} " + 'dia'
       elsif @sprint > 1 
-        p "#{@sprint.to_i} " + 'dias'
+        "#{@sprint.to_i} " + 'dias'
       end                               
     end
 end

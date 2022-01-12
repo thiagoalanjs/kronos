@@ -5,11 +5,10 @@ class UserStory < ActiveRecord::Base
   belongs_to :sprint
   belongs_to :project
 
-  has_many :user_story_acceptance_criterions
-  has_many :tasks
+  has_many :tasks, dependent: :destroy 
 
-  has_many :participants, dependent: :destroy
-  has_many :users, through: :participants
+  has_many :participants, dependent: :destroy 
+  has_many :users, through: :participants, dependent: :destroy 
 
   validates :description, presence: true
   validates :title, presence: true

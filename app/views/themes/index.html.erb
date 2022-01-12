@@ -1,7 +1,3 @@
-<p></p>
-<div id="loader"></div> 
-
-
 <div class="container">
   <div>
     <br />
@@ -10,7 +6,6 @@
   <%= render 'themes/breadcrumb' %>
 <br />
 <br />
-<div style="display:none;" id="myDiv" class="animate-bottom">
 <% if @themes.empty? %> 
   <div class="box_center">
       <%= image_tag("tema_big.png") %>
@@ -22,15 +17,18 @@
   </div>
 <% else %>
 
-  <table class="ui celled table">
+  <table>
     <thead>
       <tr>
-        <th>Nome</th>
-        <th>Descrição</th>
-        <th width="290">Ações</th>
+        <th width="280">Nome</th>
+        <th width="280">Descrição</th>
+        <th width="280">Ações</th>
       </tr>
     </thead>
 
+    <%= link_to "Novo", new_theme_path, class: 'green_button' %>
+    <br />
+    <br />
     <tbody>
       <% @themes.each do |theme| %>
         <tr>
@@ -40,8 +38,6 @@
           <td>
             <div class="ui buttons">
               <%= link_to 'Editar', edit_theme_path(theme), class: 'blue_button' %>
-            </div>
-            <div class="ui buttons">
               <%= link_to 'Remover', theme, method: :delete, data: { confirm: 'Você tem certeza que deseja excluir esse tema ?' }, class: 'red_button' %>
             </div>
           </td>
@@ -49,6 +45,4 @@
       <% end %>
     </tbody>
   </table>
-  <%= link_to "Novo", new_theme_path, class: 'item green_button' %>
 <% end %>
-</div>

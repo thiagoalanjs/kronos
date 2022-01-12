@@ -21,9 +21,6 @@
         </div>
 
 
-  
-
-
 <% elsif @project.sprints.empty? && current_user.group != 'coordenador' %>
         <div class="box_center">
             <%= image_tag("access-denied.png") %>
@@ -61,20 +58,21 @@
 <br />
 <br />
 <br />
-  <table>
+  <table class="ui celled table">
     <thead>
       <tr>
-        <th>Pendente (<%= tasks_pending_count %>)</th>
-        <th>Desenvolvimento (<%= tasks_development_count %>)</th>
-        <th>Code Review (<%= tasks_code_review_count %>)</th>
-        <th>QA (<%= tasks_qa_count %>)</th>
-        <th>Concluído (<%= tasks_finished_count %>)</th>
+        <th width="180">Pendente (<%= tasks_pending_count %>)</th>
+        <th width="180">Desenvolvimento (<%= tasks_development_count %>)</th>
+        <th width="180">Code Review (<%= tasks_code_review_count %>)</th>
+        <th width="180">QA (<%= tasks_qa_count %>)</th>
+        <th width="180">Concluído (<%= tasks_finished_count %>)</th>
       </tr>
     </thead>
 
     <tbody>
       <tr>
         <td>
+       
           <% sprint.user_stories.each do |us| %>
           <!-- CARD -->
           <% us.tasks.where(status: 1).each do |task| %>
@@ -100,7 +98,7 @@
                         </a>
 
                         <%= link_to take_task_path(task.id), class: '  mini teal button' do %>
-                          Atribr
+                          Atribuir
                         <% end %>
                   </p>
 

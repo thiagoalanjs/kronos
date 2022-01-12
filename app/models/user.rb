@@ -9,17 +9,17 @@ class User < ActiveRecord::Base
   has_one_attached :avatar
   after_commit :add_default_avatar, on: %i[create update]
 
-  has_many :function_user_projects, dependent: :destroy
-  has_many :functions, through: :function_user_projects
-  has_many :projects, through: :function_user_projects
+  has_many :function_user_projects, dependent: :destroy 
+  has_many :functions, through: :function_user_projects, dependent: :destroy 
+  has_many :projects, through: :function_user_projects, dependent: :destroy 
 
-  has_many :participants, dependent: :destroy
-  has_many :user_stories, through: :participants
+  has_many :participants, dependent: :destroy 
+  has_many :user_stories, through: :participants, dependent: :destroy 
 
-  has_many :users_tasks, dependent: :destroy
-  has_many :tasks, through: :users_tasks
+  has_many :users_tasks, dependent: :destroy 
+  has_many :tasks, through: :users_tasks, dependent: :destroy 
 
-  has_many :notifications
+  has_many :notifications, dependent: :destroy 
 
   validates :name,  format:{ with: /\A[a-zA-Z ]+\z/, message: "deve conter apenas letras" }, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: { case_sensitive: false }

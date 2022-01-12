@@ -1,5 +1,5 @@
 <p></p>
-<div id="loader"></div> 
+
 <div class="container">
   <div>
   <br />
@@ -12,7 +12,6 @@
   <%= render 'function_user_projects/breadcrumb' %>
 <br />
 
-<div style="display:none;" id="myDiv" class="animate-bottom">
  <% if @function_user_projects.empty? %>
     <div class="box_center">
       <%= image_tag("teamwork.png") %>
@@ -31,8 +30,8 @@
   <table class="ui celled table">
     <thead>
       <tr>
-                <th>Usuário</th>
-                <th>Função</th>
+                <th width="290">Usuário</th>
+                <th width="290">Função</th>
                 <th width="290">Ações</th>
       </tr>
     </thead>
@@ -56,4 +55,3 @@
     </tbody>
   </table>
 <% end %>
-</div>

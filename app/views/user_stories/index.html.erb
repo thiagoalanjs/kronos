@@ -122,17 +122,7 @@
                     <%= s.title %> 
                  <% end %>
 
-     <% @user_stories.each do |us| %>
-        <% us.tasks.each do |task| %>
-          <% task.users.each do |u| %>
-                    <% if u.avatar.attached? %>
-                      <%= image_tag(u.avatar_thumbnail, :class=> "image_thumbnail") %>
-                    <% else %>
-                      <%= image_tag("team_icon.png", :class=> "image_thumbnail") %>
-                    <% end %>
-          <% end %>
-      <% end %>
-    <% end %>
+   
                 <div class="info_accordion">
                   <% if s.priority_id == 1 %>
                      <b class="high_priority">Alta</b>

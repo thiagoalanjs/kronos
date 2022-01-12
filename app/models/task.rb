@@ -1,9 +1,9 @@
 class Task < ActiveRecord::Base
 	belongs_to :user_story
-  	has_many :users_tasks, dependent: :destroy
-  	has_many :users, through: :users_tasks
-	has_one :user, through: :function_user_projects
-	validates :title, format:{with: /\A[a-zA-ZzáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9_ ]+\z/, message: "deve conter apenas letras e números" }, presence: true, uniqueness: { case_sensitive: false }
+  	has_many :users_tasks, dependent: :destroy 
+  	has_many :users, through: :users_tasks, dependent: :destroy 
+	has_one :user, through: :function_user_projects, dependent: :destroy
+	validates :title, format:{ with: /\A[a-zA-ZzáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9_ ]+\z/, message: "deve conter apenas letras e números" }, presence: true, uniqueness: { case_sensitive: false }
 	validates :description, presence: true
 	validates :status, presence: true
 	validates :user_story_id, presence: true

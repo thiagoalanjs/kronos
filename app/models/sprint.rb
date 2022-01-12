@@ -2,8 +2,8 @@ class Sprint < ActiveRecord::Base
   belongs_to :project
   belongs_to :release
   
-  has_many :user_stories
-  has_many :tasks, through: :user_stories
+  has_many :user_stories, dependent: :destroy 
+  has_many :tasks, through: :user_stories, dependent: :destroy 
 
   validates :name, presence: true
   validates :start_date, presence: true
