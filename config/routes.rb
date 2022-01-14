@@ -33,7 +33,9 @@ Rails.application.routes.draw do
   resources :priorities
   resources :kinds 
   resources :task_requirements
-  resources :tasks
+  resources :tasks do
+    resources :comments
+  end
   resources :user_story_acceptance_criterions
   resources :user_stories
   resources :sprints

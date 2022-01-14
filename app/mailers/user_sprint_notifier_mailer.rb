@@ -1,7 +1,9 @@
 class UserSprintNotifierMailer < ApplicationMailer  
     def send_email    
         conn = ActiveRecord::Base.connection 
-        res = conn.execute("SELECT users.email FROM function_user_projects INNER JOIN users ON users.id = function_user_projects.user_id WHERE project_id = project_id").to_s
+        res = conn.execute("SELECT users.email FROM function_user_projects 
+                                   INNER JOIN users ON users.id = function_user_projects.user_id 
+                                   WHERE project_id = project_id").to_s
         special_chars = res.tr('[{""=>}] ,"', ' ')
         email = special_chars.gsub(" email ", ";")
     end
@@ -33,6 +35,6 @@ class UserSprintNotifierMailer < ApplicationMailer
     def send_late_sprint_email(sprint)
         @sprint = sprint
         mail( :to => send_email + ';',
-        :subject => "A sprint #{ sprint.name } está atrasada no projeto" )     
+        :subject => "Sprint atrasada em seu projeto" )     
     end
 end

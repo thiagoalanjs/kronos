@@ -7,7 +7,10 @@ module ScrumboardHelper
 
 
     def tasks_pending_count
-        Task.find_by_sql("SELECT * FROM tasks where status = 1").count
+        Task.find_by_sql("SELECT * FROM tasks
+                  INNER JOIN user_stories ON user_stories.sprint_id = sprint 
+                  WHERE tasks.status = 1 
+            ").count
     end
 
     def tasks_development_count

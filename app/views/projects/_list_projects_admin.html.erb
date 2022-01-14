@@ -49,11 +49,12 @@
         </div>       
         <br />
           <p>
-         <% if project.end_date < Time.now && project.current_sprint %>
+         
+         <% if project.end_date < Time.now %>
             <div class="button_warning" title="Existem tarefas em atraso">
                 <b> Projeto atrasado </b>   
             </div> 
-           <% else %>
+          <% else %>
             <div class="button_status">
                 <b> Sem alertas </b>   
             </div> 

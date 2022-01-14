@@ -7,13 +7,6 @@ module SprintsHelper
                 AND project_id = #{ current_project_id }")
     end
 
-    def late_sprint_notify
-      if :end_date < Time.now && :sprint_status == "ATIVA"
-        UserSprintNotifierMailer.send_late_sprint_email(@sprint).deliver  
-      end
-    end
-  
-
     def sprint_status_actived_count?
       Sprint.find_by_sql("SELECT * from sprints 
                           where sprint_status == 'ATIVA' 

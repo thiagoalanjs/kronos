@@ -44,32 +44,32 @@
           Sprint atrasada
         </div> 
       <% end %>
-      
+
+    <a href='<%= user_stories_path %>' target="_blank" title="Acessar User stories">   
       <div class="info_sprint_user_story">
-       User Stories :  <%= sprint.user_stories.count %>
+        User Stories :  <%= sprint.user_stories.count %>
       </div>
-      
+     
       <div class="info_sprint_bug">
-      Bugs:
+        Bugs:
       <%= sprint.tasks.where(kind_id: 1).count %>
       </div>  
 
       <div class="info_sub_task">
-         Sub-task: <%= sprint.tasks.where(kind_id: 2).count %>
+        Sub-task: <%= sprint.tasks.where(kind_id: 2).count %>
       </div>
-
+    </a>
        <div class="info_sprint_status">
           <%= sprint.sprint_status %>
        </div> 
-
     </div>
+    
+    
 </button>
 
 
 <div class="panel">
             <br />
-
-
        <div>
           <b>Release: </b>
           <% unless sprint.release.nil? %>

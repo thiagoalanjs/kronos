@@ -13,7 +13,6 @@
           </div>
           </div>
        <% end %>
-
     
               <div>
                 <%= f.label :title %>
@@ -42,7 +41,8 @@
                 <%= f.collection_select(:user_story_id, current_project.user_stories, :id, :title,  { prompt: 'Selecionar user story' } ) %>
               
               </div>
-        
+
+     
               <div>
                 <br />
                 <%= f.label :kind_id %>
@@ -66,6 +66,8 @@
               <br />
 
                <%= f.hidden_field :user_id, :value => current_user.id %>       
+         
+     
          <div> 
             <%= link_to 'Salvar', new_task_path({controller: 'task', action: 'create'}), class: 'save blue_button' %>
             <%= link_to 'Cancelar', user_stories_path, class: 'red_button' %>
@@ -73,6 +75,54 @@
             <br />
          </div>
       <% end %>
+
+          <% if is_current_page?(task_path("#{@task.id}/edit")) %>
+          <h4> Comentários <%= @task.comments.count  %></h4>
+      <% @task.comments.each do |comment| %>
+
+        
+         
+             <div class="comment_task">
+                    <% if comment.user.avatar.attached? %>
+                        <%= image_tag(comment.user.avatar_thumbnail, :class=> "image_thumbnail") %>
+                       <% else %>
+                        <%= image_tag("profile-no-image.png", :class=> "image_thumbnail") %>
+                    <% end %>
+              
+           <b><%= comment.user.name %></b> 
+           - <%= comment.created_at.in_time_zone('America/Sao_Paulo').strftime('%d/%m/%Y %H:%M:%S') %>
+           <br />
+           <%= comment.content %>
+
+          <br />
+          <br />
+           <%= link_to 'Excluir', task_comment_path(@task, comment),
+               method: :delete,
+               data: { confirm: "Deseja deletar o comentário?"},
+               class: "mini_red_button" if policy(comment).destroy? %>
+
+           </div>
+           <br />
+         <% end %>
+
+
+         <div>
+         <br />
+            <h4> Adicionar comentário </h4>
+            <%= form_for([@task, @task.comments.build], html: {class: 'form'}) do |f| %>
+                  <%= f.text_area :content %>
+                  <p></p>
+                  <%= f.button "Enviar comentário",  class: 'save blue_button' %>
+            <% end %>
+            <br />
+            
+         
+         <br />
+         
+          </div>
+
+      
+         <% end %>
     </div>
 
 </div>    

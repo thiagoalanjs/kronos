@@ -6,7 +6,6 @@ class UserStory < ActiveRecord::Base
   belongs_to :project
 
   has_many :tasks, dependent: :destroy 
-
   has_many :participants, dependent: :destroy 
   has_many :users, through: :participants, dependent: :destroy 
 

@@ -12,22 +12,18 @@ class User < ActiveRecord::Base
   has_many :function_user_projects, dependent: :destroy 
   has_many :functions, through: :function_user_projects, dependent: :destroy 
   has_many :projects, through: :function_user_projects, dependent: :destroy 
-
   has_many :participants, dependent: :destroy 
   has_many :user_stories, through: :participants, dependent: :destroy 
-
   has_many :users_tasks, dependent: :destroy 
   has_many :tasks, through: :users_tasks, dependent: :destroy 
-
   has_many :notifications, dependent: :destroy 
+  has_many :comments, dependent: :destroy 
 
   validates :name,  format:{ with: /\A[a-zA-Z ]+\z/, message: "deve conter apenas letras" }, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: { case_sensitive: false }
   validates :group, presence: true
 
  #has_and_belongs_to_many :tasks
-
-
 
   def skill_level(xp)
     # curva de experiência

@@ -5,7 +5,7 @@ class Sprint < ActiveRecord::Base
   has_many :user_stories, dependent: :destroy 
   has_many :tasks, through: :user_stories, dependent: :destroy 
 
-  validates :name, presence: true
+  validates :name, presence: true, format:{ with: /\A[a-zA-ZzáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9_ ]+\z/, message: "deve conter apenas letras e números" }, uniqueness: { case_sensitive: false }
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :planning_start_date, presence: true
@@ -30,6 +30,18 @@ class Sprint < ActiveRecord::Base
       return 0
     end
   end
+
+  def self.send_email_late_sprint
+    sprint_status_actived = self.find_by_sql("SELECT end_date from sprints 
+                                                     WHERE sprint_status = 'ATIVA' 
+                                                     AND project_id = project_id")
+    p sprint_status_actived
+    if sprint_status_actived << Time.now  
+      UserSprintNotifierMailer.send_late_sprint_email(@sprint).deliver 
+    end
+  end
+  
+  
 
 end
 

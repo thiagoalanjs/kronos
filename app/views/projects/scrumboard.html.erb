@@ -21,7 +21,7 @@
         </div>
 
 
-<% elsif @project.sprints.empty? && current_user.group != 'coordenador' %>
+<% elsif @project.sprints.empty? && current_user.group != 'coordenador' && current_user.group != 'coordenador'  %>
         <div class="box_center">
             <%= image_tag("access-denied.png") %>
             <br />
@@ -61,11 +61,11 @@
   <table class="ui celled table">
     <thead>
       <tr>
-        <th width="180">Pendente (<%= tasks_pending_count %>)</th>
-        <th width="180">Desenvolvimento (<%= tasks_development_count %>)</th>
-        <th width="180">Code Review (<%= tasks_code_review_count %>)</th>
-        <th width="180">QA (<%= tasks_qa_count %>)</th>
-        <th width="180">Concluído (<%= tasks_finished_count %>)</th>
+        <th width="180">Pendente</th>
+        <th width="180">Desenvolvimento</th>
+        <th width="180">Code Review</th>
+        <th width="180">QA</th>
+        <th width="180">Concluído</th>
       </tr>
     </thead>
 
