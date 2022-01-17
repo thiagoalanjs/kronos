@@ -17,7 +17,7 @@
       <br />
       <br />
       <p class="access_deny">Nenhuma user story criada. Clique em "Novo" para iniciar o backlog.</p>
-      <%= link_to "Novo", new_user_story_path, class: 'green_button' %>
+      <%= link_to "Nova", new_user_story_path, class: 'green_button' %>
     </div>
   </div>
 <% else %>
@@ -107,14 +107,13 @@
                <div class="task_button">         
                   <div class="kind_task_accordion">
                          <% if s.kind_id == 1 %>
-                         
                            <%= image_tag('bug.png', title: "Task do tipo BUG") %>
                          <% else %>
                            <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
                          <% end %>
                  </div>
                
-                 <%= link_to edit_task_path(s.id), class: "accordion_title" do %> 
+                 <%= link_to task_path(s.id), class: "accordion_title" do %> 
                         <b> TK-<%= user_story.project.initial %>-<%= s.id %> </b>
                  <% end %> 
 

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :registerable
 
   has_one_attached :avatar
-  after_commit :add_default_avatar, on: %i[create update]
+  #after_commit :add_default_avatar, on: %i[create update]
 
   has_many :function_user_projects, dependent: :destroy 
   has_many :functions, through: :function_user_projects, dependent: :destroy 
@@ -63,12 +63,15 @@ class User < ActiveRecord::Base
     connection.execute(query)
   end
 
-
   def avatar_thumbnail
     if avatar.attached?
       avatar.variant(resize: "40X40!").processed 
-    else
-      "/profile-no-image.png"
+    end  
+  end
+
+  def task_avatar_thumbnail
+    if avatar.attached?
+      avatar.variant(resize: "25X25!").processed 
     end
   end
  

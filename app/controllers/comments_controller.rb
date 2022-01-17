@@ -3,10 +3,14 @@ class CommentsController < ApplicationController
 
     def create 
         @task.comments.create(comment_params.to_h.merge!({ user_id: current_user.id}))
-        redirect_to edit_task_path(@task)
+        redirect_to task_path(@task), notice: "Comentário criado com sucesso."
     end
 
-    def update
+    def show
+        @task = Task.find(params[:task_id])
+        @comment = @task.comments.find(params[:id])
+        @comment.destroy
+        redirect_to task_path(@task)
     end
 
     def destroy
@@ -14,7 +18,7 @@ class CommentsController < ApplicationController
         authorize comment
 
         comment.destroy
-        redirect_to edit_task_path(@task), notice: "Comentário deletado com sucesso."
+        redirect_to task_path(@task), notice: "Comentário deletado com sucesso."
     end
 
     private

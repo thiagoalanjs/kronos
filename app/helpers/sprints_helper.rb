@@ -23,4 +23,16 @@ module SprintsHelper
         "#{@sprint.to_i} " + 'dias'
       end                               
     end
+
+
+    def sprint_days_finished_count
+      @sprint = Sprint.connection.select_value("SELECT JULIANDAY(DATE(updated_at,'localtime')) - JULIANDAY(DATE(end_date,'localtime')) AS 'Dias em aberto' 
+                                     FROM sprints WHERE id = id")
+
+     if @sprint == 1 
+       "#{@sprint.to_i} " + 'dia'
+     elsif @sprint > 1 
+       "#{@sprint.to_i} " + 'dias'
+     end                               
+   end
 end

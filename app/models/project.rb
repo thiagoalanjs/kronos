@@ -51,10 +51,10 @@ class Project < ActiveRecord::Base
 
   def current_sprint
     current = nil
-    today = Time.now
+    today = Time.now.strftime("%d/%m/%Y")
 
     self.sprints.each do |sprint|
-      if sprint.sprint_status == 'ATIVA'
+      if sprint.sprint_status == 'ATIVA' 
         current = sprint
       end
     end
@@ -64,6 +64,13 @@ class Project < ActiveRecord::Base
     else
       return current.name
     end
+  end
+
+  def sprint_late
+   connection = ActiveRecord::Base.connection
+   select_filter = connection.query("SELECT end_date
+                                            FROM sprints 
+                                            WHERE sprint_status = 'ATIVA'")                                        
   end
 
   def size

@@ -49,8 +49,9 @@
         </div>       
         <br />
           <p>
-         
-         <% if project.end_date < Time.now %>
+      
+        
+         <% if project.end_date < Time.now.strftime('%d/%m/%Y') %>
             <div class="button_warning" title="Existem tarefas em atraso">
                 <b> Projeto atrasado </b>   
             </div> 

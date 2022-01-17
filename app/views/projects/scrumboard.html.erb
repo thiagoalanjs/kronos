@@ -8,8 +8,8 @@
 
 <div class="container">  
 <br />
-<h1>Board <%= image_tag("scrumboard-icon.png")%></h1>
-<hr>
+<h2>Board </h2>
+<%= render 'projects/breadcrumb' %>
  <br />
  <br />
 <% if @project.sprints.empty? && current_user.group == 'analista' %> 

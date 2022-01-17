@@ -170,11 +170,11 @@ ActiveRecord::Schema.define(version: 2022_01_14_022257) do
     t.integer "user_story_id"
     t.integer "kind_id"
     t.integer "priority_id"
-    t.integer "function_user_projects_id"
+    t.integer "function_user_project_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["function_user_projects_id"], name: "index_tasks_on_function_user_projects_id"
+    t.index ["function_user_project_id"], name: "index_tasks_on_function_user_project_id"
     t.index ["kind_id"], name: "index_tasks_on_kind_id"
     t.index ["priority_id"], name: "index_tasks_on_priority_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
@@ -257,7 +257,7 @@ ActiveRecord::Schema.define(version: 2022_01_14_022257) do
   add_foreign_key "releases", "projects"
   add_foreign_key "sprints", "projects"
   add_foreign_key "sprints", "releases"
-  add_foreign_key "tasks", "function_user_projects", column: "function_user_projects_id"
+  add_foreign_key "tasks", "function_user_projects"
   add_foreign_key "tasks", "kinds"
   add_foreign_key "tasks", "priorities"
   add_foreign_key "tasks", "user_stories"

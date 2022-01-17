@@ -9,6 +9,8 @@
   <%= render 'sprints/breadcrumb' %>
   </div> 
 <div>
+<br />
+<br />
    <% if @sprints.empty? %> 
         <div class="box_center">
             <%= image_tag("access-denied.png") %>
@@ -38,7 +40,7 @@
     </b>
 
     <div class="info_accordion">
-      <% if sprint.sprint_status == 'ATIVA' && sprint.end_date < Time.now  %>
+      <% if sprint.sprint_status == 'ATIVA' && sprint.end_date < Time.now.strftime("%d/%m/%Y")  %>
         <div class="red_button">
           <%= image_tag("warning.png", class: 'warning')%> 
           Sprint atrasada
@@ -110,10 +112,20 @@
        </div> 
 
 
-       <% if sprint.end_date < Time.now && sprint.sprint_status == 'ATIVA' %>
+       <% if sprint.end_date < Time.now.strftime("%d/%m/%Y") && sprint.sprint_status == 'ATIVA' %>
          <div>
            <b>Dias em atraso:</b> <i style="color: red;"><%= sprint_days_count %></i>
            
+         </div>
+      <% end %>
+
+       <% if sprint.sprint_status == 'FINALIZADA' %>
+         <div>
+           <b>Dias em atraso:</b> <i style="color: red;"><%= sprint_days_finished_count %></i>
+         </div>
+         
+         <div>
+           <b>Finalizada em:</b> <%= sprint.updated_at.in_time_zone('America/Sao_Paulo').strftime('%d/%m/%Y %H:%M:%S') %>
          </div>
       <% end %>
 

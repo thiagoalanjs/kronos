@@ -30,7 +30,16 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-                    <td><%= user.name %></td>
+              <td>
+                 <% if user.avatar.attached? %>
+                     <%= image_tag(user.avatar_thumbnail, :class=> "image_thumbnail") %>
+                 <% else %>
+                     <%= image_tag("profile-no-image.png", :class=> "image_thumbnail") %>
+                 <% end %>
+                 <br />
+
+                 <%= user.name %>
+              </td>
                     <td><%= user.email %></td>
                     <td><%= user.group %></td>
           <td>

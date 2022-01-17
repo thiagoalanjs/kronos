@@ -144,11 +144,6 @@
 	#menu input:checked ~ ul {display:block}
 }
 
-
-
-
-
-
 .dropdown {
     position: relative;
     display: inline-block;
@@ -200,7 +195,9 @@ div#notification_inactived {
 }
 
 .image_thumbnail {
-    border-radius: 20px;
+    border-radius: 40px;
+    width: 40px;
+    height: 40px;
 }
 
 
@@ -527,7 +524,7 @@ div#notification_inactived {
 }
 
 .comment_task {
-    width: 60%;
+    width: 65%;
     background-color:rgb(201, 201, 201);
     border-radius: 10px;
     padding: 10px;
@@ -789,6 +786,14 @@ th {
     background-color: #b30000;
   }
 
+  .mini_blue_button{
+    margin-bottom: 2px;
+    max-width: 150px;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: #2185D0;
+  }
+
   .mini_orange_button{
     margin-bottom: 2px;
     max-width: 150px;
@@ -838,15 +843,15 @@ th {
     border: 0.5px solid rgb(180, 180, 180)
   }
 
-  .task_button .high_priority{
+  .high_priority{
       color: #DB2828;
   }
 
-  .task_button .medium_priority{
+  .medium_priority{
     color: #e47a18;
   }
 
-  .task_button .low_priority{
+  .low_priority{
     color: #216104;
   }
   
