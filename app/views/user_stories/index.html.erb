@@ -97,6 +97,16 @@
       <div class="panel">
              <br />
              <%= user_story.description unless user_story.description.nil?  %>
+
+            <br />
+            <br />
+             <%= link_to edit_user_story_path(user_story), class: 'blue_button' do %>
+                Editar
+              <% end %>
+           
+              <%= link_to user_story, method: :delete, data: { confirm: "Deseja deletar a história US-#{user_story.project.initial}-#{ user_story.id } #{ user_story.title } ?" }, class: 'red_button' do %>
+                Remover
+              <% end %>
             
             <p></p>
             <b>Lista de Sub-task associadas</b>
@@ -167,17 +177,7 @@
            
           <br />
           <br /> 
-              <%= link_to edit_user_story_path(user_story), class: 'blue_button' do %>
-                Editar
-              <% end %>
-           
-              <%= link_to user_story, method: :delete, data: { confirm: "Deseja deletar a história US-#{user_story.project.initial}-#{ user_story.id } #{ user_story.title } ?" }, class: 'red_button' do %>
-                Remover
-              <% end %>
-              
-            <br />
-            <br />    
-          
+    
    </div> 
      
 <% end %>

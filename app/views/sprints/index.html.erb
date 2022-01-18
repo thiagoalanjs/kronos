@@ -116,16 +116,19 @@
 
        <% if sprint.end_date < Time.now.strftime("%d/%m/%Y") && sprint.sprint_status == 'ATIVA' %>
          <div>
-           <b>Dias em atraso:</b> <i style="color: red;"><%= sprint_days_count %></i>
+           <b>Dias em atraso:</b> < style="color: red;"><%= sprint_days_count %></i>
            
          </div>
       <% end %>
 
        <% if sprint.sprint_status == 'FINALIZADA' %>
          <div>
-           <b>Dias em atraso:</b> <i style="color: red;"><%= sprint_days_finished_count %></i>
+         <%if sprint_days_finished_count.nil? %>
+           <b>Dias em atraso:</b>  Nenhum atraso 
          </div>
-         
+         <% else %>
+         <b>Dias em atraso:</b> <i style="color: red;"> <% sprint_days_finished_count %></i>
+         <% end %>
          <div>
            <b>Finalizada em:</b> <%= sprint.updated_at.in_time_zone('America/Sao_Paulo').strftime('%d/%m/%Y %H:%M:%S') %>
          </div>

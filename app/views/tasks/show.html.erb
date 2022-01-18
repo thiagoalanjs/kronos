@@ -88,7 +88,7 @@ TK-<%= current_project.initial %>-<%= @task.id %> <%= @task.title %></h2>
     <h4> Comentários <%= @task.comments.count  %></h4>
   <% end %>
       <br />
-      <% @task.comments.each do |comment| %>
+      <% @task.comments.order('id DESC').each do |comment| %>
             <div class="comment_task">
                     <% if comment.user.avatar.attached? %>
                          <%= image_tag(comment.user.avatar_thumbnail, :class=> "image_thumbnail") %>

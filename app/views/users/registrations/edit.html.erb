@@ -3,7 +3,7 @@
         
         <div class="container"> 
          <% if resource.errors.any? %>
-   
+   <br />
         <div class="alert_danger">
            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
               <div class="header">
@@ -63,9 +63,10 @@
           </div>
     
           <div>
-            <%= f.submit "Alterar", class: "blue_button" %>
+            <%= f.submit "Alterar", class: "blue_button"%>
+            <br />
           </div>
+         
          <br />
-          <% end %>
-    
+         <% end %>
    </div>

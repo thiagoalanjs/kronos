@@ -434,6 +434,19 @@ div#notification_inactived {
     padding: 10px;
 }
 
+.form .blue_button {
+    background-color: #2185D0;
+    border-radius: 10px;
+    max-width: 15%;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
 .form textarea {
     margin-top: 10px;
     padding: 10px;
