@@ -461,9 +461,7 @@ div#notification_inactived {
 
 .alert_danger {
     padding: 10px;
-    margin-top: 20px;
     margin-bottom: 20px;
-    width: 95%;
     background-color: #f44336;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -975,6 +973,14 @@ th {
 /**********************************************************/
 /*************** M E D I A S   Q U E R I E S **************/
 /**********************************************************/
+@media only screen and (min-width: 1900px){
+    .container{
+        width: 65%;
+        margin-left: 17%;
+       
+    }
+}
+
 
 @media only screen and (max-width:1098px){ 
     .sidebar ul{
