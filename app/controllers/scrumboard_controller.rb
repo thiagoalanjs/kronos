@@ -7,7 +7,7 @@ class ScrumboardController < ApplicationController
       UsersTask.create(user_id: current_user.id, task_id: task.id)
     end
     
-    if task.status == 1
+    if task.status <= 5
       task.update(status: 2, start_date: DateTime.now)
     end
 
@@ -45,7 +45,7 @@ class ScrumboardController < ApplicationController
 
   def redo_task
     task = Task.find(params[:id])
-    task.update(status: 2)
+    task.update(status: 1)
 
     if task.user_story.tasks.count == task.user_story.tasks.where(status: 4).count
       task.user_story.update(status: 4)

@@ -20,6 +20,7 @@ gem 'coffee-script-source'
 gem "wysiwyg-rails"
 gem "faker"
 gem 'whenever', require: false
+gem 'trix-rails', '~> 2.4'
 
 group :production do
   gem 'sqlite3'

@@ -44,7 +44,7 @@
 
 <% @sprint.each_with_index do |sprint, i| %>
 <div class=" bottom attached tab segment <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>">
-    
+  
  <a class="item <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>"><b>Sprint:</b> <%= sprint.name %></a>
 
 <br />
@@ -58,7 +58,7 @@
 <br />
 <br />
 <br />
-  <table class="ui celled table">
+  <table>
     <thead>
       <tr>
         <th width="180">Pendente</th>
@@ -72,80 +72,75 @@
     <tbody>
       <tr>
         <td>
-       
-          <% sprint.user_stories.each do |us| %>
+        <% sprint.user_stories.each do |us| %>
           <!-- CARD -->
           <% us.tasks.where(status: 1).each do |task| %>
-              <div class="content_task">           
+            <div class="content_task">      
+              <div class="description"> 
                  <%= link_to task_path(task.id) do %>
-                  <h3>
-                 
-                     <% if task.kind_id == 1 %>
-                       <%= image_tag('bug.png', title: "Task do tipo BUG") %>
-                     <% else %>
-                       <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
-                     <% end %>
-                 
-                     TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %>
-                  </h3>
-                <% end %>
-          
-              
-                <div class="description">
-                  <p>
-                        <a href="#" data-modal="usertory-<%= us.id %>" class="  mini button modal-task">
-                          Detalhes
-                        </a>
+                  <h4>
+                      <% if task.kind_id == 1 %>
+                        <%= image_tag('bug.png', title: "Task do tipo BUG") %>
+                      <% else %>
+                        <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
+                      <% end %>
+                      <%= task.title %>
+                  </h4>
+                <br />
+                            <p>
+                               <a href="#" data-modal="usertory-<%= us.id %>" class=" mini icon button modal-task" title="Detalhes">
+                                   <%= image_tag("info.png") %>
+                               </a>
 
-                        <%= link_to take_task_path(task.id), class: '  mini teal button' do %>
-                          Atribuir
+                              <%= link_to take_task_path(task.id), class: '  mini teal button' do %>
+                                 Desenvolvimento
+                              <% end %>
+                            </p>
+
+                            <br />
+                            Criada em: <%= l task.created_at%>
+                        <br />
+                        <br />
+                          <% if task.priority_id == 1 %>
+                           <b>Prioridade: </b>
+                               <b class="high_priority">Alta</b>
+                           <% end %>
+
+                           <% if task.priority_id == 2 %>
+                           <b>Prioridade: </b>
+                               <b class="medium_priority">Média</b>
+                           <% end %>
+
+                           <% if task.priority_id == 3 %>
+                           <b>Prioridade: </b>
+                                  <b class="low_priority">Baixa</b>
+                           <% end %>
+                           <br />
+                          <br />
+
+                         <%= link_to task_path(task.id) do %>
+                           <h4>TK-<%= @project.initial %>-<%= task.id %></h4>
+                         <% end %>
+                
+                        <br />
+                            <div class="extra_content">
+                               <% if task.function_user_project.nil? %>
+                                       <i>Sem atribuição</i>
+                                  <% elsif task.function_user_project.user.avatar.attached? %>
+                                       <%= image_tag(task.function_user_project.user.task_avatar_thumbnail, class: "image_thumbnail", title: "#{ task.function_user_project.user.name }") %>
+                                  <% else %>
+                                       <%= image_tag("profile-no-image.png", class: "image_thumbnail", title: "#{ task.function_user_project.user.name }" ) %>
+                               <% end %>
+                           </div>
+                       </div>
+                    </div> 
                         <% end %>
-                  </p>
-
-                  <p>
-                  Criada em: <%= l task.created_at%>
-                 <% if task.priority_id == 1 %>
-                    <div class="mini_red_button">
-                    <b>Prioridade: </b>
-                    </div>
-                 <% end %>
-
-                 <% if task.priority_id == 2 %>
-                    <div class="mini_silver_button">
-                        <b>Prioridade: </b>
-                          Média
-                    </div>
-                 <% end %>
-
-                  <% if task.priority_id == 3 %>
-                    <div class="mini_green_button">
-                        <b>Prioridade: </b>
-                        Baixa
-                    </div>
-                 <% end %>
-                  </p>
-                    
-               
-              <div class="extra_content">
-                <div class="right floated author">
-                <% task.users.each do |u| %>
-                    <% if u.avatar.attached? %>
-                        <%= image_tag(u.avatar_thumbnail, :class=> "image_profile_card") %>
-                       <% else %>
-                        <%= image_tag("profile-no-image.png", :class=> "image_profile_card") %>
+                      <% end %>
                     <% end %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-          <% end %>
-          <!-- /CARD -->
-          <% end %>
-         
-                </div>
-              </div>
+            <!-- /CARD -->
         </td>
-</div>
+    </div>
+
         <td>
           <% sprint.user_stories.each do |us| %>       
           <% us.tasks.where(status: 2).each do |task| %>
@@ -153,9 +148,10 @@
             <!-- CARD -->
             <div>
               <div class="content_task">
-                <div class="meta">
-                <%= link_to task_path(task.id) do %>
-                  <h3>
+                 <div class="description">
+
+                 <%= link_to task_path(task.id) do %>
+                  <h4>
                  
                      <% if task.kind_id == 1 %>
                        <%= image_tag('bug.png', title: "Task do tipo BUG") %>
@@ -163,23 +159,20 @@
                        <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
                      <% end %>
                  
-                     <span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span>
-                  </h3>
+                      <%= task.title %>
+                  </h4>
                 <% end %>
+
                 </div>
                  <div class="description">
-                  <div class=" mini icon buttons">
+                  <div class="mini icon buttons">
                   
                     <a href="#" data-modal="usertory-<%= us.id %>" class=" mini icon button modal-task" title="Detalhes">
-                    <%= image_tag("info.png") %>
+                      <%= image_tag("info.png") %>
                     </a>
                  
                     <%= link_to get_out_task_path(task.id), class: ' mini yellow button', title: 'Voltar para a coluna pendente' do %>
                       Sair
-                    <% end %>
-
-                    <%= link_to take_task_path(task.id), class: ' mini orange button', title: 'Participar da tarefa' do %>
-                      Ajudar
                     <% end %>
 
                     <%= link_to send_to_code_review_path(task.id), class: ' mini teal button', title: 'Enviar para Code Review' do %>
@@ -188,47 +181,40 @@
                  
                   </div>
 
-                
-                  <p>
                   <br />
                       Criada em: <%= l task.created_at%>
-                      <% if task.priority_id == 1 %>
-                         <div class=" compact mini icon red basic button">
-                         <b>Prioridade: </b>
-                          Alta
-                         </div>
-                      <% end %>
+               <br />
+              <br />
+                <% if task.priority_id == 1 %>
+                 <b>Prioridade: </b>
+                     <b class="high_priority">Alta</b>
+                 <% end %>
 
-                      <% if task.priority_id == 2 %>
-                         <div class="mini_silver_button">
-                             <b>Prioridade: </b>
-                               Média
-                         </div>
-                      <% end %>
+                 <% if task.priority_id == 2 %>
+                 <b>Prioridade: </b>
+                     <b class="medium_priority">Média</b>
+                 <% end %>
 
-                      <% if task.priority_id == 3 %>
-                        <div class="mini_green_button">
-                            <b>Prioridade: </b>
-                            Baixa
-                        </div>
-                      <% end %>
-                  </p>   
-             </div>
-              
-              <div class="extra_content">
-                <div class="right floated author">
-       <% task.users.each do |u| %>
-
-        <% if u.avatar.attached? %>
-            <%= image_tag(u.avatar_thumbnail, :class=> "image_profile_card") %>
-           <% else %>
-            <%= image_tag("profile-no-image.png", :class=> "image_profile_card") %>
-        <% end %>
-
-          <% end %>
-                </div>
-              </div>
+                 <% if task.priority_id == 3 %>
+                 <b>Prioridade: </b>
+                        <b class="low_priority">Baixa</b>
+                 <% end %>
+    
+               </p>  
+                 <br />
+                  <h4>TK-<%= @project.initial %>-<%= task.id %></h4> 
+                 <br />
+                  <div class="extra_content">
+                   <% if task.function_user_project.nil? %>
+                           <i>Sem atribuição</i>
+                      <% elsif task.function_user_project.user.avatar.attached? %>
+                           <%= image_tag(task.function_user_project.user.task_avatar_thumbnail, class: "image_thumbnail", title: "#{ task.function_user_project.user.name }") %>
+                      <% else %>
+                           <%= image_tag("profile-no-image.png", class: "image_thumbnail", title: "#{ task.function_user_project.user.name }" ) %>
+                   <% end %>
+               </div>
             </div>
+           </div> 
           <% end %>
           <!-- /CARD -->
           <% end %>
@@ -241,32 +227,30 @@
             <!-- CARD -->
             <div>
               <div class="content_task">
-                <div class="meta">
+              <div class="description">
                     <%= link_to task_path(task.id) do %>
-                  <h3>
-                 
+                  <h4>
                      <% if task.kind_id == 1 %>
                        <%= image_tag('bug.png', title: "Task do tipo BUG") %>
                      <% else %>
                        <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
                      <% end %>
                  
-                     <span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span>
-                  </h3>
+                     <%= task.title %>
+                  </h4>
+                  <br />
                 <% end %>  
-                 </div>
-
-                <div class="description">
+                 
                   <div class=" mini icon buttons">
                         <a href="#" data-modal="usertory-<%= us.id %>" class=" mini icon button modal-task" title="Detalhes">
                           <%= image_tag("info.png") %></a>
-                        <%= link_to get_out_task_path(task.id), class: 'mini_orange_button' do %>
+                        <%= link_to get_out_task_path(task.id) do %>
                           Pendente
                         <% end %>
-                        <%= link_to take_task_path(task.id), class: 'mini_red_button' do %>
-                          Desenvolvimento
+                        <%= link_to take_task_path(task.id) do %>
+                          Desenvolv.
                         <% end %>
-                        <%= link_to send_task_to_test_path(task.id), class: ' mini green button' do %>
+                        <%= link_to send_task_to_test_path(task.id) do %>
                           QA
                         <% end %>
                   </div>
@@ -274,112 +258,126 @@
                   <p>
                   <br />
                      Criada em: <%= l task.created_at%>
-                    <% if task.priority_id == 1 %>
-                       <div class="mini_red_button">
-                       <b>Prioridade: </b>
-                        Alta
-                       </div>
-                    <% end %>
+                     <br />
+                     <br />
+                     <% if task.priority_id == 1 %>
+                 <b>Prioridade: </b>
+                     <b class="high_priority">Alta</b>
+                 <% end %>
 
-                    <% if task.priority_id == 2 %>
-                       <div class="mini_orange_button">
-                           <b>Prioridade: </b>
-                             Média
-                       </div>
-                    <% end %>
+                 <% if task.priority_id == 2 %>
+                 <b>Prioridade: </b>
+                     <b class="medium_priority">Média</b>
+                 <% end %>
 
-                     <% if task.priority_id == 3 %>
-                       <div class="mini_green_button">
-                           <b>Prioridade: </b>
-                           Baixa
-                       </div>
-                    <% end %>
-                 </p>
-               </div>
+                 <% if task.priority_id == 3 %>
+                 <br />
+                 <b>Prioridade: </b>
+                        <b class="low_priority">Baixa</b>
+                 <% end %>
+                <br />
+                <br />
+                 <h4>TK-<%= @project.initial %>-<%= task.id %></h4>
+               <br />
+               
  
               <div class="extra_content">
-                <div class="right floated author">
-                  <% task.users.each do |u| %>
-                    <% if u.avatar.attached? %>
-                          <%= image_tag(u.avatar_thumbnail, :class=> "image_profile_card") %>
-                    <% else %>
-                        <%= image_tag("profile-no-image.png", :class=> "image_profile") %>
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
+                   <% if task.function_user_project.nil? %>
+                           <i>Sem atribuição</i>
+                      <% elsif task.function_user_project.user.avatar.attached? %>
+                           <%= image_tag(task.function_user_project.user.task_avatar_thumbnail, class: "image_thumbnail", title: "#{ task.function_user_project.user.name }") %>
+                      <% else %>
+                           <%= image_tag("profile-no-image.png", class: "image_thumbnail", title: "#{ task.function_user_project.user.name }" ) %>
+                   <% end %>
+               </div>
             </div>
+          </div>  
           <% end %>
           <!-- /CARD -->
           <% end %>
         </td>
-
-
          <td class="top aligned">
           <% sprint.user_stories.each do |us| %>
       
 
+
           <% us.tasks.where(status: 4).each do |task| %>
             <p></p>
             <!-- CARD -->
-            <div class=" blue card">
+            <div>
               <div class="content_task">
-                <div class="meta">
+              <div class="description">
                     <%= link_to task_path(task.id) do %>
-                  <h3>
-                 
+                  <h4>
                      <% if task.kind_id == 1 %>
                        <%= image_tag('bug.png', title: "Task do tipo BUG") %>
                      <% else %>
                        <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
                      <% end %>
                  
-                     <span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span>
-                  </h3>
-                <% end %> 
-                </div>
-                <div class="description">
-          
-                  <div class=" mini icon buttons">
+                     <%= task.title %>
+                  </h4>
+                  <br />
+                <% end %>  
+                 
+                  <div class="mini icon buttons">
                     <a href="#" data-modal="usertory-<%= us.id %>" class=" mini icon button modal-task" title="Detalhes">
                       <%= image_tag("info.png") %>
                     </a>
 
-                    <%= link_to get_out_task_path(task.id), class: ' mini orange button' do %>
+                    <%= link_to get_out_task_path(task.id), class: 'mini orange button' do %>
                       Sair
                     <% end %>
                     
-                    <%= link_to take_task_path(task.id), class: ' mini red button' do %>
-                          Desenvolvimento
+                    <%= link_to take_task_path(task.id), class: 'mini red button' do %>
+                          Desenvol.
                         <% end %>
 
                     <%= link_to send_to_code_review_path(task.id), class: ' mini teal button' do %>
                       Code Review
                     <% end %>
 
-                    <%= link_to take_task_path(task.id), class: ' mini teal button', title: 'Participar da tarefa' do %>
-                      Ajudar
-                    <% end %>
-
                     <%= link_to done_task_path(task.id), class: ' mini green button' do %>
                       Pronto
                     <% end %>
                   </div>
+  
+                  <p>
+                  <br />
+                     Criada em: <%= l task.created_at%>
+                     <br />
+                     <% if task.priority_id == 1 %>
+                 <b>Prioridade: </b>
+                     <b class="high_priority">Alta</b>
+                 <% end %>
 
-                </div>
-              </div>
-              <div class="extra_content">
-                <div class="right floated author">
-                  <% task.users.each do |u| %>
-                   <% if u.avatar.attached? %>
-                          <%= image_tag(u.avatar_thumbnail, :class=> "image_profile_card") %>
-                    <% else %>
-                        <%= image_tag("profile-no-image.png", :class=> "image_profile_card") %>
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
+                 <% if task.priority_id == 2 %>
+                 <b>Prioridade: </b>
+                     <b class="medium_priority">Média</b>
+                 <% end %>
+
+                 <% if task.priority_id == 3 %>
+                 <br />
+                 <b>Prioridade: </b>
+                        <b class="low_priority">Baixa</b>
+                 <% end %>
+                <br />
+                <br />
+                 <h4>TK-<%= @project.initial %>-<%= task.id %></h4>
+               <br />
+               
+ 
+             <div class="extra_content">
+                   <% if task.function_user_project.nil? %>
+                           <i>Sem atribuição</i>
+                      <% elsif task.function_user_project.user.avatar.attached? %>
+                           <%= image_tag(task.function_user_project.user.task_avatar_thumbnail, class: "image_thumbnail", title: "#{ task.function_user_project.user.name }") %>
+                      <% else %>
+                           <%= image_tag("profile-no-image.png", class: "image_thumbnail", title: "#{ task.function_user_project.user.name }" ) %>
+                   <% end %>
+               </div>
             </div>
+           </div> 
           <% end %>
           <!-- /CARD -->
           <% end %>
@@ -393,10 +391,9 @@
             <!-- CARD -->
             <div>
               <div class="content_task">
-                
-                <div class="meta">
+                <div class="description">  
                     <%= link_to task_path(task.id) do %>
-                  <h3>
+                  <h4>
                  
                      <% if task.kind_id == 1 %>
                        <%= image_tag('bug.png', title: "Task do tipo BUG") %>
@@ -404,47 +401,52 @@
                        <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
                      <% end %>
                  
-                     <span class="category">TK-<%= @project.initial %>-<%= task.id %>  <%= task.title %></span>
-                  </h3>
+                     <%= task.title %>
+                  </h4>
                 <% end %> 
-                </div>
-                <div class="description">
+            
+                  <br />
                   <div class=" mini icon buttons">
+                  
                     <a href="#" data-modal="usertory-<%= us.id %>" class="  mini icon button modal-task" title="Detalhes">
                       <%= image_tag("info.png") %>
                     </a>
-                    <%= link_to redo_task_path(task.id), class: '  mini teal button', title: 'Enviar para teste' do %>
+                    
+                    <%= link_to redo_task_path(task.id), class: 'mini teal button', title: 'Enviar para teste' do %>
                       Refazer
                     <% end %>
                   </div>
                   <p></p>
+                  <br />  
                   <% unless task.start_date.nil? %>
                   <p>
                     <strong>Inicio em:</strong>
                     <%= l task.start_date %>
                   </p>
                   <% end %>
-                  
+                  <br />  
                   <% unless task.end_date.nil? %>
                   <p>
                     <strong>Concluído em:</strong>
                     <%= l task.end_date %>
                   </p>
                   <% end %>
-                </div>
-              </div>
-              <div class="extra_content">
-                <div class="right floated author">
-                  <% task.users.each do |u| %>
-                    <% if u.avatar.attached? %>
-                          <%= image_tag(u.avatar_thumbnail, :class=> "image_profile_card") %>
-                    <% else %>
-                        <%= image_tag("profile-no-image.png", :class=> "image_profile_card") %>
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
+                <br />  
+                  
+                <h4>TK-<%= @project.initial %>-<%= task.id %></h4>
+                <br />
+               <div class="extra_content">
+                   <% if task.function_user_project.nil? %>
+                           <i>Sem atribuição</i>
+                      <% elsif task.function_user_project.user.avatar.attached? %>
+                           <%= image_tag(task.function_user_project.user.task_avatar_thumbnail, class: "image_thumbnail", title: "#{ task.function_user_project.user.name }") %>
+                      <% else %>
+                           <%= image_tag("profile-no-image.png", class: "image_thumbnail", title: "#{ task.function_user_project.user.name }" ) %>
+                   <% end %>
+               </div>
             </div>
+            </div>
+                
           <% end %>
           <!-- /CARD -->
           <% end %>
