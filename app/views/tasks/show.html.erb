@@ -60,6 +60,7 @@ TK-<%= current_project.initial %>-<%= @task.id %> <%= @task.title %></h2>
                   <%= @task.user.name %> 
              <% else %>
                   <%= image_tag("profile-no-image.png", :class=> "image_thumbnail") %>
+                  <%= @task.user.name %> 
              <% end %>
      <br /> 
 <br />
