@@ -20,7 +20,6 @@
             <p class="access_deny">Nenhuma sprint ativa no momento. Entre em contato com o administrador / PO.</p>
         </div>
 
-
 <% elsif @project.sprints.empty? && current_user.group != 'coordenador' && current_user.group != 'coordenador'  %>
         <div class="box_center">
             <%= image_tag("access-denied.png") %>
@@ -77,7 +76,7 @@
           <% us.tasks.where(status: 1).each do |task| %>
             <div class="content_task">      
               <div class="description"> 
-                 <%= link_to task_path(task.id) do %>
+                 <%= link_to task_path(task.id), target: "_blank" do %>
                   <h4>
                       <% if task.kind_id == 1 %>
                         <%= image_tag('bug.png', title: "Task do tipo BUG") %>
@@ -86,13 +85,10 @@
                       <% end %>
                       <%= task.title %>
                   </h4>
-                <br />
+                 <br />
                             <p>
-                               <a href="#" data-modal="usertory-<%= us.id %>" class=" mini icon button modal-task" title="Detalhes">
-                                   <%= image_tag("info.png") %>
-                               </a>
-
-                              <%= link_to take_task_path(task.id), class: '  mini teal button' do %>
+                    
+                              <%= link_to take_task_path(task.id), class: 'info_sub_task' do %>
                                  Desenvolvimento
                               <% end %>
                             </p>
@@ -118,7 +114,7 @@
                            <br />
                           <br />
 
-                         <%= link_to task_path(task.id) do %>
+                         <%= link_to task_path(task.id), target: "_blank" do %>
                            <h4>TK-<%= @project.initial %>-<%= task.id %></h4>
                          <% end %>
                 
@@ -139,7 +135,7 @@
                     <% end %>
             <!-- /CARD -->
         </td>
-    </div>
+    
 
         <td>
           <% sprint.user_stories.each do |us| %>       
@@ -150,7 +146,7 @@
               <div class="content_task">
                  <div class="description">
 
-                 <%= link_to task_path(task.id) do %>
+                 <%= link_to task_path(task.id), target: "_blank" do %>
                   <h4>
                  
                      <% if task.kind_id == 1 %>
@@ -167,15 +163,11 @@
                  <div class="description">
                   <div class="mini icon buttons">
                   
-                    <a href="#" data-modal="usertory-<%= us.id %>" class=" mini icon button modal-task" title="Detalhes">
-                      <%= image_tag("info.png") %>
-                    </a>
-                 
-                    <%= link_to get_out_task_path(task.id), class: ' mini yellow button', title: 'Voltar para a coluna pendente' do %>
+                    <%= link_to get_out_task_path(task.id), class: 'info_sub_task', title: 'Voltar para a coluna pendente' do %>
                       Sair
                     <% end %>
 
-                    <%= link_to send_to_code_review_path(task.id), class: ' mini teal button', title: 'Enviar para Code Review' do %>
+                    <%= link_to send_to_code_review_path(task.id), class: 'info_sub_task', title: 'Enviar para Code Review' do %>
                       Code Review
                     <% end %>
                  
@@ -202,7 +194,9 @@
     
                </p>  
                  <br />
+                 <%= link_to task_path(task.id), target: "_blank" do %>
                   <h4>TK-<%= @project.initial %>-<%= task.id %></h4> 
+                 <% end %>
                  <br />
                   <div class="extra_content">
                    <% if task.function_user_project.nil? %>
@@ -228,7 +222,7 @@
             <div>
               <div class="content_task">
               <div class="description">
-                    <%= link_to task_path(task.id) do %>
+                    <%= link_to task_path(task.id), target: "_blank" do %>
                   <h4>
                      <% if task.kind_id == 1 %>
                        <%= image_tag('bug.png', title: "Task do tipo BUG") %>
@@ -242,15 +236,14 @@
                 <% end %>  
                  
                   <div class=" mini icon buttons">
-                        <a href="#" data-modal="usertory-<%= us.id %>" class=" mini icon button modal-task" title="Detalhes">
-                          <%= image_tag("info.png") %></a>
-                        <%= link_to get_out_task_path(task.id) do %>
+
+                        <%= link_to get_out_task_path(task.id), class: 'info_sub_task' do %>
                           Pendente
                         <% end %>
-                        <%= link_to take_task_path(task.id) do %>
+                        <%= link_to take_task_path(task.id), class: 'info_sub_task' do %>
                           Desenvolv.
                         <% end %>
-                        <%= link_to send_task_to_test_path(task.id) do %>
+                        <%= link_to send_task_to_test_path(task.id), class: 'info_sub_task' do %>
                           QA
                         <% end %>
                   </div>
@@ -277,7 +270,9 @@
                  <% end %>
                 <br />
                 <br />
+                <%= link_to task_path(task.id), target: "_blank" do %>
                  <h4>TK-<%= @project.initial %>-<%= task.id %></h4>
+                <% end %> 
                <br />
                
  
@@ -307,7 +302,7 @@
             <div>
               <div class="content_task">
               <div class="description">
-                    <%= link_to task_path(task.id) do %>
+                    <%= link_to task_path(task.id), target: "_blank" do %>
                   <h4>
                      <% if task.kind_id == 1 %>
                        <%= image_tag('bug.png', title: "Task do tipo BUG") %>
@@ -321,23 +316,21 @@
                 <% end %>  
                  
                   <div class="mini icon buttons">
-                    <a href="#" data-modal="usertory-<%= us.id %>" class=" mini icon button modal-task" title="Detalhes">
-                      <%= image_tag("info.png") %>
-                    </a>
+    
 
-                    <%= link_to get_out_task_path(task.id), class: 'mini orange button' do %>
+                    <%= link_to get_out_task_path(task.id),  class: 'info_sub_task' do %>
                       Sair
                     <% end %>
                     
-                    <%= link_to take_task_path(task.id), class: 'mini red button' do %>
+                    <%= link_to take_task_path(task.id), class: 'info_sub_task' do %>
                           Desenvol.
                         <% end %>
 
-                    <%= link_to send_to_code_review_path(task.id), class: ' mini teal button' do %>
+                    <%= link_to send_to_code_review_path(task.id), class: 'info_sub_task' do %>
                       Code Review
                     <% end %>
 
-                    <%= link_to done_task_path(task.id), class: ' mini green button' do %>
+                    <%= link_to done_task_path(task.id), class: 'info_sub_task' do %>
                       Pronto
                     <% end %>
                   </div>
@@ -363,7 +356,9 @@
                  <% end %>
                 <br />
                 <br />
+                <%= link_to task_path(task.id), target: "_blank" do %>
                  <h4>TK-<%= @project.initial %>-<%= task.id %></h4>
+                <% end %>
                <br />
                
  
@@ -392,7 +387,7 @@
             <div>
               <div class="content_task">
                 <div class="description">  
-                    <%= link_to task_path(task.id) do %>
+                    <%= link_to task_path(task.id), target: "_blank" do %>
                   <h4>
                  
                      <% if task.kind_id == 1 %>
@@ -408,11 +403,7 @@
                   <br />
                   <div class=" mini icon buttons">
                   
-                    <a href="#" data-modal="usertory-<%= us.id %>" class="  mini icon button modal-task" title="Detalhes">
-                      <%= image_tag("info.png") %>
-                    </a>
-                    
-                    <%= link_to redo_task_path(task.id), class: 'mini teal button', title: 'Enviar para teste' do %>
+                    <%= link_to redo_task_path(task.id), class: 'info_sub_task', title: 'Enviar para teste' do %>
                       Refazer
                     <% end %>
                   </div>
@@ -433,7 +424,9 @@
                   <% end %>
                 <br />  
                   
-                <h4>TK-<%= @project.initial %>-<%= task.id %></h4>
+                <%= link_to task_path(task.id), target: "_blank" do %>  
+                  <h4>TK-<%= @project.initial %>-<%= task.id %></h4>
+                <% end %>
                 <br />
                <div class="extra_content">
                    <% if task.function_user_project.nil? %>
@@ -457,7 +450,6 @@
 </div>
 </div>
 <% end %>
-
 
 <script type="text/javascript">
   $('.modal-task').click(function(){

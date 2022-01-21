@@ -19,7 +19,7 @@ set :output, "log/cron.log"
 # end
 
 # Learn more: http://github.com/javan/whenever
-every 1.day, at: '10pm' do
-    runner "Sprint.send_email_late_sprint", :enviroment => "developement"
+every 1.day, at: ['10:30 am', '6:00 pm'] do
+    runner "Sprint.send_email_late_sprint", :enviroment => "development"
 end 
 

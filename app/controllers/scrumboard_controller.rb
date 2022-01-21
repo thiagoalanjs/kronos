@@ -22,7 +22,7 @@ class ScrumboardController < ApplicationController
       UsersTask.where(user_id: current_user.id, task_id: task.id).destroy_all
     end
 
-    if task.users.count == 0
+    if task.users
       task.update(status: 1)
     end
 
