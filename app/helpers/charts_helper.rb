@@ -29,7 +29,7 @@ module ChartsHelper
 
  def users_by_project_count
    FunctionUserProject.where(project: current_project_id).count
-end
+ end
 
 
  def sub_task_by_project_count

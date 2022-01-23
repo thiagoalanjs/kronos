@@ -167,6 +167,7 @@ ActiveRecord::Schema.define(version: 2022_01_14_022257) do
     t.date "end_date"
     t.date "start_date"
     t.integer "status"
+    t.boolean "impediment"
     t.integer "user_story_id"
     t.integer "kind_id"
     t.integer "priority_id"

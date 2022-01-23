@@ -15,27 +15,27 @@
        <% end %>
     
               <div>
-                <%= f.label :title %>
+                <b><%= f.label :title %></b>
                 <br />
                 <%= f.text_field :title %>
               </div>
 
               <div>
-                <%= f.label :description %>
+                <b><%= f.label :description %></b>
                 <br />
                 <%= f.text_area :description %>
                 <br />
               </div>
         
               <div>
-                <%= f.label :status %>
+                <b><%= f.label :status %></b>
                 <br />
                   <%= f.select :status, options_for_select({'Pendente' => 1 , 'Desenvolvimento' => 2 , 'Code Review' => 3, 'QA' => 4 , 'Concluída' => 5 }), {:prompt => false}, {  placeholder: 'Status' } %>
               </div>
         
               <div>               
                 <br />
-                <%= f.label :user_story_id %>
+                <b><%= f.label :user_story_id %></b>
                 <br />
                 <%= f.collection_select(:user_story_id, current_project.user_stories, :id, :title,  { prompt: 'Selecionar user story' } ) %>
               
@@ -44,14 +44,14 @@
      
               <div>
                 <br />
-                <%= f.label :kind_id %>
+                <b><%= f.label :kind_id %></b>
                 <br />
                 <%= f.select :kind_id, Kind.all.collect {|x| [x.name, x.id]}, { prompt: 'Selecionar o tipo de tarefa' } %>
               </div>
  
                <div>
                 <br />
-                <%= f.label :priority_id %>
+                <b><%= f.label :priority_id %></b>
                 <br />
                 <%= f.select :priority_id, Priority.all.collect {|x| [x.name, x.id]}, { prompt: 'Selecionar a prioridade da tarefa' } %>
               </div>
@@ -65,9 +65,14 @@
               <br />
 
                <%= f.hidden_field :user_id, :value => current_user.id %>       
+          <div>
+              <b> Selecione o campo abaixo se tiver impedimentos </b>
+              <br/>
+              <%= f.check_box :impediment, {}, "true", "false"%>
+          </div>
          
-     
          <div> 
+         <br />
             <%= link_to 'Salvar', new_task_path({controller: 'task', action: 'create'}), class: 'save blue_button' %>
             <%= link_to 'Cancelar', user_stories_path, class: 'red_button' %>
             <br />

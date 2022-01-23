@@ -12,7 +12,7 @@
 <%= render 'projects/breadcrumb' %>
  <br />
  <br />
-<% if @project.sprints.empty? && current_user.group == 'analista' %> 
+<% if @project.sprints.empty? && @sprint.nil? && current_user.group == 'analista' %> 
         <div class="box_center">
             <%= image_tag("access-denied.png") %>
             <br />
@@ -20,7 +20,7 @@
             <p class="access_deny">Nenhuma sprint ativa no momento. Entre em contato com o administrador / PO.</p>
         </div>
 
-<% elsif @project.sprints.empty? && current_user.group != 'coordenador' && current_user.group != 'coordenador'  %>
+<% elsif @project.sprints.empty? && @sprint.nil? && current_user.group != 'coordenador' && current_user.group != 'coordenador'  %>
         <div class="box_center">
             <%= image_tag("access-denied.png") %>
             <br />
@@ -74,7 +74,11 @@
         <% sprint.user_stories.each do |us| %>
           <!-- CARD -->
           <% us.tasks.where(status: 1).each do |task| %>
-            <div class="content_task">      
+            <% if task.impediment == TRUE %>
+              <div class="content_task_impediment">
+              <% else %>
+              <div class="content_task">
+              <% end %>   
               <div class="description"> 
                  <%= link_to task_path(task.id), target: "_blank" do %>
                   <h4>
@@ -111,6 +115,9 @@
                            <b>Prioridade: </b>
                                   <b class="low_priority">Baixa</b>
                            <% end %>
+                            <% if task.impediment == TRUE %>
+                               <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
+                            <% end %>  
                            <br />
                           <br />
 
@@ -121,7 +128,7 @@
                         <br />
                             <div class="extra_content">
                                <% if task.function_user_project.nil? %>
-                                       <i>Sem atribuição</i>
+                                       <i>Sem Atribuição</i>
                                   <% elsif task.function_user_project.user.avatar.attached? %>
                                        <%= image_tag(task.function_user_project.user.task_avatar_thumbnail, class: "image_thumbnail", title: "#{ task.function_user_project.user.name }") %>
                                   <% else %>
@@ -143,7 +150,11 @@
             <p></p>
             <!-- CARD -->
             <div>
+            <% if task.impediment == TRUE %>
+              <div class="content_task_impediment">
+              <% else %>
               <div class="content_task">
+              <% end %>
                  <div class="description">
 
                  <%= link_to task_path(task.id), target: "_blank" do %>
@@ -191,6 +202,9 @@
                  <b>Prioridade: </b>
                         <b class="low_priority">Baixa</b>
                  <% end %>
+                 <% if task.impediment == TRUE %>
+                     <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
+                 <% end %>  
     
                </p>  
                  <br />
@@ -200,7 +214,7 @@
                  <br />
                   <div class="extra_content">
                    <% if task.function_user_project.nil? %>
-                           <i>Sem atribuição</i>
+                           <i>Sem Atribuição</i>
                       <% elsif task.function_user_project.user.avatar.attached? %>
                            <%= image_tag(task.function_user_project.user.task_avatar_thumbnail, class: "image_thumbnail", title: "#{ task.function_user_project.user.name }") %>
                       <% else %>
@@ -220,7 +234,11 @@
             <p></p>
             <!-- CARD -->
             <div>
+              <% if task.impediment == TRUE %>
+              <div class="content_task_impediment">
+              <% else %>
               <div class="content_task">
+              <% end %>
               <div class="description">
                     <%= link_to task_path(task.id), target: "_blank" do %>
                   <h4>
@@ -268,17 +286,20 @@
                  <b>Prioridade: </b>
                         <b class="low_priority">Baixa</b>
                  <% end %>
+                 <% if task.impediment == TRUE %>
+                    <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
+                 <% end %>  
                 <br />
                 <br />
                 <%= link_to task_path(task.id), target: "_blank" do %>
-                 <h4>TK-<%= @project.initial %>-<%= task.id %></h4>
-                <% end %> 
+                  <h4>TK-<%= @project.initial %>-<%= task.id %></h4> 
+                 <% end %>
                <br />
                
  
               <div class="extra_content">
                    <% if task.function_user_project.nil? %>
-                           <i>Sem atribuição</i>
+                           <i>Sem Atribuição</i>
                       <% elsif task.function_user_project.user.avatar.attached? %>
                            <%= image_tag(task.function_user_project.user.task_avatar_thumbnail, class: "image_thumbnail", title: "#{ task.function_user_project.user.name }") %>
                       <% else %>
@@ -300,7 +321,11 @@
             <p></p>
             <!-- CARD -->
             <div>
+              <% if task.impediment == TRUE %>
+              <div class="content_task_impediment">
+              <% else %>
               <div class="content_task">
+              <% end %>
               <div class="description">
                     <%= link_to task_path(task.id), target: "_blank" do %>
                   <h4>
@@ -339,6 +364,7 @@
                   <br />
                      Criada em: <%= l task.created_at%>
                      <br />
+                     <br />
                      <% if task.priority_id == 1 %>
                  <b>Prioridade: </b>
                      <b class="high_priority">Alta</b>
@@ -354,6 +380,9 @@
                  <b>Prioridade: </b>
                         <b class="low_priority">Baixa</b>
                  <% end %>
+                 <% if task.impediment == TRUE %>
+                    <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
+                 <% end %>  
                 <br />
                 <br />
                 <%= link_to task_path(task.id), target: "_blank" do %>
@@ -364,7 +393,7 @@
  
              <div class="extra_content">
                    <% if task.function_user_project.nil? %>
-                           <i>Sem atribuição</i>
+                           <i>Sem Atribuição</i>
                       <% elsif task.function_user_project.user.avatar.attached? %>
                            <%= image_tag(task.function_user_project.user.task_avatar_thumbnail, class: "image_thumbnail", title: "#{ task.function_user_project.user.name }") %>
                       <% else %>
@@ -385,7 +414,11 @@
             <p></p>
             <!-- CARD -->
             <div>
+             <% if task.impediment == TRUE %>
+              <div class="content_task_impediment">
+              <% else %>
               <div class="content_task">
+              <% end %>
                 <div class="description">  
                     <%= link_to task_path(task.id), target: "_blank" do %>
                   <h4>
@@ -423,14 +456,34 @@
                   </p>
                   <% end %>
                 <br />  
-                  
-                <%= link_to task_path(task.id), target: "_blank" do %>  
+
+                <% if task.priority_id == 1 %>
+                           <b>Prioridade: </b>
+                               <b class="high_priority">Alta</b>
+                           <% end %>
+
+                           <% if task.priority_id == 2 %>
+                           <b>Prioridade: </b>
+                               <b class="medium_priority">Média</b>
+                           <% end %>
+
+                           <% if task.priority_id == 3 %>
+                           <b>Prioridade: </b>
+                                  <b class="low_priority">Baixa</b>
+                           <% end %>
+                            <% if task.impediment == TRUE %>
+                               <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
+                            <% end %>  
+                           <br />
+                          <br />
+                          
+                <%= link_to task_path(task.id), target: "_blank" do %>    
                   <h4>TK-<%= @project.initial %>-<%= task.id %></h4>
                 <% end %>
                 <br />
                <div class="extra_content">
                    <% if task.function_user_project.nil? %>
-                           <i>Sem atribuição</i>
+                           <i>Sem Atribuição</i>
                       <% elsif task.function_user_project.user.avatar.attached? %>
                            <%= image_tag(task.function_user_project.user.task_avatar_thumbnail, class: "image_thumbnail", title: "#{ task.function_user_project.user.name }") %>
                       <% else %>

@@ -106,6 +106,12 @@
 	color: #444444;
 }
 
+.flag_impediment{
+    width: 15px;
+    height: 15px;
+ 
+}
+
 @media only screen and (max-width: 800px){
   #menu label{
     float: left;
@@ -531,7 +537,19 @@ div#notification_inactived {
     box-shadow: -1px 1px 5px 3px rgba(146, 146, 146, 0.89);
     -webkit-box-shadow: -1px 1px 5px 3px rgba(146, 146, 146, 0.89);
     -moz-box-shadow: -1px 1px 5px 3px rgba(146, 146, 146, 0.89);
+}
 
+.content_task_impediment {
+    width: 250px;   
+    border-style: solid;
+    border-width: 1px;
+    border-color:#797979;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: -1px 1px 5px 3px rgba(146, 0, 0, 0.89);
+    -webkit-box-shadow: -1px 1px 5px 3px rgba(146, 0, 0, 0.89);
+    -moz-box-shadow: -1px 1px 5px 3px rgba(146, 0, 0, 0.89);
 }
 
 .extra_content{
@@ -1419,6 +1437,8 @@ th {
        margin-top: 10px;
        margin-right: 20px;
     }
+
+   
 }
 /* 
 @media only screen and (max-width:480px){

@@ -54,6 +54,16 @@ TK-<%= current_project.initial %>-<%= @task.id %> <%= @task.title %></h2>
         <% end %>
       </p>
   <br /> 
+
+ <% if @task.impediment == TRUE %>
+     <b>Impedimento?</b>
+     <br />
+         Tarefa com impedimento <%= image_tag('flag.png', class: 'flag_impediment') %>
+     <br />
+     <br />
+  <% end %>
+ 
+
   <p><strong>Solicitante</strong></p>
              <% if @task.user.avatar.attached? %>
                   <%= image_tag(@task.user.task_avatar_thumbnail, :class=> "image_thumbnail") %>

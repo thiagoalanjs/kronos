@@ -10,7 +10,7 @@ class UserStory < ActiveRecord::Base
   has_many :users, through: :participants, dependent: :destroy 
 
   validates :description, presence: true
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: { case_sensitive: false }
   validates :priority_id, presence: true
 
   def roi

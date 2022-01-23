@@ -131,9 +131,11 @@
                  <%= link_to edit_task_path(s.id), class: "accordion_title" do %> 
                     <%= s.title %> 
                  <% end %>
-
-   
-                <div class="info_accordion">
+            <div class="info_accordion">
+                <% if s.impediment == TRUE %>
+                    <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
+                <% end %>  
+                
                   <% if s.priority_id == 1 %>
                      <b class="high_priority">Alta</b>
                  <% end %>

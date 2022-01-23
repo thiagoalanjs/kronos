@@ -6,6 +6,7 @@ class CreateTasks < ActiveRecord::Migration[5.2]
       t.date :end_date
       t.date :start_date
       t.integer :status
+      t.boolean :impediment
       t.references :user_story, index: true, foreign_key: true
       t.references :kind, index: true, foreign_key: true
       t.references :priority, index: true, foreign_key: true
