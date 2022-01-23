@@ -36,7 +36,7 @@
 <div class="info_accordion">
 
   <% @sprint.each_with_index do |sprint, i| %>
-     <%= link_to "Nova User Story", new_user_story_path, class: "red_button" %> 
+     <%= link_to "Nova User Story", new_user_story_path, class: "red_button", id: "new_user_story" %> 
     <%= link_to "Nova task", new_task_path, class: "blue_button" %>
   <% end %>
 </div>

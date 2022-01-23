@@ -24,7 +24,7 @@
   </div>
 <% else %>
 
-<%= link_to "Nova User Story", new_user_story_path, class: 'green_button' %>
+<%= link_to "Nova User Story", new_user_story_path, class: 'green_button', id: "new_user_story" %>
  <%= link_to 'Acessar board', scrumboard_path(current_project.id), class: 'black_button', target: 'blank' %>
 <br />
 <br />
@@ -89,8 +89,7 @@
            <b>Sprint: </b>
            <%= user_story.sprint.name %>
      </div>
-    
-      
+
      <% end %>
       </div>
 </button>
@@ -167,9 +166,7 @@
              
                  <%= link_to s, method: :delete, class: "delete_task_accordion", data: { confirm: "Deseja deletar a tarefa TK-#{user_story.project.initial}-#{ s.id } #{s.title} ?" }, title: "Remover tarefa TK-#{user_story.project.initial}-#{ s.id } #{s.title}" do %>
                    <%= image_tag('delete_btn.png') %>
-                 <% end %>
-
-               
+                 <% end %>               
                 </div>  
               </div>
             </p> 

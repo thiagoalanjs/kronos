@@ -45,7 +45,7 @@
             </div> 
      <% end %>
      <br />
-        <button class="card" onclick="window.location.href='<%= user_stories_path %>'">
+        <button class="card" onclick="window.location.href='<%= user_stories_path %>'" id="user_stories">
          <%= image_tag("backlog.png") %>
          <div class="description">
            Aqui você administra o backlog das tarefas do projeto <%= @project.name %>.
@@ -53,7 +53,7 @@
          </div>
       </button>
 
-     <button class="card" onclick="window.location.href='<%= sprints_path %>'">
+     <button class="card" onclick="window.location.href='<%= sprints_path %>'" id="sprints">
          <%= image_tag("scrum.png") %>
          <div class="description">
           Gerencie aqui frequência na entrega de valor ao negócio.
@@ -62,7 +62,7 @@
          </div>
       </button>
 
-    <button class="card" onclick="window.location.href='<%= releases_path %>'">   
+    <button class="card" onclick="window.location.href='<%= releases_path %>'" id="releases">   
         <%= image_tag("product-release.png") %>
          <div class="description">
              Gerencie aqui as fases de entrega do software.
@@ -72,7 +72,7 @@
     </button>
     
     <% if current_user.group == "admin" || current_user.group == "coordenador" %>
-        <button class="card" onclick="window.location.href='<%= function_user_projects_path %>'">   
+        <button class="card" onclick="window.location.href='<%= function_user_projects_path %>'" id="function_user_projects">   
             <%= image_tag("team.png") %>
             <div class="description">
               Aqui você administra a equipe responsável pelo desenvolvimento do projeto.
@@ -80,7 +80,7 @@
         </button>
     <% end %>
 
-    <button class="card" onclick="window.location.href='<%= scrumboard_path(@project.id) %>'">   
+    <button class="card" onclick="window.location.href='<%= scrumboard_path(@project.id) %>'" id="scrumboards">   
             <%= image_tag("kanban_icon.png") %>
             <div class="description">
              Acesse o board referente as sprints do projeto <%= @project.name %>.
@@ -89,14 +89,14 @@
             <p></p>
     </button>
 
-      <button class="card" onclick="window.location.href='<%= themes_path %>'"> 
+      <button class="card" onclick="window.location.href='<%= themes_path %>'" id="theme"> 
          <%= image_tag("tema.png") %>
          <div class="description">
             Configure aqui os temas das user stories dos projetos
          </div>
     </button>
 
-      <button class="card" onclick="window.location.href='<%= chart_url %>'"> 
+      <button class="card" onclick="window.location.href='<%= chart_url %>'" id="chart"> 
          <%= image_tag("barra-do-grafico.png") %>
          <div class="description">
             Acompanhe os relatórios e gráficos do andamento do projeto.

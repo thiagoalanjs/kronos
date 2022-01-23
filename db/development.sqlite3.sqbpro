@@ -1,1 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/home/thiago/kronos/db/development.sqlite3" foreign_keys="0" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="5695"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name=""/><default_encoding codec=""/><browse_table_settings><table schema="" name="" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">PRAGMA foreign_keys = OFF</sql><current_tab id="0"/></tab_sql></sqlb_project>
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/home/thiago/kronos/db/development.sqlite3" foreign_keys="0" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="5816"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="action_text_rich_texts"/><default_encoding codec=""/><browse_table_settings><table schema="" name="" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">--SELECT users.name FROM users
+--    INNER JOIN function_user_projects ON function_user_projects.user_id = users.id
+--    AND project_id = 10
+--SELECT 
+--    users.name AS &quot;Responsável&quot;,
+--	functions.name AS &quot;Posição&quot;
+--FROM tasks
+  -- INNER JOIN users ON tasks.user_id = users.id
+  -- INNER JOIN functions ON function_user_projects.function_id = functions.id
+  -- INNER JOIN function_user_projects ON function_user_projects.user_id = users.id
+		
+SELECT 
+    users.name AS &quot;Responsável&quot;,
+	COUNT(*) AS &quot;QTD de tasks&quot;
+FROM tasks
+	INNER JOIN users ON tasks.user_id = users.id
+	INNER JOIN function_user_projects ON function_user_projects.user_id = users.id
+GROUP BY tasks.function_user_project_id;
+
+
+--- User que mais abriu tasks
+
+SELECT 
+    users.name AS &quot;Responsável&quot;,
+	COUNT(*) AS &quot;QTD de tasks&quot;
+FROM tasks
+	INNER JOIN users ON tasks.user_id = users.id
+GROUP BY tasks.user_id;
+
+----
+
+
+</sql><current_tab id="0"/></tab_sql></sqlb_project>

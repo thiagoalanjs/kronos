@@ -27,6 +27,11 @@ module ChartsHelper
     Sprint.where(project: current_project).count
  end
 
+ def users_by_project_count
+   FunctionUserProject.where(project: current_project_id).count
+end
+
+
  def sub_task_by_project_count
     Task.joins("INNER JOIN user_stories ON user_stories.id = 
       tasks.user_story_id
@@ -119,4 +124,14 @@ end
       AND tasks.status = 5 
       AND project_id = '#{ current_project_id }'").count
  end
+
+ def task_by_users
+   @tasks_by_users = ActiveRecord::Base.connection
+   @tasks_by_users.execute("SELECT users.name, COUNT(*) 
+                            FROM tasks
+                                 INNER JOIN users ON tasks.function_user_project_id = users.id
+                                 INNER JOIN function_user_projects ON function_user_projects.user_id = users.id
+                            GROUP BY tasks.function_user_project_id")         
+ end
+
 end
