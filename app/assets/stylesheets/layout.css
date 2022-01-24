@@ -441,7 +441,7 @@ div#notification_inactived {
     padding-left: 12px;
 }
 
-.form input, select{
+.form input, select, checkbox{
     width: 590px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -467,6 +467,11 @@ div#notification_inactived {
     width: 590px;
     height: 200px;
 }
+
+.form input[type='checkbox'] {
+    width: 30px;
+    height: 30px;
+ }
 
 .alert_success {
     padding: 15px;
