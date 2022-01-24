@@ -31,6 +31,15 @@ module ChartsHelper
    FunctionUserProject.where(project: current_project_id).count
  end
 
+ def task_flag_count
+  Task.joins("INNER JOIN user_stories ON tasks.user_story_id = user_stories.id
+              WHERE impediment = TRUE AND project_id = #{ current_project_id }").count
+ end
+
+ def task_without_flag_count
+  Task.joins("INNER JOIN user_stories ON tasks.user_story_id = user_stories.id
+              WHERE impediment = FALSE AND project_id = #{ current_project_id }").count
+ end
 
  def sub_task_by_project_count
     Task.joins("INNER JOIN user_stories ON user_stories.id = 
@@ -125,12 +134,15 @@ end
       AND project_id = '#{ current_project_id }'").count
  end
 
+
  def task_by_users
    @tasks_by_users = ActiveRecord::Base.connection
-   @tasks_by_users.execute("SELECT users.name, COUNT(*) 
+   @tasks_by_users.execute("SELECT users.name,
+	                                 COUNT(*)
                             FROM tasks
-                                 INNER JOIN users ON tasks.function_user_project_id = users.id
-                                 INNER JOIN function_user_projects ON function_user_projects.user_id = users.id
+	                              INNER JOIN users ON tasks.function_user_project_id = function_user_projects.id
+	                              INNER JOIN function_user_projects ON function_user_projects.user_id = users.id
+                          	WHERE project_id = #{ current_project_id }
                             GROUP BY tasks.function_user_project_id")         
  end
 

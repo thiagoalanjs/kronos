@@ -87,8 +87,12 @@
                       <% else %>
                         <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
                       <% end %>
+                       <% if task.impediment == TRUE %>
+                            <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
+                       <% end %>
                       <%= task.title %>
                   </h4>
+                    
                  <br />
                             <p>
                     
@@ -114,10 +118,7 @@
                            <% if task.priority_id == 3 %>
                            <b>Prioridade: </b>
                                   <b class="low_priority">Baixa</b>
-                           <% end %>
-                            <% if task.impediment == TRUE %>
-                               <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
-                            <% end %>  
+                           <% end %> 
                            <br />
                           <br />
 
@@ -156,8 +157,7 @@
               <div class="content_task">
               <% end %>
                  <div class="description">
-
-                 <%= link_to task_path(task.id), target: "_blank" do %>
+                  <%= link_to task_path(task.id), target: "_blank" do %>
                   <h4>
                  
                      <% if task.kind_id == 1 %>
@@ -165,7 +165,9 @@
                      <% else %>
                        <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
                      <% end %>
-                 
+                       <% if task.impediment == TRUE %>
+                            <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
+                       <% end %>
                       <%= task.title %>
                   </h4>
                 <% end %>
@@ -202,9 +204,6 @@
                  <b>Prioridade: </b>
                         <b class="low_priority">Baixa</b>
                  <% end %>
-                 <% if task.impediment == TRUE %>
-                     <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
-                 <% end %>  
     
                </p>  
                  <br />
@@ -247,7 +246,9 @@
                      <% else %>
                        <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
                      <% end %>
-                 
+                       <% if task.impediment == TRUE %>
+                            <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
+                       <% end %>
                      <%= task.title %>
                   </h4>
                   <br />
@@ -286,9 +287,6 @@
                  <b>Prioridade: </b>
                         <b class="low_priority">Baixa</b>
                  <% end %>
-                 <% if task.impediment == TRUE %>
-                    <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
-                 <% end %>  
                 <br />
                 <br />
                 <%= link_to task_path(task.id), target: "_blank" do %>
@@ -334,7 +332,9 @@
                      <% else %>
                        <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
                      <% end %>
-                 
+                      <% if task.impediment == TRUE %>
+                            <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
+                      <% end %>
                      <%= task.title %>
                   </h4>
                   <br />
@@ -379,10 +379,7 @@
                  <br />
                  <b>Prioridade: </b>
                         <b class="low_priority">Baixa</b>
-                 <% end %>
-                 <% if task.impediment == TRUE %>
-                    <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
-                 <% end %>  
+                 <% end %> 
                 <br />
                 <br />
                 <%= link_to task_path(task.id), target: "_blank" do %>
@@ -428,7 +425,9 @@
                      <% else %>
                        <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
                      <% end %>
-                 
+                       <% if task.impediment == TRUE %>
+                            <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
+                       <% end %>
                      <%= task.title %>
                   </h4>
                 <% end %> 
@@ -471,9 +470,7 @@
                            <b>Prioridade: </b>
                                   <b class="low_priority">Baixa</b>
                            <% end %>
-                            <% if task.impediment == TRUE %>
-                               <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
-                            <% end %>  
+                        
                            <br />
                           <br />
                           

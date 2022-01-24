@@ -122,8 +122,12 @@
                          <% else %>
                            <%= image_tag('clipboard-task.png', title: "Task do tipo Sub-task") %>
                          <% end %>
+
+                         
                  </div>
-               
+               <% if s.impediment == TRUE %>
+                            <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
+                         <% end %>   
                  <%= link_to task_path(s.id), class: "accordion_title" do %> 
                         <b> TK-<%= user_story.project.initial %>-<%= s.id %> </b>
                  <% end %> 
@@ -132,9 +136,18 @@
                     <%= s.title %> 
                  <% end %>
             <div class="info_accordion">
-                <% if s.impediment == TRUE %>
-                    <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
-                <% end %>  
+
+
+             <% if s.function_user_project.nil? %>
+               -
+             <% elsif s.function_user_project.user.avatar.attached? %>
+                  <%= image_tag(s.function_user_project.user.task_avatar_thumbnail, :class=> "image_thumbnail_task_list", title: "#{ s.function_user_project.user.name }") %>  
+             <% else %>
+                  <%= image_tag("profile-no-image.png", :class=> "image_thumbnail_task_list", title: "#{ s.function_user_project.user.name }") %>
+             <% end %>
+
+
+
                 
                   <% if s.priority_id == 1 %>
                      <b class="high_priority">Alta</b>
@@ -166,6 +179,9 @@
                      <% end %>
                  </b>
              
+
+
+
                  <%= link_to s, method: :delete, class: "delete_task_accordion", data: { confirm: "Deseja deletar a tarefa TK-#{user_story.project.initial}-#{ s.id } #{s.title} ?" }, title: "Remover tarefa TK-#{user_story.project.initial}-#{ s.id } #{s.title}" do %>
                    <%= image_tag('delete_btn.png') %>
                  <% end %>               

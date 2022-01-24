@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
 
   def index
     if params[:search]
-       @projects = Project.where("name LIKE ?", '%'"#{params[:search]}"'%').page(params[:page]).order('id DESC').per(8)  
+      @projects = Project.where("name LIKE ?", '%'"#{params[:search]}"'%').page(params[:page]).order('id DESC').per(8)  
     elsif current_user.admin? || current_user.coordenador?
       @projects = Project.page(params[:page]).order('id DESC').per(9)  
     else

@@ -134,6 +134,35 @@
         }
       </script>
 
+
+
+
+
+
+<script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+          var data = google.visualization.arrayToDataTable([
+            ['Tarefas', 'Com flag de impedimento'],
+            ['Tarefa com impedimento', <%= task_flag_count %>  ],
+            ['Tarefa sem impedimento', <%= task_without_flag_count %>  ],
+          ]);
+
+          var options = {
+            title: 'Relação de tarefas com impedimentos'
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart_task_flag'));
+
+          chart.draw(data, options);
+        }
+      </script>
+
+
+
 <script type="text/javascript">
       google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawStuff);
@@ -166,17 +195,11 @@
       };
     </script>
  
- 
-
       <div>
           
           <% if @project.tasks.empty? %>
           <% else %>
 
- <div class="card">
-                  <div id="top_x_div" style="width: 900px; height: 500px;"></div> 
-              </div>
-<br/>
 
           <div class="card">
            <div id="piechart_user_stories" style="width: 400px; height: 300px;"></div>
@@ -195,8 +218,16 @@
               <div class="card">
                 <div id="piechart_status_bug" style="width: 400px; height: 300px;"></div> 
               </div>
+             
+              <div class="card">
+                <div id="piechart_task_flag" style="width: 400px; height: 300px;"></div> 
+              </div>
+
              <br />
-          
+              <div class="card">
+                  <div id="top_x_div" style="width: 900px; height: 500px;"></div> 
+              </div>
+           <br/>
 
           <% end %>
       </div>
