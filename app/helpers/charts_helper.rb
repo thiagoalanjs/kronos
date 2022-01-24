@@ -138,7 +138,7 @@ end
  def task_by_users
    @tasks_by_users = ActiveRecord::Base.connection
    @tasks_by_users.execute("SELECT users.name,
-	                                 COUNT(*)
+	                              COUNT(*)
                             FROM tasks
 	                              INNER JOIN users ON tasks.function_user_project_id = function_user_projects.id
 	                              INNER JOIN function_user_projects ON function_user_projects.user_id = users.id
