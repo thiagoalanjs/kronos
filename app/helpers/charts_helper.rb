@@ -32,12 +32,16 @@ module ChartsHelper
  end
 
  def task_flag_count
-  Task.joins("INNER JOIN user_stories ON tasks.user_story_id = user_stories.id
-              WHERE impediment = TRUE AND project_id = #{ current_project_id }").count
+  @tasks_flag_count = ActiveRecord::Base.connection
+  @tasks_flag_count.execute("SELECT COUNT(*)
+                             FROM tasks
+                              INNER JOIN user_stories ON tasks.user_story_id = user_stories.id 
+                          WHERE impediment = true 
+                          AND project_id = #{ current_project_id }").count
  end
 
  def task_without_flag_count
-  Task.joins("INNER JOIN user_stories ON tasks.user_story_id = user_stories.id
+  Task.joins("INNER JOIN user_stories ON tasks.user_story_id = user_stories.id 
               WHERE impediment = FALSE AND project_id = #{ current_project_id }").count
  end
 
@@ -78,7 +82,8 @@ module ChartsHelper
      WHERE kind_id = 2 
      AND tasks.status = 5 
      AND project_id = '#{ current_project_id }'").count
-end
+ end
+ 
  def sub_task_finished_project_count
      Task.joins("INNER JOIN user_stories ON user_stories.id =
        tasks.user_story_id 
