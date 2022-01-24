@@ -36,13 +36,13 @@ module ChartsHelper
   @tasks_flag_count.execute("SELECT COUNT(*)
                              FROM tasks
                               INNER JOIN user_stories ON tasks.user_story_id = user_stories.id 
-                          WHERE impediment = true 
+                          WHERE impediment = 1 
                           AND project_id = #{ current_project_id }").count
  end
 
  def task_without_flag_count
   Task.joins("INNER JOIN user_stories ON tasks.user_story_id = user_stories.id 
-              WHERE impediment = FALSE AND project_id = #{ current_project_id }").count
+              WHERE impediment = 0 AND project_id = #{ current_project_id }").count
  end
 
  def sub_task_by_project_count
