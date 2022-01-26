@@ -56,10 +56,24 @@ $( function initPage() {
   <div>
     <b><%= f.label :description %></b>
     <br />
-   
     <%= f.text_area :description %>
-
   </div>
+
+  <div>
+    <br />
+    <b><%= f.label :prioridade %></b>
+    <br />
+    <%= f.select :priority_id, Priority.all.collect {|x| [x.name, x.id]}, { prompt: 'Selecione a prioridade do projeto' } %>
+  </div>
+
+   <br />
+    <div>
+      <b><%= f.label :dificuldade %></b>
+       <br />
+      <%= f.select :difficulty,  Priority.all.collect {|x| [x.name, x.id]}, { :class => 'form-control', prompt: 'Selecione a dificuldade do projeto' }  %> 
+    </div>
+
+  
   <br />
   <div><b>Duração</b></div>
   <div>

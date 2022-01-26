@@ -29,6 +29,8 @@ pt-BR:
             initial: Sigla
             description: Descrição
             size: Tamanho
+            difficulty: Dificuldade
+            priority: Prioridade
             start_date: Data de ínicio
             end_date: Data de termino
           release:

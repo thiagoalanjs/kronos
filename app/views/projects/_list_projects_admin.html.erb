@@ -37,6 +37,28 @@
         <p class="info"><%= image_tag("initial.png") %> <strong>Sigla: </strong><%= project.initial %></p>
         <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Iniciado em:</strong> <%= l project.start_date %></p>
         <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Término previsto:</strong> <%= l project.end_date %></p>
+        <p class="info"><%= image_tag("difficulty_icon.png") %> <strong>Dificuldade:</strong> 
+          <% if project.difficulty == "1" %>
+              <b class="high_priority">Alta</b>
+          <% end %>
+          <% if project.difficulty == "2" %>
+              <b class="medium_priority">Média</b>
+          <% end %>
+          <% if project.difficulty == "3" %>
+                 <b class="low_priority">Baixa</b>
+          <% end %>
+        </p>
+        <p class="info"><%= image_tag("priority_icon.png") %> <strong>Prioridade:</strong> 
+                          <% if project.priority_id == 1 %>
+                               <b class="high_priority">Alta</b>
+                           <% end %>
+                           <% if project.priority_id == 2 %>
+                               <b class="medium_priority">Média</b>
+                           <% end %>
+                           <% if project.priority_id == 3 %>
+                                  <b class="low_priority">Baixa</b>
+                           <% end %>
+        </p>
         <p class="info"><%= image_tag("team_icon.png") %> <strong>Membros:</strong> <%= project.members_number %></p>
         <p class="info"><%= image_tag("sprint_icon.png") %> <strong>Sprint atual:</strong> 
         <% if project.current_sprint.nil? %> 

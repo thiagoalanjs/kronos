@@ -127,10 +127,13 @@ ActiveRecord::Schema.define(version: 2022_01_14_022257) do
     t.string "initial"
     t.text "description"
     t.integer "size"
+    t.string "difficulty"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "priority_id"
+    t.index ["priority_id"], name: "index_projects_on_priority_id"
   end
 
   create_table "releases", force: :cascade do |t|
@@ -255,6 +258,7 @@ ActiveRecord::Schema.define(version: 2022_01_14_022257) do
   add_foreign_key "function_user_projects", "users"
   add_foreign_key "participants", "user_stories"
   add_foreign_key "participants", "users"
+  add_foreign_key "projects", "priorities"
   add_foreign_key "releases", "projects"
   add_foreign_key "sprints", "projects"
   add_foreign_key "sprints", "releases"

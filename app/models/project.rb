@@ -14,7 +14,8 @@ class Project < ActiveRecord::Base
              format:{ with: /\A[a-zA-Z]+\z/, message: "deve conter apenas letras" }, presence: true, uniqueness: { case_sensitive: false }
 
   validates :description, presence: true
-
+  validates :difficulty, presence: true
+  validates :priority_id, presence:true
   validate :start_date_cannot_be_nil, 
            :end_date_cannot_be_nil,
            :end_date_cannot_be_in_the_past

@@ -24,11 +24,11 @@
         <% themes = current_project.themes {|theme| [theme.name, theme.id] };  %>
         <%= f.collection_select( :theme_id, themes, :id, :name, {:prompt => 'Escolha um tema'}, { placeholder: 'Theme'} ) %>
       </div>
-      <b>Business value</b>
+      <b>Valor do negócio</b>
       <div>
         <%= f.number_field :business_value, placeholder: 'business value' %>
       </div>
-      <b>Story point</b>
+      <b>Pontuação</b>
       <br />
       <div>
         <%= f.number_field :story_points, placeholder: 'Story point' %>
