@@ -69,6 +69,9 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.9.3, < 3)
       sassc-rails (>= 2.0.0)
+    bootsy (2.4.0)
+      carrierwave (~> 1.0)
+      mini_magick (~> 4.6)
     builder (3.2.4)
     byebug (11.1.3)
     capistrano (3.16.0)
@@ -86,6 +89,11 @@ GEM
     capistrano-rbenv (2.2.0)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
+    carrierwave (1.3.2)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
+      ssrf_filter (~> 1.0)
     chronic (0.10.2)
     coderay (1.1.3)
     coffee-rails (5.0.0)
@@ -115,7 +123,7 @@ GEM
       thor (>= 0.14.0, < 2)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    i18n (1.8.11)
+    i18n (1.9.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.1)
       mini_magick (>= 4.9.5, < 5)
@@ -144,6 +152,9 @@ GEM
       kaminari
       rails
     libv8 (3.16.14.19-x86_64-linux)
+    listen (3.7.1)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.13.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -151,6 +162,9 @@ GEM
       mini_mime (>= 0.1.1)
     marcel (1.0.2)
     method_source (1.0.0)
+    mime-types (3.4.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2022.0105)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
@@ -207,6 +221,9 @@ GEM
       rake (>= 0.13)
       thor (~> 1.0)
     rake (13.0.6)
+    rb-fsevent (0.11.0)
+    rb-inotify (0.10.1)
+      ffi (~> 1.0)
     rdoc (4.3.0)
     ref (2.0.0)
     responders (3.0.1)
@@ -256,6 +273,7 @@ GEM
     sshkit (1.21.2)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    ssrf_filter (1.0.7)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
@@ -281,8 +299,6 @@ GEM
     websocket-extensions (0.1.5)
     whenever (1.0.0)
       chronic (>= 0.6.3)
-    wysiwyg-rails (4.0.8)
-      railties (>= 3.2.7, < 7.0)
     zeitwerk (2.5.3)
 
 PLATFORMS
@@ -290,12 +306,13 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap
+  bootsy
   byebug
   capistrano (~> 3.7, >= 3.7.1)
   capistrano-passenger (~> 0.2.0)
   capistrano-rails (~> 1.2)
   capistrano-rbenv (~> 2.1)
-  coffee-rails (~> 5.0)
+  coffee-rails
   coffee-script-source
   devise
   execjs
@@ -306,23 +323,24 @@ DEPENDENCIES
   jquery-rails
   kaminari
   kaminari-i18n (~> 0.3.2)
+  listen
   notifications
   pry-byebug
   pundit
-  rails (~> 6.1.0)
+  rails (~> 6.1.4, >= 6.1.4.4)
   rails-i18n
   rspec-rails (~> 3.4, >= 3.4.2)
-  sass-rails (~> 6.0)
+  sass-rails
   sdoc (~> 0.4.0)
   spring
+  sprockets-rails
   sqlite3
   therubyracer
   thin
-  trix-rails (~> 2.4)
+  trix-rails
   turbolinks
-  uglifier (>= 1.3.0)
+  uglifier
   whenever
-  wysiwyg-rails
 
 BUNDLED WITH
    2.2.29

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   # CRUMBOARD
   get '/task/take_task/:id', to: 'scrumboard#take_task', as: 'take_task'
   get '/task/get_out_task/:id', to: 'scrumboard#get_out_task', as: 'get_out_task'

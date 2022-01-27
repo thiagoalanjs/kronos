@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'pundit'
-gem 'rails', '~> 6.1.0'
-gem 'sass-rails', '~> 6.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 5.0'
+gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
@@ -17,10 +17,10 @@ gem 'pry-byebug'
 gem 'execjs'
 gem 'therubyracer'
 gem 'coffee-script-source'
-gem "wysiwyg-rails"
 gem "faker"
 gem 'whenever', require: false
-gem 'trix-rails', '~> 2.4'
+gem 'sprockets-rails'
+gem 'trix-rails', require: 'trix'
 
 group :production do
   gem 'sqlite3'
@@ -29,6 +29,7 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
+  gem 'listen'
   #gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
