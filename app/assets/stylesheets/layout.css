@@ -569,10 +569,12 @@ div#notification_inactived {
 }
 
 .comment_task {
-    width: 65%;
-    background-color:rgb(201, 201, 201);
+    background-color:rgb(255, 255, 255);
     border-radius: 10px;
     padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #272727;
 }
 
 .comment_task img {

@@ -50,7 +50,10 @@
 
   <br />
   <p>
-    <%= @project.description %>
+    <%= @project.description.html_safe %>
+    <%= tinymce %>
+
+
   </p>
 
   </div>

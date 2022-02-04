@@ -23,7 +23,7 @@
     <div>
       <b><%= f.label :deliver_date %></b>
       <br />
-    <%= f.date_select :deliver_date %>
+    <%= f.text_field :deliver_date, id: "startDuration" %>  
     </div>
        <%= link_to 'Salvar', new_release_path({ controller: 'releases', action: 'create' }), class: 'ui save blue_button' %>
     <%= link_to 'Cancelar', releases_path, class: 'item ui red_button' %>
@@ -35,5 +35,19 @@
     $('form').submit();
   });
 
-
+$( function() {
+      $("#startDuration").datepicker({
+       dateFormat: 'dd/mm/yy',
+       dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+       dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+       dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+       monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+       nextText: 'Próximo',
+       prevText: 'Anterior',
+       type: 'date',
+       minDate:new Date()
+     });
+         
+  } );
 </script>

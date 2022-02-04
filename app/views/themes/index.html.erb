@@ -36,7 +36,7 @@
         <tr>
        
           <td><%= theme.name %></td>
-          <td><%= theme.description %></td>
+          <td><%= theme.description.html_safe %></td>
           <td>
             <div class="ui buttons">
               <%= link_to 'Editar', edit_theme_path(theme), class: 'blue_button' %>

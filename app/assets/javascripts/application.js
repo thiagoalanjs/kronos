@@ -13,5 +13,18 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require tinymce-jquery
 //= require_tree .
+
+$("document:ready", function() {
+    $("[rel=tinymce]").tinymce({
+      theme: "modern",
+      toolbar: "bold,italic,underline,|,bullist,numlist,outdent,indent,|,undo,redo,|,pastetext,pasteword,selectall,|,uploadimage",
+      pagebreak_separator: "<p class='page-separator'>&nbsp;</p>",
+      plugins: ["uploadimage"],
+      relative_urls: false,
+      remove_script_host: false,
+      document_base_url: (!window.location.origin ? window.location.protocol + "//" + window.location.host : window.location.origin) + "/",
+    })
+  });
 

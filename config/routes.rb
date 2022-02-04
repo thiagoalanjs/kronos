@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post '/tinymce_assets' => 'tinymce_assets#create'
   
   # CRUMBOARD
   get '/task/take_task/:id', to: 'scrumboard#take_task', as: 'take_task'

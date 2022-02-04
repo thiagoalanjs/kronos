@@ -100,7 +100,7 @@
 </button>
       <div class="panel">
              <br />
-             <%= user_story.description unless user_story.description.nil?  %>
+             <%= user_story.description.html_safe unless user_story.description.nil?  %>
 
             <br />
             <br />

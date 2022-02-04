@@ -9,7 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'image_processing', '~> 1.12', '>= 1.12.1'
+gem 'image_processing'
 gem 'kaminari'
 gem 'kaminari-i18n', '~> 0.3.2'
 gem 'bootstrap'
@@ -17,10 +17,10 @@ gem 'pry-byebug'
 gem 'execjs'
 gem 'therubyracer'
 gem 'coffee-script-source'
-gem "wysiwyg-rails"
-gem "faker"
+gem 'faker'
 gem 'whenever', require: false
-gem 'trix-rails', '~> 2.4'
+gem 'tinymce-rails'
+gem 'tinymce-rails-imageupload'
 
 group :production do
   gem 'sqlite3'
