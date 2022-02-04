@@ -20,7 +20,6 @@ gem 'coffee-script-source'
 gem 'faker'
 gem 'whenever', require: false
 gem 'tinymce-rails'
-gem 'tinymce-rails-imageupload'
 
 group :production do
   gem 'sqlite3'
