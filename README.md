@@ -6,9 +6,7 @@
 
 Sistema de gerenciamento de projetos ágeis.
 
-## Installation
-
-Instalação do Ruby
+## Instalação do Ruby
 
 ```bash
 sudo apt install curl
@@ -344,10 +342,26 @@ Autenticação com dados abaixo
 User - admin@email.com
 Pass - admin
 
-
-
-
 ```
 
-https://user-images.githubusercontent.com/32438113/152626777-d4c7e721-3069-47da-a369-d7f51097fb45.mp4
+Criando Projetos
+
+https://user-images.githubusercontent.com/32438113/152626975-d8de95b6-855d-4bb4-a67e-1ec756469693.mp4
+
+Criando Usuários
+
+Criando Sprints
+
+Criando User Stories
+
+Criando tarefas
+
+Acessando board kanban
+
+
+
+
+
+
+
 
