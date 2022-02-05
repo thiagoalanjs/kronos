@@ -4,7 +4,7 @@
 
 # Agile Kronos
 
-Sistema de gerenciamento de projetos ágeis.
+TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Engenharia de Software PUC MINAS EAD
 
 ## Instalação do Ruby
 
