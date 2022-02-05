@@ -363,6 +363,9 @@ https://user-images.githubusercontent.com/32438113/152628252-db7429da-bd8f-4a33-
 
 ## Criando tarefas
 
+https://user-images.githubusercontent.com/32438113/152628384-1b358640-7b6d-4b97-9495-e7354878c2e2.mp4
+
+
 ## Acessando board kanban
 
 
