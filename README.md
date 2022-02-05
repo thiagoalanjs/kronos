@@ -358,6 +358,9 @@ https://user-images.githubusercontent.com/32438113/152627930-8f60045b-6308-44cc-
 
 ## Criando User Stories
 
+https://user-images.githubusercontent.com/32438113/152628252-db7429da-bd8f-4a33-9430-f942f2f3a968.mp4
+
+
 ## Criando tarefas
 
 ## Acessando board kanban
