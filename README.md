@@ -336,7 +336,18 @@ $ rails s
 
 Acessando a aplicação https://localhost:3000
 
-
 ![image](https://user-images.githubusercontent.com/32438113/152626433-80fa93c1-42fe-4d71-946f-dca9742a0dfc.png)
+
+
+Autenticação com dados abaixo
+```bash
+User - admin@email.com
+Pass - admin
+
+https://user-images.githubusercontent.com/32438113/152626777-d4c7e721-3069-47da-a369-d7f51097fb45.mp4
+
+
+```
+
 
 
