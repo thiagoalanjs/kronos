@@ -368,6 +368,7 @@ https://user-images.githubusercontent.com/32438113/152628384-1b358640-7b6d-4b97-
 
 ## Acessando board kanban
 
+https://user-images.githubusercontent.com/32438113/152628613-85f44e44-0f59-48c7-ba72-4549ea7a6c0a.mp4
 
 
 
