@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/32438113/152666921-8b2fc7b9-dc52-4269-b6e3-00380c281c31.png)
 
-# Sistema de gestão de projetos
+# Sistema de gerenciamento de projetos
 
 TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Engenharia de Software PUC MINAS EAD
 
