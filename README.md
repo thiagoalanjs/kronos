@@ -1,17 +1,24 @@
 
 
-![image](https://user-images.githubusercontent.com/32438113/152666921-8b2fc7b9-dc52-4269-b6e3-00380c281c31.png)![image](https://user-images.githubusercontent.com/32438113/152667107-41d2f06a-905f-46d8-94d5-4690ec8a3ee4.png)
+![image](https://user-images.githubusercontent.com/32438113/152666921-8b2fc7b9-dc52-4269-b6e3-00380c281c31.png)
 
-
-
-# Agile Kronos
+# Sistema de gestão de projetos
 
 TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Engenharia de Software PUC MINAS EAD
+
+## Aluno
+
+Thiago Alan de Jesus Silva
+
+## Orientador
+
+Eveline Afonso
+
+## Tecnologias usadas
 
 Aplicação criada usando a stack mesclando Ruby + JS 
 
 ![image](https://user-images.githubusercontent.com/32438113/152666891-6313d6be-3b0a-49ae-b639-c04f78ab558d.png)
-
 
 ## Instalação do Ruby no Windows & MAC
 
