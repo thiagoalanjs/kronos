@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
   has_many :tasks, through: :users_tasks, dependent: :destroy 
   has_many :notifications, dependent: :destroy 
   has_many :comments, dependent: :destroy 
-
-  validates :name,  format:{ with: /\A[a-zA-Z ]+\z/, message: "deve conter apenas letras" }, presence: true
+  
+  validates :name,  format:{ with: /\A[a-zA-ZzáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9_ ]+\z/, message: "deve conter apenas letras e números" }, presence: true, uniqueness: { case_sensitive: false }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: { case_sensitive: false }
   validates :group, presence: true
 
