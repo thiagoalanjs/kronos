@@ -8,9 +8,10 @@
 
 TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Engenharia de Software PUC MINAS EAD
 
-Aplicação criada usando a stack do Ruby
+Aplicação criada usando a stack mesclando Ruby + JS 
 
-![image](https://user-images.githubusercontent.com/32438113/152666824-ec2d04dd-f7ac-4574-8f47-e44605a7b339.png)
+![image](https://user-images.githubusercontent.com/32438113/152666891-6313d6be-3b0a-49ae-b639-c04f78ab558d.png)
+
 
 ## Instalação do Ruby no Windows & MAC
 
