@@ -1,7 +1,8 @@
 
 
-![image](https://user-images.githubusercontent.com/32438113/152629100-f6a2ce34-0923-4fae-a68e-028f433a38dd.png)
-![image](https://user-images.githubusercontent.com/32438113/152626454-5b032cc6-05fa-4e2f-be1a-f3811da3f8cd.png)
+![image](https://user-images.githubusercontent.com/32438113/152666921-8b2fc7b9-dc52-4269-b6e3-00380c281c31.png)
+
+![image](https://user-images.githubusercontent.com/32438113/152667030-4d313441-3697-4b41-a6e5-d69d48e2df2b.png)
 
 
 # Agile Kronos
