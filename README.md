@@ -8,6 +8,10 @@
 
 TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Engenharia de Software PUC MINAS EAD
 
+## Instalação do Ruby no Windows & MAC
+
+http://guides.railsgirls.com/guides-ptbr/install
+
 ## Instalação do Ruby no Ubuntu
 
 ```bash
