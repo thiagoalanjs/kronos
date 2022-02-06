@@ -10,7 +10,7 @@ TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Engenharia
 
 Thiago Alan de Jesus Silva
 
-## Orientador
+## Orientador(a)
 
 Eveline Afonso
 
