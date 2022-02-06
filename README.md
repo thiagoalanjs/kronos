@@ -12,7 +12,7 @@ TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Pós-gradu
 
  <a href="https://www.linkedin.com/in/thiago-alan-65629465/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
  
- [go](https://www.linkedin.com/in/thiago-alan-65629465/){:target="_blank" rel="noopener"}
+[link](https://www.linkedin.com/in/thiago-alan-65629465/){:target="_blank"}
 
 ## Orientador(a)
 
@@ -159,7 +159,6 @@ https://user-images.githubusercontent.com/32438113/152628252-db7429da-bd8f-4a33-
 ## Criando tarefas
 
 https://user-images.githubusercontent.com/32438113/152628384-1b358640-7b6d-4b97-9495-e7354878c2e2.mp4
-
 
 ## Acessando board kanban
 
