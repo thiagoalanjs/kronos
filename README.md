@@ -8,7 +8,7 @@ TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Pós-gradu
 
 ## Aluno
 
-- Thiago Alan de Jesus Silva
+- Thiago Alan de Jesus Silva <a href="https://www.linkedin.com/in/thiago-alan-65629465/">https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white</a>
 
 ## Orientador(a)
 
