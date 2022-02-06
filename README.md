@@ -8,6 +8,11 @@
 
 TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Engenharia de Software PUC MINAS EAD
 
+Aplicação criada usando a stack do Ruby
+
+![image](https://user-images.githubusercontent.com/32438113/152666361-83bbe423-6eba-4ee9-b84c-bf67e92f8f73.png)
+
+
 ## Instalação do Ruby no Windows & MAC
 
 http://guides.railsgirls.com/guides-ptbr/install
