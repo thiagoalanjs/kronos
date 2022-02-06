@@ -24,7 +24,7 @@ Aplicação criada usando a stack mesclando Ruby + JS
 
 http://guides.railsgirls.com/guides-ptbr/install
 
-## Instalação do Ruby no Ubuntu
+## Instalação do Ruby no Ubuntu ###(utilização como base do projeto)
 
 ```bash
 sudo apt install curl
