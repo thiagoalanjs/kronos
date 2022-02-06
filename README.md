@@ -4,7 +4,7 @@
 
 # Sistema de gerenciamento de projetos
 
-TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Engenharia de Software PUC MINAS EAD
+TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Pós-graduação em Engenharia de Software PUC MINAS VIRTUAL
 
 ## Aluno
 
