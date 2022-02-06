@@ -10,7 +10,7 @@ TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Engenharia
 
 Aplicação criada usando a stack do Ruby
 
-![image](https://user-images.githubusercontent.com/32438113/152666361-83bbe423-6eba-4ee9-b84c-bf67e92f8f73.png)
+![image](https://user-images.githubusercontent.com/32438113/152666643-2d3a1bc8-d32c-40e2-9bb5-2e288a56a263.png)
 
 
 ## Instalação do Ruby no Windows & MAC
