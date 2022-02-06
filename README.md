@@ -14,7 +14,7 @@ TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Pós-gradu
 
 ## Orientador(a)
 
-- Eveline Afonso
+- Eveline Alonso Veloso
 
 ## Tecnologias usadas
 
