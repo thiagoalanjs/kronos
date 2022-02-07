@@ -2,8 +2,8 @@
               tinymce.init({
                 selector: 'textarea#file-picker',
                 height: 500,
-                plugins: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | table | link | image ',
-                toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | table | link | image ',
+                plugins: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | table | link | image | media ',
+                toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | table | link | image | media ',
                 /* enable title field in the Image dialog*/
                 image_title: true,
                 /* enable automatic uploads of images represented by blob or data URIs*/
@@ -13,12 +13,12 @@
                   images_upload_url: 'postAcceptor.php',
                   here we add custom filepicker only to Image dialog
                 */
-                file_picker_types: 'image',
+                file_picker_types: 'image, media',
                 /* and here's our custom image picker*/
                 file_picker_callback: function (cb, value, meta) {
                   var input = document.createElement('input');
                   input.setAttribute('type', 'file');
-                  input.setAttribute('accept', 'image/*');
+                  input.setAttribute('accept', 'image/*, media/*');
 
                   /*
                     Note: In modern browsers input[type="file"] is functional without
