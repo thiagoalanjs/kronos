@@ -20,7 +20,7 @@ TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Pós-gradu
 
 Aplicação criada usando a stack mesclando Ruby + JS 
 
-![image](https://user-images.githubusercontent.com/32438113/152666891-6313d6be-3b0a-49ae-b639-c04f78ab558d.png)
+![image](https://user-images.githubusercontent.com/32438113/152725798-6f003dc1-fc08-4ee7-b847-7c6a6f3faa0f.png)
 
 ## Instalação do Ruby no Windows & MAC
 
