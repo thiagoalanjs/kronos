@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy, :select, :scrumboard, :chart]
-
+  caches_action :index, layout: false, expires_in: 5.minutes
+  
   def select
     session[:project] = @project.id
     redirect_to @project
