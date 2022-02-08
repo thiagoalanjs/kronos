@@ -110,6 +110,21 @@ Criando a base dados, migração e populando tabelas e usuários
 rails db:drop db:create db:migrate db:seed
 ```
 
+Criar o arquivo application.yml com a configurações locais para envio de email:
+
+```bash
+
+development:
+
+  host:           'http://localhost:3000'
+  user_name:      '<EMAIL>'
+  password:       '<SENHA>'
+  domain:         '<DOMAIN>'
+  address:        '<SMPT>'
+  port:           '<SMTP_PORT>'
+
+```
+
 Startando o servidor
 
 ```bash
@@ -124,6 +139,9 @@ $ rails s
 2022-02-04 22:53:53 -0300 Listening on localhost:3000, CTRL+C to stop
 
 ```
+
+
+
 
 Acessando a aplicação https://localhost:3000
 
