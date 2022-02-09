@@ -666,6 +666,15 @@ th {
     display: inline-block;
 }
 
+.chart_card {
+    width: 40%;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 5px;
+    display: inline-block;
+}
+
+
 .content_charts {
     width: 40%;
     padding: 20px;

@@ -29,7 +29,7 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
-  #gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
   gem 'capistrano', '~> 3.7', '>= 3.7.1'

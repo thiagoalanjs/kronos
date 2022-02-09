@@ -254,8 +254,7 @@
                   <br />
                 <% end %>  
                  
-                  <div class=" mini icon buttons">
-
+                  <div class="mini icon buttons">
                         <%= link_to get_out_task_path(task.id), class: 'info_sub_task' do %>
                           Pendente
                         <% end %>
@@ -289,9 +288,13 @@
                  <% end %>
                 <br />
                 <br />
-                <%= link_to task_path(task.id), target: "_blank" do %>
-                  <h4>TK-<%= @project.initial %>-<%= task.id %></h4> 
-                 <% end %>
+                
+             <h4> 
+             <%= link_to task_path(task.id), target: "_blank" do %>                    
+                <h4>TK-<%= @project.initial %>-<%= task.id %></h4>   
+             <% end %>
+             </h4>     
+             
                <br />
                
  
@@ -342,7 +345,6 @@
                  
                   <div class="mini icon buttons">
     
-
                     <%= link_to get_out_task_path(task.id),  class: 'info_sub_task' do %>
                       Sair
                     <% end %>
@@ -382,10 +384,15 @@
                  <% end %> 
                 <br />
                 <br />
-                <%= link_to task_path(task.id), target: "_blank" do %>
-                 <h4>TK-<%= @project.initial %>-<%= task.id %></h4>
-                <% end %>
-               <br />
+                
+             <h4> 
+             <%= link_to task_path(task.id), target: "_blank" do %>                    
+                <h4>       TK-<%= @project.initial %>-<%= task.id %>    </h4>   
+             <% end %>
+             </h4>     
+             
+             
+              <br />
                
  
              <div class="extra_content">
