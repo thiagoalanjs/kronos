@@ -18,7 +18,7 @@ TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Pós-gradu
 
 ## Documentação dos pontos de função
 
- <a href="https://www.linkedin.com/in/thiago-alan-65629465/" target="_blank">Clique aqui</a>
+ <a href="https://github.com/thiagoalanjs/kronos/tree/main/function_points" target="_blank">Acesse o README</a>
 
 ## Tecnologias usadas
 
