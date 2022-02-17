@@ -16,6 +16,10 @@ TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Pós-gradu
 
 - Eveline Alonso Veloso
 
+## Documentação dos pontos de função
+
+ <a href="https://www.linkedin.com/in/thiago-alan-65629465/" target="_blank">Clique aqui</a>
+
 ## Tecnologias usadas
 
 Aplicação criada usando a stack mesclando Ruby + JS 
