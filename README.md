@@ -144,9 +144,6 @@ $ rails s
 
 ```
 
-
-
-
 Acessando a aplicação https://localhost:3000
 
 ![image](https://user-images.githubusercontent.com/32438113/152626433-80fa93c1-42fe-4d71-946f-dca9742a0dfc.png)
@@ -158,6 +155,10 @@ User - admin@email.com
 Pass - admin
 
 ```
+
+## Vìdeo explicando algumas funcionalidades do protótipo no FIGMA 
+
+https://github.com/thiagoalanjs/kronos/blob/main/presentation_tcc/README.md
 
 ## Criando Projetos
 
