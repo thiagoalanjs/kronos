@@ -156,7 +156,7 @@ Pass - admin
 
 ```
 
-## Vìdeo explicando algumas funcionalidades do protótipo no FIGMA 
+## Vídeo explicando algumas funcionalidades do protótipo no FIGMA 
 
 https://github.com/thiagoalanjs/kronos/blob/main/presentation_tcc/README.md
 
