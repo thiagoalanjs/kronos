@@ -33,7 +33,7 @@
 <% @user_stories.each do |user_story| %>
 <button class="accordion">
         <div class="silver_button">
-          US-<%= user_story.project.initial %>-<%= user_story.id %> 
+          US-<%= user_story.project.initial.upcase %>-<%= user_story.id %> 
         </div> 
            <b class="accordion_title"> 
                 <%= user_story.title %>
@@ -108,7 +108,7 @@
                 Editar
               <% end %>
            
-              <%= link_to user_story, method: :delete, data: { confirm: "Deseja deletar a história US-#{user_story.project.initial}-#{ user_story.id } #{ user_story.title } ?" }, class: 'red_button' do %>
+              <%= link_to user_story, method: :delete, data: { confirm: "Deseja deletar a história US-#{user_story.project.initial.upcase}-#{ user_story.id } #{ user_story.title } ?" }, class: 'red_button' do %>
                 Remover
               <% end %>
             
@@ -134,7 +134,7 @@
                             <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
                          <% end %>   
                  <%= link_to task_path(s.id), class: "accordion_title" do %> 
-                        <b> TK-<%= user_story.project.initial %>-<%= s.id %> </b>
+                        <b> TK-<%= user_story.project.initial.upcase %>-<%= s.id %> </b>
                  <% end %> 
 
                  <%= link_to edit_task_path(s.id), class: "accordion_title" do %> 
@@ -187,7 +187,7 @@
 
 
 
-                 <%= link_to s, method: :delete, class: "delete_task_accordion", data: { confirm: "Deseja deletar a tarefa TK-#{user_story.project.initial}-#{ s.id } #{s.title} ?" }, title: "Remover tarefa TK-#{user_story.project.initial}-#{ s.id } #{s.title}" do %>
+                 <%= link_to s, method: :delete, class: "delete_task_accordion", data: { confirm: "Deseja deletar a tarefa TK-#{user_story.project.initial.upcase}-#{ s.id } #{s.title} ?" }, title: "Remover tarefa TK-#{user_story.project.initial.upcase}-#{ s.id } #{s.title}" do %>
                    <%= image_tag('delete_btn.png') %>
                  <% end %>               
                 </div>  

@@ -6,7 +6,7 @@
 
   <body>
     <h1>Olá <%= @function_user_project.user.name %>!</h1>
-    <p>Você concluiu uma tarefa <strong>TK-<%= @project.initial %>-<%= @task.id %>  <%= @task.title %></p>
+    <p>Você concluiu uma tarefa <strong>TK-<%= @project.initial.upcase %>-<%= @task.id %>  <%= @task.title %></p>
     <p>Havendo dúvidas contate o administrador.</p>
     <br />
     <p>Equipe Agile Kronos.</p>

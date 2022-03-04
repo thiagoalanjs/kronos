@@ -1,7 +1,9 @@
 class FunctionUserProject < ActiveRecord::Base
   belongs_to :project
-  belongs_to :user
-  belongs_to :function
+  belongs_to :user 
+  belongs_to :function 
+
+  has_many :tasks, dependent: :nullify
 
   validates :user, presence:true
   validates :function, presence:true

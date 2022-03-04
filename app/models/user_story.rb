@@ -1,9 +1,9 @@
 class UserStory < ActiveRecord::Base
   attr_accessor :theme_search
 
-  belongs_to :theme
-  belongs_to :sprint
-  belongs_to :project
+  belongs_to :theme, dependent: :destroy 
+  belongs_to :sprint, dependent: :destroy 
+  belongs_to :project, dependent: :destroy 
 
   has_many :tasks, dependent: :destroy 
   has_many :participants, dependent: :destroy 

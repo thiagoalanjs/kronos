@@ -18,7 +18,7 @@
   <% end %>
   <br />
   <p class="info"><%= image_tag("project_icon.png") %> <strong>Projeto:</strong> <%= @project.name %></p>
-  <p class="info"><%= image_tag("initial.png") %> <strong>Sigla:</strong> <%= @project.initial %></p>
+  <p class="info"><%= image_tag("initial.png") %> <strong>Sigla:</strong> <%= @project.initial.upcase %></p>
   <p class="info"><%= image_tag("width.png") %><strong> Tamanho:</strong> <%= @project.size %> Story points</p>
   <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Data de inicio:</strong> <%= l @project.start_date %></p>
   <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Data final:</strong> <%= l @project.end_date %></p>

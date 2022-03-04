@@ -123,7 +123,7 @@
                           <br />
 
                          <%= link_to task_path(task.id), target: "_blank" do %>
-                           <h4>TK-<%= @project.initial %>-<%= task.id %></h4>
+                           <h4>TK-<%= @project.initial.upcase %>-<%= task.id %></h4>
                          <% end %>
                 
                         <br />
@@ -208,7 +208,7 @@
                </p>  
                  <br />
                  <%= link_to task_path(task.id), target: "_blank" do %>
-                  <h4>TK-<%= @project.initial %>-<%= task.id %></h4> 
+                  <h4>TK-<%= @project.initial.upcase %>-<%= task.id %></h4> 
                  <% end %>
                  <br />
                   <div class="extra_content">
@@ -291,7 +291,7 @@
                 
              <h4> 
              <%= link_to task_path(task.id), target: "_blank" do %>                    
-                <h4>TK-<%= @project.initial %>-<%= task.id %></h4>   
+                <h4>TK-<%= @project.initial.upcase %>-<%= task.id %></h4>   
              <% end %>
              </h4>     
              
@@ -387,7 +387,7 @@
                 
              <h4> 
              <%= link_to task_path(task.id), target: "_blank" do %>                    
-                <h4>       TK-<%= @project.initial %>-<%= task.id %>    </h4>   
+                <h4>       TK-<%= @project.initial.upcase %>-<%= task.id %>    </h4>   
              <% end %>
              </h4>     
              
@@ -482,7 +482,7 @@
                           <br />
                           
                 <%= link_to task_path(task.id), target: "_blank" do %>    
-                  <h4>TK-<%= @project.initial %>-<%= task.id %></h4>
+                  <h4>TK-<%= @project.initial.upcase %>-<%= task.id %></h4>
                 <% end %>
                 <br />
                <div class="extra_content">

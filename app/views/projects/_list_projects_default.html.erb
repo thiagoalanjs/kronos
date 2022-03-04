@@ -16,7 +16,7 @@
 
     <div class="content">
       <div class="description">
-        <p class="info"><%= image_tag("initial.png") %> <strong>Sigla: </strong><%= project.initial %></p>
+        <p class="info"><%= image_tag("initial.png") %> <strong>Sigla: </strong><%= project.initial.upcase %></p>
         <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Iniciado em:</strong> <%= l project.start_date %></p>
         <p class="info"><%= image_tag("calendar_icon.png") %> <strong>Término previsto:</strong> <%= l project.end_date %></p>
         <p class="info"><%= image_tag("team_icon.png") %> <strong>Membros:</strong> <%= project.members_number %></p>

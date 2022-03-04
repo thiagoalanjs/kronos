@@ -28,7 +28,7 @@
          <% end %>
     </div>
           <%= link_to edit_task_path(task.id) do %>
-             <div class="silver_button"> TK-<%= task.user_story.project.initial %>-<%= task.id %> <%= task.title %></div>
+             <div class="silver_button"> TK-<%= task.user_story.project.initial.upcase %>-<%= task.id %> <%= task.title %></div>
           <% end %>
 
           <% if task.priority_id == 1 %>       
@@ -70,7 +70,7 @@
                      <% end %>
                 </div>
                  
-                 <%= link_to task, method: :delete, data: { confirm: "Deseja deletar a tarefa TK-#{task.user_story.project.initial}-#{ task.id } #{task.title} ?" }, title: "Remover tarefa TK-#{task.user_story.project.initial}-#{ task.id } #{ task.title}" do %>
+                 <%= link_to task, method: :delete, data: { confirm: "Deseja deletar a tarefa TK-#{task.user_story.project.initial.upcase}-#{ task.id } #{task.title} ?" }, title: "Remover tarefa TK-#{task.user_story.project.initial.upcase}-#{ task.id } #{ task.title}" do %>
                    <%= image_tag('delete_btn.png') %>
                  <% end %>
                  <br />

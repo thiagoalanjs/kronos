@@ -16,7 +16,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to user_stories_path, notice: "Tarefa TK-#{@task.user_story.project.initial}-#{@task.id} criada com sucesso!"  }
+        format.html { redirect_to user_stories_path, notice: "Tarefa TK-#{@task.user_story.project.initial.upcase}-#{@task.id} criada com sucesso!"  }
       else
          format.html { render :new }
       end
@@ -26,7 +26,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to task_path, notice: "Tarefa TK-#{@task.user_story.project.initial}-#{@task.id} atualizada com sucesso!" }
+        format.html { redirect_to task_path, notice: "Tarefa TK-#{@task.user_story.project.initial.upcase}-#{@task.id} atualizada com sucesso!" }
       else 
         format.html { render :edit }
       end
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to user_stories_path, notice: "Tarefa TK-#{@task.user_story.project.initial}-#{@task.id} deletada com sucesso!" }
+      format.html { redirect_to user_stories_path, notice: "Tarefa TK-#{@task.user_story.project.initial.upcase}-#{@task.id} deletada com sucesso!" }
     end
   end
 

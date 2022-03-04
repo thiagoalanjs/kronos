@@ -1,7 +1,7 @@
 class Task < ActiveRecord::Base
 	belongs_to :user_story
 	belongs_to :user
-	belongs_to :function_user_project
+	belongs_to :function_user_project 
   	has_many :users_tasks, dependent: :destroy 
   	has_many :users, through: :users_tasks, dependent: :destroy 
 	has_many :comments, dependent: :destroy
