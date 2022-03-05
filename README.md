@@ -165,6 +165,7 @@ Pass - admin
 ## Aplicação em produção:
 
 Acessar a URL http://agilekronos.online/
-
-Usuário: puc@mailinator.com
-Senha: 12345678
+```bash
+User - puc@mailinator.com
+Pass - 12345678
+```
