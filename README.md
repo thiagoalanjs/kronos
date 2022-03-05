@@ -19,6 +19,12 @@ TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Pós-gradu
 ## Documentação dos pontos de função
 
  <a href="https://github.com/thiagoalanjs/kronos/tree/main/function_points" target="_blank">Acesse o README</a>
+ 
+## Vídeo explicando algumas funcionalidades do protótipo no FIGMA
+
+Acesse o link do repositório abaixo para ver as telas de protótipos do figma: 
+
+https://github.com/thiagoalanjs/kronos/blob/main/presentation_tcc/README.md
 
 ## Tecnologias usadas
 
@@ -155,9 +161,3 @@ User - admin@email.com
 Pass - admin
 
 ```
-
-## Vídeo explicando algumas funcionalidades do protótipo no FIGMA
-
-Acesse o link do repositório abaixo para ver as telas de protótipos do figma: 
-
-https://github.com/thiagoalanjs/kronos/blob/main/presentation_tcc/README.md
