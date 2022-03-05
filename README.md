@@ -24,7 +24,7 @@ TCC de projeto de Sistema de gerenciamento de projetos ágeis - Curso Pós-gradu
 
 Acesse o link do repositório abaixo para ver as telas de protótipos do figma: 
 
-https://github.com/thiagoalanjs/kronos/blob/main/presentation_tcc/README.md
+ <a href="https://github.com/thiagoalanjs/kronos/blob/main/presentation_tcc/README.md">Repositório análise de pontos de função</a>
 
 ## Tecnologias usadas
 
