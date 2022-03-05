@@ -156,32 +156,34 @@ Pass - admin
 
 ```
 
-## Vídeo explicando algumas funcionalidades do protótipo no FIGMA 
+## Vídeo explicando algumas funcionalidades do protótipo no FIGMA: 
 
 https://github.com/thiagoalanjs/kronos/blob/main/presentation_tcc/README.md
 
-## Criando Projetos
+## Abaixo outras funcionalidades (sem áudio)
+
+# Criando Projetos 
 
 https://user-images.githubusercontent.com/32438113/152626975-d8de95b6-855d-4bb4-a67e-1ec756469693.mp4
 
-## Criando Usuários 
+# Criando Usuários 
 
 https://user-images.githubusercontent.com/32438113/152627737-7c7871c9-526f-4239-abb7-a2fbb2b5b8d6.mp4
 
-## Criando Sprints
+# Criando Sprints
 
 https://user-images.githubusercontent.com/32438113/152627930-8f60045b-6308-44cc-b7d1-3360f2e12802.mp4```bash
 
-## Criando User Stories
+# Criando User Stories
 
 https://user-images.githubusercontent.com/32438113/152628252-db7429da-bd8f-4a33-9430-f942f2f3a968.mp4
 
 
-## Criando tarefas
+# Criando tarefas
 
 https://user-images.githubusercontent.com/32438113/152628384-1b358640-7b6d-4b97-9495-e7354878c2e2.mp4
 
-## Acessando board kanban
+# Acessando board kanban
 
 https://user-images.githubusercontent.com/32438113/152628613-85f44e44-0f59-48c7-ba72-4549ea7a6c0a.mp4
 
