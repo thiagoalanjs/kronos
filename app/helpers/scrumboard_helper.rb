@@ -5,7 +5,6 @@ module ScrumboardHelper
                                 AND project_id = #{ current_project_id } ")
     end
 
-
     def tasks_pending_count
         Task.find_by_sql("SELECT * FROM tasks
                   INNER JOIN user_stories ON user_stories.sprint_id = sprint 

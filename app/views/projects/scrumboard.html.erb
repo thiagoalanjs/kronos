@@ -91,6 +91,8 @@
                             <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
                        <% end %>
                       <%= task.title %>
+
+               
                   </h4>
                     
                  <br />
@@ -102,7 +104,8 @@
                             </p>
 
                             <br />
-                            Criada em: <%= l task.created_at%>
+                            
+                        <strong>Criada em:</strong> <%= l task.created_at %>
                         <br />
                         <br />
                           <% if task.priority_id == 1 %>
@@ -169,6 +172,9 @@
                             <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
                        <% end %>
                       <%= task.title %>
+                      <% if Time.now > task.created_at + 4.days && task.status != 5 %>
+                        <div class="button_warning" title="Uma tarefa deve ser concluída em até 4 dias.">Tarefa atrasada</div>
+                      <% end %>
                   </h4>
                 <% end %>
 
@@ -187,7 +193,7 @@
                   </div>
 
                   <br />
-                      Criada em: <%= l task.created_at%>
+                      <strong>Criada em:</strong> <%= l task.created_at %>
                <br />
               <br />
                 <% if task.priority_id == 1 %>
@@ -250,6 +256,9 @@
                             <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
                        <% end %>
                      <%= task.title %>
+                      <% if Time.now > task.created_at + 4.days && task.status != 5 %>
+                        <div class="button_warning" title="Uma tarefa deve ser concluída em até 4 dias.">Tarefa atrasada</div>
+                     <% end %>
                   </h4>
                   <br />
                 <% end %>  
@@ -268,10 +277,10 @@
   
                   <p>
                   <br />
-                     Criada em: <%= l task.created_at%>
+                     <strong>Criada em:</strong> <%= l task.created_at%>
                      <br />
                      <br />
-                     <% if task.priority_id == 1 %>
+                <% if task.priority_id == 1 %>
                  <b>Prioridade: </b>
                      <b class="high_priority">Alta</b>
                  <% end %>
@@ -339,6 +348,9 @@
                             <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
                       <% end %>
                      <%= task.title %>
+                      <% if Time.now > task.created_at + 4.days && task.status != 5 %>
+                        <div class="button_warning" title="Uma tarefa deve ser concluída em até 4 dias.">Tarefa atrasada</div>
+                     <% end %>
                   </h4>
                   <br />
                 <% end %>  
@@ -362,12 +374,13 @@
                     <% end %>
                   </div>
   
-                  <p>
+                 <p>
                   <br />
-                     Criada em: <%= l task.created_at%>
+                     <strong>Criada em:</strong> <%= l task.created_at%>
                      <br />
                      <br />
-                     <% if task.priority_id == 1 %>
+                
+                <% if task.priority_id == 1 %>
                  <b>Prioridade: </b>
                      <b class="high_priority">Alta</b>
                  <% end %>
@@ -391,10 +404,8 @@
              <% end %>
              </h4>     
              
-             
               <br />
                
- 
              <div class="extra_content">
                    <% if task.function_user_project.nil? %>
                            <i>Sem Atribuição</i>
@@ -436,6 +447,9 @@
                             <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
                        <% end %>
                      <%= task.title %>
+                      <% if Time.now > task.created_at + 4.days && task.status != 5 %>
+                        <div class="button_warning" title="Uma tarefa deve ser concluída em até 4 dias.">Concluída em atraso</div>
+                     <% end %>
                   </h4>
                 <% end %> 
             
@@ -451,14 +465,14 @@
                   <% unless task.start_date.nil? %>
                   <p>
                     <strong>Inicio em:</strong>
-                    <%= l task.start_date %>
+                    <%= l task.start_date.to_datetime %>
                   </p>
                   <% end %>
                   <br />  
                   <% unless task.end_date.nil? %>
                   <p>
                     <strong>Concluído em:</strong>
-                    <%= l task.end_date %>
+                    <%= l task.end_date.to_datetime %>
                   </p>
                   <% end %>
                 <br />  
