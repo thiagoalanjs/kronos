@@ -375,12 +375,7 @@ footer a {
 
 @media only screen and (max-width:414px){ 
     img#logo {
-        display: block;
-        margin-top:10px;
-        margin-left: 20px;
-        margin-right: auto;
-        width: 200px;
-        margin-top: 0 auto;
+        transform: translate(-35%, -30%);
     }
     img#image-left, img#image-right{
         display: none;
@@ -388,6 +383,21 @@ footer a {
     
     header{
         height: 400px;    
+    }
+
+    .alert.alert_danger .alert.alert_notice{
+        width: 89%;
+        margin-left: 36px; 
+    }
+
+    .alert.alert_notice{
+        width: 89%;
+        margin-left: 36px;
+    }
+    
+    .alert_danger{
+        width: 89%;
+        margin-left: 36px; 
     }
     
     div#box-logo{
@@ -402,103 +412,75 @@ footer a {
         margin-top: 65px;
     }
     
-    input {
-       margin-left: 5px;
-    }
-    input#button{
-        margin-left: 5px;
-    }
-    footer {
-        bottom: 0;
-        position: fixed;
+    div#box-center {
+        left: 188px;
+        top: 390px;
+    }  
+
+    div#box-center p{
+        margin-left: -120px;
     }
     
-    footer {
-        margin-top: 122px;
-        position: relative;
-        padding: 20px;
-        width: 100%;
-        height: 65px;
-        position: fixed;
-        background-color: #323233;
+    div#box-center a {
+        margin-left: 36px;  
     }
     
-    footer ul li {
-        font-size: small;
-        margin: 0 auto
+    div#box-center input{
+        margin-left: 36px; 
     }
-    
-    footer a {
-        size: small;
-    }
+
 }
 
 @media only screen and (max-width:360px){
     img#logo {
-        transform: translate(5%, 0%);
+        transform: translate(-35%, -30%);
     }
     img#image-left, img#image-right{
         display: none;
     }
     
-    header{
-        height: 90%;    
+    .alert.alert_danger .alert.alert_notice{
+        width: 89%;
+        margin-left: 36px; 
+    }
+
+    .alert.alert_notice{
+        width: 89%;
+        margin-left: 36px;
     }
     
+    .alert_danger{
+        width: 89%;
+        margin-left: 36px; 
+    }
+
     div#box-logo{
         float: left;
         text-align: center;
     }
     
     div#box-center {
-        float: left;
-        width: 100%;
-        height: 70%;
-        margin-top: 55px;
-    }
-    
-    input{
-        width: 59%;
-        margin-left:5px;
-    }
-    
+        left: 150px;
+        top: 320px;
+    }  
+
     div#box-center p{
         margin-left: -120px;
     }
     
-    a {
-        margin-left:10px;  
+    div#box-center a {
+        margin-left: 36px;  
     }
     
-    button {
-        width: 59%;
-        margin:5px;
+    div#box-center input{
+        margin-left: 36px; 
     }
-    
-    footer {
-        bottom: 0;
-        position: fixed;
-    }
-    
-    footer {
-        margin-top: -42px;
-        position: relative;
-        padding: 10px;
-        width: 70%;
-        height: 20%;
-        background-color: #323233;
-    }
-    
-    footer ul li {
-        font-size: small;
-        margin: 0 auto
-    }
-    
-    footer a {
-        size: small;
+
+    input#button {
+        width: 89%;
+        margin:36px;
     }
 }
-
 
 @media only screen and (max-width:1000px){ 
     img#logo {
@@ -514,7 +496,7 @@ footer a {
     }
     
     header{
-        height: 580px;
+        height: 340px;
         bottom: 0px;   
     }
     

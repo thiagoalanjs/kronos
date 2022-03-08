@@ -1577,7 +1577,7 @@ th {
 } */
 
 @media only screen and (max-width:360px){
-
+  
     #menu label{
       float: left;
       padding-right: 10px;
