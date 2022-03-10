@@ -426,25 +426,27 @@ footer a {
     }
     
     div#box-center {
-        left: 150px;
-        top: 320px;
+        left: 175px;
+        top: 340px;
+        padding: 0;
     }  
 
     div#box-center p{
-        margin-left: -120px;
+      margin-left: 36px; 
     }
     
     div#box-center a {
-        margin-left: 36px;  
+       margin-left: 36px;  
     }
     
     div#box-center input{
         margin-left: 36px; 
     }
 
-    input#button {
+   input#button {
         width: 89%;
-        margin:36px;
+        margin-left: -122px;
+
     }
 }
 
