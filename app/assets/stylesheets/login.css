@@ -446,7 +446,6 @@ footer a {
    input#button {
         width: 89%;
         margin-left: -122px;
-
     }
 }
 
@@ -507,15 +506,6 @@ footer a {
 }
 
 
-
-/* Portrait and Landscape */
-@media screen 
-  and (device-width: 360px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 2) {
-
-}
-
 /* Portrait */
 @media screen 
   and (device-width: 320px) 
@@ -530,15 +520,44 @@ footer a {
 /* Landscape */
 @media screen 
   and (device-width: 320px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 2) 
+  and (device-height: 653px) 
   and (orientation: landscape) {
-
+    div#box-center {  
+      top: -26px;
+      margin-left: 87px;
+    }
 }
 
 
+/* --------------------                -------------------- */
+
+/* Portrait */
+@media screen 
+  and (device-width: 279px) 
+  and (device-height: 705px) 
+  and (-webkit-device-pixel-ratio: 2) 
+  and (orientation: portrait) { 
+    div#box-center { 
+    
+      margin-left: 47px;
+      background-color: #f44336;
+    }
+}
+
+/* Landscape */
+@media screen 
+  and (device-width: 279px) 
+  and (device-height: 705px) 
+  and (orientation: landscape) {
+    div#box-center {  
+      margin-top: 0px; 
+      margin-left: 87px;
+      background-color: #f44336;
+    }
+}
+
    
-/* -----------     iPhone XR  --------------------*/
+/* -----------     iPhone XR  -------------------- */
 
 /* Portrait */
 @media only screen 
@@ -652,8 +671,6 @@ footer a {
       bottom: 30px;
     }
 }
-
-
 
 /* ----------- iPhone 5, 5S, 5C and 5/SE ----------- */
 
@@ -820,7 +837,7 @@ footer a {
     div#box-center input#user_email, 
     div#box-center input#user_password, 
     div#box-center a {  
-        margin-left: 25px;
+        margin-left: 5px;
     }
   
 

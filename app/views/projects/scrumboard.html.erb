@@ -172,9 +172,9 @@
                             <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
                        <% end %>
                       <%= task.title %>
-                      <% if Time.now > task.created_at + 4.days && task.status != 5 %>
+                      <% if Time.now > task.created_at + 3.days && task.status != 5 %>
                         <div class="button_warning" title="Uma tarefa deve ser concluída em até 4 dias.">Tarefa atrasada</div>
-                      <% end %>
+                     <% end %>
                   </h4>
                 <% end %>
 
@@ -256,7 +256,7 @@
                             <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
                        <% end %>
                      <%= task.title %>
-                      <% if Time.now > task.created_at + 4.days && task.status != 5 %>
+                      <% if Time.now > task.created_at + 3.days && task.status != 5 %>
                         <div class="button_warning" title="Uma tarefa deve ser concluída em até 4 dias.">Tarefa atrasada</div>
                      <% end %>
                   </h4>
@@ -348,7 +348,7 @@
                             <%= image_tag('flag.png', class: 'flag_impediment', title: "Tarefa com impedimento!") %>
                       <% end %>
                      <%= task.title %>
-                      <% if Time.now > task.created_at + 4.days && task.status != 5 %>
+                      <% if Time.now > task.created_at + 3.days && task.status != 5 %>
                         <div class="button_warning" title="Uma tarefa deve ser concluída em até 4 dias.">Tarefa atrasada</div>
                      <% end %>
                   </h4>

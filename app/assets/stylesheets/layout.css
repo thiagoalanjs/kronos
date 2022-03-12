@@ -17,7 +17,7 @@
 	background: rgb(100, 149, 237);
 	color: #FFF;
 	height: 75px;
-  border-radius: 0px;	
+    border-radius: 0px;	
 }
 
 #menu ul, #menu li {
@@ -821,9 +821,13 @@ th {
     padding: 0 18px;
     display: none;
     background-color: white;
-    overflow: hidden;
-    box-shadow: 0px 1px 1px black;
-  }
+   }
+
+   .access_deny{
+     font-family: 'Public Sans', sans-serif;
+     color: #948F8F;
+     font-size: 18px;
+   }
 
   .panel{
       text-decoration: none;
@@ -920,8 +924,6 @@ th {
         float: left;
         margin-top: -13px;
   }
-
-
   
   .info_sprint_user_story {
     border: #010399;
@@ -1577,12 +1579,38 @@ th {
 } */
 
 @media only screen and (max-width:360px){
-  
+   .container .alert_success {
+        position: absolute;
+        padding: 35px;
+        margin-top: -100px;
+        margin-bottom: 40px;
+        width: 80%;
+        background-color: #1c7a1d;
+        color: white;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        z-index: 5;
+       
+    }
+
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    
     #menu label{
       float: left;
       padding-right: 10px;
       margin-left: 260px;
-    
+    }
+
+    .container .box_center{
+      position: relative;
     }
 
     .sidebar nav {
@@ -1597,26 +1625,49 @@ th {
         margin-bottom: 20px;
     }
 
-    .search_input {
-        width: 50%;
-        float: left;
-        display: inline;    
-        position: absolute;
-        margin-left: -30px;
+    .align_right {
+        position: relative;
+        width: 315px;
+    }
+    
+    .box_center img {
+        position: relative;
+        left: 30px;
     }
 
-    input#btn_seach{
-        display: inline-block;
+    .access_deny {
+        font-family: 'Public Sans', sans-serif;
+        color: #948F8F;
+        font-size: 18px;
+        margin-left: 69px;
+        width: 219px;
+    }
+
+    .search_input {
+        width: 290px;  
+        margin-left: 245px;
+        margin-top: 10px;
+        margin-bottom: -25px;
+    }
+
+    .search_btn{
+        position: relative;
+        margin-top: 30px;
         width: 15px;
-        float: right;
-        margin-right: -40px;
-        margin-bottom: 20px;
+        margin-top: 30px;
+        margin-left: 245px;
+        padding: 10px 150px 10px 130px;
+        border-radius: 10px;
+        background-color: #eeeeee;
+        border-style: solid ;
+        border-width: thin;
+        border-color: rgb(95, 95, 95);
     }
 
     .card {
        width: 300px;
        margin-top: 10px;
-       margin-right: 10px;
+       margin-left: 25px;
        display: inline-block;
     }
 
@@ -1712,7 +1763,8 @@ th {
     }
 
     .green_button{
-        width: 205px;
+        width: 270px; 
+        margin: 30px;
     }
 
     .blue_button{
@@ -1730,19 +1782,52 @@ th {
         margin-left: -120px;
     }
 
+    .button_warning{
+        background-color: #DB2828;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        margin-top: 5px;
+        margin-left: -15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+    
+
+    .button_status{
+        background-color: #cecece;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        padding: 5px;
+        width: 95%;
+        margin-left: -15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+
 
 /*****************************
-  Kaminari Pagination
+  Kaminari Pagination mobile 360X640
 *****************************/
 
 .pagination {
+    position: absolute;
+    margin-left: 13px;
     background-color: #FFF;
     border: 0;
 }
 
 .pagination a, .pagination span.gap {
     float: left;
-    margin: 2px;
+    margin-right: 5px;
     line-height: 38px;
     text-decoration: none;
     background-color: #d3d3d3;
@@ -1793,5 +1878,23 @@ th {
  }
 }
 
-
+@media only screen 
+  and (min-device-width: 360px) 
+  and (max-device-width: 640px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) { 
+    .sidebar nav {
+        display: none;
+    }
+    .container{
+        width: 97%;
+        margin: 10px;
+        padding-left: 10px;
+    }
+    .card {
+        margin-left: 10px;
+        margin-right: 20px;
+     }
+     
+  }
   
