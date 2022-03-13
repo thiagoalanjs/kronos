@@ -8,7 +8,7 @@
 </style>
 
 <br />
-<div class="container">
+<div class="container" id="info_project">
   <h2> Gestão do projeto </h2>
   <% if current_user.admin? || current_user.coordenador? %>
   <div class="align_right">
@@ -60,7 +60,7 @@
 
 </div>
 <br />
-     <div class="container">
+     <div class="container" id="card_session">
            <div id="progressbar" class="ui-progressbar-value ui-widget-header ui-corner-left" style="border: 1px solid black; color: black; height:30px; padding-top: 10px; text-align: center; width:<%= @project.progress %>%;">
           <p>Progresso <%= @project.progress %>%</p>
      </div>

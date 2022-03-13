@@ -53,33 +53,6 @@ body {
 }
 </style>
 
-
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <div class="sidebar">
-  <nav>
-    <ul>
-      <li>
-        <%= link_to projects_path, class: "#{is_current_page?(projects_path)} item" do %>
-              Projetos
-        <% end %>
-      </li>
-      <li>
-        <%= link_to users_path, class: "#{is_current_page?(users_path)} item" do %>
-              Usuários
-        <% end %>
-      </li>
-      <li>
-        <%= link_to settings_path, class: "#{is_current_page?(settings_path)} item" do %>
-              Configurações 
-        <% end %>
-      </li>
-    </ul>
-  </nav>
-</div>
-</div>
-
-
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <div class="overlay-content">
@@ -105,9 +78,8 @@ body {
   </div>
 </div>
 
-<div id="icon-menu-sidebar">
-    <span style="font-size:10px;cursor:pointer" onclick="openNav()">&#9776; Menu lateral</span>
-</div>
+
+<span style="font-size:10px;cursor:pointer" onclick="openNav()" id="icon-menu-sidebar">&#9776; Menu lateral</span>
 
 <script>
 function openNav() {

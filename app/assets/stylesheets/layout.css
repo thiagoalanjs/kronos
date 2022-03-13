@@ -14,20 +14,22 @@
 }
 
 #menu {
+    position: relative;
 	background: rgb(100, 149, 237);
 	color: #FFF;
 	height: 75px;
-    border-radius: 0px;	
-}
+    border-radius: 0px;
+}	
 
 #menu ul, #menu li {
 	padding: 0;
 	list-style: none;
-
 }
+
 #menu ul {
   width: 100%;
 }
+
 #menu li {
   float: right;
   margin-top: 15px;
@@ -36,6 +38,7 @@
 	display: inline;
 	position: relative;
 }
+
 #menu a {
 	display: block;
 	line-height: 45px;
@@ -113,16 +116,21 @@
 }
 
 @media only screen and (max-width: 800px){
+  .sidebar nav {
+      display: none;
+  }
+
   #menu label{
     float: left;
     padding-right: 10px;
     margin-left: 90%;
   }
 
-	#menu {
+  #menu {
     position:relative;
   }
-	#menu ul {
+
+  #menu ul {
     background: rgb(100, 149, 237);
     position:absolute;
     top:100%;
@@ -214,77 +222,9 @@ div#notification_inactived {
     height: 20px;
     vertical-align: middle;
 }
-
-/*****************************************************************/
-/*****************************************************************/
-.sidebar nav {
-    position: absolute;
-    float: left;
-    height: 100%;
-    margin-top: 30px;
-    margin-left: 10px;
-    margin-right: 30px;
-    width: 250px;
-    padding-right: 20px;
-    background-color: #ffffff;
-    box-shadow: 5px 0 4px -4px rgb(204, 204, 204);
-}
-
-.sidebar nav ul {
-    list-style-type: none;
-    padding: 0;
-    background-color: #FFF
-    
-}
-.sidebar nav ul li{
-    padding: 12px;
-    border-bottom: 1px solid #b9b9b9;
-}
-
-.sidebar nav ul li a {
-   color: rgb(99, 99, 99);
-   padding: 10px;
-   display: block;
-   text-decoration: none;
-   transition: background .3s;
-   text-transform: uppercase;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: rgb(100, 149, 237); 
-    margin-top: 5px;
-    padding: 14px;
-    margin-right: -20px;
-    width: 160px;
-    right: 0;
-    z-index: 3;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown a{
-    text-decoration: none;
-}
-
-.dropdown p:hover{
-    height: 100%;
-    background-color: rgb(255, 255, 255);
-    color:  rgb(100, 149, 237);
-}
-
-
 .container{
-  width: 75%;
-  margin-left: 23%;
+  width: 88%;
+  margin-left:50px;
 }
 
 .container_user {
@@ -617,7 +557,6 @@ div#notification_inactived {
     color: rgb(0, 0, 0);
 }
 
-
 h1, h2, h4, h5, h6 {
     color:rgb(58, 58, 58);
     font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -673,7 +612,6 @@ th {
     padding: 5px;
     display: inline-block;
 }
-
 
 .content_charts {
     width: 40%;
@@ -998,7 +936,6 @@ th {
     will-change: top, left, margin, transform, opacity;
   }
 
-
 .ui.search {
     background: none transparent !important;
     border: none !important;
@@ -1037,6 +974,9 @@ th {
     .container{
         width: 65%;
         margin-left: 17%;      
+    }
+    div ul#icon-menu-mobile{
+        display: none;
     }
 }
 
@@ -1082,6 +1022,8 @@ th {
     div ul#icon-menu-mobile{
         display: none;
     }
+
+   
 
     div#menu_left ul li {
         margin-right: 30px;
@@ -1208,262 +1150,6 @@ th {
        margin-right: 20px;
     } 
 }
-
-@media only screen and (max-width:890px){
-    .sidebar nav {
-        position: absolute;
-        float: left;
-        height: 100%;
-        margin-top: 30px;
-        margin-left: 5px;
-        width: 150px;
-        padding-right: 10px;
-        background-color: #ffffff;
-        box-shadow: 5px 0 4px -4px rgb(204, 204, 204);
-    }
-    
-    .sidebar ul{
-        position: absolute;
-        float: left;
-        height: 100%;
-        margin-top: 30px;
-        margin-left: 0px;
-        width: 150px;
-        padding-right: 20px;
-        background-color: #FFF;
-    }
-    
-    .sidebar nav ul li{
-        padding: 2px;
-        font-size: 13px;
-    }
-    
-    .sidebar nav ul li a {
-       color: rgb(99, 99, 99);
-       padding: 10px;
-       display: block;
-       text-decoration: none;
-       transition: background .3s;
-       text-transform: uppercase;
-    }
-    
-    .sidebar nav ul li a:hover {    
-        color: rgb(19, 18, 18);
-    }
-
-    div#menu_left ul {
-        width: 70%;
-        margin-right: 50px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        text-decoration: none;
-        list-style-type: none;
-        color: #fafaff;
-    }
-    
-    div ul#icon-menu-mobile{
-        display: none;
-    }
-
-    div#menu_left ul li {
-        margin-right: 30px;
-    }
-    
-    div#menu_left a{
-        text-decoration: none;
-        color: #FFF;
-        border-radius: 100px;
-    }
-    
-    div#menu_left a:hover{
-        font-weight: bold;
-    }
-
-    div#menu_right ul{
-        display: inline-block;
-        float: right;
-        margin: 0;
-        margin-top: 0px;
-        width: 80px;
-        padding: 20px
-    }
-    div#menu_right ul li{ 
-        list-style: none;
-        text-decoration: none;
-    }
-
-    div#menu_right a{
-        color: #FFF;
-    }
-
-    div#notification_actived, div#notification_inactived{
-        width: 25px;
-        display: inline;
-    }
-
-    .container{
-        float: left;
-        width: 565px;
-        margin-top: 20px; 
-        margin-left: 180px; 
-    }
-
-    .align_right{
-        display: block; 
-    }
-
-    .search_input{
-        height: 30px;
-        padding: 5px;
-        border-radius: 5px;
-        border-width: thin;
-    }
-    
-    .search_input:hover{
-        background-color: #e6e6e6;
-    }
-    
-    .search_btn{
-        padding-top: 12px;
-        padding-right: 25px;
-    } 
-    
-    .alert_success {
-        position: relative;
-        display: block;
-        margin-left: 0;
-        width: 85%;
-        background-color: #1c7a1d;
-        color: white;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    
-    .alert_notice {
-        padding: 10px;
-        margin-bottom: 20px;
-        background-color: #06738f;
-        color: white;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    
-    .alert_danger {
-        padding: 10px;
-        margin-bottom: 20px;
-        background-color: #f44336;
-        color: white;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .content_title{
-        width: 263px;
-        height: 5px;
-        margin-left: -5px;  
-        padding-top: 5px;
-        padding-left: 2.5px;
-        padding-right: 2.5px;
-        padding-bottom: 25px;
-        border-style:solid;
-        border-top-right-radius: 5px 5px;
-        border-top-left-radius: 5px 5px;
-        border-width: 1px;
-        border-color:#797979;
-        color: #FFF;
-        background-image: linear-gradient(rgb(5, 134, 255), rgb(0, 116, 211));
-    }
-
-    .content{
-        width: 268px;
-        margin-left: -5px;    
-        padding-top: 15px;
-        padding-left: 0px;
-        padding-bottom: 15px;
-        border-style:solid;
-        border-width: 1px;
-        border-color:#797979;
-        font-size:15px
-    }
-
-    .header {
-        text-align: center;
-        font-size: 20px;
-    }
-
-    .description{
-       display: block;
-       padding-top: 22px;
-       padding-left: 22px;
-       padding-bottom: 22px;
-       color: rgba(0, 0, 0, 0.7);
-    }
-
-    .button_card {
-        width: 270px;
-        height: 50px;
-        margin-left: -5px;
-        border-bottom-right-radius: 5px 5px;
-        border-bottom-left-radius: 5px 5px;
-        background-image: linear-gradient(#f8f8f8, #cccbcb);
-        border-style:solid;
-        border-width: 1px;
-        font-size: 17px;
-        color: #2e2e2e;
-    }
-
-    .card {
-        width: 260px;
-        margin-top: 10px;
-        margin-right: 10px;
-        padding: 5px;
-        display: inline-block;
-    }
-
-    .bar_progress {
-        border-radius: 10px;
-        width: 85%;
-        height: 30px;
-        margin-top: 15px;
-        padding-top: 15px;
-        padding-left: 10px;
-        background-image: linear-gradient(#ffffff, #fff6f6);
-        border-style: solid;
-        border-width: 1px;
-        text-align: center;
-    }
-
-    .logo{
-        position: relative;
-        float: left;
-        height: 80px;
-    }
-
-    .form input, select{
-        width: 490px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding: 10px;
-    }
-    
-    .form textarea {
-        margin-top: 10px;
-        padding: 10px;
-        width: 590px;
-        height: 200px;
-    }
-    
-    .box_center img{
-        width: 150px;
-    }
-
-    h1{
-        font-size: 25px;
-    }
-        
-    hr {
-       margin-top: 10px;
-       margin-right: 20px;
-    }
-
-   
-}
 /* 
 @media only screen and (max-width:480px){
 
@@ -1578,7 +1264,19 @@ th {
 
 } */
 
-@media only screen and (max-width:360px){
+@media (max-width:360px){
+
+    span#icon-menu-sidebar{
+        position: absolute;
+        margin-top: 20px;
+        margin-left: -88px;
+    }
+
+    div#info_project{
+        position: absolute;
+        margin-left: 20px;
+        width: 320px;
+    }
    .container .alert_success {
         position: absolute;
         padding: 35px;
@@ -1605,8 +1303,9 @@ th {
     
     #menu label{
       float: left;
-      padding-right: 10px;
-      margin-left: 260px;
+      padding-right: 20px;
+      margin-top: 15px;
+      margin-left: 280px;
     }
 
     .container .box_center{
@@ -1632,7 +1331,8 @@ th {
     
     .box_center img {
         position: relative;
-        left: 30px;
+        margin-left: 20px;
+        
     }
 
     .access_deny {
@@ -1697,7 +1397,7 @@ th {
     }
 
     .content_title{
-        width: 285px;
+        width: 290px;
         height: 5px;
         margin-left: 3px;
         padding-top: 5px;
@@ -1731,7 +1431,7 @@ th {
     }
 
     .button_card {
-        width: 292px;
+        width: 297px;
         height: 50px;
         margin-left: 3px;
         border-bottom-right-radius: 5px 5px;
@@ -1797,7 +1497,6 @@ th {
         display: inline-block;
         font-size: 16px;
     }
-    
 
     .button_status{
         background-color: #cecece;
@@ -1813,6 +1512,27 @@ th {
         font-size: 16px;
     }
 
+    div#card_session{
+        position: absolute;
+        margin-top:385px;
+        width: 340px;
+    }
+
+    .button_warning{
+        margin-left: 130px;
+    }
+
+    #user_stories, 
+    #sprints, 
+    #releases, 
+    #function_user_projects,
+    #scrumboards,
+    #theme,
+    #chart {
+       position: relative;
+       margin-left: 130px;
+       width: 340px;
+    }
 
 /*****************************
   Kaminari Pagination mobile 360X640
@@ -1887,14 +1607,74 @@ th {
         display: none;
     }
     .container{
-        width: 97%;
-        margin: 10px;
+        width: 96%;
+        margin: 5px;
         padding-left: 10px;
     }
     .card {
-        margin-left: 10px;
-        margin-right: 20px;
+        margin-left: 0px;
+        margin-right: 1px;
+        width: 280px;
      }
+     
+     #user_stories, 
+     #sprints, 
+     #releases, 
+     #function_user_projects,
+     #scrumboards,
+     #theme,
+     #chart {
+        margin-left: 13px;
+        margin-right: 10px;
+        width: 580px;
+     }
+
+     .content_title{
+        width: 280px;
+        height: 5px;
+        margin-left: 3px;
+        padding-top: 5px;
+        padding-left: 2.5px;
+        padding-right: 2.5px;
+        padding-bottom: 25px;
+        border-style:solid;
+        border-top-right-radius: 5px 5px;
+        border-top-left-radius: 5px 5px;
+        border-width: 1px;
+        border-color:#797979;
+        color: #FFF;
+        background-image: linear-gradient(rgb(5, 134, 255), rgb(0, 116, 211));
+    }    
+
+    .content{
+        width: 280px;
+        margin-left: 3px;    
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-style:solid;
+        border-width: 1px;
+        border-color:#797979
+    }
+     
+    .button_card {
+        width: 287px;
+        height: 50px;
+        margin-left: 3px;
+        border-bottom-right-radius: 5px 5px;
+        border-bottom-left-radius: 5px 5px;
+        background-image: linear-gradient(#f8f8f8, #cccbcb);
+        font-size: 17px;
+        color: #2e2e2e;
+        border-style:solid;
+        border-width: 1px;
+        border-color:#797979
+    }
+     
+    span#icon-menu-sidebar{
+        position: absolute;
+        margin-top: 15px;
+        margin-left: -105px;
+    }
      
   }
   
