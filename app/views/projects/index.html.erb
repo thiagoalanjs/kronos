@@ -20,6 +20,8 @@
     <%= render 'projects/list_projects_default' %>
   <% else %> 
   
+
+  <br /> <br />
       <div class="align_right">
         <%= form_tag(projects_path, method: :get) do %>
               <%= text_field_tag :search, params[:search], placeholder: "Buscar projetos", class: "search_input" %>
@@ -27,7 +29,6 @@
         <% end %>
       </div>
      
-
       <h1>Projetos</h1>
         <div class="sub_title">Aqui você cria e gerencia seus projetos. </div>
       <hr>

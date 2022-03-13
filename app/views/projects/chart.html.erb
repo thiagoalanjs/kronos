@@ -1,6 +1,8 @@
 
 
-<div class="container">
+<div class="container" id="info_project">
+<br />
+<br />
 <br />
 <h2> Gráficos do projeto <%= current_project.name %> : </h2>
 
@@ -18,7 +20,7 @@
 </div>
 <% else %>
 
-<div class="content_charts">
+<div class="content_charts" id="info_project">
 
   <b> User Stories:</b> <%= user_story_by_project_count  %> <br />
   <b> Sprints:</b> <%= sprint_by_project_count %> <br />
