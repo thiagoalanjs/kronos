@@ -29,12 +29,12 @@
    <%= link_to "Associar", new_function_user_project_path, class: 'item green_button' %>
   <br />
   <br />
-  <table class="ui celled table">
+  <table>
     <thead>
       <tr>
-                <th width="290">Usuário</th>
-                <th width="290">Função</th>
-                <th width="290">Ações</th>
+                <th>Usuário</th>
+                <th>Função</th>
+                <th>Ações</th>
       </tr>
     </thead>
 
@@ -54,9 +54,9 @@
                     <td>
       
            
-              <%= link_to 'Editar', edit_function_user_project_path(function_user_project), class: 'blue_button' %>
+              <%= link_to 'Editar', edit_function_user_project_path(function_user_project), class: 'blue_button', id: 'table_button' %>
           
-            <%= link_to 'Remover', function_user_project, method: :delete, data: { confirm: 'Deseja realmente remover o(a) usuário(a) "'"#{function_user_project.user.name}"'" do projeto?' }, class: 'red_button' %>
+            <%= link_to 'Remover', function_user_project, method: :delete, data: { confirm: 'Deseja realmente remover o(a) usuário(a) "'"#{function_user_project.user.name}"'" do projeto?' }, class: 'red_button', id: 'table_button' %>
           
           </td>
         </tr>

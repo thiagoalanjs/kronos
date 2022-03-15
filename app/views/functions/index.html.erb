@@ -1,18 +1,18 @@
 <p></p>
 
-<div class="container">
+<div class="container", id="info_project">
  <br />
  <h2>Funções</h2>
     <div class="sub_title">Aqui você cria e gerencia as funções dos participantes dos projetos.</div>
     <br />       
      <hr>
    <br />   
-  <table class="ui celled table">
+  <table>
     <thead>
       <tr>
                 <th>Função</th>
                 <th>Descrição</th>
-                <th width="290">Ações</th>
+                <th>Ações</th>
       </tr>
     </thead>
 
@@ -22,8 +22,8 @@
             <td><%= function.name %></td>
             <td><%= function.description %></td>
             <td>
-                  <%= link_to 'Editar', edit_function_path(function), class: 'blue_button' %>
-                  <%= link_to 'Remover', function, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'red_button' %>
+                  <%= link_to 'Editar', edit_function_path(function), class: 'blue_button', id: 'table_button' %>
+                  <%= link_to 'Remover', function, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'red_button', id: 'table_button' %>
             </td>
         </tr>
       <% end %>

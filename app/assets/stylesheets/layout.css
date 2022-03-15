@@ -427,7 +427,7 @@ div#notification_inactived {
 
 .alert_success {
     padding: 15px;
-    margin-top: 20px;
+    margin-top: 45px;
     margin-bottom: 20px;
     width: 95%;
     background-color: #1c7a1d;
@@ -712,6 +712,7 @@ th {
       color:#6d6d6d;
       text-decoration: none;
       font-weight: 300;
+      width: 300px;
   }
 
   .accordion {
@@ -1274,6 +1275,26 @@ th {
 } */
 
 @media (max-width:360px){
+      
+table {
+  
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px
+}
+
+tr:nth-child(even){background-color: #f2f2f2}      
+ 
+a#table_button{
+    width: 70%;
+    
+}
 
     span#icon-menu-sidebar{
         position: absolute;
@@ -1284,10 +1305,10 @@ th {
 
     div#info_project{
         position: relative;
-        margin-left: 20px;
-        margin-bottom:201px;
+        margin-left: 19px;
+        margin-bottom: 20px;
         width: 320px;
-        max-height: 1000px;
+        height: auto;
     }
 
     div#info_project input, select{
@@ -1360,18 +1381,27 @@ th {
     
     .box_center img {
         position: relative;
-        margin-left: 20px;
-        
+        margin-left: 90px;
+        width: 200px;
     }
 
     .access_deny {
         font-family: 'Public Sans', sans-serif;
         color: #948F8F;
         font-size: 18px;
-        margin-left: 40px;
+        margin-left: 65px;
         width: 219px;
     }
 
+    #info_project .access_deny {
+        font-family: 'Public Sans', sans-serif;
+        color: #948F8F;
+        font-size: 18px;
+        margin-left: 55px;
+        margin-bottom: 20px;
+        width: 219px;
+    }
+     
     .search_input {
         width: 290px;  
         margin-left: 245px;
@@ -1405,9 +1435,9 @@ th {
         margin-left: -20px;
     }
    
-    .box_center img{
+    #info_project .box_center img{
         margin-top: 10px;
-        margin-left: 10px;
+        margin-left: 5px;
         text-align: center;
     }
 
@@ -1440,7 +1470,7 @@ th {
     }    
 
     .content{
-        width: 290px;width: 295px;
+        width: 290px;
         margin-left: 3px;    
         padding-top: 15px;
         padding-bottom: 15px;
@@ -1488,9 +1518,32 @@ th {
         text-align: center;
     }
 
+    .align_right .green_button{
+        width: 295px; 
+        margin-bottom: 10px;
+    }
+
     .green_button{
+        width: 280px; 
+        margin-top: 30px;
+        margin-left: 30px;
+    }
+
+    .box_center .green_button{
         width: 250px; 
-        margin: 25px;
+        margin-left: 40px;
+        margin-top:-5px;
+    }
+
+    #info_project .box_center .green_button{
+        width: 250px; 
+        margin-left: -10px;
+        margin-top:-5px;
+    }
+
+    #new_user_story{
+        width: 295px; 
+        margin-left: 2px;
     }
 
     .blue_button{
@@ -1553,13 +1606,30 @@ th {
     }
 
     div#card_session{
-        position: absolute;
-        margin-top:465px;
+        position: relative;       
+        display:grid;
         width: 340px;
     }
 
-    .button_warning{
+    div#card_session #progressbar{
         margin-left: 130px;
+        margin-bottom: 10px;
+    }
+
+    .content .description #progressbar{
+        margin-left: -10px;
+        margin-bottom: 10px;
+        width: 336px;
+    }
+
+    #progressbar{
+        margin-left: 130px;
+        margin-bottom: 10px;
+        max-width: 336px;
+    }
+    .button_warning{
+        width: 340px;
+        margin-left: 128px;
     }
 
     #user_stories, 
@@ -1574,6 +1644,25 @@ th {
        width: 340px;
     }
 
+    .task_button{
+        margin: 5px;
+        border-radius: 4px;
+        height: 90px;
+        padding-bottom: 30px ;
+        background-color: #f7f7f7;
+        border: 0.5px solid rgb(180, 180, 180)
+    }
+
+    .accordion_title{
+        color: #575656;
+        font-size: 15px;
+        position: relative;
+        margin-bottom: 20px; 
+        text-decoration: none; 
+        display: inline-block;
+    }
+
+    
 /*****************************
   Kaminari Pagination mobile 360X640
 *****************************/
@@ -1715,6 +1804,39 @@ th {
         margin-top: 15px;
         margin-left: -105px;
     }
-     
+
+
+
+ table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
   }
+  
+  td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even){
+      background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+      background-color: #ddd;
+  }
+  
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(100, 149, 237);
+    color: white;
+  } 
+
+ a#table_button{
+      width: 90%;
+  }
+     
+}
   
