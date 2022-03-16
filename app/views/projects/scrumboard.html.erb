@@ -7,13 +7,14 @@
 
 
 <div class="container" id="info_project">  
-    <br />
-    <br />
-    <br />
+  <br />
+  <br />
+  <br />  
 <h2>Board</h2>
 <%= render 'projects/breadcrumb' %>
  <br />
  <br />
+ 
 <% if @project.sprints.empty? && @sprint.nil? && current_user.group == 'analista' %> 
         <div class="box_center">
             <%= image_tag("access-denied.png") %>
@@ -28,23 +29,23 @@
             <br />
             <br />
             <p class="access_deny">Nenhuma sprint ativa no momento.</p>
-            <%= link_to "Criar sprint", new_sprint_path, class: " green_button"%>
+            <%= link_to "Criar sprint", new_sprint_path, class: "green_button"%>
         </div>
 <% end %>
 
 <% else %>
 
 <% @sprint = sprint_actived %>
-<div class="info_accordion">
-
-  <% @sprint.each_with_index do |sprint, i| %>
-     <%= link_to "Nova User Story", new_user_story_path, class: "red_button", id: "new_user_story" %> 
-    <%= link_to "Nova task", new_task_path, class: "blue_button" %>
-  <% end %>
+<div>
+  <div class="align_right">
+    <% @sprint.each_with_index do |sprint, i| %>
+       <%= link_to "Nova User Story", new_user_story_path, class: "red_button", id: "new_user_story" %> 
+      <%= link_to "Nova task", new_task_path, class: "blue_button" %>
+    <% end %>
+  </div>
 </div>
-
 <% @sprint.each_with_index do |sprint, i| %>
-<div class=" bottom attached tab segment <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>">
+<div class="bottom attached tab segment <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>">
   
  <a class="item <%= 'active' if i == 0 %>" data-tab="tab-<%= sprint.id %>"><b>Sprint:</b> <%= sprint.name %></a>
 
@@ -52,14 +53,16 @@
 
 <br />
 <br />
+<div id="info_board">
    <div id="progressbar" class="ui-progressbar-value ui-widget-header ui-corner-left" style="border: 1px solid black; color: black; height:30px; padding-top: 10px; text-align: center; width:<%= @project.progress %>%;">
       <%= sprint.progress %>% Concluído
     </div>
   </div>
+</div>  
 <br />
 <br />
 <br />
-<div id="info_project">  
+  
 <div style="overflow-x: auto;">
   <table>
     <thead>
@@ -99,15 +102,13 @@
                
                   </h4>
                     
-                 <br />
+                         <br />
                             <p>
-                    
                               <%= link_to take_task_path(task.id), class: 'info_sub_task' do %>
                                  Desenvolvimento
                               <% end %>
                             </p>
-
-                            <br />
+                        <br />
                             
                         <strong>Criada em:</strong> <%= l task.created_at %>
                         <br />
@@ -522,7 +523,6 @@
       </tr>
     </tbody>
   </table>
-</div>
 </div>
 </div>
 </div>

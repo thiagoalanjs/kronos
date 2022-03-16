@@ -583,6 +583,7 @@ table {
 td, th {
   border: 1px solid #ddd;
   padding: 8px;
+  width: 300px;
 }
 
 tr:nth-child(even){
@@ -1286,7 +1287,8 @@ table {
 
 th, td {
   text-align: left;
-  padding: 8px
+  padding: 8px;
+  width: 300px;
 }
 
 tr:nth-child(even){background-color: #f2f2f2}      
@@ -1296,6 +1298,10 @@ a#table_button{
     
 }
 
+.content_task_impediment .button_warning{
+    margin-left: -10px;
+    width: 240px;
+}
     span#icon-menu-sidebar{
         position: absolute;
         margin-top: 20px;
@@ -1615,7 +1621,11 @@ a#table_button{
         margin-left: 130px;
         margin-bottom: 10px;
     }
-
+    
+    div#info_board #progressbar{
+        margin-left: 0px;
+        margin-bottom: 10px;
+    }
     .content .description #progressbar{
         margin-left: -10px;
         margin-bottom: 10px;
