@@ -4,7 +4,7 @@
 <br />
 <br />
 <br />
-<h2> Gráficos do projeto <%= current_project.name %> : </h2>
+<h2> Gráficos do projeto <%= current_project.name %>: </h2>
 
 <%= render 'charts/breadcrumb' %>
 <br />
@@ -20,7 +20,7 @@
 </div>
 <% else %>
 
-<div class="content_charts" id="info_project">
+<div class="content_charts">
 
   <b> User Stories:</b> <%= user_story_by_project_count  %> <br />
   <b> Sprints:</b> <%= sprint_by_project_count %> <br />
@@ -174,7 +174,7 @@
 
         var options = {
           title: 'Relação de Membros x Tasks',
-          width: 800,
+          width:500,
           legend: { position: 'none' },
           chart: { title: 'Relação de Membros x Tasks',
                    subtitle: 'BUGs e SubTaks' },
@@ -199,29 +199,31 @@
 
 
           <div class="chart_card">
-           <div id="piechart_user_stories" style="width: 400px; height: 300px;"></div>
+            <div id="piechart_user_stories"></div>
           </div>
             
               <div class="chart_card">    
-                <div id="piechart_task" style="width: 400px; height: 300px;"></div>
+                <div id="piechart_task"></div>
               </div>
 
               <div class="chart_card">
-                <div id="piechart_status_subtask" style="width: 400px; height: 300px;"></div> 
+                <div id="piechart_status_subtask"></div> 
               </div>
 
               <div class="chart_card">
-                <div id="piechart_status_bug" style="width: 400px; height: 300px;"></div> 
+                <div id="piechart_status_bug"></div> 
               </div>
              
               <div class="chart_card">
-                <div id="piechart_task_flag" style="width: 400px; height: 300px;"></div> 
+                <div id="piechart_task_flag"></div> 
               </div>
 
              <br />
+             <div style="overflow-x: auto;">
               <div class="card">
-                  <div id="top_x_div" style="width: 300px; height: 300px;"></div> 
+                  <div id="top_x_div"></div> 
               </div>
+             </div> 
            <br/>
 
           <% end %>

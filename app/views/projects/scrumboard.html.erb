@@ -14,8 +14,14 @@
 <%= render 'projects/breadcrumb' %>
  <br />
  <br />
- 
-<% if @project.sprints.empty? && @sprint.nil? && current_user.group == 'analista' %> 
+   <div class="box_center">
+            <%= image_tag("access-denied.png") %>
+            <br />
+            <br />
+            <p class="access_deny">Nenhuma sprint ativa no momento.</p>
+            <%= link_to "Criar sprint", new_sprint_path, class: "green_button"%>
+        </div>
+<% if @project.sprints.empty? && @project.sprints.nil? && current_user.group == 'analista' %> 
         <div class="box_center">
             <%= image_tag("access-denied.png") %>
             <br />
@@ -23,7 +29,7 @@
             <p class="access_deny">Nenhuma sprint ativa no momento. Entre em contato com o administrador / PO.</p>
         </div>
 
-<% elsif @project.sprints.empty? && @sprint.nil? && current_user.group != 'coordenador' && current_user.group != 'coordenador'  %>
+<% elsif @project.sprints.empty? && @project.sprints.nil? && @project.sprints.sprint_status == 'FINALIZADA' && current_user.group != 'coordenador' && current_user.group != 'admin' %>
         <div class="box_center">
             <%= image_tag("access-denied.png") %>
             <br />
@@ -53,6 +59,9 @@
 
 <br />
 <br />
+
+
+ 
 <div id="info_board">
    <div id="progressbar" class="ui-progressbar-value ui-widget-header ui-corner-left" style="border: 1px solid black; color: black; height:30px; padding-top: 10px; text-align: center; width:<%= @project.progress %>%;">
       <%= sprint.progress %>% Concluído
