@@ -7,6 +7,11 @@
     }
 </style>
 
+     <%if last_sprint == "'[{'sprint_status'=>'ATIVA'}]'" %>
+           FOi 
+      <% else %>
+          desgraca <%= last_sprint %>
+      <%end%>
 
 <div class="container" id="info_project">
   <br />
@@ -100,6 +105,7 @@
        </div>
     </button>
     
+
     <% if current_user.group == "admin" || current_user.group == "coordenador" %>
         <button class="card" onclick="window.location.href='<%= function_user_projects_path %>'" id="function_user_projects">   
             <%= image_tag("team.png") %>
@@ -131,6 +137,16 @@
             Acompanhe os relatórios e gráficos do andamento do projeto.
          </div>
     </button>
+
+<% if current_user.group == "admin" || current_user.group == "coordenador" %>
+ <button class="card" onclick="window.location.href='<%= chart_url %>'" id="chart"> 
+         <%= image_tag("report.png") %>
+         <div class="description">
+            Acompanhe o gerenciamento de risco.
+            <br /><br />
+         </div>
+    </button>
+<% end %>
 
     
     <br />

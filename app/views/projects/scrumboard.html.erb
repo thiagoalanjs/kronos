@@ -14,22 +14,10 @@
 <%= render 'projects/breadcrumb' %>
  <br />
  <br />
-   <div class="box_center">
-            <%= image_tag("access-denied.png") %>
-            <br />
-            <br />
-            <p class="access_deny">Nenhuma sprint ativa no momento.</p>
-            <%= link_to "Criar sprint", new_sprint_path, class: "green_button"%>
-        </div>
-<% if @project.sprints.empty? && @project.sprints.nil? && current_user.group == 'analista' %> 
-        <div class="box_center">
-            <%= image_tag("access-denied.png") %>
-            <br />
-            <br />
-            <p class="access_deny">Nenhuma sprint ativa no momento. Entre em contato com o administrador / PO.</p>
-        </div>
 
-<% elsif @project.sprints.empty? && @project.sprints.nil? && @project.sprints.sprint_status == 'FINALIZADA' && current_user.group != 'coordenador' && current_user.group != 'admin' %>
+
+
+<% if @project.sprints.empty? || last_sprint != "ATIVA" %>
         <div class="box_center">
             <%= image_tag("access-denied.png") %>
             <br />
@@ -39,9 +27,10 @@
         </div>
 <% end %>
 
-<% else %>
+<% if last_sprint == "ATIVA" %>
 
 <% @sprint = sprint_actived %>
+
 <div>
   <div class="align_right">
     <% @sprint.each_with_index do |sprint, i| %>
@@ -59,8 +48,6 @@
 
 <br />
 <br />
-
-
  
 <div id="info_board">
    <div id="progressbar" class="ui-progressbar-value ui-widget-header ui-corner-left" style="border: 1px solid black; color: black; height:30px; padding-top: 10px; text-align: center; width:<%= @project.progress %>%;">
@@ -536,7 +523,7 @@
 </div>
 </div>
 <% end %>
-
+<% end %>
 <script type="text/javascript">
   $('.modal-task').click(function(){
     $('.'+$(this).attr('data-modal')).modal('show');
