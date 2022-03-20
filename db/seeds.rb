@@ -1,5 +1,6 @@
 puts "creating administrator..."
 User.create(name: "Admin", email: "admin@email.com", password: "admin", password_confirmation: "admin", group: :admin)
+User.create(name: "Admin", email: "puc@mailinator.com", password: "12345678", password_confirmation: "admin", group: :admin)
 puts "user: admin@email.com"
 puts "pswd: admin"
 
