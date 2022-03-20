@@ -339,9 +339,11 @@ footer a {
     
 }
 
-@media only screen and (max-width:414px){ 
+@media only screen and (max-width:412px)
+and (-webkit-min-device-pixel-ratio: 1){ 
+
     img#logo {
-        transform: translate(-35%, -30%);
+          margin-left: 165px;
     }
     img#image-left, img#image-right{
         display: none;
@@ -369,19 +371,16 @@ footer a {
     div#box-logo{
         float: left;
         text-align: center;
+       
     }
     
     div#box-center {
         float: left;
         width: 90%;
-        height: 70%;
-        margin-top: 65px;
+        height: 50%;
+        margin-top: 70px;
+        margin-left: 5px; 
     }
-    
-    div#box-center {
-        left: 188px;
-        top: 390px;
-    }  
 
     div#box-center p{
         margin-left: -120px;
@@ -396,6 +395,27 @@ footer a {
     }
 
 }
+
+@media only screen 
+  and (max-device-width: 914px) 
+  and (-webkit-min-device-pixel-ratio: 1)
+  and (orientation: landscape) { 
+    header{
+      height: 100%;
+    } 
+    
+    img#logo {
+        transform: translate(-5%, -50%);
+    }
+    div#box-center {
+      float: left;
+      width: 90%;
+      height: 65%;
+      margin-top: 10px;
+      margin-left: 10px; 
+    }
+}
+
 
 @media only screen and (max-width:360px){
     img#logo {
@@ -448,7 +468,7 @@ footer a {
         margin-left: -122px;
     }
 }
-
+/* 
 @media only screen and (max-width:1000px){ 
     img#logo {
         display: block;
@@ -504,7 +524,7 @@ footer a {
         background-color: #323233;
     }
 }
-
+ */
 
 /* Portrait */
 @media screen 
@@ -529,7 +549,7 @@ footer a {
 }
 
 
-/* --------------------                -------------------- */
+/* ---------------------------------------- */
 
 /* Portrait */
 @media screen 
