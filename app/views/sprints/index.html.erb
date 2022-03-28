@@ -13,6 +13,7 @@
 
 <div>
 <br />
+
    <% if @sprints.empty? %> 
         <div class="box_center">
         <br />
@@ -116,14 +117,12 @@
           <%= l sprint.retrospective_meeting_date %>
        </div> 
 
-
        <% if sprint.end_date < Time.now.strftime("%d/%m/%Y") && sprint.sprint_status == 'ATIVA' %>
          <div>
            <b>Dias em atraso:</b>
            <i style="color: red;"><%= sprint_days_count(sprint.id) %></i>
          </div>
       <% end %>
-        
         
        <% if sprint.sprint_status == 'FINALIZADA' %>
          <div>
@@ -151,29 +150,6 @@
       <% end %>
 
      
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    //$('.sortable').tablesort();
-  });
-  ///Accordion
-
-  var acc = document.getElementsByClassName("accordion");
-  var i;
-
-  for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-      var panel = this.nextElementSibling;
-      if (panel.style.display === "block") {
-        panel.style.display = "none";
-      } else {
-        panel.style.display = "block";
-      }
-    });
-  }
-
-</script>
 
 
 </div> 

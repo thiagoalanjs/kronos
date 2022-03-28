@@ -1,0 +1,100 @@
+<script>
+        tinymce.init({
+                selector: 'textarea#file-picker',
+                height: 300,
+                menubar:false,
+                plugins: 'undo redo | formatselect | bold italic backcolor | removeformat | table | link | image | media ',
+                toolbar: 'undo redo | formatselect | bold italic backcolor | removeformat | table | link | image | media ',
+                image_title: true,
+                automatic_uploads: true,
+                file_picker_types: 'image, media',
+                /* and here's our custom image picker*/
+                file_picker_callback: function (cb, value, meta) {
+                  var input = document.createElement('input');
+                  input.setAttribute('type', 'file');
+                  input.setAttribute('accept', 'image/*, media/*');
+
+                  input.onchange = function () {
+                    var file = this.files[0];
+
+                    var reader = new FileReader();
+                    reader.onload = function () {
+                 
+                      var id = 'blobid' + (new Date()).getTime();
+                      var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                      var base64 = reader.result.split(',')[1];
+                      var blobInfo = blobCache.create(id, file, base64);
+                      blobCache.add(blobInfo);
+
+                      cb(blobInfo.blobUri(), { title: file.name });
+                    };
+                    reader.readAsDataURL(file);
+                  };
+
+                  input.click();
+                },
+          content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+         });
+</script>
+
+<%= form_for(@managment_risk, html: {class: 'form'}) do |f| %>
+
+  <% if @managment_risk.errors.any? %>
+        <div class="alert_danger">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>     
+              <div class="header">
+            <% @managment_risk.errors.full_messages.each do |message| %>
+                <p> - <%= message %> </p>
+            <% end %>
+          </div>
+         </div>
+       <p></p>
+  <% end%>
+    <b><%= f.label :title %></b>
+    
+  <div class="field">
+    <br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <b><%= f.label :description %></b>
+    <br />
+    <%= f.text_area :description, class: "TinyMCE", id: "file-picker" %>
+  </div>
+
+  <div class="field">
+    <b><%= f.label :probabitity %></b>
+    <br />
+      <%= f.select :probabitity, options_for_select({'Muito alta' => 1 , 'Alta' => 2 , 'Média' => 3, 'Baixa' => 4, 'Muito baixa' => 5 }), {:prompt => false}, {  placeholder: 'Selecione o plano de probabilidade' } %>
+
+  </div>
+
+  <div class="field">
+    <b><%= f.label :contingência %></b>
+    <br />
+    
+    <%= f.select :contingency, options_for_select({'Prevenir/Evitar' => 1 , 'Mitigar' => 2 , 'Transferir' => 3, 'Aceitar' => 4 }), {:prompt => false}, {  placeholder: 'Selecione o plano de contigência' } %>
+  </div>
+
+  <div class="field">
+    <b><%= f.label :status %></b>
+    <br />
+    <%= f.text_field :status %>
+  </div>
+
+    <b><%= f.hidden_field :project_id, :value => current_project_id %></b>
+    <br />
+
+
+
+  <div class="actions">
+    <%= f.submit class: 'blue_button' %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $('.save').click(function(){
+    $('form').submit(); 
+  });
+</script>

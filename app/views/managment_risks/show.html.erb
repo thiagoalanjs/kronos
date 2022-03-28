@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @managment_risk.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @managment_risk.description %>
+</p>
+
+<p>
+  <strong>Probabitity:</strong>
+  <%= @managment_risk.probabitity %>
+</p>
+
+<p>
+  <strong>Contingência:</strong>
+  <%= @managment_risk.contingency %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @managment_risk.status %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @managment_risk.project_id %>
+</p>
+
+<%= link_to 'Edit', edit_managment_risk_path(@managment_risk) %> |
+<%= link_to 'Back', managment_risks_path %>

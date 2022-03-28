@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_14_022257) do
+ActiveRecord::Schema.define(version: 2022_03_20_202641) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -72,6 +72,18 @@ ActiveRecord::Schema.define(version: 2022_01_14_022257) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "managment_risks", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "probabitity"
+    t.string "contingency"
+    t.string "status"
+    t.integer "project_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_managment_risks_on_project_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -240,6 +252,7 @@ ActiveRecord::Schema.define(version: 2022_01_14_022257) do
   add_foreign_key "function_user_projects", "functions"
   add_foreign_key "function_user_projects", "projects"
   add_foreign_key "function_user_projects", "users"
+  add_foreign_key "managment_risks", "projects"
   add_foreign_key "participants", "user_stories"
   add_foreign_key "participants", "users"
   add_foreign_key "projects", "priorities"

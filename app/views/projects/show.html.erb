@@ -133,7 +133,7 @@
     </button>
 
 <% if current_user.group == "admin" || current_user.group == "coordenador" %>
- <button class="card" onclick="window.location.href='<%= chart_url %>'" id="chart"> 
+ <button class="card" onclick="window.location.href='<%= managment_risks_url %>'" id="chart"> 
          <%= image_tag("report.png") %>
          <div class="description">
             Acompanhe o gerenciamento de risco.

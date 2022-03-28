@@ -1,0 +1,88 @@
+<div class="container" id="info_project">
+
+<br />
+<br />
+<br />
+<h1>Gerenciamento de risco</h1>
+
+  <% @managment_risks.each do |managment_risk| %>
+
+<%= link_to 'Novo risco', new_managment_risk_path, class: 'green_button' %>  
+
+<button class="accordion">
+    <b class="accordion_title">
+     <%= managment_risk.title %>
+    </b>
+</button>
+
+<div class="panel">
+     <br />
+       <div>
+         <b>Título: </b>
+         <%= managment_risk.title %>
+       </div> 
+
+      <div>
+        <b>Descrição</b>
+        <%= managment_risk.description %>
+      </div>
+
+      <div>
+        <b>Probabilidade: </b>
+        <%= managment_risk.probabitity %>
+      </div> 
+     
+      <div>
+        <b>Contingência: </b>
+        <%= managment_risk.contingency %>
+      </div> 
+
+      <div>
+        <b>Status: </b>
+        <%= managment_risk.status %>  
+      </div> 
+
+       <div> 
+          <b>Projeto: </b>
+          <%= managment_risk.project_id %>
+       </div>
+
+      <div>
+         <%= link_to 'Edit', edit_managment_risk_path(managment_risk) %>
+         <%= link_to 'Destroy', managment_risk, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+ </div>
+<% end %>
+
+
+ 
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    //$('.sortable').tablesort();
+  });
+  ///Accordion
+
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  }
+
+</script>
+
+
+
+
+
+</div>

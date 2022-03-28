@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   post '/tinymce_assets' => 'tinymce_assets#create'
   
   # CRUMBOARD
@@ -20,7 +21,6 @@ Rails.application.routes.draw do
   # routes for select and deselect projects
   get '/select/project/:id', to: 'projects#select', as: 'select_project'
   delete '/deselect/project', to: 'projects#deselect', as: 'deselect_project'
-
   post '/sprints/:id', to: 'sprints#change_status', as: 'change_sprint'
   #
 
@@ -41,8 +41,8 @@ Rails.application.routes.draw do
   resources :user_stories
   resources :sprints
   resources :releases
-  resources :repositories
-  
+  resources :managment_risks
+
   resources :themes do
     get :autocomplete, :on => :collection
   end
@@ -57,7 +57,7 @@ Rails.application.routes.draw do
   #devise_for :users
   #resources :users
   resources :function_user_projects
-
+  
   # mount Notifications::Engine => "/notifications"
   resources :notifications
   delete '/clean', to: 'notifications#clean', as: 'clean_notifications'
