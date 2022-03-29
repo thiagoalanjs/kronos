@@ -27,7 +27,7 @@ class ManagmentRisksController < ApplicationController
 
     respond_to do |format|
       if @managment_risk.save
-        format.html { redirect_to managment_risk_url(@managment_risk), notice: "Gerenciamento de risco criado com sucesso." }
+        format.html { redirect_to managment_risks_url, notice: "Gerenciamento de risco criado com sucesso." }
         format.json { render :show, status: :created, location: @managment_risk }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class ManagmentRisksController < ApplicationController
   def update
     respond_to do |format|
       if @managment_risk.update(managment_risk_params)
-        format.html { redirect_to managment_risk_url(@managment_risk), notice: "Gerenciamento de risco atualizado com sucesso." }
+        format.html { redirect_to managment_risks_url, notice: "Gerenciamento de risco atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @managment_risk }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -7,7 +7,8 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @managment_risk.description %>
+  <%= @managment_risk.description.html_safe %>
+  <%= tinymce %>
 </p>
 
 <p>
@@ -30,5 +31,3 @@
   <%= @managment_risk.project_id %>
 </p>
 
-<%= link_to 'Edit', edit_managment_risk_path(@managment_risk) %> |
-<%= link_to 'Back', managment_risks_path %>

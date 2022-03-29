@@ -5,16 +5,57 @@
 <br />
 <h1>Gerenciamento de risco</h1>
 
-  <% @managment_risks.each do |managment_risk| %>
+    <% if @managment_risks.empty? %> 
+        <div class="box_center">
+        <br />
+        <br />
+            <%= image_tag("compliance.png") %>
+            <br />
+            <br />
+            <p class="access_deny">Você não possui nenhum gerenciamento de risco. Clique em "Novo risco"</p>
+        <%= link_to 'Novo risco', new_managment_risk_path, class: 'green_button' %> 
+        </div>
+    </div>
+ 
+  <% else %>
 
-<%= link_to 'Novo risco', new_managment_risk_path, class: 'green_button' %>  
+<%= link_to 'Novo risco', new_managment_risk_path, class: 'red_button' %>
+<br /> 
+<br /> 
 
-<button class="accordion">
-    <b class="accordion_title">
-     <%= managment_risk.title %>
-    </b>
-</button>
+ <% @managment_risks.each do |managment_risk| %>
 
+<% if managment_risk.probabitity == "5" %>
+      <button class="accordion" style='background-color: #0B610B'>
+          <b class="accordion_title" style='color: #FFF'>
+           <%= managment_risk.title %>
+          </b>
+      </button>
+  <% elsif managment_risk.probabitity == "4" %>
+      <button class="accordion" style='background-color: #04B431'>
+          <b class="accordion_title" style='color: #FFF'>
+           <%= managment_risk.title %>
+          </b>
+      </button>
+  <% elsif managment_risk.probabitity == "3" %>
+      <button class="accordion" style='background-color: #F7FE2E'>
+          <b class="accordion_title" style='color: #000'>
+           <%= managment_risk.title %>
+          </b>
+      </button>  
+  <% elsif managment_risk.probabitity == "2" %>
+      <button class="accordion" style='background-color: #FA5858'>
+          <b class="accordion_title" style='color: #FFF'>
+           <%= managment_risk.title %>
+          </b>
+      </button>   
+  <% elsif managment_risk.probabitity == "1" %>
+      <button class="accordion" style='background-color: #610B0B'>
+          <b class="accordion_title" style='color: #FFF'>
+           <%= managment_risk.title %>
+          </b>
+      </button>                     
+  <% end %> 
 <div class="panel">
      <br />
        <div>
@@ -24,38 +65,53 @@
 
       <div>
         <b>Descrição</b>
-        <%= managment_risk.description %>
+        <%= managment_risk.description.html_safe %>
+        <%= tinymce %>
       </div>
 
       <div>
         <b>Probabilidade: </b>
-        <%= managment_risk.probabitity %>
+        <% if managment_risk.probabitity == "1" %>
+            Muito alta
+        <% elsif managment_risk.probabitity == "2" %>
+             Alta
+        <% elsif managment_risk.probabitity == "3" %>
+            Média
+        <% elsif managment_risk.probabitity == "4" %>
+            Baixa
+        <% elsif managment_risk.probabitity == "5" %>
+            Muito Baixa
+        <% end %>
+
       </div> 
      
       <div>
         <b>Contingência: </b>
-        <%= managment_risk.contingency %>
+
+        <% if managment_risk.contingency == "1" %>
+          Prevenir/Evitar
+        <% elsif managment_risk.contingency == "2" %>
+          Mitigar
+        <% elsif managment_risk.contingency == "3" %>
+          Transferir
+        <% elsif managment_risk.contingency == "4" %>
+          Aceitar
+        <% end %>
+
       </div> 
 
-      <div>
-        <b>Status: </b>
-        <%= managment_risk.status %>  
-      </div> 
-
-       <div> 
-          <b>Projeto: </b>
-          <%= managment_risk.project_id %>
-       </div>
 
       <div>
-         <%= link_to 'Edit', edit_managment_risk_path(managment_risk) %>
-         <%= link_to 'Destroy', managment_risk, method: :delete, data: { confirm: 'Are you sure?' } %>
+         <br />
+         <%= link_to 'Editar', edit_managment_risk_path(managment_risk), class: 'blue_button' %>
+         <%= link_to 'Deletar', managment_risk, method: :delete, data: { confirm: 'Are you sure?' }, class: 'red_button' %>
       </div>
+      <br />
  </div>
 <% end %>
 
 
- 
+ <% end %>
 
 
 <script type="text/javascript">

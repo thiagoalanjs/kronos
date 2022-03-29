@@ -86,3 +86,8 @@ pt-BR:
           user_task:
             user_id: Usuário
             task_id: Atividade
+          managment_risk:
+            title: Título
+            description: Descrição
+            probabitity: Probabilidade
+            contingency: Contigência

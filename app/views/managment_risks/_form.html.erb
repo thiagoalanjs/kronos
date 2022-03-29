@@ -53,10 +53,9 @@
     <b><%= f.label :title %></b>
     
   <div class="field">
-    <br />
-    <%= f.text_field :title %>
+      <%= f.text_field :title %>
   </div>
-
+<br />
   <div class="field">
     <b><%= f.label :description %></b>
     <br />
@@ -64,33 +63,27 @@
   </div>
 
   <div class="field">
+  <br />
     <b><%= f.label :probabitity %></b>
     <br />
-      <%= f.select :probabitity, options_for_select({'Muito alta' => 1 , 'Alta' => 2 , 'Média' => 3, 'Baixa' => 4, 'Muito baixa' => 5 }), {:prompt => false}, {  placeholder: 'Selecione o plano de probabilidade' } %>
+      <%= f.select :probabitity, options_for_select({'Muito alta' => 1 , 'Alta' => 2 , 'Média' => 3, 'Baixa' => 4, 'Muito baixa' => 5 }),{:prompt => 'Selecione a probabilidade do risco' } %>
 
   </div>
 
   <div class="field">
-    <b><%= f.label :contingência %></b>
+  <br />
+    <b><%= f.label :contingency %></b>
     <br />
     
-    <%= f.select :contingency, options_for_select({'Prevenir/Evitar' => 1 , 'Mitigar' => 2 , 'Transferir' => 3, 'Aceitar' => 4 }), {:prompt => false}, {  placeholder: 'Selecione o plano de contigência' } %>
-  </div>
-
-  <div class="field">
-    <b><%= f.label :status %></b>
-    <br />
-    <%= f.text_field :status %>
+    <%= f.select :contingency, options_for_select({'Prevenir/Evitar' => 1 , 'Mitigar' => 2 , 'Transferir' => 3, 'Aceitar' => 4 }), {:prompt => 'Selecione um plano de contigência' }%>
   </div>
 
     <b><%= f.hidden_field :project_id, :value => current_project_id %></b>
     <br />
 
 
-
-  <div class="actions">
-    <%= f.submit class: 'blue_button' %>
-  </div>
+    <%= link_to 'Salvar', '#', class: 'save blue_button'%>
+    <%= link_to 'Cancelar', managment_risks_url, class: 'red_button' %>
 <% end %>
 
 <script type="text/javascript">

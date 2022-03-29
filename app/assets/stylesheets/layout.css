@@ -1597,7 +1597,7 @@ table {
       }
   
       .box_center .green_button{
-          width: 250px; 
+          width: 295px; 
           margin-left: 40px;
           margin-top:-5px;
       }
@@ -2098,6 +2098,7 @@ span#icon-menu-sidebar{
         position: relative;
         margin-left: 90px;
         width: 200px;
+        padding-left: 20px;
     }
 
     .access_deny {
@@ -2106,6 +2107,7 @@ span#icon-menu-sidebar{
         font-size: 18px;
         margin-left: 65px;
         width: 219px;
+        padding-left: 20px;
     }
 
     #info_project .access_deny {
@@ -2125,10 +2127,9 @@ span#icon-menu-sidebar{
         width: 100%;
     }
      
-    .green_button {
+    .box_center .green_button {
         width: 280px;
         margin-top: 30px;
-        margin-left: 10px;
     }
     
     .search_input {
