@@ -1944,8 +1944,11 @@ table {
 
 @media (max-width:360px){
 
+.space_card {
+  margin-left: -12px;
+}
+
 table {
-  
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
