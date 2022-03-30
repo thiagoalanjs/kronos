@@ -238,7 +238,7 @@ div#notification_inactived {
     vertical-align: middle;
 }
 .container{
-  width: 100%;
+  width: 95%;
   margin-left:10px;
   
 }
@@ -1945,7 +1945,7 @@ table {
 @media (max-width:360px){
 
 .space_card {
-  margin-left: -12px;
+  margin-left: -11px;
 }
 
 table {

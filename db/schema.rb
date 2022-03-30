@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2022_03_20_202641) do
   create_table "managment_risks", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "probabitity"
+    t.string "probability"
     t.string "contingency"
     t.string "status"
     t.integer "project_id"

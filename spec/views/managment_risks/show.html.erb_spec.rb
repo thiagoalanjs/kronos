@@ -5,7 +5,7 @@ RSpec.describe "managment_risks/show", type: :view do
     @managment_risk = assign(:managment_risk, ManagmentRisk.create!(
       :title => "Title",
       : => "",
-      :probabitity => "Probabitity",
+      :probability => "Probabitity",
       :contingency => "Contingency",
       :status => "Status",
       :project => nil

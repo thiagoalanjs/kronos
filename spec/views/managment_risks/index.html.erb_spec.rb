@@ -6,7 +6,7 @@ RSpec.describe "managment_risks/index", type: :view do
       ManagmentRisk.create!(
         :title => "Title",
         : => "",
-        :probabitity => "Probabitity",
+        :probability => "Probabitity",
         :contingency => "Contingency",
         :status => "Status",
         :project => nil
@@ -14,7 +14,7 @@ RSpec.describe "managment_risks/index", type: :view do
       ManagmentRisk.create!(
         :title => "Title",
         : => "",
-        :probabitity => "Probabitity",
+        :probability => "Probabitity",
         :contingency => "Contingency",
         :status => "Status",
         :project => nil

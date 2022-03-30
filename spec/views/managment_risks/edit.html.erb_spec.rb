@@ -5,7 +5,7 @@ RSpec.describe "managment_risks/edit", type: :view do
     @managment_risk = assign(:managment_risk, ManagmentRisk.create!(
       :title => "MyString",
       : => "",
-      :probabitity => "MyString",
+      :probability => "MyString",
       :contingency => "MyString",
       :status => "MyString",
       :project => nil
@@ -21,7 +21,7 @@ RSpec.describe "managment_risks/edit", type: :view do
 
       assert_select "input[name=?]", "managment_risk[]"
 
-      assert_select "input[name=?]", "managment_risk[probabitity]"
+      assert_select "input[name=?]", "managment_risk[probability]"
 
       assert_select "input[name=?]", "managment_risk[contingency]"
 

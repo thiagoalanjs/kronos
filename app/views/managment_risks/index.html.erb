@@ -3,8 +3,8 @@
 <br />
 <br />
 <br />
-<h1>Gerenciamento de risco</h1>
-
+<h2>Gerenciamento de risco</h2>
+  <%= render 'managment_risks/breadcrumb' %>
     <% if @managment_risks.empty? %> 
         <div class="box_center">
         <br />
@@ -22,35 +22,50 @@
 <%= link_to 'Novo risco', new_managment_risk_path, class: 'red_button' %>
 <br /> 
 <br /> 
+<table>
+    <tr>
+      <td><span style='color: #000; font-weight: bold; '>Legenda</span></td>
+    </tr>
+    <tr>
+      <td style='background-color: #990026'><span style='color: #FFF; font-weight: bold;'>Muito Alta</span></td>
+      <td style='background-color: #FA5858'><span style='color: #FFF; font-weight: bold;'>Alta</span></td>
+      <td style='background-color: #ccc500'><span style='color: #FFF; font-weight: bold;'>Média</span></td>
+      <td style='background-color: #04B431'><span style='color: #FFF; font-weight: bold;'>Baixa</span></td>
+       <td style='background-color: #4D8349'><span style='color: #FFF; font-weight: bold;'>Muito Baixa</span></td>
+    </tr>
+</table>
+
 
  <% @managment_risks.each do |managment_risk| %>
 
-<% if managment_risk.probabitity == "5" %>
-      <button class="accordion" style='background-color: #0B610B'>
+<br />
+
+<% if managment_risk.probability == "5" %>
+      <button class="accordion" style='background-color: #4D8349'>
           <b class="accordion_title" style='color: #FFF'>
            <%= managment_risk.title %>
           </b>
       </button>
-  <% elsif managment_risk.probabitity == "4" %>
+  <% elsif managment_risk.probability == "4" %>
       <button class="accordion" style='background-color: #04B431'>
           <b class="accordion_title" style='color: #FFF'>
            <%= managment_risk.title %>
           </b>
       </button>
-  <% elsif managment_risk.probabitity == "3" %>
-      <button class="accordion" style='background-color: #F7FE2E'>
-          <b class="accordion_title" style='color: #000'>
+  <% elsif managment_risk.probability == "3" %>
+      <button class="accordion" style='background-color: #ccc500'>
+          <b class="accordion_title" style='color: #FFF'>
            <%= managment_risk.title %>
           </b>
       </button>  
-  <% elsif managment_risk.probabitity == "2" %>
+  <% elsif managment_risk.probability == "2" %>
       <button class="accordion" style='background-color: #FA5858'>
           <b class="accordion_title" style='color: #FFF'>
            <%= managment_risk.title %>
           </b>
       </button>   
-  <% elsif managment_risk.probabitity == "1" %>
-      <button class="accordion" style='background-color: #610B0B'>
+  <% elsif managment_risk.probability == "1" %>
+      <button class="accordion" style='background-color: #990026'>
           <b class="accordion_title" style='color: #FFF'>
            <%= managment_risk.title %>
           </b>
@@ -61,32 +76,39 @@
        <div>
          <b>Título: </b>
          <%= managment_risk.title %>
+       <br />
+       <br />
        </div> 
 
       <div>
-        <b>Descrição</b>
+        <b>Descrição:</b>
+        <br />
         <%= managment_risk.description.html_safe %>
         <%= tinymce %>
+        <br />    
       </div>
 
       <div>
         <b>Probabilidade: </b>
-        <% if managment_risk.probabitity == "1" %>
+        <br />
+        <% if managment_risk.probability == "1" %>
             Muito alta
-        <% elsif managment_risk.probabitity == "2" %>
+        <% elsif managment_risk.probability == "2" %>
              Alta
-        <% elsif managment_risk.probabitity == "3" %>
+        <% elsif managment_risk.probability == "3" %>
             Média
-        <% elsif managment_risk.probabitity == "4" %>
+        <% elsif managment_risk.probability == "4" %>
             Baixa
-        <% elsif managment_risk.probabitity == "5" %>
+        <% elsif managment_risk.probability == "5" %>
             Muito Baixa
         <% end %>
-
+       <br />
+       <br />
       </div> 
      
       <div>
         <b>Contingência: </b>
+        <br />
 
         <% if managment_risk.contingency == "1" %>
           Prevenir/Evitar
@@ -137,8 +159,8 @@
 
 </script>
 
-
-
-
+<br />
+<br />
+     <%= paginate @managment_risks %>  
 
 </div>

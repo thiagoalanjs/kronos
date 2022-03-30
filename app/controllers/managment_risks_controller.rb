@@ -3,7 +3,7 @@ class ManagmentRisksController < ApplicationController
 
   # GET /managment_risks or /managment_risks.json
   def index
-    @managment_risks = ManagmentRisk.where(project_id: current_project_id)
+    @managment_risks = ManagmentRisk.where(project_id: current_project_id).page(params[:page]).order('probability ASC').per(8)  
   end
 
   # GET /managment_risks/1 or /managment_risks/1.json
@@ -67,6 +67,6 @@ class ManagmentRisksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def managment_risk_params
-      params.require(:managment_risk).permit(:title, :description, :probabitity, :contingency, :status, :project_id)
+      params.require(:managment_risk).permit(:title, :description, :probability, :contingency, :status, :project_id)
     end
 end
