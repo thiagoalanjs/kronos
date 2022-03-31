@@ -76,8 +76,7 @@
         <button class="card" onclick="window.location.href='<%= user_stories_path %>'" id="user_stories">
          <%= image_tag("backlog.png") %>
          <div class="description">
-           Aqui você administra o backlog das tarefas do projeto <%= @project.name %>.
-           
+           Administre o backlog das tarefas do projeto <%= @project.name %>.
          </div>
       </button>
 
@@ -104,7 +103,7 @@
         <button class="card" onclick="window.location.href='<%= function_user_projects_path %>'" id="function_user_projects">   
             <%= image_tag("team.png") %>
             <div class="description">
-              Aqui você administra a equipe responsável pelo desenvolvimento do projeto.
+              Crie a equipe responsável pelo desenvolvimento do projeto.
             </div>
         </button>
     <% end %>
@@ -112,7 +111,7 @@
     <button class="card" onclick="window.location.href='<%= scrumboard_path(@project.id) %>'" id="scrumboards">   
             <%= image_tag("kanban_icon.png") %>
             <div class="description">
-              Acesse o board da prints do projeto <%= @project.name %>.
+              Acesse o scrumboard do projeto <%= @project.name %>.
              </div>
            <br />
     </button>
@@ -120,7 +119,7 @@
       <button class="card" onclick="window.location.href='<%= themes_path %>'" id="theme"> 
          <%= image_tag("tema.png") %>
          <div class="description">
-            Configure aqui os temas das user stories dos projetos
+            Crie os temas das user stories dos projetos
          </div>
     </button>
 
