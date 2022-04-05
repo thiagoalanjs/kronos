@@ -468,63 +468,6 @@ and (-webkit-min-device-pixel-ratio: 1){
         margin-left: -122px;
     }
 }
-/* 
-@media only screen and (max-width:1000px){ 
-    img#logo {
-        display: block;
-        margin-top: 30px;
-        margin-left: 40%;
-        margin-right: 40%;
-        width: 200px;
-        margin-top: 0 auto;
-    }
-    img#image-left, img#image-right{
-        display: none;
-    }
-    
-    header{
-        height: 340px;
-        bottom: 0px;   
-    }
-    
-    div#box-logo{
-        text-align: center;
-    }
-    
-    div#box-center {
-        float: left;
-        width: 80%;
-        height: 50%;
-        margin-top: 5px;
-        margin-left: 5px;
-        border-radius: 0%;
-        -webkit-box-shadow: 0px; 
-        box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.150);
-    }
-    
-    input{
-        margin:30px;
-    }
-    
-    a, button {
-        margin:30px;
-    }
-    
-    footer {
-        bottom: 0;
-        position: fixed;
-    }
-    
-    footer {
-        margin-top: 170px;
-        position: absolute;
-        padding: 10px;
-        width: 100%;
-        height: 90px;
-        background-color: #323233;
-    }
-}
- */
 
 /* Portrait */
 @media screen 
@@ -532,9 +475,7 @@ and (-webkit-min-device-pixel-ratio: 1){
   and (max-height: 640px) 
   and (-webkit-device-pixel-ratio: 2) 
   and (orientation: portrait) { 
-    img#logo{
-      align-items: center;
-    }
+ 
     div#box-center {  
       margin-left: 47px;
     }
@@ -560,8 +501,7 @@ and (-webkit-min-device-pixel-ratio: 1){
   and (device-height: 705px) 
   and (-webkit-device-pixel-ratio: 2) 
   and (orientation: portrait) { 
-    div#box-center { 
-    
+    div#box-center {    
       margin-left: 47px;
       background-color: #f44336;
     }
@@ -578,7 +518,6 @@ and (-webkit-min-device-pixel-ratio: 1){
       background-color: #f44336;
     }
 }
-
    
 /* -----------     iPhone XR  -------------------- */
 
