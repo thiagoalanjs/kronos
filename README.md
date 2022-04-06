@@ -185,10 +185,9 @@ Desktop padrão
 
 Mobile
 
-![image](https://user-images.githubusercontent.com/32438113/161894947-324fce33-6310-42e6-a271-44935f36f011.png)
+![image](https://user-images.githubusercontent.com/32438113/161894947-324fce33-6310-42e6-a271-44935f36f011.png) ![image](https://user-images.githubusercontent.com/32438113/161895099-5a510930-83fe-4f71-b463-158e8bee4f8f.png)
 
 
-![image](https://user-images.githubusercontent.com/32438113/161895099-5a510930-83fe-4f71-b463-158e8bee4f8f.png)
 
 
 ![image](https://user-images.githubusercontent.com/32438113/161894987-b21008c3-79ac-4fa0-9c6d-a5afc44cd42c.png)
