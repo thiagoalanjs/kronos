@@ -169,3 +169,28 @@ Acessar a URL http://agilekronos.online/
 User - puc@mailinator.com
 Pass - 12345678
 ```
+## Resoluções
+
+Desktop padrão
+
+![image](https://user-images.githubusercontent.com/32438113/161894891-3c46eb60-c65c-4b4b-a49f-3b764392ad6e.png)
+
+![image](https://user-images.githubusercontent.com/32438113/161895428-a14542c1-b1ec-4673-a89e-edd6bd527647.png)
+
+![image](https://user-images.githubusercontent.com/32438113/161895561-02646bf0-725a-46f8-afd7-28994cebf2ab.png)
+
+
+
+Mobile Android
+
+![image](https://user-images.githubusercontent.com/32438113/161894947-324fce33-6310-42e6-a271-44935f36f011.png)
+
+![image](https://user-images.githubusercontent.com/32438113/161895099-5a510930-83fe-4f71-b463-158e8bee4f8f.png)
+
+![image](https://user-images.githubusercontent.com/32438113/161894987-b21008c3-79ac-4fa0-9c6d-a5afc44cd42c.png)
+
+![image](https://user-images.githubusercontent.com/32438113/161895155-dd639f9b-7e17-436f-bb32-914059c20b69.png)
+
+![image](https://user-images.githubusercontent.com/32438113/161895299-4855de29-5869-41f8-9816-aeb93e6bace8.png)
+
+
