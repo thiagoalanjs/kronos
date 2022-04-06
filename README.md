@@ -169,22 +169,3 @@ Acessar a URL http://agilekronos.online/
 User - puc@mailinator.com
 Pass - 12345678
 ```
-## Resoluções
-
-Abaixo alguns exemplos de comportamento de telas aleatórias da aplicação em resoluções diferentes:
-
-Desktop padrão
-
-![image](https://user-images.githubusercontent.com/32438113/161894891-3c46eb60-c65c-4b4b-a49f-3b764392ad6e.png)
-
-![image](https://user-images.githubusercontent.com/32438113/161895428-a14542c1-b1ec-4673-a89e-edd6bd527647.png)
-
-![image](https://user-images.githubusercontent.com/32438113/161895561-02646bf0-725a-46f8-afd7-28994cebf2ab.png)
-
-
-
-Mobile
-
-![image](https://user-images.githubusercontent.com/32438113/161894947-324fce33-6310-42e6-a271-44935f36f011.png) ![image](https://user-images.githubusercontent.com/32438113/161894987-b21008c3-79ac-4fa0-9c6d-a5afc44cd42c.png)
-
-
