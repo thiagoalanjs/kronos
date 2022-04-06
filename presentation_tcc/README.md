@@ -6,5 +6,6 @@
 
 Algumas funcionalidades importantes do protótipo navegável no figma:
 
-https://user-images.githubusercontent.com/32438113/154896038-750cfb52-b15a-4758-9bbc-bd23a23b0ff0.mp4
+https://user-images.githubusercontent.com/32438113/161892888-e34e28ca-91a2-4338-a739-d3d381f2c267.mp4
+
 
