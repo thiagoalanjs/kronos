@@ -169,6 +169,6 @@ Acessar a URL http://agilekronos.online/
 User - puc@mailinator.com
 Pass - 12345678
 
-OBS.: Todos os usuários criados na plataforma terão a senha padrão "**12345678**", os mesmos poderão realizar a alteração de senha no link "editar perfil".
+OBS.: Todos os usuários criados na plataforma terão a senha padrão "12345678", os mesmos poderão realizar a alteração de senha no link "editar perfil".
 ```
 
