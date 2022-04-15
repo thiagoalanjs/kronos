@@ -28,7 +28,7 @@ Acesse o link do repositório abaixo para ver as telas de protótipos do figma:
 
 ## Tecnologias usadas
 
-Aplicação criada usando a stack mesclando Ruby + JS 
+Aplicação criada usando a stack Ruby com Javascript e CSS para o front-end
 
 ![image](https://user-images.githubusercontent.com/32438113/152725798-6f003dc1-fc08-4ee7-b847-7c6a6f3faa0f.png)
 
