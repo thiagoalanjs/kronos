@@ -6,6 +6,7 @@ class Project < ActiveRecord::Base
   has_many :functions, through: :function_user_projects, dependent: :destroy 
   has_many :users, through: :function_user_projects, dependent: :destroy 
   has_many :user_stories, dependent: :destroy 
+  has_many :managment_risks, dependent: :destroy 
   has_many :tasks, through: :user_stories, dependent: :destroy 
   has_many :comments, through: :tasks, dependent: :destroy
 
